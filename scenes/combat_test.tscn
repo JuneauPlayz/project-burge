@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dx3hkptjwrk6g"]
 
-[ext_resource type="Script" path="res://scenes/enemy.gd" id="1_xslv0"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_xslv0"]
 [ext_resource type="Texture2D" uid="uid://djyorqs13oxgy" path="res://assets/burger.jpg" id="2_swd4s"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_uv3ey"]

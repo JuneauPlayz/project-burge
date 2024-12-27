@@ -1,3 +1,36 @@
-[gd_scene format=3 uid="uid://cpqr8d1v3tlcf"]
+[gd_scene load_steps=3 format=3 uid="uid://cpqr8d1v3tlcf"]
+
+[ext_resource type="Script" path="res://scripts/main_scene.gd" id="1_3n5v6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_k0nup"]
+font_size = 48
 
 [node name="MainScene" type="Node2D"]
+script = ExtResource("1_3n5v6")
+
+[node name="Title" type="Label" parent="."]
+offset_left = 390.0
+offset_top = 69.0
+offset_right = 714.0
+offset_bottom = 178.0
+text = "project burge "
+label_settings = SubResource("LabelSettings_k0nup")
+
+[node name="StartB" type="Button" parent="."]
+offset_left = 307.0
+offset_top = 233.0
+offset_right = 798.0
+offset_bottom = 289.0
+theme_override_font_sizes/font_size = 24
+text = "Start Run"
+
+[node name="ExitGame" type="Button" parent="."]
+offset_left = 305.0
+offset_top = 324.0
+offset_right = 797.0
+offset_bottom = 377.0
+theme_override_font_sizes/font_size = 24
+text = "Exit"
+
+[connection signal="pressed" from="StartB" to="." method="_on_start_b_pressed"]
+[connection signal="pressed" from="ExitGame" to="." method="_on_exit_game_pressed"]
