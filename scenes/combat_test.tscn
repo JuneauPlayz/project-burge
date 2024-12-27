@@ -1,0 +1,74 @@
+[gd_scene load_steps=3 format=3 uid="uid://dx3hkptjwrk6g"]
+
+[ext_resource type="Script" path="res://scenes/enemy.gd" id="1_xslv0"]
+[ext_resource type="Texture2D" uid="uid://djyorqs13oxgy" path="res://assets/burger.jpg" id="2_swd4s"]
+
+[node name="CombatTest" type="Node2D"]
+
+[node name="Buttons" type="Node2D" parent="."]
+
+[node name="fire" type="Button" parent="Buttons"]
+offset_left = 89.0
+offset_top = 100.0
+offset_right = 310.0
+offset_bottom = 131.0
+text = "10 fire damage"
+
+[node name="water" type="Button" parent="Buttons"]
+offset_left = 90.0
+offset_top = 150.0
+offset_right = 310.0
+offset_bottom = 181.0
+text = "10 water damage"
+
+[node name="lightning" type="Button" parent="Buttons"]
+offset_left = 89.0
+offset_top = 203.0
+offset_right = 311.0
+offset_bottom = 231.0
+text = "10 lightning damage"
+
+[node name="earth" type="Button" parent="Buttons"]
+offset_left = 88.0
+offset_top = 255.0
+offset_right = 314.0
+offset_bottom = 291.0
+text = "10 earth damage"
+
+[node name="enemy" type="Node2D" parent="."]
+script = ExtResource("1_xslv0")
+
+[node name="Burger" type="Sprite2D" parent="enemy"]
+position = Vector2(819.75, 279.875)
+scale = Vector2(0.22875, 0.153542)
+texture = ExtResource("2_swd4s")
+
+[node name="ProgressBar" type="ProgressBar" parent="enemy"]
+offset_left = 703.0
+offset_top = 131.0
+offset_right = 944.0
+offset_bottom = 158.0
+
+[node name="Label" type="Label" parent="enemy"]
+visible = false
+offset_left = 790.0
+offset_top = 99.0
+offset_right = 1008.0
+offset_bottom = 133.0
+text = "burger"
+
+[node name="Timer" type="Timer" parent="enemy/Label"]
+one_shot = true
+
+[node name="currelem" type="Label" parent="enemy"]
+offset_left = 738.0
+offset_top = 69.0
+offset_right = 884.0
+offset_bottom = 102.0
+text = "current element: "
+
+[connection signal="pressed" from="Buttons/fire" to="enemy" method="_on_fire_pressed"]
+[connection signal="pressed" from="Buttons/water" to="enemy" method="_on_water_pressed"]
+[connection signal="pressed" from="Buttons/lightning" to="enemy" method="_on_lightning_pressed"]
+[connection signal="pressed" from="Buttons/earth" to="enemy" method="_on_earth_pressed"]
+[connection signal="timeout" from="enemy/Label/Timer" to="enemy" method="_on_timer_timeout"]
