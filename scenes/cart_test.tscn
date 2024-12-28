@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cj3tvn2yyuxkb"]
+
+[ext_resource type="PackedScene" uid="uid://c5ekb1acvw6fj" path="res://scenes/draggable.tscn" id="1_0xlxq"]
+[ext_resource type="PackedScene" uid="uid://ls1vkgp70me4" path="res://scenes/droppable.tscn" id="2_irjf1"]
+
+[node name="CartTest" type="Node2D"]
+
+[node name="drop" parent="." instance=ExtResource("2_irjf1")]
+position = Vector2(432, 198)
+
+[node name="drop2" parent="." instance=ExtResource("2_irjf1")]
+position = Vector2(736, 205)
+
+[node name="drop3" parent="." instance=ExtResource("2_irjf1")]
+position = Vector2(609, 385)
+
+[node name="object" parent="." instance=ExtResource("1_0xlxq")]
+position = Vector2(209, 88)
