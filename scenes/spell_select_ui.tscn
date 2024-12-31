@@ -1,0 +1,121 @@
+[gd_scene load_steps=9 format=3 uid="uid://tlvpop5rp1x6"]
+
+[ext_resource type="Script" path="res://scenes/spell_select_ui.gd" id="1_tthrk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tvmj8"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_adctu"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+bg_color = Color(0.27451, 0.27451, 0.27451, 1)
+expand_margin_right = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1dgm8"]
+content_margin_right = 0.0
+bg_color = Color(0.246653, 0.378583, 0.631853, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_edv3q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h8vhy"]
+content_margin_left = 0.0
+bg_color = Color(0.27451, 0.27451, 0.27451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t4wfs"]
+bg_color = Color(0.27451, 0.27451, 0.27451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e1rq2"]
+bg_color = Color(0.27451, 0.27451, 0.27451, 1)
+
+[node name="SpellSelectUi" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_tthrk")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 286.0
+offset_bottom = 191.0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_tvmj8")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 7
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="BA1Panel" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_adctu")
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/BA1Panel"]
+custom_minimum_size = Vector2(261, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/hover = SubResource("StyleBoxFlat_1dgm8")
+text = "Basic Attack"
+
+[node name="VSeparator" type="VSeparator" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 11
+theme_override_styles/separator = SubResource("StyleBoxFlat_edv3q")
+
+[node name="SP1Panel" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_h8vhy")
+
+[node name="S1" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/SP1Panel"]
+layout_mode = 2
+text = "Spell 1"
+
+[node name="VSeparator2" type="VSeparator" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 11
+theme_override_styles/separator = SubResource("StyleBoxFlat_edv3q")
+
+[node name="SP2Panel" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_t4wfs")
+
+[node name="S2" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/SP2Panel"]
+layout_mode = 2
+text = "Spell 2"
+
+[node name="VSeparator3" type="VSeparator" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 11
+theme_override_styles/separator = SubResource("StyleBoxFlat_edv3q")
+
+[node name="ULTPanel" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_e1rq2")
+
+[node name="ULT" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/ULTPanel"]
+layout_mode = 2
+text = "Ultimate
+"
+
+[connection signal="mouse_entered" from="PanelContainer" to="." method="_on_panel_container_mouse_entered"]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/BA1Panel" to="." method="_on_ba_1_panel_mouse_entered"]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/BA1Panel" to="." method="_on_ba_1_panel_mouse_exited"]
