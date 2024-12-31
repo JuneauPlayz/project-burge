@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3 uid="uid://dooqfwlwxly5w"]
+
+[ext_resource type="Script" path="res://scripts/skill.gd" id="1_n8lbm"]
+
+[resource]
+script = ExtResource("1_n8lbm")
+damage = 5
+element = "water"
