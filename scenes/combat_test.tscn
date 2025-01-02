@@ -89,24 +89,28 @@ offset_left = 39.0
 offset_top = 390.0
 offset_right = 39.0
 offset_bottom = 390.0
+script = null
 
 [node name="SpellSelectUi2" parent="." instance=ExtResource("3_darbo")]
 offset_left = 338.0
 offset_top = 391.0
 offset_right = 338.0
 offset_bottom = 391.0
+script = null
 
 [node name="SpellSelectUi3" parent="." instance=ExtResource("3_darbo")]
 offset_left = 635.0
 offset_top = 394.0
 offset_right = 635.0
 offset_bottom = 394.0
+script = null
 
 [node name="SpellSelectUi4" parent="." instance=ExtResource("3_darbo")]
 offset_left = 941.0
 offset_top = 392.0
 offset_right = 941.0
 offset_bottom = 392.0
+script = null
 
 [connection signal="pressed" from="Buttons/fire" to="enemy" method="_on_fire_pressed"]
 [connection signal="pressed" from="Buttons/water" to="enemy" method="_on_water_pressed"]
