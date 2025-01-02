@@ -1,6 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://tlvpop5rp1x6"]
-
-[ext_resource type="Script" path="res://scripts/spell_select_ui.gd" id="1_tthrk"]
+[gd_scene load_steps=8 format=3 uid="uid://tlvpop5rp1x6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tvmj8"]
 content_margin_left = 10.0
@@ -40,7 +38,6 @@ bg_color = Color(0.27451, 0.27451, 0.27451, 1)
 [node name="SpellSelectUi" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("1_tthrk")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 0
