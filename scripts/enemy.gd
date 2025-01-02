@@ -4,9 +4,15 @@ class_name Enemy
 @export var skill : Skill
 @export var current_element : String = "none"
 @export var reaction_primed = 0
+var hp_bar
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	#always make hp bar second child
+	print(health)
+	hp_bar = get_child(1)
+	hp_bar.set_hp(health)
+	hp_bar.set_maxhp(health)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -37,6 +43,7 @@ func take_damage(damage: float):
 		reaction_primed = 0
 	rounded = roundi(damage)
 	health -= rounded
+	hp_bar.set_hp(health)
 	check_if_dead()
 
 
