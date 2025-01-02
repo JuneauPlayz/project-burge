@@ -1,17 +1,13 @@
 extends Node
 
 @export var ally1 : Ally
+@export var ally2 : Ally
+@export var ally3 : Ally
+@export var ally4 : Ally
 @export var enemy1 : Enemy
 
+@export var action_queue = []
 
-func _on_button_pressed() -> void:
-	var skill = ally1.basic_atk
-	var damage : float
-	enemy1.take_element(skill.element)
-	enemy1.take_damage(skill.damage)
-	
-	#testing output
-	print("basic attack landed! remaining hp: " + str(enemy1.health))
 
 
 func _on_s_1_pressed() -> void:
@@ -34,3 +30,13 @@ func _on_ult_pressed() -> void:
 	enemy1.take_element(skill.element)
 	enemy1.take_damage(skill.damage)
 	print("ultimate landed! remaining hp: " + str(enemy1.health))
+
+
+func _on_basic_pressed() -> void:
+	var skill = ally1.basic_atk
+	var damage : float
+	enemy1.take_element(skill.element)
+	enemy1.take_damage(skill.damage)
+	
+	#testing output
+	print("basic attack landed! remaining hp: " + str(enemy1.health))

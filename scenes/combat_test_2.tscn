@@ -92,7 +92,7 @@ layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_adctu")
 
-[node name="Button" type="Button" parent="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer/BA1Panel"]
+[node name="BASIC" type="Button" parent="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer/BA1Panel"]
 custom_minimum_size = Vector2(261, 0)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -147,19 +147,19 @@ text = "Ultimate
 
 [node name="CombatManager" type="Node" parent="." node_paths=PackedStringArray("ally1", "enemy1")]
 script = ExtResource("2_hh3fv")
-ally1 = NodePath("../Ally")
+ally1 = NodePath("../Ally1")
 enemy1 = NodePath("../BurgerEnemy")
 
 [node name="BurgerEnemy" type="Node" parent="."]
 script = ExtResource("2_an485")
-health = 100
+health = 1000
 
 [node name="Burger" type="Sprite2D" parent="BurgerEnemy"]
 position = Vector2(911, 182)
 scale = Vector2(0.2825, 0.24375)
 texture = ExtResource("1_to6ih")
 
-[node name="Ally" type="Node" parent="."]
+[node name="Ally1" type="Node" parent="."]
 script = ExtResource("4_2mvrs")
 basic_atk = SubResource("Resource_jjwcv")
 skill_1 = SubResource("Resource_pqfgg")
@@ -169,7 +169,7 @@ ult = SubResource("Resource_kh0yv")
 [connection signal="mouse_entered" from="SpellSelectUi/PanelContainer" to="SpellSelectUi" method="_on_panel_container_mouse_entered"]
 [connection signal="mouse_entered" from="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer/BA1Panel" to="SpellSelectUi" method="_on_ba_1_panel_mouse_entered"]
 [connection signal="mouse_exited" from="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer/BA1Panel" to="SpellSelectUi" method="_on_ba_1_panel_mouse_exited"]
-[connection signal="pressed" from="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer/BA1Panel/Button" to="CombatManager" method="_on_button_pressed"]
+[connection signal="pressed" from="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer/BA1Panel/BASIC" to="CombatManager" method="_on_basic_pressed"]
 [connection signal="pressed" from="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer/SP1Panel/S1" to="CombatManager" method="_on_s_1_pressed"]
 [connection signal="pressed" from="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer/SP2Panel/S2" to="CombatManager" method="_on_s_2_pressed"]
 [connection signal="pressed" from="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer/ULTPanel/ULT" to="CombatManager" method="_on_ult_pressed"]
