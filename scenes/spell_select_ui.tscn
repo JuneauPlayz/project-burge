@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://tlvpop5rp1x6"]
 
-[ext_resource type="Script" path="res://scenes/spell_select_ui.gd" id="1_tthrk"]
+[ext_resource type="Script" path="res://scripts/spell_select_ui.gd" id="1_tthrk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tvmj8"]
 content_margin_left = 10.0

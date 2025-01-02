@@ -1,18 +1,150 @@
-[gd_scene load_steps=3 format=3 uid="uid://cj3tvn2yyuxkb"]
+[gd_scene load_steps=13 format=3 uid="uid://cj3tvn2yyuxkb"]
 
-[ext_resource type="PackedScene" uid="uid://c5ekb1acvw6fj" path="res://scenes/draggable.tscn" id="1_0xlxq"]
-[ext_resource type="PackedScene" uid="uid://ls1vkgp70me4" path="res://scenes/droppable.tscn" id="2_irjf1"]
+[ext_resource type="Script" path="res://scripts/spell_select_ui.gd" id="1_e4fuk"]
+[ext_resource type="Texture2D" uid="uid://djyorqs13oxgy" path="res://assets/burger.jpg" id="2_1fexk"]
+[ext_resource type="Script" path="res://scenes/combat_manager.gd" id="2_iaqvk"]
+[ext_resource type="Script" path="res://scripts/ally.gd" id="3_8uyyr"]
+[ext_resource type="Resource" uid="uid://t5il68wvfb0s" path="res://resources/basic_attack.tres" id="5_f4vmu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tvmj8"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_adctu"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+bg_color = Color(0.27451, 0.27451, 0.27451, 1)
+expand_margin_right = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1dgm8"]
+content_margin_right = 0.0
+bg_color = Color(0.246653, 0.378583, 0.631853, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_edv3q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h8vhy"]
+content_margin_left = 0.0
+bg_color = Color(0.27451, 0.27451, 0.27451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t4wfs"]
+bg_color = Color(0.27451, 0.27451, 0.27451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e1rq2"]
+bg_color = Color(0.27451, 0.27451, 0.27451, 1)
 
 [node name="CartTest" type="Node2D"]
 
-[node name="drop" parent="." instance=ExtResource("2_irjf1")]
-position = Vector2(432, 198)
+[node name="SpellSelectUi" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 72.0
+offset_top = 171.0
+offset_right = 72.0
+offset_bottom = 171.0
+script = ExtResource("1_e4fuk")
 
-[node name="drop2" parent="." instance=ExtResource("2_irjf1")]
-position = Vector2(736, 205)
+[node name="PanelContainer" type="PanelContainer" parent="SpellSelectUi"]
+layout_mode = 0
+offset_right = 286.0
+offset_bottom = 191.0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_tvmj8")
 
-[node name="drop3" parent="." instance=ExtResource("2_irjf1")]
-position = Vector2(609, 385)
+[node name="MarginContainer" type="MarginContainer" parent="SpellSelectUi/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 7
 
-[node name="object" parent="." instance=ExtResource("1_0xlxq")]
-position = Vector2(209, 88)
+[node name="VBoxContainer" type="VBoxContainer" parent="SpellSelectUi/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="BA1Panel" type="PanelContainer" parent="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_adctu")
+
+[node name="BA1" type="Button" parent="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer/BA1Panel"]
+custom_minimum_size = Vector2(261, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/hover = SubResource("StyleBoxFlat_1dgm8")
+text = "Basic Attack"
+
+[node name="VSeparator" type="VSeparator" parent="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 11
+theme_override_styles/separator = SubResource("StyleBoxFlat_edv3q")
+
+[node name="SP1Panel" type="PanelContainer" parent="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_h8vhy")
+
+[node name="S1" type="Button" parent="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer/SP1Panel"]
+layout_mode = 2
+text = "Spell 1"
+
+[node name="VSeparator2" type="VSeparator" parent="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 11
+theme_override_styles/separator = SubResource("StyleBoxFlat_edv3q")
+
+[node name="SP2Panel" type="PanelContainer" parent="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_t4wfs")
+
+[node name="S2" type="Button" parent="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer/SP2Panel"]
+layout_mode = 2
+text = "Spell 2"
+
+[node name="VSeparator3" type="VSeparator" parent="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 11
+theme_override_styles/separator = SubResource("StyleBoxFlat_edv3q")
+
+[node name="ULTPanel" type="PanelContainer" parent="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_e1rq2")
+
+[node name="ULT" type="Button" parent="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer/ULTPanel"]
+layout_mode = 2
+text = "Ultimate
+"
+
+[node name="CombatManager" type="Node2D" parent="."]
+script = ExtResource("2_iaqvk")
+
+[node name="EnemyManager" type="Node2D" parent="CombatManager"]
+
+[node name="Enemy" type="Node2D" parent="CombatManager/EnemyManager"]
+
+[node name="Burger" type="Sprite2D" parent="CombatManager/EnemyManager/Enemy"]
+position = Vector2(819, 351)
+scale = Vector2(0.187917, 0.228333)
+texture = ExtResource("2_1fexk")
+
+[node name="AllyManager" type="Node2D" parent="CombatManager"]
+
+[node name="Ally1" type="Node2D" parent="CombatManager/AllyManager"]
+script = ExtResource("3_8uyyr")
+basic_atk = ExtResource("5_f4vmu")
+
+[connection signal="mouse_entered" from="SpellSelectUi/PanelContainer" to="SpellSelectUi" method="_on_panel_container_mouse_entered"]
+[connection signal="mouse_entered" from="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer/BA1Panel" to="SpellSelectUi" method="_on_ba_1_panel_mouse_entered"]
+[connection signal="mouse_exited" from="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer/BA1Panel" to="SpellSelectUi" method="_on_ba_1_panel_mouse_exited"]
+[connection signal="pressed" from="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer/BA1Panel/BA1" to="CombatManager" method="_on_ba_1_pressed"]

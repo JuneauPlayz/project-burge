@@ -1,7 +1,8 @@
 extends Unit
-class_name Enemy
+class_name Ally
 
-@export var skill : Skill
+@export var basic_atk : Skill
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.

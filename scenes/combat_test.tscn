@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dx3hkptjwrk6g"]
+[gd_scene load_steps=5 format=3 uid="uid://dx3hkptjwrk6g"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_xslv0"]
 [ext_resource type="Texture2D" uid="uid://djyorqs13oxgy" path="res://assets/burger.jpg" id="2_swd4s"]
+[ext_resource type="PackedScene" uid="uid://tlvpop5rp1x6" path="res://scenes/spell_select_ui.tscn" id="3_darbo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_uv3ey"]
 font_size = 28
@@ -82,6 +83,30 @@ label_settings = SubResource("LabelSettings_uv3ey")
 
 [node name="dTimer" type="Timer" parent="enemy/DamageNum"]
 wait_time = 0.5
+
+[node name="SpellSelectUi" parent="." instance=ExtResource("3_darbo")]
+offset_left = 39.0
+offset_top = 390.0
+offset_right = 39.0
+offset_bottom = 390.0
+
+[node name="SpellSelectUi2" parent="." instance=ExtResource("3_darbo")]
+offset_left = 338.0
+offset_top = 391.0
+offset_right = 338.0
+offset_bottom = 391.0
+
+[node name="SpellSelectUi3" parent="." instance=ExtResource("3_darbo")]
+offset_left = 635.0
+offset_top = 394.0
+offset_right = 635.0
+offset_bottom = 394.0
+
+[node name="SpellSelectUi4" parent="." instance=ExtResource("3_darbo")]
+offset_left = 941.0
+offset_top = 392.0
+offset_right = 941.0
+offset_bottom = 392.0
 
 [connection signal="pressed" from="Buttons/fire" to="enemy" method="_on_fire_pressed"]
 [connection signal="pressed" from="Buttons/water" to="enemy" method="_on_water_pressed"]
