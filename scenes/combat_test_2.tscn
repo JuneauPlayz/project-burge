@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://il7olc82ns7f"]
+[gd_scene load_steps=26 format=3 uid="uid://il7olc82ns7f"]
 
 [ext_resource type="Texture2D" uid="uid://djyorqs13oxgy" path="res://assets/burger.jpg" id="1_to6ih"]
 [ext_resource type="Script" path="res://scenes/combat_manager.gd" id="2_hh3fv"]
@@ -7,6 +7,10 @@
 [ext_resource type="Script" path="res://scripts/skill.gd" id="5_uwf13"]
 [ext_resource type="Script" path="res://scenes/spell_select_ui.gd" id="7_gfu1y"]
 [ext_resource type="PackedScene" uid="uid://5spa5amgsxfm" path="res://scenes/hp_bar.tscn" id="7_pyguu"]
+[ext_resource type="Resource" uid="uid://t5il68wvfb0s" path="res://resources/basic_attack.tres" id="7_ytvil"]
+[ext_resource type="Resource" uid="uid://c3yogn8m318q2" path="res://resources/test_skill_1.tres" id="8_ox83u"]
+[ext_resource type="Resource" uid="uid://dooqfwlwxly5w" path="res://resources/test_skill_2.tres" id="9_4meuk"]
+[ext_resource type="Resource" uid="uid://dcf2ccmtpg225" path="res://resources/test_ultimate.tres" id="10_0ymtv"]
 
 [sub_resource type="Resource" id="Resource_jjwcv"]
 script = ExtResource("5_uwf13")
@@ -69,9 +73,12 @@ bg_color = Color(0.180392, 0.180392, 0.180392, 1)
 
 [node name="CombatTest2" type="Node2D"]
 
-[node name="CombatManager" type="Node" parent="." node_paths=PackedStringArray("ally1", "enemy1")]
+[node name="CombatManager" type="Node" parent="." node_paths=PackedStringArray("ally1", "ally2", "ally3", "ally4", "enemy1")]
 script = ExtResource("2_hh3fv")
 ally1 = NodePath("../Ally1")
+ally2 = NodePath("../Ally2")
+ally3 = NodePath("../Ally3")
+ally4 = NodePath("../Ally4")
 enemy1 = NodePath("../BurgerEnemy")
 
 [node name="BurgerEnemy" type="Node" parent="."]
@@ -96,6 +103,27 @@ skill_1 = SubResource("Resource_pqfgg")
 skill_2 = SubResource("Resource_m6dy8")
 ult = SubResource("Resource_kh0yv")
 
+[node name="Ally2" type="Node" parent="."]
+script = ExtResource("4_2mvrs")
+basic_atk = ExtResource("7_ytvil")
+skill_1 = ExtResource("8_ox83u")
+skill_2 = ExtResource("9_4meuk")
+ult = ExtResource("10_0ymtv")
+
+[node name="Ally3" type="Node" parent="."]
+script = ExtResource("4_2mvrs")
+basic_atk = ExtResource("7_ytvil")
+skill_1 = ExtResource("8_ox83u")
+skill_2 = ExtResource("9_4meuk")
+ult = ExtResource("10_0ymtv")
+
+[node name="Ally4" type="Node" parent="."]
+script = ExtResource("4_2mvrs")
+basic_atk = ExtResource("7_ytvil")
+skill_1 = ExtResource("8_ox83u")
+skill_2 = ExtResource("9_4meuk")
+ult = ExtResource("10_0ymtv")
+
 [node name="SpellSelectUi" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -103,8 +131,10 @@ script = ExtResource("7_gfu1y")
 
 [node name="PanelContainer" type="PanelContainer" parent="SpellSelectUi"]
 layout_mode = 0
-offset_right = 286.0
-offset_bottom = 191.0
+offset_left = 8.0
+offset_top = 444.0
+offset_right = 294.0
+offset_bottom = 635.0
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_tvmj8")
 
@@ -141,7 +171,7 @@ mouse_filter = 2
 layout_mode = 2
 mouse_filter = 2
 
-[node name="S1" type="Button" parent="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer/SP1Panel"]
+[node name="S1_1" type="Button" parent="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer/SP1Panel"]
 layout_mode = 2
 theme_override_styles/hover = SubResource("StyleBoxFlat_ni84r")
 theme_override_styles/normal = SubResource("StyleBoxFlat_sleic")
@@ -158,7 +188,7 @@ theme_override_styles/separator = SubResource("StyleBoxFlat_edv3q")
 layout_mode = 2
 mouse_filter = 2
 
-[node name="S2" type="Button" parent="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer/SP2Panel"]
+[node name="S2_1" type="Button" parent="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer/SP2Panel"]
 layout_mode = 2
 theme_override_styles/hover = SubResource("StyleBoxFlat_q85v1")
 theme_override_styles/normal = SubResource("StyleBoxFlat_lt1l8")
@@ -175,7 +205,271 @@ theme_override_styles/separator = SubResource("StyleBoxFlat_edv3q")
 layout_mode = 2
 mouse_filter = 2
 
-[node name="ULT" type="Button" parent="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer/ULTPanel"]
+[node name="ULT_1" type="Button" parent="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer/ULTPanel"]
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_i2ev1")
+theme_override_styles/normal = SubResource("StyleBoxFlat_s2255")
+text = "Ultimate
+"
+
+[node name="SpellSelectUi2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("7_gfu1y")
+
+[node name="PanelContainer" type="PanelContainer" parent="SpellSelectUi2"]
+layout_mode = 0
+offset_left = 292.0
+offset_top = 444.0
+offset_right = 578.0
+offset_bottom = 635.0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_tvmj8")
+
+[node name="MarginContainer" type="MarginContainer" parent="SpellSelectUi2/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SpellSelectUi2/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="BA1Panel" type="PanelContainer" parent="SpellSelectUi2/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="ba_2" type="Button" parent="SpellSelectUi2/PanelContainer/MarginContainer/VBoxContainer/BA1Panel"]
+custom_minimum_size = Vector2(261, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/hover = SubResource("StyleBoxFlat_1dgm8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ur654")
+text = "Basic Attack"
+
+[node name="VSeparator" type="VSeparator" parent="SpellSelectUi2/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="SP1Panel" type="PanelContainer" parent="SpellSelectUi2/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="S1_2" type="Button" parent="SpellSelectUi2/PanelContainer/MarginContainer/VBoxContainer/SP1Panel"]
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_ni84r")
+theme_override_styles/normal = SubResource("StyleBoxFlat_sleic")
+text = "Spell 1"
+
+[node name="VSeparator2" type="VSeparator" parent="SpellSelectUi2/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 11
+theme_override_styles/separator = SubResource("StyleBoxFlat_edv3q")
+
+[node name="SP2Panel" type="PanelContainer" parent="SpellSelectUi2/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="S2_2" type="Button" parent="SpellSelectUi2/PanelContainer/MarginContainer/VBoxContainer/SP2Panel"]
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_q85v1")
+theme_override_styles/normal = SubResource("StyleBoxFlat_lt1l8")
+text = "Spell 2"
+
+[node name="VSeparator3" type="VSeparator" parent="SpellSelectUi2/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 11
+theme_override_styles/separator = SubResource("StyleBoxFlat_edv3q")
+
+[node name="ULTPanel" type="PanelContainer" parent="SpellSelectUi2/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ULT_2" type="Button" parent="SpellSelectUi2/PanelContainer/MarginContainer/VBoxContainer/ULTPanel"]
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_i2ev1")
+theme_override_styles/normal = SubResource("StyleBoxFlat_s2255")
+text = "Ultimate
+"
+
+[node name="SpellSelectUi3" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("7_gfu1y")
+
+[node name="PanelContainer" type="PanelContainer" parent="SpellSelectUi3"]
+layout_mode = 0
+offset_left = 577.0
+offset_top = 444.0
+offset_right = 863.0
+offset_bottom = 635.0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_tvmj8")
+
+[node name="MarginContainer" type="MarginContainer" parent="SpellSelectUi3/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SpellSelectUi3/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="BA1Panel" type="PanelContainer" parent="SpellSelectUi3/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="ba_3" type="Button" parent="SpellSelectUi3/PanelContainer/MarginContainer/VBoxContainer/BA1Panel"]
+custom_minimum_size = Vector2(261, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/hover = SubResource("StyleBoxFlat_1dgm8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ur654")
+text = "Basic Attack"
+
+[node name="VSeparator" type="VSeparator" parent="SpellSelectUi3/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="SP1Panel" type="PanelContainer" parent="SpellSelectUi3/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="S1_3" type="Button" parent="SpellSelectUi3/PanelContainer/MarginContainer/VBoxContainer/SP1Panel"]
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_ni84r")
+theme_override_styles/normal = SubResource("StyleBoxFlat_sleic")
+text = "Spell 1"
+
+[node name="VSeparator2" type="VSeparator" parent="SpellSelectUi3/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 11
+theme_override_styles/separator = SubResource("StyleBoxFlat_edv3q")
+
+[node name="SP2Panel" type="PanelContainer" parent="SpellSelectUi3/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="S2_3" type="Button" parent="SpellSelectUi3/PanelContainer/MarginContainer/VBoxContainer/SP2Panel"]
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_q85v1")
+theme_override_styles/normal = SubResource("StyleBoxFlat_lt1l8")
+text = "Spell 2"
+
+[node name="VSeparator3" type="VSeparator" parent="SpellSelectUi3/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 11
+theme_override_styles/separator = SubResource("StyleBoxFlat_edv3q")
+
+[node name="ULTPanel" type="PanelContainer" parent="SpellSelectUi3/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ULT_3" type="Button" parent="SpellSelectUi3/PanelContainer/MarginContainer/VBoxContainer/ULTPanel"]
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_i2ev1")
+theme_override_styles/normal = SubResource("StyleBoxFlat_s2255")
+text = "Ultimate
+"
+
+[node name="SpellSelectUi4" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("7_gfu1y")
+
+[node name="PanelContainer" type="PanelContainer" parent="SpellSelectUi4"]
+layout_mode = 0
+offset_left = 863.0
+offset_top = 446.0
+offset_right = 1149.0
+offset_bottom = 637.0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_tvmj8")
+
+[node name="MarginContainer" type="MarginContainer" parent="SpellSelectUi4/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SpellSelectUi4/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="BA1Panel" type="PanelContainer" parent="SpellSelectUi4/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="ba_4" type="Button" parent="SpellSelectUi4/PanelContainer/MarginContainer/VBoxContainer/BA1Panel"]
+custom_minimum_size = Vector2(261, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/hover = SubResource("StyleBoxFlat_1dgm8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ur654")
+text = "Basic Attack"
+
+[node name="VSeparator" type="VSeparator" parent="SpellSelectUi4/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="SP1Panel" type="PanelContainer" parent="SpellSelectUi4/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="S1_4" type="Button" parent="SpellSelectUi4/PanelContainer/MarginContainer/VBoxContainer/SP1Panel"]
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_ni84r")
+theme_override_styles/normal = SubResource("StyleBoxFlat_sleic")
+text = "Spell 1"
+
+[node name="VSeparator2" type="VSeparator" parent="SpellSelectUi4/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 11
+theme_override_styles/separator = SubResource("StyleBoxFlat_edv3q")
+
+[node name="SP2Panel" type="PanelContainer" parent="SpellSelectUi4/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="S2_4" type="Button" parent="SpellSelectUi4/PanelContainer/MarginContainer/VBoxContainer/SP2Panel"]
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_q85v1")
+theme_override_styles/normal = SubResource("StyleBoxFlat_lt1l8")
+text = "Spell 2"
+
+[node name="VSeparator3" type="VSeparator" parent="SpellSelectUi4/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 11
+theme_override_styles/separator = SubResource("StyleBoxFlat_edv3q")
+
+[node name="ULTPanel" type="PanelContainer" parent="SpellSelectUi4/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ULT_4" type="Button" parent="SpellSelectUi4/PanelContainer/MarginContainer/VBoxContainer/ULTPanel"]
 layout_mode = 2
 theme_override_styles/hover = SubResource("StyleBoxFlat_i2ev1")
 theme_override_styles/normal = SubResource("StyleBoxFlat_s2255")
@@ -183,11 +477,54 @@ text = "Ultimate
 "
 
 [connection signal="pressed" from="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer/BA1Panel/ba_1" to="CombatManager" method="_on_basic_pressed"]
-[connection signal="pressed" from="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer/BA1Panel/ba_1" to="SpellSelectUi" method="_on_button_pressed"]
+[connection signal="pressed" from="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer/BA1Panel/ba_1" to="CombatManager" method="_on_ba_1_pressed"]
 [connection signal="pressed" from="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer/BA1Panel/ba_1" to="SpellSelectUi" method="_on_ba_1_pressed"]
-[connection signal="pressed" from="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer/SP1Panel/S1" to="CombatManager" method="_on_s_1_pressed"]
-[connection signal="pressed" from="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer/SP1Panel/S1" to="SpellSelectUi" method="_on_s_1_pressed"]
-[connection signal="pressed" from="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer/SP2Panel/S2" to="CombatManager" method="_on_s_2_pressed"]
-[connection signal="pressed" from="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer/SP2Panel/S2" to="SpellSelectUi" method="_on_s_2_pressed"]
-[connection signal="pressed" from="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer/ULTPanel/ULT" to="CombatManager" method="_on_ult_pressed"]
-[connection signal="pressed" from="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer/ULTPanel/ULT" to="SpellSelectUi" method="_on_ult_pressed"]
+[connection signal="pressed" from="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer/BA1Panel/ba_1" to="SpellSelectUi" method="_on_button_pressed"]
+[connection signal="pressed" from="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer/SP1Panel/S1_1" to="CombatManager" method="_on_s_1_1_pressed"]
+[connection signal="pressed" from="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer/SP1Panel/S1_1" to="CombatManager" method="_on_s_1_pressed"]
+[connection signal="pressed" from="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer/SP1Panel/S1_1" to="SpellSelectUi" method="_on_s_1_pressed"]
+[connection signal="pressed" from="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer/SP2Panel/S2_1" to="CombatManager" method="_on_s_2_1_pressed"]
+[connection signal="pressed" from="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer/SP2Panel/S2_1" to="CombatManager" method="_on_s_2_pressed"]
+[connection signal="pressed" from="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer/SP2Panel/S2_1" to="SpellSelectUi" method="_on_s_2_pressed"]
+[connection signal="pressed" from="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer/ULTPanel/ULT_1" to="CombatManager" method="_on_ult_1_pressed"]
+[connection signal="pressed" from="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer/ULTPanel/ULT_1" to="CombatManager" method="_on_ult_pressed"]
+[connection signal="pressed" from="SpellSelectUi/PanelContainer/MarginContainer/VBoxContainer/ULTPanel/ULT_1" to="SpellSelectUi" method="_on_ult_pressed"]
+[connection signal="pressed" from="SpellSelectUi2/PanelContainer/MarginContainer/VBoxContainer/BA1Panel/ba_2" to="CombatManager" method="_on_ba_2_pressed"]
+[connection signal="pressed" from="SpellSelectUi2/PanelContainer/MarginContainer/VBoxContainer/BA1Panel/ba_2" to="CombatManager" method="_on_basic_pressed"]
+[connection signal="pressed" from="SpellSelectUi2/PanelContainer/MarginContainer/VBoxContainer/BA1Panel/ba_2" to="SpellSelectUi2" method="_on_ba_1_pressed"]
+[connection signal="pressed" from="SpellSelectUi2/PanelContainer/MarginContainer/VBoxContainer/BA1Panel/ba_2" to="SpellSelectUi2" method="_on_button_pressed"]
+[connection signal="pressed" from="SpellSelectUi2/PanelContainer/MarginContainer/VBoxContainer/SP1Panel/S1_2" to="CombatManager" method="_on_s_1_2_pressed"]
+[connection signal="pressed" from="SpellSelectUi2/PanelContainer/MarginContainer/VBoxContainer/SP1Panel/S1_2" to="CombatManager" method="_on_s_1_pressed"]
+[connection signal="pressed" from="SpellSelectUi2/PanelContainer/MarginContainer/VBoxContainer/SP1Panel/S1_2" to="SpellSelectUi2" method="_on_s_1_pressed"]
+[connection signal="pressed" from="SpellSelectUi2/PanelContainer/MarginContainer/VBoxContainer/SP2Panel/S2_2" to="CombatManager" method="_on_s_2_2_pressed"]
+[connection signal="pressed" from="SpellSelectUi2/PanelContainer/MarginContainer/VBoxContainer/SP2Panel/S2_2" to="CombatManager" method="_on_s_2_pressed"]
+[connection signal="pressed" from="SpellSelectUi2/PanelContainer/MarginContainer/VBoxContainer/SP2Panel/S2_2" to="SpellSelectUi2" method="_on_s_2_pressed"]
+[connection signal="pressed" from="SpellSelectUi2/PanelContainer/MarginContainer/VBoxContainer/ULTPanel/ULT_2" to="CombatManager" method="_on_ult_pressed"]
+[connection signal="pressed" from="SpellSelectUi2/PanelContainer/MarginContainer/VBoxContainer/ULTPanel/ULT_2" to="CombatManager" method="_on_ult_2_pressed"]
+[connection signal="pressed" from="SpellSelectUi2/PanelContainer/MarginContainer/VBoxContainer/ULTPanel/ULT_2" to="SpellSelectUi2" method="_on_ult_pressed"]
+[connection signal="pressed" from="SpellSelectUi3/PanelContainer/MarginContainer/VBoxContainer/BA1Panel/ba_3" to="CombatManager" method="_on_ba_3_pressed"]
+[connection signal="pressed" from="SpellSelectUi3/PanelContainer/MarginContainer/VBoxContainer/BA1Panel/ba_3" to="CombatManager" method="_on_basic_pressed"]
+[connection signal="pressed" from="SpellSelectUi3/PanelContainer/MarginContainer/VBoxContainer/BA1Panel/ba_3" to="SpellSelectUi3" method="_on_ba_1_pressed"]
+[connection signal="pressed" from="SpellSelectUi3/PanelContainer/MarginContainer/VBoxContainer/BA1Panel/ba_3" to="SpellSelectUi3" method="_on_button_pressed"]
+[connection signal="pressed" from="SpellSelectUi3/PanelContainer/MarginContainer/VBoxContainer/SP1Panel/S1_3" to="CombatManager" method="_on_s_1_3_pressed"]
+[connection signal="pressed" from="SpellSelectUi3/PanelContainer/MarginContainer/VBoxContainer/SP1Panel/S1_3" to="CombatManager" method="_on_s_1_pressed"]
+[connection signal="pressed" from="SpellSelectUi3/PanelContainer/MarginContainer/VBoxContainer/SP1Panel/S1_3" to="SpellSelectUi3" method="_on_s_1_pressed"]
+[connection signal="pressed" from="SpellSelectUi3/PanelContainer/MarginContainer/VBoxContainer/SP2Panel/S2_3" to="CombatManager" method="_on_s_2_3_pressed"]
+[connection signal="pressed" from="SpellSelectUi3/PanelContainer/MarginContainer/VBoxContainer/SP2Panel/S2_3" to="CombatManager" method="_on_s_2_pressed"]
+[connection signal="pressed" from="SpellSelectUi3/PanelContainer/MarginContainer/VBoxContainer/SP2Panel/S2_3" to="SpellSelectUi3" method="_on_s_2_pressed"]
+[connection signal="pressed" from="SpellSelectUi3/PanelContainer/MarginContainer/VBoxContainer/ULTPanel/ULT_3" to="CombatManager" method="_on_ult_3_pressed"]
+[connection signal="pressed" from="SpellSelectUi3/PanelContainer/MarginContainer/VBoxContainer/ULTPanel/ULT_3" to="CombatManager" method="_on_ult_pressed"]
+[connection signal="pressed" from="SpellSelectUi3/PanelContainer/MarginContainer/VBoxContainer/ULTPanel/ULT_3" to="SpellSelectUi3" method="_on_ult_pressed"]
+[connection signal="pressed" from="SpellSelectUi4/PanelContainer/MarginContainer/VBoxContainer/BA1Panel/ba_4" to="CombatManager" method="_on_ba_4_pressed"]
+[connection signal="pressed" from="SpellSelectUi4/PanelContainer/MarginContainer/VBoxContainer/BA1Panel/ba_4" to="CombatManager" method="_on_basic_pressed"]
+[connection signal="pressed" from="SpellSelectUi4/PanelContainer/MarginContainer/VBoxContainer/BA1Panel/ba_4" to="SpellSelectUi4" method="_on_ba_1_pressed"]
+[connection signal="pressed" from="SpellSelectUi4/PanelContainer/MarginContainer/VBoxContainer/BA1Panel/ba_4" to="SpellSelectUi4" method="_on_button_pressed"]
+[connection signal="pressed" from="SpellSelectUi4/PanelContainer/MarginContainer/VBoxContainer/SP1Panel/S1_4" to="CombatManager" method="_on_s_1_4_pressed"]
+[connection signal="pressed" from="SpellSelectUi4/PanelContainer/MarginContainer/VBoxContainer/SP1Panel/S1_4" to="CombatManager" method="_on_s_1_pressed"]
+[connection signal="pressed" from="SpellSelectUi4/PanelContainer/MarginContainer/VBoxContainer/SP1Panel/S1_4" to="SpellSelectUi4" method="_on_s_1_pressed"]
+[connection signal="pressed" from="SpellSelectUi4/PanelContainer/MarginContainer/VBoxContainer/SP2Panel/S2_4" to="CombatManager" method="_on_s_2_4_pressed"]
+[connection signal="pressed" from="SpellSelectUi4/PanelContainer/MarginContainer/VBoxContainer/SP2Panel/S2_4" to="CombatManager" method="_on_s_2_pressed"]
+[connection signal="pressed" from="SpellSelectUi4/PanelContainer/MarginContainer/VBoxContainer/SP2Panel/S2_4" to="SpellSelectUi4" method="_on_s_2_pressed"]
+[connection signal="pressed" from="SpellSelectUi4/PanelContainer/MarginContainer/VBoxContainer/ULTPanel/ULT_4" to="CombatManager" method="_on_ult_pressed"]
+[connection signal="pressed" from="SpellSelectUi4/PanelContainer/MarginContainer/VBoxContainer/ULTPanel/ULT_4" to="CombatManager" method="_on_ult_4_pressed"]
+[connection signal="pressed" from="SpellSelectUi4/PanelContainer/MarginContainer/VBoxContainer/ULTPanel/ULT_4" to="SpellSelectUi4" method="_on_ult_pressed"]
