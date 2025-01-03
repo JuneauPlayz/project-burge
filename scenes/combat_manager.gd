@@ -49,8 +49,7 @@ func execute_turn():
 	update_skill_positions()
 
 func use_skill(skill):
-	enemy1.take_element(skill.element)
-	enemy1.take_damage(skill.damage)
+	enemy1.take_damage(skill.damage, skill.element)
 
 # char 1
 func _on_spell_select_ui_new_select() -> void:

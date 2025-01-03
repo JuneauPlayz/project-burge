@@ -4,6 +4,9 @@ class_name Enemy
 @export var skill : Skill
 @export var current_element : String = "none"
 @export var reaction_primed = 0
+@onready var damage_number_origin: Node2D = $DamageNumberOrigin
+
+
 var hp_bar
 
 # Called when the node enters the scene tree for the first time.
@@ -20,7 +23,9 @@ func _process(delta: float) -> void:
 	pass
 	
 
-func take_element(element: String):
+func take_damage(damage: float, element: String):
+	var rounded : int
+	var reaction = ""
 	if current_element == "none":
 		current_element = element
 	else:
@@ -29,23 +34,16 @@ func take_element(element: String):
 		if current_element == element:
 			pass
 		else:
-			reaction_primed = 1
-			print("reaction primed")
+			print("reaction activated")
+			reaction = " Vaporize!"
+			damage = (damage * 2)
 			current_element = "none"
-
-
-
-func take_damage(damage: float):
-	var rounded: int
-	if reaction_primed == 1:
-		damage = (damage * 2)
-		print("reaction activated")
-		reaction_primed = 0
 	rounded = roundi(damage)
 	health -= rounded
 	hp_bar.set_hp(health)
 	check_if_dead()
 
+	DamageNumbers.display_number(rounded, damage_number_origin.global_position, element, reaction)
 
 func check_if_dead():
 	if health <= 0:

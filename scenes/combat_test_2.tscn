@@ -31,10 +31,13 @@ scale = Vector2(0.2825, 0.24375)
 texture = ExtResource("1_to6ih")
 
 [node name="HP Bar" parent="BurgerEnemy" instance=ExtResource("7_pyguu")]
-offset_left = 778.0
-offset_top = 354.0
-offset_right = 778.0
-offset_bottom = 354.0
+offset_left = 774.0
+offset_top = 343.0
+offset_right = 774.0
+offset_bottom = 343.0
+
+[node name="DamageNumberOrigin" type="Node2D" parent="BurgerEnemy"]
+position = Vector2(749, 435)
 
 [node name="Ally1" type="Node" parent="."]
 script = ExtResource("4_2mvrs")
