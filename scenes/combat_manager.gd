@@ -39,6 +39,8 @@ func execute_turn():
 		use_skill(x)
 		print(str(x.name) + " landed!")
 		await get_tree().create_timer(0.5).timeout
+		
+	# reset skills
 	action_queue = []
 	next_pos = 0
 	ally1_pos = -1
@@ -55,15 +57,18 @@ func use_skill(skill):
 func _on_spell_select_ui_new_select() -> void:
 	var spell_select_ui: Control = $"../SpellSelectUi"
 	var change = false
+	# if selecting something when not already selected on that character
 	if (spell_select_ui.selected != 0 and ally1skill == -1):
 		ally1_pos = next_pos
 		next_pos += 1
 		spell_select_ui.update_pos(ally1_pos + 1)
+	# if changing selection and not unselecting
 	if (ally1skill != -1 and spell_select_ui.selected != 0):
 		action_queue.remove_at(ally1_pos)
 		change = true
 	ally1skill = spell_select_ui.selected
 	match spell_select_ui.selected:
+		# if unselecting
 		0:
 			next_pos -= 1
 			action_queue.remove_at(ally1_pos)

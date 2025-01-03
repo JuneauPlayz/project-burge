@@ -39,6 +39,13 @@ offset_bottom = 343.0
 [node name="DamageNumberOrigin" type="Node2D" parent="BurgerEnemy"]
 position = Vector2(749, 435)
 
+[node name="CurrentElement" type="Label" parent="BurgerEnemy"]
+offset_left = 907.0
+offset_top = 427.0
+offset_right = 1044.0
+offset_bottom = 450.0
+text = "Current Element: none"
+
 [node name="Ally1" type="Node" parent="."]
 script = ExtResource("4_2mvrs")
 basic_atk = ExtResource("7_ytvil")

@@ -5,6 +5,7 @@ class_name Enemy
 @export var current_element : String = "none"
 @export var reaction_primed = 0
 @onready var damage_number_origin: Node2D = $DamageNumberOrigin
+@onready var current_element_text: Label = $CurrentElement
 
 
 var hp_bar
@@ -41,6 +42,7 @@ func take_damage(damage: float, element: String):
 	rounded = roundi(damage)
 	health -= rounded
 	hp_bar.set_hp(health)
+	current_element_text.text = "Current Element: " + current_element
 	check_if_dead()
 
 	DamageNumbers.display_number(rounded, damage_number_origin.global_position, element, reaction)
