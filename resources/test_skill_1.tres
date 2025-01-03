@@ -4,5 +4,6 @@
 
 [resource]
 script = ExtResource("1_dbr65")
+name = "Skill 1"
 damage = 10
 element = "fire"

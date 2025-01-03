@@ -4,5 +4,6 @@
 
 [resource]
 script = ExtResource("1_wacjy")
+name = "Basic Attack"
 damage = 5
 element = "none"
