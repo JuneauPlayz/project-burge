@@ -23,7 +23,7 @@ enemy1 = NodePath("../BurgerEnemy")
 
 [node name="BurgerEnemy" type="Node" parent="."]
 script = ExtResource("2_xoe2s")
-health = 1000
+health = 200
 
 [node name="Burger" type="Sprite2D" parent="BurgerEnemy"]
 position = Vector2(911, 182)

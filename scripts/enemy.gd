@@ -11,7 +11,7 @@ var hp_bar
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#always make hp bar second child
+	#always mak	e hp bar second child
 	print(health)
 	hp_bar = get_child(1)
 	hp_bar.set_hp(health)
@@ -30,6 +30,7 @@ func receive_skill(damage: float, element: String):
 	if (!ReactionManager.reaction(current_element, element, self, damage)):
 		self.take_damage(damage)
 		DamageNumbers.display_number(damage, damage_number_origin.global_position, element, reaction)
+		check_if_dead()
 		# don't change current element if skill has no element
 		if (element != "none"):
 			current_element = element
@@ -38,7 +39,6 @@ func receive_skill(damage: float, element: String):
 func take_damage(damage : int):
 	health -= damage
 	hp_bar.set_hp(health)
-	check_if_dead()
 
 func check_if_dead():
 	if health <= 0:
