@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 global="*res://scripts/global.gd"
 DamageNumbers="*res://scripts/DamageNumbers.gd"
+ReactionManager="*res://scripts/ReactionManager.gd"
 
 [global_group]
 
