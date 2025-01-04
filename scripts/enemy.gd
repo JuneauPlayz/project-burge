@@ -30,6 +30,7 @@ func receive_skill(damage: float, element: String):
 	if (!ReactionManager.reaction(current_element, element, self, damage)):
 		self.take_damage(damage)
 		DamageNumbers.display_number(damage, damage_number_origin.global_position, element, reaction)
+		# don't change current element if skill has no element
 		if (element != "none"):
 			current_element = element
 	current_element_text.text = "Current Element: " + current_element

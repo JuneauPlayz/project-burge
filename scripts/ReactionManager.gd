@@ -14,6 +14,7 @@ func reaction(elem1 : String, elem2 : String, unit : Unit, value):
 	if (elem1 == elem2):
 		return false
 	match elem1:
+		# fire reactions
 		"fire":
 			match elem2:
 				"water":
@@ -22,6 +23,7 @@ func reaction(elem1 : String, elem2 : String, unit : Unit, value):
 					reaction = " Vaporize!"
 					DamageNumbers.display_number(res_value, unit.get_child(2).global_position, elem2, reaction)
 					unit.current_element = "none"
+		# water reactions
 		"water":
 			match elem2:
 				"fire":
