@@ -8,7 +8,11 @@ class_name Ally
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	get_child(0).skill1 = basic_atk
+	get_child(0).skill2 = skill_1
+	get_child(0).skill3 = skill_2
+	get_child(0).skill4 = ult
+	get_child(0).load_skills()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

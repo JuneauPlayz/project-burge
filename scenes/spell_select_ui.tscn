@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://tlvpop5rp1x6"]
+[gd_scene load_steps=13 format=3 uid="uid://tlvpop5rp1x6"]
 
 [ext_resource type="Script" path="res://scenes/spell_select_ui.gd" id="1_jbfqo"]
+[ext_resource type="PackedScene" uid="uid://sdwnoh61gawa" path="res://skill_info.tscn" id="2_bnrmv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tvmj8"]
 content_margin_left = 10.0
@@ -127,6 +128,50 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_s2255")
 text = "Ultimate
 "
 
+[node name="SkillInfo" parent="." instance=ExtResource("2_bnrmv")]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 272.0
+offset_top = 25.0
+offset_right = 533.0
+offset_bottom = 48.0
+
+[node name="SkillInfo2" parent="." instance=ExtResource("2_bnrmv")]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 274.0
+offset_top = 56.0
+offset_right = 535.0
+offset_bottom = 79.0
+
+[node name="SkillInfo3" parent="." instance=ExtResource("2_bnrmv")]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 273.0
+offset_top = 87.0
+offset_right = 534.0
+offset_bottom = 110.0
+
+[node name="SkillInfo4" parent="." instance=ExtResource("2_bnrmv")]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 273.0
+offset_top = 119.0
+offset_right = 534.0
+offset_bottom = 142.0
+
 [node name="Position" type="Label" parent="."]
 layout_mode = 0
 offset_left = 86.0
@@ -135,8 +180,16 @@ offset_right = 278.0
 offset_bottom = 27.0
 text = "Position: "
 
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/BA1Panel/ba_1" to="." method="_on_ba_1_mouse_entered"]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/BA1Panel/ba_1" to="." method="_on_ba_1_mouse_exited"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/BA1Panel/ba_1" to="." method="_on_ba_1_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/BA1Panel/ba_1" to="." method="_on_button_pressed"]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/SP1Panel/S1" to="." method="_on_s_1_mouse_entered"]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/SP1Panel/S1" to="." method="_on_s_1_mouse_exited"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/SP1Panel/S1" to="." method="_on_s_1_pressed"]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/SP2Panel/S2" to="." method="_on_s_2_mouse_entered"]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/SP2Panel/S2" to="." method="_on_s_2_mouse_exited"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/SP2Panel/S2" to="." method="_on_s_2_pressed"]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/ULTPanel/ULT" to="." method="_on_ult_mouse_entered"]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/ULTPanel/ULT" to="." method="_on_ult_mouse_exited"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/ULTPanel/ULT" to="." method="_on_ult_pressed"]

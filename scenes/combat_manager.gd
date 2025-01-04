@@ -55,7 +55,7 @@ func use_skill(skill):
 
 # char 1
 func _on_spell_select_ui_new_select() -> void:
-	var spell_select_ui: Control = $"../SpellSelectUi"
+	var spell_select_ui: Control = $"../Ally1/SpellSelectUi"
 	var change = false
 	# if selecting something when not already selected on that character
 	if (spell_select_ui.selected != 0 and ally1skill == -1):
@@ -102,7 +102,7 @@ func _on_spell_select_ui_new_select() -> void:
 
 # char 2
 func _on_spell_select_ui_2_new_select() -> void:
-	var spell_select_ui: Control = $"../SpellSelectUi2"
+	var spell_select_ui: Control = $"../Ally2/SpellSelectUi2"
 	var change = false
 	if (spell_select_ui.selected != 0 and ally2skill == -1):
 		ally2_pos = next_pos
@@ -146,7 +146,7 @@ func _on_spell_select_ui_2_new_select() -> void:
 
 # char 3
 func _on_spell_select_ui_3_new_select() -> void:
-	var spell_select_ui: Control = $"../SpellSelectUi3"
+	var spell_select_ui: Control = $"../Ally3/SpellSelectUi3"
 	var change = false
 	if (spell_select_ui.selected != 0 and ally3skill == -1):
 		ally3_pos = next_pos
@@ -189,7 +189,7 @@ func _on_spell_select_ui_3_new_select() -> void:
 
 # char 4
 func _on_spell_select_ui_4_new_select() -> void:
-	var spell_select_ui: Control = $"../SpellSelectUi4"
+	var spell_select_ui: Control = $"../Ally4/SpellSelectUi4"
 	var change = false
 	if (spell_select_ui.selected != 0 and ally4skill == -1):
 		ally4_pos = next_pos
@@ -242,10 +242,10 @@ func update_positions(cpos):
 		ally4_pos -= 1
 
 func update_skill_positions():
-	var spell_select_ui1: Control = $"../SpellSelectUi"
-	var spell_select_ui2: Control = $"../SpellSelectUi2"
-	var spell_select_ui3: Control = $"../SpellSelectUi3"
-	var spell_select_ui4: Control = $"../SpellSelectUi4"
+	var spell_select_ui1: Control = $"../Ally1/SpellSelectUi"
+	var spell_select_ui2: Control = $"../Ally2/SpellSelectUi2"
+	var spell_select_ui3: Control = $"../Ally3/SpellSelectUi3"
+	var spell_select_ui4: Control = $"../Ally4/SpellSelectUi4"
 	
 	spell_select_ui1.update_pos(ally1_pos + 1)
 	spell_select_ui2.update_pos(ally2_pos + 1)
@@ -253,10 +253,11 @@ func update_skill_positions():
 	spell_select_ui4.update_pos(ally4_pos + 1)
 
 func reset_skill_select():
-	var spell_select_ui1: Control = $"../SpellSelectUi"
-	var spell_select_ui2: Control = $"../SpellSelectUi2"
-	var spell_select_ui3: Control = $"../SpellSelectUi3"
-	var spell_select_ui4: Control = $"../SpellSelectUi4"
+	var spell_select_ui1: Control = $"../Ally1/SpellSelectUi"
+	var spell_select_ui2: Control = $"../Ally2/SpellSelectUi2"
+	var spell_select_ui3: Control = $"../Ally3/SpellSelectUi3"
+	var spell_select_ui4: Control = $"../Ally4/SpellSelectUi4"
+
 	ally1skill = -1
 	ally2skill = -1
 	ally3skill = -1

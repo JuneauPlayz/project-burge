@@ -11,9 +11,30 @@ signal new_select
 @onready var ult: Button = $PanelContainer/MarginContainer/VBoxContainer/ULTPanel/ULT
 @onready var positionL : Label = $Position
 
+var skill1 : Skill
+var skill2 : Skill
+var skill3 : Skill
+var skill4 : Skill
+
+@onready var skill_info_1: Control = $SkillInfo
+@onready var skill_info_2: Control = $SkillInfo2
+@onready var skill_info_3: Control = $SkillInfo3
+@onready var skill_info_4: Control = $SkillInfo4
+
+
+
 var blue = Color("3f61a1")
 var gray = Color("2e2e2e")
 
+func load_skills():
+	skill_info_1.skill = skill1
+	skill_info_1.update_skill_info()
+	skill_info_2.skill = skill2
+	skill_info_2.update_skill_info()
+	skill_info_3.skill = skill3
+	skill_info_3.update_skill_info()
+	skill_info_4.skill = skill4
+	skill_info_4.update_skill_info()
 
 func _on_button_pressed() -> void:
 	if selected != 1:
@@ -90,3 +111,35 @@ func reset():
 	update_color(ult, gray)
 	selected = 0
 	
+
+
+func _on_ba_1_mouse_entered() -> void:
+	skill_info_1.visible = true
+
+
+func _on_s_1_mouse_entered() -> void:
+	skill_info_2.visible = true
+
+
+func _on_s_2_mouse_entered() -> void:
+	skill_info_3.visible = true
+
+
+func _on_ult_mouse_entered() -> void:
+	skill_info_4.visible = true
+
+
+func _on_ba_1_mouse_exited() -> void:
+	skill_info_1.visible = false
+
+
+func _on_s_1_mouse_exited() -> void:
+	skill_info_2.visible = false
+
+
+func _on_s_2_mouse_exited() -> void:
+	skill_info_3.visible = false
+
+
+func _on_ult_mouse_exited() -> void:
+	skill_info_4.visible = false

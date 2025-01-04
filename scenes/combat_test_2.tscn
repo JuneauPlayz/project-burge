@@ -53,12 +53,24 @@ skill_1 = ExtResource("8_ox83u")
 skill_2 = ExtResource("9_4meuk")
 ult = ExtResource("10_0ymtv")
 
+[node name="SpellSelectUi" parent="Ally1" instance=ExtResource("11_kfp4s")]
+offset_left = 22.0
+offset_top = 61.0
+offset_right = 22.0
+offset_bottom = 61.0
+
 [node name="Ally2" type="Node" parent="."]
 script = ExtResource("4_2mvrs")
 basic_atk = ExtResource("7_ytvil")
 skill_1 = ExtResource("8_ox83u")
 skill_2 = ExtResource("9_4meuk")
 ult = ExtResource("10_0ymtv")
+
+[node name="SpellSelectUi2" parent="Ally2" instance=ExtResource("11_kfp4s")]
+offset_left = 382.0
+offset_top = 62.0
+offset_right = 382.0
+offset_bottom = 62.0
 
 [node name="Ally3" type="Node" parent="."]
 script = ExtResource("4_2mvrs")
@@ -67,6 +79,12 @@ skill_1 = ExtResource("8_ox83u")
 skill_2 = ExtResource("9_4meuk")
 ult = ExtResource("10_0ymtv")
 
+[node name="SpellSelectUi3" parent="Ally3" instance=ExtResource("11_kfp4s")]
+offset_left = 37.0
+offset_top = 380.0
+offset_right = 37.0
+offset_bottom = 380.0
+
 [node name="Ally4" type="Node" parent="."]
 script = ExtResource("4_2mvrs")
 basic_atk = ExtResource("7_ytvil")
@@ -74,25 +92,7 @@ skill_1 = ExtResource("8_ox83u")
 skill_2 = ExtResource("9_4meuk")
 ult = ExtResource("10_0ymtv")
 
-[node name="SpellSelectUi" parent="." instance=ExtResource("11_kfp4s")]
-offset_left = 22.0
-offset_top = 61.0
-offset_right = 22.0
-offset_bottom = 61.0
-
-[node name="SpellSelectUi2" parent="." instance=ExtResource("11_kfp4s")]
-offset_left = 382.0
-offset_top = 62.0
-offset_right = 382.0
-offset_bottom = 62.0
-
-[node name="SpellSelectUi3" parent="." instance=ExtResource("11_kfp4s")]
-offset_left = 37.0
-offset_top = 380.0
-offset_right = 37.0
-offset_bottom = 380.0
-
-[node name="SpellSelectUi4" parent="." instance=ExtResource("11_kfp4s")]
+[node name="SpellSelectUi4" parent="Ally4" instance=ExtResource("11_kfp4s")]
 offset_left = 381.0
 offset_top = 380.0
 offset_right = 381.0
@@ -112,9 +112,9 @@ offset_right = 419.0
 offset_bottom = 631.0
 text = "Reset Choices"
 
-[connection signal="new_select" from="SpellSelectUi" to="CombatManager" method="_on_spell_select_ui_new_select"]
-[connection signal="new_select" from="SpellSelectUi2" to="CombatManager" method="_on_spell_select_ui_2_new_select"]
-[connection signal="new_select" from="SpellSelectUi3" to="CombatManager" method="_on_spell_select_ui_3_new_select"]
-[connection signal="new_select" from="SpellSelectUi4" to="CombatManager" method="_on_spell_select_ui_4_new_select"]
+[connection signal="new_select" from="Ally1/SpellSelectUi" to="CombatManager" method="_on_spell_select_ui_new_select"]
+[connection signal="new_select" from="Ally2/SpellSelectUi2" to="CombatManager" method="_on_spell_select_ui_2_new_select"]
+[connection signal="new_select" from="Ally3/SpellSelectUi3" to="CombatManager" method="_on_spell_select_ui_3_new_select"]
+[connection signal="new_select" from="Ally4/SpellSelectUi4" to="CombatManager" method="_on_spell_select_ui_4_new_select"]
 [connection signal="pressed" from="EndTurn" to="CombatManager" method="_on_end_turn_pressed"]
 [connection signal="pressed" from="ResetChoices" to="CombatManager" method="_on_reset_choices_pressed"]

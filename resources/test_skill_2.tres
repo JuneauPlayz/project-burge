@@ -7,3 +7,4 @@ script = ExtResource("1_n8lbm")
 name = "Skill 2"
 damage = 10
 element = "water"
+damaging = true
