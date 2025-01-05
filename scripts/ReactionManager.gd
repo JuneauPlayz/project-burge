@@ -1,6 +1,7 @@
 extends Node
 
 var vaporize_mult = 2
+var shock_mult = 0.5
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -23,6 +24,12 @@ func reaction(elem1 : String, elem2 : String, unit : Unit, value):
 					reaction = " Vaporize!"
 					DamageNumbers.display_number(res_value, unit.get_child(2).global_position, elem2, reaction)
 					unit.current_element = "none"
+				"lightning":
+					res_value = roundi(value)
+					unit.take_damage(res_value)
+					reaction = " Detonate!"
+					DamageNumbers.display_number(res_value, unit.get_child(2).global_position, elem2, reaction)
+					unit.current_element = "none"
 		# water reactions
 		"water":
 			match elem2:
@@ -32,6 +39,45 @@ func reaction(elem1 : String, elem2 : String, unit : Unit, value):
 					reaction = " Vaporize!"
 					DamageNumbers.display_number(res_value, unit.get_child(2).global_position, elem2, reaction)
 					unit.current_element = "none"
+				"lightning":
+					reaction = " Shock!"
+					res_value = roundi(value * shock_mult)
+					unit.take_damage(roundi(value))
+					DamageNumbers.display_number(roundi(value), unit.get_child(2).global_position, elem2, reaction)
+					await get_tree().create_timer(0.2).timeout
+					unit.take_damage(res_value)
+					DamageNumbers.display_number(res_value, unit.get_child(2).global_position, elem2, reaction)
+					await get_tree().create_timer(0.2).timeout
+					unit.take_damage(res_value)
+					DamageNumbers.display_number(res_value, unit.get_child(2).global_position, elem2, reaction)
+					await get_tree().create_timer(0.2).timeout
+					unit.take_damage(res_value)
+					DamageNumbers.display_number(res_value, unit.get_child(2).global_position, elem2, reaction)
+					unit.current_element = "none"
+		"lightning":
+			match elem2:
+				"fire":
+					res_value = roundi(value)
+					unit.take_damage(res_value)
+					reaction = " Detonate!"
+					DamageNumbers.display_number(res_value, unit.get_child(2).global_position, elem2, reaction)
+					unit.current_element = "none"
+				"water":
+					reaction = " Shock!"
+					res_value = roundi(value * shock_mult)
+					unit.take_damage(roundi(value))
+					DamageNumbers.display_number(roundi(value), unit.get_child(2).global_position, elem2, reaction)
+					await get_tree().create_timer(0.2).timeout
+					unit.take_damage(res_value)
+					DamageNumbers.display_number(res_value, unit.get_child(2).global_position, elem2, reaction)
+					await get_tree().create_timer(0.2).timeout
+					unit.take_damage(res_value)
+					DamageNumbers.display_number(res_value, unit.get_child(2).global_position, elem2, reaction)
+					await get_tree().create_timer(0.2).timeout
+					unit.take_damage(res_value)
+					DamageNumbers.display_number(res_value, unit.get_child(2).global_position, elem2, reaction)
+					unit.current_element = "none"
+					
 	return true
 					
 		

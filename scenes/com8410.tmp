@@ -28,7 +28,7 @@ script = ExtResource("14_nv7oc")
 name = "Skill 1"
 damage = 10
 element = "lightning"
-damaging = true
+damaging = false
 
 [node name="CombatTest2" type="Node2D"]
 
@@ -127,10 +127,10 @@ ult = ExtResource("10_0ymtv")
 health = 100
 
 [node name="SpellSelectUi" parent="Ally2" instance=ExtResource("11_kfp4s")]
-offset_left = 318.0
-offset_top = 584.0
-offset_right = 318.0
-offset_bottom = 584.0
+offset_left = 580.0
+offset_top = 582.0
+offset_right = 580.0
+offset_bottom = 582.0
 scale = Vector2(0.8, 0.8)
 
 [node name="HP Bar" parent="Ally2" instance=ExtResource("7_pyguu")]
@@ -156,10 +156,10 @@ ult = ExtResource("10_0ymtv")
 health = 100
 
 [node name="SpellSelectUi" parent="Ally3" instance=ExtResource("11_kfp4s")]
-offset_left = 584.0
-offset_top = 585.0
-offset_right = 584.0
-offset_bottom = 585.0
+offset_left = 313.0
+offset_top = 582.0
+offset_right = 313.0
+offset_bottom = 582.0
 scale = Vector2(0.8, 0.8)
 
 [node name="HP Bar" parent="Ally3" instance=ExtResource("7_pyguu")]

@@ -10,6 +10,7 @@ var current_skill : Skill
 var hp_bar
 @onready var skill_info: Control = $ShowNextSkill/SkillInfo
 
+signal skill_end
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -31,8 +32,9 @@ func _process(delta: float) -> void:
 func receive_skill(damage: float, element: String):
 	var rounded : int
 	var reaction = ""
+	var r = await ReactionManager.reaction(current_element, element, self, damage)
 	# no reaction
-	if (!ReactionManager.reaction(current_element, element, self, damage)):
+	if (!r):
 		self.take_damage(damage)
 		DamageNumbers.display_number(damage, damage_number_origin.global_position, element, reaction)
 		check_if_dead()
@@ -40,6 +42,13 @@ func receive_skill(damage: float, element: String):
 		if (element != "none"):
 			current_element = element
 	hp_bar.update_element(current_element)
+	#emit signal here
+	skill_end.emit()
+	print("signal emitted")
+
+func signal_received():
+	await skill_end
+	return true
 
 func take_damage(damage : int):
 	health -= damage

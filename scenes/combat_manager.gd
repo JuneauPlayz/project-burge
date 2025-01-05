@@ -56,6 +56,8 @@ func execute_ally_turn():
 	toggle_skills()
 	for x in action_queue:
 		use_skill(x)
+		var confirmed = await enemy1.signal_received()
+		await confirmed
 		print(str(x.name) + " landed!")
 		hit.emit()
 		await get_tree().create_timer(0.5).timeout

@@ -28,8 +28,9 @@ func _ready() -> void:
 func receive_skill(damage: float, element: String):
 	var rounded : int
 	var reaction = ""
+	var r = await ReactionManager.reaction(current_element, element, self, damage)
 	# no reaction
-	if (!ReactionManager.reaction(current_element, element, self, damage)):
+	if (!r):
 		self.take_damage(damage)
 		DamageNumbers.display_number(damage, damage_number_origin.global_position, element, reaction)
 		# don't change current element if skill has no element
