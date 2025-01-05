@@ -41,14 +41,7 @@ offset_right = -154.0
 offset_bottom = -437.0
 
 [node name="DamageNumberOrigin" type="Node2D" parent="BurgerEnemy"]
-position = Vector2(742, 263)
-
-[node name="CurrentElement" type="Label" parent="BurgerEnemy"]
-offset_left = 1505.0
-offset_top = 509.0
-offset_right = 1681.0
-offset_bottom = 532.0
-text = "Current Element: none"
+position = Vector2(1623, 634)
 
 [node name="Ally1" type="Node" parent="."]
 script = ExtResource("4_2mvrs")
@@ -59,9 +52,9 @@ ult = ExtResource("10_0ymtv")
 
 [node name="SpellSelectUi" parent="Ally1" instance=ExtResource("11_kfp4s")]
 offset_left = 51.0
-offset_top = 580.0
+offset_top = 581.0
 offset_right = 51.0
-offset_bottom = 580.0
+offset_bottom = 581.0
 scale = Vector2(0.8, 0.8)
 
 [node name="Qiqifallen" type="Sprite2D" parent="Ally1"]
@@ -113,10 +106,10 @@ skill_2 = ExtResource("9_4meuk")
 ult = ExtResource("10_0ymtv")
 
 [node name="SpellSelectUi3" parent="Ally3" instance=ExtResource("11_kfp4s")]
-offset_left = 315.0
-offset_top = 580.0
-offset_right = 315.0
-offset_bottom = 580.0
+offset_left = 313.0
+offset_top = 582.0
+offset_right = 313.0
+offset_bottom = 582.0
 scale = Vector2(0.8, 0.8)
 
 [node name="HP Bar" parent="Ally3" instance=ExtResource("7_pyguu")]

@@ -5,7 +5,6 @@ class_name Enemy
 @export var current_element : String = "none"
 @export var reaction_primed = 0
 @onready var damage_number_origin: Node2D = $DamageNumberOrigin
-@onready var current_element_text: Label = $CurrentElement
 var hp_bar
 
 
@@ -34,7 +33,7 @@ func receive_skill(damage: float, element: String):
 		# don't change current element if skill has no element
 		if (element != "none"):
 			current_element = element
-	current_element_text.text = "Current Element: " + current_element
+	hp_bar.update_element(current_element)
 
 func take_damage(damage : int):
 	health -= damage

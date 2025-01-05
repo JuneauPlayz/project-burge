@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://tlvpop5rp1x6"]
+[gd_scene load_steps=14 format=3 uid="uid://tlvpop5rp1x6"]
 
 [ext_resource type="Script" path="res://scenes/spell_select_ui.gd" id="1_jbfqo"]
 [ext_resource type="PackedScene" uid="uid://sdwnoh61gawa" path="res://skill_info.tscn" id="2_bnrmv"]
@@ -41,6 +41,9 @@ bg_color = Color(0.247059, 0.380392, 0.631373, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s2255"]
 bg_color = Color(0.180392, 0.180392, 0.180392, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1aora"]
+font_color = Color(0.0887693, 0.0806547, 0.0997545, 1)
 
 [node name="SpellSelectUi" type="Control"]
 layout_mode = 3
@@ -179,6 +182,7 @@ offset_top = 4.0
 offset_right = 278.0
 offset_bottom = 27.0
 text = "Position: "
+label_settings = SubResource("LabelSettings_1aora")
 
 [connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/BA1Panel/ba_1" to="." method="_on_ba_1_mouse_entered"]
 [connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/BA1Panel/ba_1" to="." method="_on_ba_1_mouse_exited"]

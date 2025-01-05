@@ -3,6 +3,7 @@ extends Control
 @onready var hptext: Label = $HP
 var max_hp = 0
 var hp = 0
+@onready var current_element: Label = $CurrentElement
 
 func set_hp(newhp):
 	hp = newhp
@@ -17,3 +18,6 @@ func set_maxhp(newhp):
 
 func update_text():
 	hptext.text = str(hp) + " / " + str(max_hp)
+
+func update_element(element):
+	current_element.text = "Element: " + element
