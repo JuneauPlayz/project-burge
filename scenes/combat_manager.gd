@@ -23,41 +23,43 @@ var ally3_pos : int
 var ally4_pos : int
 
 var positions = [ally1_pos, ally2_pos, ally3_pos, ally4_pos]
+signal ally_turn_done
+signal enemy_turn_done
+var combat_finished = false
+var first_turn = true
 
 func _ready() -> void:
-	next_pos = 0
-	ally1_pos = -1
-	ally2_pos = -1
-	ally3_pos = -1
-	ally4_pos = -1
+	# waiting for everything to load in
+	await get_tree().create_timer(0.1).timeout
+	reset_skill_select()
+	# hiding skills at the start because start of all turn toggles skills already
+	toggle_skills()
+	start_combat()
 	
-	ally1skill = -1
-	ally2skill = -1
-	ally3skill = -1
-	ally4skill = -1
+func start_combat():
+	while (!combat_finished):
+		start_ally_turn()
+		await ally_turn_done
+		enemy_turn()
+		await enemy_turn_done
+	
+func start_ally_turn():
+	turn_text.text = "Ally Turn"
+	toggle_skills()
+	reset_skill_select()
+	update_skill_positions()
 
-func execute_turn():
 	
+func execute_ally_turn():
+	toggle_skills()
 	for x in action_queue:
 		use_skill(x)
 		print(str(x.name) + " landed!")
 		await get_tree().create_timer(0.5).timeout
-		
 	turn_text.text = "Enemy Turn"
-	enemy_turn()
-	# reset skills
-	action_queue = []
-	next_pos = 0
-	ally1_pos = -1
-	ally2_pos = -1
-	ally3_pos = -1
-	ally4_pos = -1
-	reset_skill_select()
-	update_skill_positions()
+	ally_turn_done.emit()
 
 func enemy_turn():
-	# hides ally skills
-	toggle_skills()
 	await get_tree().create_timer(1).timeout
 	var skill = enemy1.current_skill
 	ally1.receive_skill(skill.damage, skill.element)
@@ -66,9 +68,7 @@ func enemy_turn():
 	ally4.receive_skill(skill.damage, skill.element)
 	enemy1.change_skills()
 	await get_tree().create_timer(1).timeout
-	turn_text.text = "Ally Turn"
-	# shows ally skills
-	toggle_skills()
+	enemy_turn_done.emit()
 	
 func use_skill(skill):
 	enemy1.receive_skill(skill.damage, skill.element)
@@ -277,7 +277,12 @@ func reset_skill_select():
 	var spell_select_ui2: Control = $"../Ally2/SpellSelectUi"
 	var spell_select_ui3: Control = $"../Ally3/SpellSelectUi"
 	var spell_select_ui4: Control = $"../Ally4/SpellSelectUi"
-
+	action_queue = []
+	next_pos = 0
+	ally1_pos = -1
+	ally2_pos = -1
+	ally3_pos = -1
+	ally4_pos = -1
 	ally1skill = -1
 	ally2skill = -1
 	ally3skill = -1
@@ -286,10 +291,14 @@ func reset_skill_select():
 	spell_select_ui2.reset()
 	spell_select_ui3.reset()
 	spell_select_ui4.reset()
+	spell_select_ui1.update_pos(ally1_pos + 1)
+	spell_select_ui2.update_pos(ally2_pos + 1)
+	spell_select_ui3.update_pos(ally3_pos + 1)
+	spell_select_ui4.update_pos(ally4_pos + 1)
+	update_skill_positions()
 	
 func _on_end_turn_pressed() -> void:
-	execute_turn()
-
+	execute_ally_turn()
 
 func _on_reset_choices_pressed() -> void:
 	action_queue = []
