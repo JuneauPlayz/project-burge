@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://5spa5amgsxfm"]
+[gd_scene load_steps=10 format=3 uid="uid://5spa5amgsxfm"]
 
 [ext_resource type="Script" path="res://scripts/hp_bar.gd" id="1_orq1w"]
+[ext_resource type="Texture2D" uid="uid://cfus0jnjm26vl" path="res://assets/shield.png" id="2_0hkbf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vgu82"]
 bg_color = Color(0.784314, 0.662745, 0.698039, 0.803922)
@@ -22,6 +23,19 @@ font_size = 24
 shadow_size = 24
 
 [sub_resource type="LabelSettings" id="LabelSettings_lmenn"]
+font_size = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cq0p4"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0vx8s"]
+bg_color = Color(0.71178, 0.736753, 0.417345, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="LabelSettings" id="LabelSettings_36guj"]
 font_size = 24
 
 [node name="HP Bar" type="Control"]
@@ -58,9 +72,34 @@ label_settings = SubResource("LabelSettings_tqes5")
 
 [node name="CurrentElement" type="Label" parent="."]
 layout_mode = 0
-offset_left = 17.5
-offset_top = -28.75
-offset_right = 125.5
-offset_bottom = 5.25
+offset_left = 53.75
+offset_top = -25.0
+offset_right = 161.75
+offset_bottom = 9.0
 text = "Element: "
 label_settings = SubResource("LabelSettings_lmenn")
+
+[node name="ShieldBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 10.0
+offset_right = 272.0
+offset_bottom = 42.0
+theme_override_styles/background = SubResource("StyleBoxFlat_cq0p4")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0vx8s")
+show_percentage = false
+
+[node name="ShieldLabel" type="Label" parent="."]
+z_index = 2
+offset_left = -18.75
+offset_top = 7.5
+offset_right = 27.25
+offset_bottom = 59.5
+text = "15"
+label_settings = SubResource("LabelSettings_36guj")
+
+[node name="Shield" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(-5, 28.75)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("2_0hkbf")

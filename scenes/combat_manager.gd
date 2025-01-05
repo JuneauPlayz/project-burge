@@ -9,6 +9,8 @@ extends Node
 @export var enemy1 : Enemy
 
 @export var action_queue = []
+@onready var end_turn: Button = $"../EndTurn"
+@onready var reset_choices: Button = $"../ResetChoices"
 
 var ally1skill : int
 var ally2skill : int
@@ -48,7 +50,10 @@ func start_combat():
 		await enemy_turn_done
 	
 func start_ally_turn():
+	end_turn.visible = true
+	reset_choices.visible = true
 	turn_text.text = "Ally Turn"
+	lose_shields()
 	toggle_skills()
 	reset_skill_select()
 	update_skill_positions()
@@ -56,6 +61,8 @@ func start_ally_turn():
 	
 func execute_ally_turn():
 	toggle_skills()
+	end_turn.visible = false
+	reset_choices.visible = false
 	for x in action_queue:
 		use_skill(x)
 		print("waiting for reaction")
@@ -93,6 +100,13 @@ func use_skill(skill):
 func reaction_signal():
 	await get_tree().create_timer(0.01).timeout
 	reaction_finished.emit()
+	
+func lose_shields():
+	ally1.set_shield(0)
+	ally2.set_shield(0)
+	ally3.set_shield(0)
+	ally4.set_shield(0)
+	
 # char 1
 func _on_spell_select_ui_new_select() -> void:
 	var spell_select_ui: Control = $"../Ally1/SpellSelectUi"

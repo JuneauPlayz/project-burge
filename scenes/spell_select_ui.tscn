@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://tlvpop5rp1x6"]
+[gd_scene load_steps=15 format=3 uid="uid://tlvpop5rp1x6"]
 
 [ext_resource type="Script" path="res://scenes/spell_select_ui.gd" id="1_jbfqo"]
 [ext_resource type="PackedScene" uid="uid://sdwnoh61gawa" path="res://skill_info.tscn" id="2_bnrmv"]
@@ -14,6 +14,7 @@ corner_radius_top_left = 12
 corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
+expand_margin_top = 17.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1dgm8"]
 content_margin_right = 0.0
@@ -21,6 +22,8 @@ bg_color = Color(0.246653, 0.378583, 0.631853, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ur654"]
 bg_color = Color(0.180392, 0.180392, 0.180392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c8eds"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ni84r"]
 bg_color = Color(0.247059, 0.380392, 0.631373, 1)
@@ -48,6 +51,8 @@ font_color = Color(0.0887693, 0.0806547, 0.0997545, 1)
 [node name="SpellSelectUi" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+offset_top = 18.0
+offset_bottom = 18.0
 script = ExtResource("1_jbfqo")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
@@ -74,7 +79,7 @@ layout_mode = 2
 mouse_filter = 1
 
 [node name="ba_1" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/BA1Panel"]
-custom_minimum_size = Vector2(261, 0)
+custom_minimum_size = Vector2(261, 39)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_styles/hover = SubResource("StyleBoxFlat_1dgm8")
@@ -85,12 +90,14 @@ text = "Basic Attack"
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 mouse_filter = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_c8eds")
 
 [node name="SP1Panel" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 mouse_filter = 2
 
 [node name="S1" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/SP1Panel"]
+custom_minimum_size = Vector2(0, 39)
 layout_mode = 2
 theme_override_styles/hover = SubResource("StyleBoxFlat_ni84r")
 theme_override_styles/normal = SubResource("StyleBoxFlat_sleic")
@@ -108,6 +115,7 @@ layout_mode = 2
 mouse_filter = 2
 
 [node name="S2" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/SP2Panel"]
+custom_minimum_size = Vector2(0, 39)
 layout_mode = 2
 theme_override_styles/hover = SubResource("StyleBoxFlat_q85v1")
 theme_override_styles/normal = SubResource("StyleBoxFlat_lt1l8")
@@ -125,6 +133,7 @@ layout_mode = 2
 mouse_filter = 2
 
 [node name="ULT" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/ULTPanel"]
+custom_minimum_size = Vector2(0, 39)
 layout_mode = 2
 theme_override_styles/hover = SubResource("StyleBoxFlat_i2ev1")
 theme_override_styles/normal = SubResource("StyleBoxFlat_s2255")
@@ -177,17 +186,17 @@ offset_bottom = 142.0
 
 [node name="Position" type="Label" parent="."]
 layout_mode = 0
-offset_left = 86.0
-offset_top = 4.0
-offset_right = 278.0
-offset_bottom = 27.0
+offset_left = 59.0
+offset_top = -14.0
+offset_right = 251.0
+offset_bottom = 9.0
 text = "Position: "
 label_settings = SubResource("LabelSettings_1aora")
 
 [connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/BA1Panel/ba_1" to="." method="_on_ba_1_mouse_entered"]
 [connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/BA1Panel/ba_1" to="." method="_on_ba_1_mouse_exited"]
-[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/BA1Panel/ba_1" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/BA1Panel/ba_1" to="." method="_on_ba_1_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/BA1Panel/ba_1" to="." method="_on_button_pressed"]
 [connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/SP1Panel/S1" to="." method="_on_s_1_mouse_entered"]
 [connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/SP1Panel/S1" to="." method="_on_s_1_mouse_exited"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/SP1Panel/S1" to="." method="_on_s_1_pressed"]

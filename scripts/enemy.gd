@@ -9,6 +9,7 @@ var current_skill : Skill
 @onready var damage_number_origin: Node2D = $DamageNumberOrigin
 var hp_bar
 @onready var skill_info: Control = $ShowNextSkill/SkillInfo
+var connected = false
 
 signal skill_end
 signal reaction_ended
@@ -33,7 +34,8 @@ func _process(delta: float) -> void:
 func receive_skill(damage: float, element: String):
 	var rounded : int
 	var reaction = ""
-	ReactionManager.reaction_finished.connect(self.reaction_signal)
+	if (!connected):
+		ReactionManager.reaction_finished.connect(self.reaction_signal)
 	var r = await ReactionManager.reaction(current_element, element, self, damage, 1)
 	if (r):
 		print("waiting")

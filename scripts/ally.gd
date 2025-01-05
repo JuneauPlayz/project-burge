@@ -42,22 +42,38 @@ func receive_skill_friendly(effect: float, element: String):
 	var rounded : int
 	var reaction = ""
 	var r = await ReactionManager.reaction(current_element, element, self, effect, 0)
-	if (!r):
-		self.receive_healing(effect)
-		DamageNumbers.display_number(effect, damage_number_origin.global_position, element, reaction)
-		if (element != "none"):
-			current_element = element
+	self.receive_shielding(effect)
+	DamageNumbers.display_number_plus(effect, damage_number_origin.global_position, element, reaction)
+	if (element != "none"):
+		current_element = element
 	hp_bar.update_element(current_element)
 	
 	
 	
 func take_damage(damage : int):
-	health -= damage
+	var damage_left = damage
+	if (shield > 0):
+		if (shield <= damage_left):
+			damage_left -= shield
+			shield = 0
+		elif (shield > damage_left):
+			shield -= damage_left
+			damage_left = 0
+		hp_bar.set_shield(shield)
+	health -= damage_left
 	hp_bar.set_hp(health)
 
 func receive_healing(healing: int):
 	health += healing
 	hp_bar.set_hp(health)
+	
+func receive_shielding(shielding: int):
+	shield += shielding
+	hp_bar.set_shield(shield)
 
 func toggle_skills():
 	spell_select_ui.visible = !spell_select_ui.visible
+	
+func set_shield(shield):
+	self.shield = shield
+	hp_bar.set_shield(shield)

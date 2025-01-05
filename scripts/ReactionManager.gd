@@ -1,7 +1,7 @@
 extends Node
 
 var vaporize_mult = 2
-var shock_mult = 0.5
+var shock_mult = 0.25
 signal reaction_finished
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -66,7 +66,7 @@ func reaction(elem1 : String, elem2 : String, unit : Unit, value, hostile : int)
 						await get_tree().create_timer(0.2).timeout
 						unit.take_damage(res_value)
 						DamageNumbers.display_number(res_value, unit.get_child(2).global_position, elem2, reaction)
-					unit.current_element = "none"
+					unit.current_element = "lightning"
 				"earth":
 					unit.take_damage(roundi(value * hostile))
 					if hostile == 1:
@@ -96,7 +96,7 @@ func reaction(elem1 : String, elem2 : String, unit : Unit, value, hostile : int)
 						await get_tree().create_timer(0.2).timeout
 						unit.take_damage(res_value)
 						DamageNumbers.display_number(res_value, unit.get_child(2).global_position, elem2, reaction)
-					unit.current_element = "none"
+					unit.current_element = "lightning"
 				"earth":
 					unit.take_damage(roundi(value * hostile))
 					if hostile == 1:
