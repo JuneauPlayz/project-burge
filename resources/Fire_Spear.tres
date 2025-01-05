@@ -4,7 +4,8 @@
 
 [resource]
 script = ExtResource("1_v85ps")
-name = "Ultimate"
+name = "Fire Spear"
 damage = 20
 element = "fire"
 damaging = true
+friendly = false

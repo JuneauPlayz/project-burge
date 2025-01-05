@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://il7olc82ns7f"]
+[gd_scene load_steps=22 format=3 uid="uid://il7olc82ns7f"]
 
 [ext_resource type="Texture2D" uid="uid://djyorqs13oxgy" path="res://assets/burger.jpg" id="1_to6ih"]
 [ext_resource type="Script" path="res://scenes/combat_manager.gd" id="2_hh3fv"]
@@ -7,30 +7,22 @@
 [ext_resource type="PackedScene" uid="uid://sdwnoh61gawa" path="res://skill_info.tscn" id="7_hw5oh"]
 [ext_resource type="PackedScene" uid="uid://5spa5amgsxfm" path="res://scenes/hp_bar.tscn" id="7_pyguu"]
 [ext_resource type="Resource" uid="uid://t5il68wvfb0s" path="res://resources/basic_attack.tres" id="7_ytvil"]
-[ext_resource type="Resource" uid="uid://c3yogn8m318q2" path="res://resources/test_skill_1.tres" id="8_ox83u"]
-[ext_resource type="Resource" uid="uid://dooqfwlwxly5w" path="res://resources/test_skill_2.tres" id="9_4meuk"]
-[ext_resource type="Resource" uid="uid://dcf2ccmtpg225" path="res://resources/test_ultimate.tres" id="10_0ymtv"]
-[ext_resource type="Resource" uid="uid://bya4jpai0ygj5" path="res://resources/earth_ultimate.tres" id="10_r3sqd"]
+[ext_resource type="Resource" uid="uid://c3yogn8m318q2" path="res://resources/Fire_Bolt.tres" id="8_ox83u"]
+[ext_resource type="Resource" uid="uid://dooqfwlwxly5w" path="res://resources/Water_Bolt.tres" id="9_4meuk"]
+[ext_resource type="Resource" uid="uid://dcf2ccmtpg225" path="res://resources/Fire_Spear.tres" id="10_0ymtv"]
+[ext_resource type="Resource" uid="uid://bya4jpai0ygj5" path="res://resources/Rock Shield.tres" id="10_r3sqd"]
 [ext_resource type="Texture2D" uid="uid://b3bd5fw4hk3xb" path="res://assets/qiqifallen.png" id="11_4linb"]
 [ext_resource type="PackedScene" uid="uid://tlvpop5rp1x6" path="res://scenes/spell_select_ui.tscn" id="11_kfp4s"]
 [ext_resource type="Texture2D" uid="uid://c3vp6cnsau7i1" path="res://assets/stelletrash.png" id="12_xxdvk"]
 [ext_resource type="Texture2D" uid="uid://defrd4fdejdu1" path="res://assets/miyabii.png" id="13_3288v"]
 [ext_resource type="Texture2D" uid="uid://qlvy3vq13goh" path="res://assets/yatta.png" id="14_hgdfq"]
-[ext_resource type="Script" path="res://scripts/skill.gd" id="14_nv7oc"]
+[ext_resource type="Resource" uid="uid://60omj8j38mfk" path="res://resources/Lightning_Bolt.tres" id="15_n7e50"]
 [ext_resource type="Texture2D" uid="uid://b6rhxb71os38w" path="res://assets/hsrbg.png" id="16_7iixp"]
 [ext_resource type="Script" path="res://scenes/sound_manager.gd" id="17_bd8ds"]
 [ext_resource type="AudioStream" uid="uid://c0fyotn8lqfkv" path="res://assets/fire hit.mp3" id="18_g8ami"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mo5rj"]
 font_size = 48
-
-[sub_resource type="Resource" id="Resource_3gisa"]
-script = ExtResource("14_nv7oc")
-name = "Skill 1"
-damage = 10
-element = "lightning"
-damaging = true
-friendly = false
 
 [node name="CombatTest2" type="Node2D"]
 
@@ -152,7 +144,7 @@ position = Vector2(375, 458)
 [node name="Ally3" type="Node" parent="."]
 script = ExtResource("4_2mvrs")
 basic_atk = ExtResource("7_ytvil")
-skill_1 = SubResource("Resource_3gisa")
+skill_1 = ExtResource("15_n7e50")
 skill_2 = ExtResource("9_4meuk")
 ult = ExtResource("10_0ymtv")
 health = 100

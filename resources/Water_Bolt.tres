@@ -4,7 +4,8 @@
 
 [resource]
 script = ExtResource("1_n8lbm")
-name = "Skill 2"
+name = "Water Bolt"
 damage = 10
 element = "water"
 damaging = true
+friendly = false

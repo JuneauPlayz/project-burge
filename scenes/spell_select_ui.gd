@@ -35,6 +35,10 @@ func load_skills():
 	skill_info_3.update_skill_info()
 	skill_info_4.skill = skill4
 	skill_info_4.update_skill_info()
+	ba_1.text = skill1.name
+	s_1.text = skill2.name
+	s_2.text = skill3.name
+	ult.text = skill4.name
 
 func _on_button_pressed() -> void:
 	if selected != 1:

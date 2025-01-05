@@ -4,7 +4,8 @@
 
 [resource]
 script = ExtResource("1_dbr65")
-name = "Skill 1"
+name = "Fire Bolt"
 damage = 10
 element = "fire"
 damaging = true
+friendly = false

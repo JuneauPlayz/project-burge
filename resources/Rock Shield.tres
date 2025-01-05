@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="Skill" load_steps=2 format=3 uid="uid://bya4jpai0ygj5"]
 
-[ext_resource type="Script" path="res://scripts/skill.gd" id="1_0t5dh"]
+[ext_resource type="Script" path="res://scripts/skill.gd" id="1_tff2v"]
 
 [resource]
-script = ExtResource("1_0t5dh")
-name = "EarthUlt"
+script = ExtResource("1_tff2v")
+name = "Rock Shield"
 damage = 20
 element = "earth"
 damaging = false

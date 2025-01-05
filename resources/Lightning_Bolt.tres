@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3 uid="uid://60omj8j38mfk"]
+
+[ext_resource type="Script" path="res://scripts/skill.gd" id="1_ttf18"]
+
+[resource]
+script = ExtResource("1_ttf18")
+name = "Lightning Bolt"
+damage = 10
+element = "lightning"
+damaging = true
+friendly = false

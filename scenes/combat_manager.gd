@@ -69,7 +69,7 @@ func execute_ally_turn():
 		await reaction_finished
 		print(str(x.name) + " landed!")
 		hit.emit()
-		await get_tree().create_timer(0.5).timeout
+		await get_tree().create_timer(0.35).timeout
 	turn_text.text = "Enemy Turn"
 	ally_turn_done.emit()
 
