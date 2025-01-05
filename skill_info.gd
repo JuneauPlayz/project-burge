@@ -1,9 +1,10 @@
 extends Control
 
 @export var skill : Skill
-@onready var skill_name: Label = $PanelContainer/MarginContainer/VBoxContainer/SkillName
-@onready var element: Label = $PanelContainer/MarginContainer/VBoxContainer/Element
-@onready var description: Label = $PanelContainer/MarginContainer/VBoxContainer/Description
+
+@onready var skill_name: Label = $PanelContainer/PanelContainer/MarginContainer/VBoxContainer/SkillName
+@onready var element: Label = $PanelContainer/PanelContainer/MarginContainer/VBoxContainer/Element
+@onready var description: Label = $PanelContainer/PanelContainer/MarginContainer/VBoxContainer/Description
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
