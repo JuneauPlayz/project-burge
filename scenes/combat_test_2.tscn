@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://il7olc82ns7f"]
+[gd_scene load_steps=16 format=3 uid="uid://il7olc82ns7f"]
 
 [ext_resource type="Texture2D" uid="uid://djyorqs13oxgy" path="res://assets/burger.jpg" id="1_to6ih"]
 [ext_resource type="Script" path="res://scenes/combat_manager.gd" id="2_hh3fv"]
@@ -15,6 +15,9 @@
 [ext_resource type="Texture2D" uid="uid://defrd4fdejdu1" path="res://assets/miyabii.png" id="13_3288v"]
 [ext_resource type="Texture2D" uid="uid://qlvy3vq13goh" path="res://assets/yatta.png" id="14_hgdfq"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_mo5rj"]
+font_size = 48
+
 [node name="CombatTest2" type="Node2D"]
 
 [node name="CombatManager" type="Node" parent="." node_paths=PackedStringArray("ally1", "ally2", "ally3", "ally4", "enemy1")]
@@ -25,8 +28,17 @@ ally3 = NodePath("../Ally3")
 ally4 = NodePath("../Ally4")
 enemy1 = NodePath("../BurgerEnemy")
 
+[node name="TurnText" type="Label" parent="CombatManager"]
+offset_left = 829.0
+offset_top = 25.0
+offset_right = 1035.0
+offset_bottom = 92.0
+text = "Ally Turn"
+label_settings = SubResource("LabelSettings_mo5rj")
+
 [node name="BurgerEnemy" type="Node" parent="."]
 script = ExtResource("2_xoe2s")
+skill = ExtResource("8_ox83u")
 health = 200
 
 [node name="Burger" type="Sprite2D" parent="BurgerEnemy"]
@@ -49,6 +61,7 @@ basic_atk = ExtResource("7_ytvil")
 skill_1 = ExtResource("8_ox83u")
 skill_2 = ExtResource("9_4meuk")
 ult = ExtResource("10_0ymtv")
+health = 50
 
 [node name="SpellSelectUi" parent="Ally1" instance=ExtResource("11_kfp4s")]
 offset_left = 51.0
@@ -57,16 +70,19 @@ offset_right = 51.0
 offset_bottom = 581.0
 scale = Vector2(0.8, 0.8)
 
-[node name="Qiqifallen" type="Sprite2D" parent="Ally1"]
-position = Vector2(165.219, 390.906)
-scale = Vector2(0.261113, 0.242546)
-texture = ExtResource("11_4linb")
-
 [node name="HP Bar" parent="Ally1" instance=ExtResource("7_pyguu")]
 offset_left = 58.0
 offset_top = 503.0
 offset_right = -1571.0
 offset_bottom = -493.0
+
+[node name="Qiqifallen" type="Sprite2D" parent="Ally1"]
+position = Vector2(167, 347)
+scale = Vector2(0.261113, 0.242546)
+texture = ExtResource("11_4linb")
+
+[node name="DamageNumberOrigin" type="Node2D" parent="Ally1"]
+position = Vector2(151, 444)
 
 [node name="Ally2" type="Node" parent="."]
 script = ExtResource("4_2mvrs")
@@ -74,18 +90,14 @@ basic_atk = ExtResource("7_ytvil")
 skill_1 = ExtResource("8_ox83u")
 skill_2 = ExtResource("9_4meuk")
 ult = ExtResource("10_0ymtv")
+health = 50
 
-[node name="SpellSelectUi2" parent="Ally2" instance=ExtResource("11_kfp4s")]
+[node name="SpellSelectUi" parent="Ally2" instance=ExtResource("11_kfp4s")]
 offset_left = 580.0
 offset_top = 582.0
 offset_right = 580.0
 offset_bottom = 582.0
 scale = Vector2(0.8, 0.8)
-
-[node name="Stelletrash" type="Sprite2D" parent="Ally2"]
-position = Vector2(430, 390)
-scale = Vector2(0.402062, 0.326291)
-texture = ExtResource("12_xxdvk")
 
 [node name="HP Bar" parent="Ally2" instance=ExtResource("7_pyguu")]
 offset_left = 316.0
@@ -93,10 +105,13 @@ offset_top = 503.0
 offset_right = -1322.0
 offset_bottom = -495.0
 
-[node name="Miyabii" type="Sprite2D" parent="Ally2"]
-position = Vector2(693, 394)
-scale = Vector2(0.348301, 0.307655)
-texture = ExtResource("13_3288v")
+[node name="Stelletrash" type="Sprite2D" parent="Ally2"]
+position = Vector2(425, 361)
+scale = Vector2(0.402062, 0.326291)
+texture = ExtResource("12_xxdvk")
+
+[node name="DamageNumberOrigin" type="Node2D" parent="Ally2"]
+position = Vector2(375, 458)
 
 [node name="Ally3" type="Node" parent="."]
 script = ExtResource("4_2mvrs")
@@ -104,8 +119,9 @@ basic_atk = ExtResource("7_ytvil")
 skill_1 = ExtResource("8_ox83u")
 skill_2 = ExtResource("9_4meuk")
 ult = ExtResource("10_0ymtv")
+health = 50
 
-[node name="SpellSelectUi3" parent="Ally3" instance=ExtResource("11_kfp4s")]
+[node name="SpellSelectUi" parent="Ally3" instance=ExtResource("11_kfp4s")]
 offset_left = 313.0
 offset_top = 582.0
 offset_right = 313.0
@@ -118,14 +134,23 @@ offset_top = 503.0
 offset_right = -1057.0
 offset_bottom = -502.0
 
+[node name="Miyabii" type="Sprite2D" parent="Ally3"]
+position = Vector2(691, 360)
+scale = Vector2(0.348301, 0.307655)
+texture = ExtResource("13_3288v")
+
+[node name="DamageNumberOrigin" type="Node2D" parent="Ally3"]
+position = Vector2(637, 468)
+
 [node name="Ally4" type="Node" parent="."]
 script = ExtResource("4_2mvrs")
 basic_atk = ExtResource("7_ytvil")
 skill_1 = ExtResource("8_ox83u")
 skill_2 = ExtResource("9_4meuk")
 ult = ExtResource("10_0ymtv")
+health = 50
 
-[node name="SpellSelectUi4" parent="Ally4" instance=ExtResource("11_kfp4s")]
+[node name="SpellSelectUi" parent="Ally4" instance=ExtResource("11_kfp4s")]
 offset_left = 847.0
 offset_top = 583.0
 offset_right = 847.0
@@ -137,6 +162,14 @@ offset_left = 853.0
 offset_top = 503.0
 offset_right = -778.0
 offset_bottom = -495.0
+
+[node name="Yatta" type="Sprite2D" parent="Ally4"]
+position = Vector2(964, 354)
+scale = Vector2(0.354839, 0.341837)
+texture = ExtResource("14_hgdfq")
+
+[node name="DamageNumberOrigin" type="Node2D" parent="Ally4"]
+position = Vector2(878, 460)
 
 [node name="EndTurn" type="Button" parent="."]
 offset_left = 1521.0
@@ -152,14 +185,9 @@ offset_right = 640.0
 offset_bottom = 841.0
 text = "Reset Choices"
 
-[node name="Yatta" type="Sprite2D" parent="."]
-position = Vector2(964, 389)
-scale = Vector2(0.354839, 0.341837)
-texture = ExtResource("14_hgdfq")
-
 [connection signal="new_select" from="Ally1/SpellSelectUi" to="CombatManager" method="_on_spell_select_ui_new_select"]
-[connection signal="new_select" from="Ally2/SpellSelectUi2" to="CombatManager" method="_on_spell_select_ui_2_new_select"]
-[connection signal="new_select" from="Ally3/SpellSelectUi3" to="CombatManager" method="_on_spell_select_ui_3_new_select"]
-[connection signal="new_select" from="Ally4/SpellSelectUi4" to="CombatManager" method="_on_spell_select_ui_4_new_select"]
+[connection signal="new_select" from="Ally2/SpellSelectUi" to="CombatManager" method="_on_spell_select_ui_2_new_select"]
+[connection signal="new_select" from="Ally3/SpellSelectUi" to="CombatManager" method="_on_spell_select_ui_3_new_select"]
+[connection signal="new_select" from="Ally4/SpellSelectUi" to="CombatManager" method="_on_spell_select_ui_4_new_select"]
 [connection signal="pressed" from="EndTurn" to="CombatManager" method="_on_end_turn_pressed"]
 [connection signal="pressed" from="ResetChoices" to="CombatManager" method="_on_reset_choices_pressed"]

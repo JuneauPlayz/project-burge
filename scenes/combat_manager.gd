@@ -1,5 +1,7 @@
 extends Node
 
+@onready var turn_text: Label = $TurnText
+
 @export var ally1 : Ally
 @export var ally2 : Ally
 @export var ally3 : Ally
@@ -35,11 +37,14 @@ func _ready() -> void:
 	ally4skill = -1
 
 func execute_turn():
+	
 	for x in action_queue:
 		use_skill(x)
 		print(str(x.name) + " landed!")
 		await get_tree().create_timer(0.5).timeout
 		
+	turn_text.text = "Enemy Turn"
+	enemy_turn()
 	# reset skills
 	action_queue = []
 	next_pos = 0
@@ -50,6 +55,20 @@ func execute_turn():
 	reset_skill_select()
 	update_skill_positions()
 
+func enemy_turn():
+	# hides ally skills
+	toggle_skills()
+	await get_tree().create_timer(1).timeout
+	var skill = enemy1.skill
+	ally1.receive_skill(skill.damage, skill.element)
+	ally2.receive_skill(skill.damage, skill.element)
+	ally3.receive_skill(skill.damage, skill.element)
+	ally4.receive_skill(skill.damage, skill.element)
+	await get_tree().create_timer(1).timeout
+	turn_text.text = "Ally Turn"
+	# shows ally skills
+	toggle_skills()
+	
 func use_skill(skill):
 	enemy1.receive_skill(skill.damage, skill.element)
 
@@ -102,7 +121,7 @@ func _on_spell_select_ui_new_select() -> void:
 
 # char 2
 func _on_spell_select_ui_2_new_select() -> void:
-	var spell_select_ui: Control = $"../Ally2/SpellSelectUi2"
+	var spell_select_ui: Control = $"../Ally2/SpellSelectUi"
 	var change = false
 	if (spell_select_ui.selected != 0 and ally2skill == -1):
 		ally2_pos = next_pos
@@ -146,7 +165,7 @@ func _on_spell_select_ui_2_new_select() -> void:
 
 # char 3
 func _on_spell_select_ui_3_new_select() -> void:
-	var spell_select_ui: Control = $"../Ally3/SpellSelectUi3"
+	var spell_select_ui: Control = $"../Ally3/SpellSelectUi"
 	var change = false
 	if (spell_select_ui.selected != 0 and ally3skill == -1):
 		ally3_pos = next_pos
@@ -189,7 +208,7 @@ func _on_spell_select_ui_3_new_select() -> void:
 
 # char 4
 func _on_spell_select_ui_4_new_select() -> void:
-	var spell_select_ui: Control = $"../Ally4/SpellSelectUi4"
+	var spell_select_ui: Control = $"../Ally4/SpellSelectUi"
 	var change = false
 	if (spell_select_ui.selected != 0 and ally4skill == -1):
 		ally4_pos = next_pos
@@ -243,9 +262,9 @@ func update_positions(cpos):
 
 func update_skill_positions():
 	var spell_select_ui1: Control = $"../Ally1/SpellSelectUi"
-	var spell_select_ui2: Control = $"../Ally2/SpellSelectUi2"
-	var spell_select_ui3: Control = $"../Ally3/SpellSelectUi3"
-	var spell_select_ui4: Control = $"../Ally4/SpellSelectUi4"
+	var spell_select_ui2: Control = $"../Ally2/SpellSelectUi"
+	var spell_select_ui3: Control = $"../Ally3/SpellSelectUi"
+	var spell_select_ui4: Control = $"../Ally4/SpellSelectUi"
 	
 	spell_select_ui1.update_pos(ally1_pos + 1)
 	spell_select_ui2.update_pos(ally2_pos + 1)
@@ -254,9 +273,9 @@ func update_skill_positions():
 
 func reset_skill_select():
 	var spell_select_ui1: Control = $"../Ally1/SpellSelectUi"
-	var spell_select_ui2: Control = $"../Ally2/SpellSelectUi2"
-	var spell_select_ui3: Control = $"../Ally3/SpellSelectUi3"
-	var spell_select_ui4: Control = $"../Ally4/SpellSelectUi4"
+	var spell_select_ui2: Control = $"../Ally2/SpellSelectUi"
+	var spell_select_ui3: Control = $"../Ally3/SpellSelectUi"
+	var spell_select_ui4: Control = $"../Ally4/SpellSelectUi"
 
 	ally1skill = -1
 	ally2skill = -1
@@ -280,3 +299,9 @@ func _on_reset_choices_pressed() -> void:
 	ally4_pos = -1
 	reset_skill_select()
 	update_skill_positions()
+	
+func toggle_skills():
+	ally1.toggle_skills()
+	ally2.toggle_skills()
+	ally3.toggle_skills()
+	ally4.toggle_skills()
