@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://il7olc82ns7f"]
+[gd_scene load_steps=18 format=3 uid="uid://il7olc82ns7f"]
 
 [ext_resource type="Texture2D" uid="uid://djyorqs13oxgy" path="res://assets/burger.jpg" id="1_to6ih"]
 [ext_resource type="Script" path="res://scenes/combat_manager.gd" id="2_hh3fv"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://c3vp6cnsau7i1" path="res://assets/stelletrash.png" id="12_xxdvk"]
 [ext_resource type="Texture2D" uid="uid://defrd4fdejdu1" path="res://assets/miyabii.png" id="13_3288v"]
 [ext_resource type="Texture2D" uid="uid://qlvy3vq13goh" path="res://assets/yatta.png" id="14_hgdfq"]
+[ext_resource type="Texture2D" uid="uid://b6rhxb71os38w" path="res://assets/hsrbg.png" id="16_7iixp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mo5rj"]
 font_size = 48
@@ -207,6 +208,13 @@ offset_top = 806.0
 offset_right = 640.0
 offset_bottom = 841.0
 text = "Reset Choices"
+
+[node name="Background" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.411)
+z_index = -5
+position = Vector2(963, 539.5)
+scale = Vector2(1.50312, 1.49861)
+texture = ExtResource("16_7iixp")
 
 [connection signal="new_select" from="Ally1/SpellSelectUi" to="CombatManager" method="_on_spell_select_ui_new_select"]
 [connection signal="new_select" from="Ally2/SpellSelectUi" to="CombatManager" method="_on_spell_select_ui_2_new_select"]
