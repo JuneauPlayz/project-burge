@@ -2,7 +2,7 @@ extends Node
 
 var vaporize_mult = 2
 var shock_mult = 0.5
-
+signal reaction_finished
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -11,8 +11,10 @@ func reaction(elem1 : String, elem2 : String, unit : Unit, value):
 	var reaction = ""
 	var res_value = value
 	if (elem1 == "none" or elem2 == "none"): 
+		reaction_finished.emit()
 		return false
 	if (elem1 == elem2):
+		reaction_finished.emit()
 		return false
 	match elem1:
 		# fire reactions
@@ -77,7 +79,7 @@ func reaction(elem1 : String, elem2 : String, unit : Unit, value):
 					unit.take_damage(res_value)
 					DamageNumbers.display_number(res_value, unit.get_child(2).global_position, elem2, reaction)
 					unit.current_element = "none"
-					
+	reaction_finished.emit()				
 	return true
 					
 		

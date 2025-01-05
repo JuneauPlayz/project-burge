@@ -29,10 +29,12 @@ var combat_finished = false
 var first_turn = true
 
 signal hit
-
+signal signal_received
+signal reaction_finished
 func _ready() -> void:
 	# waiting for everything to load in
 	await get_tree().create_timer(0.1).timeout
+	ReactionManager.reaction_finished.connect(self.reaction_signal)
 	reset_skill_select()
 	# hiding skills at the start because start of all turn toggles skills already
 	toggle_skills()
@@ -56,8 +58,8 @@ func execute_ally_turn():
 	toggle_skills()
 	for x in action_queue:
 		use_skill(x)
-		var confirmed = await enemy1.signal_received()
-		await confirmed
+		print("waiting for reaction")
+		await reaction_finished
 		print(str(x.name) + " landed!")
 		hit.emit()
 		await get_tree().create_timer(0.5).timeout
@@ -78,7 +80,13 @@ func enemy_turn():
 	
 func use_skill(skill):
 	enemy1.receive_skill(skill.damage, skill.element)
+	print("waiting use skill")
+	await reaction_finished
+	print("finished waiting use skill")
 
+func reaction_signal():
+	await get_tree().create_timer(0.01).timeout
+	reaction_finished.emit()
 # char 1
 func _on_spell_select_ui_new_select() -> void:
 	var spell_select_ui: Control = $"../Ally1/SpellSelectUi"
