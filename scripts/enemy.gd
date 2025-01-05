@@ -1,16 +1,22 @@
 extends Unit
 class_name Enemy
 
-@export var skill : Skill
+@export var skill1 : Skill
+@export var skill2 : Skill
+var current_skill : Skill
 @export var current_element : String = "none"
 @export var reaction_primed = 0
 @onready var damage_number_origin: Node2D = $DamageNumberOrigin
 var hp_bar
+@onready var skill_info: Control = $ShowNextSkill/SkillInfo
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#always mak	e hp bar second child
+	current_skill = skill1
+	skill_info.skill = current_skill
+	skill_info.update_skill_info()
 	print(health)
 	hp_bar = get_child(1)
 	hp_bar.set_hp(health)
@@ -45,3 +51,12 @@ func check_if_dead():
 
 func die():
 	print("ded")
+	
+func change_skills():
+	if current_skill == skill1:
+		current_skill = skill2
+	elif current_skill == skill2:
+		current_skill = skill1
+	skill_info.skill = current_skill
+	skill_info.update_skill_info()
+	

@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://il7olc82ns7f"]
+[gd_scene load_steps=17 format=3 uid="uid://il7olc82ns7f"]
 
 [ext_resource type="Texture2D" uid="uid://djyorqs13oxgy" path="res://assets/burger.jpg" id="1_to6ih"]
 [ext_resource type="Script" path="res://scenes/combat_manager.gd" id="2_hh3fv"]
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="2_xoe2s"]
 [ext_resource type="Script" path="res://scripts/ally.gd" id="4_2mvrs"]
+[ext_resource type="PackedScene" uid="uid://sdwnoh61gawa" path="res://skill_info.tscn" id="7_hw5oh"]
 [ext_resource type="PackedScene" uid="uid://5spa5amgsxfm" path="res://scenes/hp_bar.tscn" id="7_pyguu"]
 [ext_resource type="Resource" uid="uid://t5il68wvfb0s" path="res://resources/basic_attack.tres" id="7_ytvil"]
 [ext_resource type="Resource" uid="uid://c3yogn8m318q2" path="res://resources/test_skill_1.tres" id="8_ox83u"]
@@ -38,7 +39,8 @@ label_settings = SubResource("LabelSettings_mo5rj")
 
 [node name="BurgerEnemy" type="Node" parent="."]
 script = ExtResource("2_xoe2s")
-skill = ExtResource("8_ox83u")
+skill1 = ExtResource("8_ox83u")
+skill2 = ExtResource("9_4meuk")
 health = 200
 
 [node name="Burger" type="Sprite2D" parent="BurgerEnemy"]
@@ -55,13 +57,34 @@ offset_bottom = -437.0
 [node name="DamageNumberOrigin" type="Node2D" parent="BurgerEnemy"]
 position = Vector2(1623, 634)
 
+[node name="ShowNextSkill" type="Control" parent="BurgerEnemy"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="BurgerEnemy/ShowNextSkill"]
+layout_mode = 0
+offset_left = 1393.0
+offset_top = 46.0
+offset_right = 1470.0
+offset_bottom = 69.0
+text = "Next Skill:"
+
+[node name="SkillInfo" parent="BurgerEnemy/ShowNextSkill" instance=ExtResource("7_hw5oh")]
+layout_mode = 1
+offset_left = 1496.0
+offset_top = 41.0
+offset_right = 1496.0
+offset_bottom = 41.0
+
 [node name="Ally1" type="Node" parent="."]
 script = ExtResource("4_2mvrs")
 basic_atk = ExtResource("7_ytvil")
 skill_1 = ExtResource("8_ox83u")
 skill_2 = ExtResource("9_4meuk")
 ult = ExtResource("10_0ymtv")
-health = 50
+health = 100
 
 [node name="SpellSelectUi" parent="Ally1" instance=ExtResource("11_kfp4s")]
 offset_left = 51.0
@@ -90,7 +113,7 @@ basic_atk = ExtResource("7_ytvil")
 skill_1 = ExtResource("8_ox83u")
 skill_2 = ExtResource("9_4meuk")
 ult = ExtResource("10_0ymtv")
-health = 50
+health = 100
 
 [node name="SpellSelectUi" parent="Ally2" instance=ExtResource("11_kfp4s")]
 offset_left = 580.0
@@ -119,7 +142,7 @@ basic_atk = ExtResource("7_ytvil")
 skill_1 = ExtResource("8_ox83u")
 skill_2 = ExtResource("9_4meuk")
 ult = ExtResource("10_0ymtv")
-health = 50
+health = 100
 
 [node name="SpellSelectUi" parent="Ally3" instance=ExtResource("11_kfp4s")]
 offset_left = 313.0
@@ -148,7 +171,7 @@ basic_atk = ExtResource("7_ytvil")
 skill_1 = ExtResource("8_ox83u")
 skill_2 = ExtResource("9_4meuk")
 ult = ExtResource("10_0ymtv")
-health = 50
+health = 100
 
 [node name="SpellSelectUi" parent="Ally4" instance=ExtResource("11_kfp4s")]
 offset_left = 847.0

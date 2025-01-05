@@ -59,11 +59,12 @@ func enemy_turn():
 	# hides ally skills
 	toggle_skills()
 	await get_tree().create_timer(1).timeout
-	var skill = enemy1.skill
+	var skill = enemy1.current_skill
 	ally1.receive_skill(skill.damage, skill.element)
 	ally2.receive_skill(skill.damage, skill.element)
 	ally3.receive_skill(skill.damage, skill.element)
 	ally4.receive_skill(skill.damage, skill.element)
+	enemy1.change_skills()
 	await get_tree().create_timer(1).timeout
 	turn_text.text = "Ally Turn"
 	# shows ally skills
