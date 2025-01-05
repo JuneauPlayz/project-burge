@@ -28,6 +28,8 @@ signal enemy_turn_done
 var combat_finished = false
 var first_turn = true
 
+signal hit
+
 func _ready() -> void:
 	# waiting for everything to load in
 	await get_tree().create_timer(0.1).timeout
@@ -55,6 +57,7 @@ func execute_ally_turn():
 	for x in action_queue:
 		use_skill(x)
 		print(str(x.name) + " landed!")
+		hit.emit()
 		await get_tree().create_timer(0.5).timeout
 	turn_text.text = "Enemy Turn"
 	ally_turn_done.emit()
@@ -66,6 +69,7 @@ func enemy_turn():
 	ally2.receive_skill(skill.damage, skill.element)
 	ally3.receive_skill(skill.damage, skill.element)
 	ally4.receive_skill(skill.damage, skill.element)
+	hit.emit()
 	enemy1.change_skills()
 	await get_tree().create_timer(1).timeout
 	enemy_turn_done.emit()

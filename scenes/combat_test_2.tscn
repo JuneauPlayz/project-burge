@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://il7olc82ns7f"]
+[gd_scene load_steps=20 format=3 uid="uid://il7olc82ns7f"]
 
 [ext_resource type="Texture2D" uid="uid://djyorqs13oxgy" path="res://assets/burger.jpg" id="1_to6ih"]
 [ext_resource type="Script" path="res://scenes/combat_manager.gd" id="2_hh3fv"]
@@ -16,6 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://defrd4fdejdu1" path="res://assets/miyabii.png" id="13_3288v"]
 [ext_resource type="Texture2D" uid="uid://qlvy3vq13goh" path="res://assets/yatta.png" id="14_hgdfq"]
 [ext_resource type="Texture2D" uid="uid://b6rhxb71os38w" path="res://assets/hsrbg.png" id="16_7iixp"]
+[ext_resource type="Script" path="res://scenes/sound_manager.gd" id="17_bd8ds"]
+[ext_resource type="AudioStream" uid="uid://c0fyotn8lqfkv" path="res://assets/fire hit.mp3" id="18_g8ami"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mo5rj"]
 font_size = 48
@@ -216,6 +218,14 @@ position = Vector2(963, 539.5)
 scale = Vector2(1.50312, 1.49861)
 texture = ExtResource("16_7iixp")
 
+[node name="SoundManager" type="Node" parent="."]
+script = ExtResource("17_bd8ds")
+
+[node name="firehit noise" type="AudioStreamPlayer2D" parent="SoundManager"]
+stream = ExtResource("18_g8ami")
+volume_db = -16.0
+
+[connection signal="hit" from="CombatManager" to="SoundManager" method="_on_combat_manager_hit"]
 [connection signal="new_select" from="Ally1/SpellSelectUi" to="CombatManager" method="_on_spell_select_ui_new_select"]
 [connection signal="new_select" from="Ally2/SpellSelectUi" to="CombatManager" method="_on_spell_select_ui_2_new_select"]
 [connection signal="new_select" from="Ally3/SpellSelectUi" to="CombatManager" method="_on_spell_select_ui_3_new_select"]
