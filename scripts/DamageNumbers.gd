@@ -1,5 +1,5 @@
 extends Node
-var element_dict = {"none": Color.WHITE, "fire": Color.CORAL, "water": Color.AQUA, "lightning": Color.PURPLE}
+var element_dict = {"none": Color.WHITE, "fire": Color.CORAL, "water": Color.AQUA, "lightning": Color.PURPLE, "earth": Color.SADDLE_BROWN}
 func display_number(value: int, position: Vector2, element : String, reaction : String):
 	var number = Label.new()
 	value = -value

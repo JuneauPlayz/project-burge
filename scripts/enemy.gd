@@ -34,7 +34,7 @@ func receive_skill(damage: float, element: String):
 	var rounded : int
 	var reaction = ""
 	ReactionManager.reaction_finished.connect(self.reaction_signal)
-	var r = await ReactionManager.reaction(current_element, element, self, damage)
+	var r = await ReactionManager.reaction(current_element, element, self, damage, 1)
 	if (r):
 		print("waiting")
 		await reaction_ended 

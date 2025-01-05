@@ -28,7 +28,7 @@ func _ready() -> void:
 func receive_skill(damage: float, element: String):
 	var rounded : int
 	var reaction = ""
-	var r = await ReactionManager.reaction(current_element, element, self, damage)
+	var r = await ReactionManager.reaction(current_element, element, self, damage, 1)
 	# no reaction
 	if (!r):
 		self.take_damage(damage)
@@ -37,9 +37,26 @@ func receive_skill(damage: float, element: String):
 		if (element != "none"):
 			current_element = element
 	hp_bar.update_element(current_element)
-
+	
+func receive_skill_friendly(effect: float, element: String):
+	var rounded : int
+	var reaction = ""
+	var r = await ReactionManager.reaction(current_element, element, self, effect, 0)
+	if (!r):
+		self.receive_healing(effect)
+		DamageNumbers.display_number(effect, damage_number_origin.global_position, element, reaction)
+		if (element != "none"):
+			current_element = element
+	hp_bar.update_element(current_element)
+	
+	
+	
 func take_damage(damage : int):
 	health -= damage
+	hp_bar.set_hp(health)
+
+func receive_healing(healing: int):
+	health += healing
 	hp_bar.set_hp(health)
 
 func toggle_skills():

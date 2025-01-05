@@ -79,10 +79,16 @@ func enemy_turn():
 	enemy_turn_done.emit()
 	
 func use_skill(skill):
-	enemy1.receive_skill(skill.damage, skill.element)
-	print("waiting use skill")
-	await reaction_finished
-	print("finished waiting use skill")
+	if skill.friendly == false:
+		enemy1.receive_skill(skill.damage, skill.element)
+		print("waiting use skill")
+		await reaction_finished
+		print("finished waiting use skill")
+	elif skill.friendly == true:
+		ally1.receive_skill_friendly(skill.damage, skill.element)
+		ally2.receive_skill_friendly(skill.damage, skill.element)
+		ally3.receive_skill_friendly(skill.damage, skill.element)
+		ally4.receive_skill_friendly(skill.damage, skill.element)
 
 func reaction_signal():
 	await get_tree().create_timer(0.01).timeout
