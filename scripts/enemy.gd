@@ -36,6 +36,7 @@ func receive_skill(damage: float, element: String):
 	var reaction = ""
 	if (!connected):
 		ReactionManager.reaction_finished.connect(self.reaction_signal)
+		connected = true
 	var r = await ReactionManager.reaction(current_element, element, self, damage, 1)
 	if (r):
 		print("waiting")
