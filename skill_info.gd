@@ -1,14 +1,13 @@
 extends Control
 
 @export var skill : Skill
-
 @onready var skill_name: Label = $PanelContainer/PanelContainer/MarginContainer/VBoxContainer/SkillName
 @onready var element: Label = $PanelContainer/PanelContainer/MarginContainer/VBoxContainer/Element
 @onready var description: Label = $PanelContainer/PanelContainer/MarginContainer/VBoxContainer/Description
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	description.text = ""
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -16,8 +15,26 @@ func _process(delta: float) -> void:
 	pass
 
 func update_skill_info():
+	description.text = ""
+	var target = ""
 	skill_name.text = skill.name
 	element.text = skill.element
+	match skill.target_type:
+		"single_enemy":
+			target = "an enemy"
+		"single_ally":
+			target = "an ally"
+		"all_allies":
+			target = "to all allies"
+		"all_enemies":
+			target = "to all enemies"
+
 	if skill.damaging == true:
-		description.text = "Deals " + str(skill.damage) + " " + str(skill.element) + " damage"
+		description.text += "Deals " + str(skill.damage) + " " + str(skill.element) + " damage\nto " + target
+	if skill.shielding == true:
+		description.text += "Shields " + str(skill.damage) + " to " + target
+	if skill.healing == true:
+		description.text += "Heals " + str(skill.damage) + " to " + target
+	
+		
 	

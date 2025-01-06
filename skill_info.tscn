@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://sdwnoh61gawa"]
+[gd_scene load_steps=5 format=3 uid="uid://sdwnoh61gawa"]
 
 [ext_resource type="Script" path="res://skill_info.gd" id="1_c7637"]
 
@@ -22,8 +22,6 @@ corner_radius_bottom_left = 7
 shadow_size = 9
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pmpuw"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s8l8u"]
 
 [node name="SkillInfo" type="Control"]
 z_index = 5
@@ -66,10 +64,6 @@ theme_override_styles/separator = SubResource("StyleBoxFlat_pmpuw")
 [node name="Element" type="Label" parent="PanelContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Element"
-
-[node name="VSeparator2" type="VSeparator" parent="PanelContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxFlat_s8l8u")
 
 [node name="Description" type="Label" parent="PanelContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2

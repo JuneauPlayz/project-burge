@@ -22,8 +22,8 @@ func _ready() -> void:
 	spell_select_ui.skill4 = ult
 	spell_select_ui.load_skills()
 	
-	hp_bar.set_hp(health)
-	hp_bar.set_maxhp(health)
+	hp_bar.set_hp(max_health)
+	hp_bar.set_maxhp(max_health)
 
 
 func receive_skill(skill):
@@ -46,9 +46,15 @@ func receive_skill(skill):
 func receive_skill_friendly(skill):
 	var rounded : int
 	var reaction = ""
+	var number = skill.damage
 	var r = await ReactionManager.reaction(current_element, skill.element, self, skill.damage, 0)
-	self.receive_shielding(skill.damage)
-	DamageNumbers.display_number_plus(skill.damage, damage_number_origin.global_position, skill.element, reaction)
+	if skill.shielding == true:
+		self.receive_shielding(skill.damage)
+	if skill.healing == true:
+		if (health + number >= max_health):
+			number = max_health - health
+		self.receive_healing(skill.damage)
+	DamageNumbers.display_number_plus(number, damage_number_origin.global_position, skill.element, reaction)
 	if (skill.element != "none"):
 		current_element = skill.element
 	#handle status effects
@@ -74,6 +80,8 @@ func take_damage(damage : int):
 
 func receive_healing(healing: int):
 	health += healing
+	if health >= max_health:
+		health = max_health
 	hp_bar.set_hp(health)
 	
 func receive_shielding(shielding: int):

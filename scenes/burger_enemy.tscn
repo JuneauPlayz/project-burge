@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bi555vcqhi0p5"]
+[gd_scene load_steps=13 format=3 uid="uid://bi555vcqhi0p5"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_5okij"]
 [ext_resource type="Texture2D" uid="uid://djyorqs13oxgy" path="res://assets/burger.jpg" id="1_qva00"]
@@ -10,6 +10,9 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ebmkq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6w0c8"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_76n2e"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xp1kw"]
@@ -84,6 +87,7 @@ offset_right = 288.0
 offset_bottom = 576.0
 theme_override_styles/focus = SubResource("StyleBoxFlat_ebmkq")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_6w0c8")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_76n2e")
 theme_override_styles/hover = SubResource("StyleBoxFlat_xp1kw")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_6pkpw")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ysnwy")

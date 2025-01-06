@@ -5,5 +5,8 @@ class_name Skill
 @export var damage : int = 5
 @export var element : String = ""
 @export var damaging = false
+@export var healing = false
+@export var shielding = false
 @export var friendly = false
 @export var status_effects : Array = []
+@export_enum("single_enemy", "single_ally", "all_enemies", "all_allies") var target_type : String

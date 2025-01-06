@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://il7olc82ns7f"]
+[gd_scene load_steps=26 format=3 uid="uid://il7olc82ns7f"]
 
 [ext_resource type="Script" path="res://scripts/Targeting.gd" id="1_xnina"]
 [ext_resource type="Script" path="res://scenes/combat_manager.gd" id="2_hh3fv"]
@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://t5il68wvfb0s" path="res://resources/Skills/basic_attack.tres" id="7_ytvil"]
 [ext_resource type="Resource" uid="uid://c3yogn8m318q2" path="res://resources/Skills/Fire_Bolt.tres" id="8_ox83u"]
 [ext_resource type="Resource" uid="uid://dooqfwlwxly5w" path="res://resources/Skills/Water_Bolt.tres" id="9_4meuk"]
+[ext_resource type="Resource" uid="uid://025hve2nq35j" path="res://resources/Skills/Healing_Bloom.tres" id="9_j4haq"]
 [ext_resource type="Resource" uid="uid://dcf2ccmtpg225" path="res://resources/Skills/Fire_Spear.tres" id="10_0ymtv"]
 [ext_resource type="Resource" uid="uid://bya4jpai0ygj5" path="res://resources/Skills/Rock Shield.tres" id="10_r3sqd"]
 [ext_resource type="Texture2D" uid="uid://b3bd5fw4hk3xb" path="res://assets/qiqifallen.png" id="11_4linb"]
@@ -80,8 +81,9 @@ script = ExtResource("4_2mvrs")
 basic_atk = ExtResource("7_ytvil")
 skill_1 = ExtResource("8_ox83u")
 skill_2 = ExtResource("9_4meuk")
-ult = ExtResource("10_r3sqd")
+ult = ExtResource("9_j4haq")
 health = 100
+max_health = 100
 
 [node name="SpellSelectUi" parent="Ally1" instance=ExtResource("11_kfp4s")]
 offset_left = 27.0
@@ -110,8 +112,9 @@ script = ExtResource("4_2mvrs")
 basic_atk = ExtResource("7_ytvil")
 skill_1 = ExtResource("8_ox83u")
 skill_2 = ExtResource("9_4meuk")
-ult = ExtResource("10_0ymtv")
+ult = ExtResource("10_r3sqd")
 health = 100
+max_health = 100
 
 [node name="SpellSelectUi" parent="Ally2" instance=ExtResource("11_kfp4s")]
 offset_left = 249.0
@@ -142,6 +145,7 @@ skill_1 = ExtResource("15_n7e50")
 skill_2 = ExtResource("9_4meuk")
 ult = ExtResource("10_0ymtv")
 health = 100
+max_health = 100
 
 [node name="SpellSelectUi" parent="Ally3" instance=ExtResource("11_kfp4s")]
 offset_left = 471.0
@@ -172,6 +176,7 @@ skill_1 = ExtResource("17_o3a1s")
 skill_2 = ExtResource("9_4meuk")
 ult = ExtResource("10_0ymtv")
 health = 100
+max_health = 100
 
 [node name="SpellSelectUi" parent="Ally4" instance=ExtResource("11_kfp4s")]
 offset_left = 691.0

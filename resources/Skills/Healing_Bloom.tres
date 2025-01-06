@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3 uid="uid://025hve2nq35j"]
+
+[ext_resource type="Script" path="res://scripts/skill.gd" id="1_8nudu"]
+
+[resource]
+script = ExtResource("1_8nudu")
+name = "Healing Bloom"
+damage = 20
+element = "grass"
+damaging = false
+healing = true
+shielding = false
+friendly = true
+status_effects = []
+target_type = "all_allies"

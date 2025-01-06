@@ -98,7 +98,7 @@ func execute_ally_turn():
 func enemy_turn():
 	await get_tree().create_timer(0.25).timeout
 	enemy_pre_status()
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(0.3).timeout
 	var skill = enemy1.current_skill
 	ally1.receive_skill(skill)
 	ally2.receive_skill(skill)
@@ -106,22 +106,24 @@ func enemy_turn():
 	ally4.receive_skill(skill)
 	hit.emit()
 	enemy1.change_skills()
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(0.1).timeout
 	enemy_post_status()
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(0.3).timeout
 	enemy_turn_done.emit()
 	
 func use_skill(skill,target):
-	if skill.friendly == false:
-		target.receive_skill(skill)
-		print("waiting use skill")
-		await reaction_finished
-		print("finished waiting use skill")
-	elif skill.friendly == true:
-		ally1.receive_skill_friendly(skill)
-		ally2.receive_skill_friendly(skill)
-		ally3.receive_skill_friendly(skill)
-		ally4.receive_skill_friendly(skill)
+	if (target == null):
+		if (skill.target_type == "all_allies"):
+			for ally in allies:
+				ally.receive_skill_friendly(skill)
+	else:
+		if skill.damaging == true:
+			target.receive_skill(skill)
+			print("waiting use skill")
+			await reaction_finished
+			print("finished waiting use skill")
+
+	
 
 func reaction_signal():
 	await get_tree().create_timer(0.01).timeout
@@ -145,6 +147,7 @@ func _on_spell_select_ui_new_select() -> void:
 	# if changing selection and not unselecting
 	if (ally1skill != -1 and spell_select_ui.selected != 0):
 		action_queue.remove_at(ally1_pos)
+		target_queue.remove_at(ally1_pos)
 		change = true
 	ally1skill = spell_select_ui.selected
 	match spell_select_ui.selected:
@@ -207,6 +210,7 @@ func _on_spell_select_ui_2_new_select() -> void:
 		0:
 			next_pos -= 1
 			action_queue.remove_at(ally2_pos)
+			target_queue.remove_at(ally2_pos)
 			update_positions(ally2_pos)
 			spell_select_ui.update_pos(0)
 			ally2_pos = -1
@@ -259,6 +263,7 @@ func _on_spell_select_ui_3_new_select() -> void:
 		0:
 			next_pos -= 1
 			action_queue.remove_at(ally3_pos)
+			target_queue.remove_at(ally3_pos)
 			update_positions(ally3_pos)
 			spell_select_ui.update_pos(0)
 			ally3_pos = -1
@@ -312,6 +317,7 @@ func _on_spell_select_ui_4_new_select() -> void:
 			
 			next_pos -= 1
 			action_queue.remove_at(ally4_pos)
+			target_queue.remove_at(ally4_pos)
 			update_positions(ally4_pos)
 			spell_select_ui.update_pos(0)
 			ally4_pos = -1
@@ -430,22 +436,25 @@ func show_ui():
 	
 	
 func choose_target(skill : Skill): 
-	toggle_targeting_ui(skill)
-	hide_skills()
-	hide_ui()
-	targeting_skill_info.visible = true
-	targeting_label.visible = true
-	for enemy in enemies:
-		enemy.enable_targeting_area()
-	new_spell_selected.emit()
-	var target = await target_chosen
-	for enemy in enemies:
-		enemy.disable_targeting_area()
-	print("target found, " + str(target))
-	show_skills()
-	show_ui()
-	toggle_targeting_ui(skill)
-	return target
+	if (skill.target_type == "single_enemy" or skill.target_type == "single_ally"):
+		toggle_targeting_ui(skill)
+		hide_skills()
+		hide_ui()
+		targeting_skill_info.visible = true
+		targeting_label.visible = true
+		for enemy in enemies:
+			enemy.enable_targeting_area()
+		new_spell_selected.emit()
+		var target = await target_chosen
+		for enemy in enemies:
+			enemy.disable_targeting_area()
+		print("target found, " + str(target))
+		show_skills()
+		show_ui()
+		toggle_targeting_ui(skill)
+		return target
+	else:
+		return null
 	
 func target_signal(unit):
 	target_chosen.emit(unit)

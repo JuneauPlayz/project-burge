@@ -11,3 +11,4 @@ element = "none"
 damaging = true
 friendly = false
 status_effects = [ExtResource("2_45y2v")]
+target_type = "single_enemy"

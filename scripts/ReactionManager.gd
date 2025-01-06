@@ -124,6 +124,29 @@ func reaction(elem1 : String, elem2 : String, unit : Unit, value, hostile : int)
 					if hostile == 1:
 						DamageNumbers.display_number(res_value, unit.get_child(2).global_position, elem2, reaction)
 					unit.current_element = "none"
+		"grass":
+			match elem2:
+				"earth":
+					unit.take_damage(roundi(value * hostile))
+					if hostile == 1:
+						DamageNumbers.display_number(res_value, unit.get_child(2).global_position, elem2, reaction)
+					unit.current_element = "none"
+				"fire":
+					unit.take_damage(roundi(value * hostile))
+					if hostile == 1:
+						DamageNumbers.display_number(res_value, unit.get_child(2).global_position, elem2, reaction)
+					unit.current_element = "none"
+				"water":
+					unit.take_damage(roundi(value * hostile))
+					if hostile == 1:
+						DamageNumbers.display_number(res_value, unit.get_child(2).global_position, elem2, reaction)
+					unit.current_element = "none"
+				"lightning":
+					unit.take_damage(roundi(value * hostile))
+					if hostile == 1:
+						DamageNumbers.display_number(res_value, unit.get_child(2).global_position, elem2, reaction)
+					unit.current_element = "none"
+			
 	reaction_finished.emit()				
 	return true
 					
