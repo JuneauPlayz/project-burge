@@ -361,6 +361,7 @@ func reset_skill_select():
 	var spell_select_ui3: Control = $"../Ally3/SpellSelectUi"
 	var spell_select_ui4: Control = $"../Ally4/SpellSelectUi"
 	action_queue = []
+	target_queue = []
 	next_pos = 0
 	ally1_pos = -1
 	ally2_pos = -1
@@ -385,6 +386,7 @@ func _on_end_turn_pressed() -> void:
 
 func _on_reset_choices_pressed() -> void:
 	action_queue = []
+	target_queue = []
 	next_pos = 0
 	ally1_pos = -1
 	ally2_pos = -1
