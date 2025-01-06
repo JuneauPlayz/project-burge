@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://il7olc82ns7f"]
+[gd_scene load_steps=28 format=3 uid="uid://il7olc82ns7f"]
 
 [ext_resource type="Script" path="res://scripts/Targeting.gd" id="1_xnina"]
 [ext_resource type="Script" path="res://scenes/combat_manager.gd" id="2_hh3fv"]
@@ -23,6 +23,8 @@
 [ext_resource type="Resource" uid="uid://clidntww233oy" path="res://resources/Skills/Bloody_Slash.tres" id="17_o3a1s"]
 [ext_resource type="PackedScene" uid="uid://bi555vcqhi0p5" path="res://scenes/burger_enemy.tscn" id="17_oeje8"]
 [ext_resource type="AudioStream" uid="uid://c0fyotn8lqfkv" path="res://assets/fire hit.mp3" id="18_g8ami"]
+[ext_resource type="Resource" uid="uid://d0sxdut8uscys" path="res://resources/Skills/AOEEarth.tres" id="21_st4wd"]
+[ext_resource type="Resource" uid="uid://cr3bbtfskjida" path="res://resources/Skills/AOEFire.tres" id="22_bh7xm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mo5rj"]
 font_size = 48
@@ -99,13 +101,13 @@ offset_right = -1595.0
 offset_bottom = -506.0
 scale = Vector2(0.65, 0.65)
 
+[node name="DamageNumberOrigin" type="Node2D" parent="Ally1"]
+position = Vector2(115, 444)
+
 [node name="Qiqifallen" type="Sprite2D" parent="Ally1"]
 position = Vector2(119, 388)
 scale = Vector2(0.261113, 0.242546)
 texture = ExtResource("11_4linb")
-
-[node name="DamageNumberOrigin" type="Node2D" parent="Ally1"]
-position = Vector2(115, 444)
 
 [node name="Ally2" type="Node" parent="."]
 script = ExtResource("4_2mvrs")
@@ -130,13 +132,13 @@ offset_right = -1378.0
 offset_bottom = -506.0
 scale = Vector2(0.65, 0.65)
 
+[node name="DamageNumberOrigin" type="Node2D" parent="Ally2"]
+position = Vector2(337, 457.75)
+
 [node name="Stelletrash" type="Sprite2D" parent="Ally2"]
 position = Vector2(345, 385)
 scale = Vector2(0.402062, 0.326291)
 texture = ExtResource("12_xxdvk")
-
-[node name="DamageNumberOrigin" type="Node2D" parent="Ally2"]
-position = Vector2(337, 457.75)
 
 [node name="Ally3" type="Node" parent="."]
 script = ExtResource("4_2mvrs")
@@ -161,13 +163,13 @@ offset_right = -1158.0
 offset_bottom = -513.0
 scale = Vector2(0.65, 0.65)
 
+[node name="DamageNumberOrigin" type="Node2D" parent="Ally3"]
+position = Vector2(599, 467.75)
+
 [node name="Miyabii" type="Sprite2D" parent="Ally3"]
 position = Vector2(562, 389)
 scale = Vector2(0.348301, 0.307655)
 texture = ExtResource("13_3288v")
-
-[node name="DamageNumberOrigin" type="Node2D" parent="Ally3"]
-position = Vector2(599, 467.75)
 
 [node name="Ally4" type="Node" parent="."]
 script = ExtResource("4_2mvrs")
@@ -192,19 +194,23 @@ offset_right = -932.0
 offset_bottom = -507.0
 scale = Vector2(0.65, 0.65)
 
+[node name="DamageNumberOrigin" type="Node2D" parent="Ally4"]
+position = Vector2(840, 459.75)
+
 [node name="Yatta" type="Sprite2D" parent="Ally4"]
 position = Vector2(784, 382)
 scale = Vector2(0.354839, 0.341837)
 texture = ExtResource("14_hgdfq")
 
-[node name="DamageNumberOrigin" type="Node2D" parent="Ally4"]
-position = Vector2(840, 459.75)
-
 [node name="BurgerEnemy" parent="." instance=ExtResource("17_oeje8")]
 position = Vector2(1454, 132)
+skill1 = ExtResource("21_st4wd")
+skill2 = ExtResource("22_bh7xm")
 
 [node name="BurgerEnemy2" parent="." instance=ExtResource("17_oeje8")]
 position = Vector2(1113, 138)
+skill1 = ExtResource("22_bh7xm")
+skill2 = ExtResource("21_st4wd")
 
 [node name="EndTurn" type="Button" parent="."]
 offset_left = 1521.0

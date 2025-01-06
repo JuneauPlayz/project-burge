@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3 uid="uid://d0sxdut8uscys"]
+
+[ext_resource type="Script" path="res://scripts/skill.gd" id="1_vyqcj"]
+
+[resource]
+script = ExtResource("1_vyqcj")
+name = "EnemyEarthAOE"
+damage = 15
+element = "earth"
+damaging = true
+healing = false
+shielding = false
+friendly = false
+status_effects = []
+target_type = "all_allies"

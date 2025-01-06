@@ -99,13 +99,11 @@ func enemy_turn():
 	await get_tree().create_timer(0.25).timeout
 	enemy_pre_status()
 	await get_tree().create_timer(0.3).timeout
-	var skill = enemy1.current_skill
-	ally1.receive_skill(skill)
-	ally2.receive_skill(skill)
-	ally3.receive_skill(skill)
-	ally4.receive_skill(skill)
-	hit.emit()
-	enemy1.change_skills()
+	for enemy in enemies:
+		use_skill(enemy.current_skill,null)
+		hit.emit()
+		enemy.change_skills()
+		await get_tree().create_timer(0.45).timeout
 	await get_tree().create_timer(0.1).timeout
 	enemy_post_status()
 	await get_tree().create_timer(0.3).timeout
@@ -114,8 +112,12 @@ func enemy_turn():
 func use_skill(skill,target):
 	if (target == null):
 		if (skill.target_type == "all_allies"):
-			for ally in allies:
-				ally.receive_skill_friendly(skill)
+			if (skill.friendly == true):
+				for ally in allies:
+					ally.receive_skill_friendly(skill)
+			else:
+				for ally in allies:
+					ally.receive_skill(skill)
 	else:
 		if skill.damaging == true:
 			target.receive_skill(skill)

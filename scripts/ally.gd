@@ -11,6 +11,8 @@ var current_element = "none"
 @onready var spell_select_ui: Control = $SpellSelectUi
 @onready var hp_bar: Control = $"HP Bar"
 
+# special status checks
+var bubbled = false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -32,8 +34,7 @@ func receive_skill(skill):
 	var r = await ReactionManager.reaction(current_element, skill.element, self, skill.damage, 1)
 	# no reaction
 	if (!r):
-		self.take_damage(skill.damage)
-		DamageNumbers.display_number(skill.damage, damage_number_origin.global_position, skill.element, reaction)
+		DamageNumbers.display_number(self.take_damage(skill.damage), damage_number_origin.global_position, skill.element, reaction)
 		# don't change current element if skill has no element
 		if (skill.element != "none"):
 			current_element = skill.element
@@ -67,6 +68,11 @@ func receive_skill_friendly(skill):
 	
 func take_damage(damage : int):
 	var damage_left = damage
+	var total_dmg = damage
+	if bubbled:
+		damage_left = damage/2
+		total_dmg = damage_left
+		bubbled = false
 	if (shield > 0):
 		if (shield <= damage_left):
 			damage_left -= shield
@@ -77,6 +83,7 @@ func take_damage(damage : int):
 		hp_bar.set_shield(shield)
 	health -= damage_left
 	hp_bar.set_hp(health)
+	return total_dmg
 
 func receive_healing(healing: int):
 	health += healing
@@ -99,8 +106,12 @@ func set_shield(shield):
 	hp_bar.set_shield(shield)
 	
 func execute_status(status_effect):
-	take_damage(status_effect.damage)
-	DamageNumbers.display_number(status_effect.damage, damage_number_origin.global_position, status_effect.element, "")
+	if (status_effect.unique_type == "bubble"):
+		if status_effect.turns_remaining > 0:
+			bubbled = true
+	if (status_effect.damage > 0):
+		take_damage(status_effect.damage)
+		DamageNumbers.display_number(status_effect.damage, damage_number_origin.global_position, status_effect.element, "")
 	status_effect.turns_remaining -= 1
 	if status_effect.turns_remaining == 0:
 		status.erase(status_effect)

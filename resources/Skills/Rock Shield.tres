@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_tff2v")
 name = "Rock Shield"
-damage = 20
+damage = 37
 element = "earth"
 damaging = false
 healing = false

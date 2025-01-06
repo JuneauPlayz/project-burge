@@ -71,6 +71,7 @@ func reaction_signal():
 
 func take_damage(damage : int):
 	health -= damage
+	return damage
 	hp_bar.set_hp(health)
 
 func check_if_dead():
