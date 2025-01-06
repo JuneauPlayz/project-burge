@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://djyorqs13oxgy" path="res://assets/burger.jpg" id="2_1fexk"]
 [ext_resource type="Script" path="res://scenes/combat_manager.gd" id="2_iaqvk"]
 [ext_resource type="Script" path="res://scripts/ally.gd" id="3_8uyyr"]
-[ext_resource type="Resource" uid="uid://t5il68wvfb0s" path="res://resources/basic_attack.tres" id="5_f4vmu"]
+[ext_resource type="Resource" uid="uid://t5il68wvfb0s" path="res://resources/Skills/basic_attack.tres" id="5_f4vmu"]
 [ext_resource type="PackedScene" uid="uid://tlvpop5rp1x6" path="res://scenes/spell_select_ui.tscn" id="5_hr1q2"]
 
 [node name="CartTest" type="Node2D"]

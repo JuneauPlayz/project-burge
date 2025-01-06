@@ -6,3 +6,4 @@ class_name Skill
 @export var element : String = ""
 @export var damaging = false
 @export var friendly = false
+@export var status_effects : Array = []
