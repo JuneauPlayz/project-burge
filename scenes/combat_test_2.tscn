@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://il7olc82ns7f"]
+[gd_scene load_steps=25 format=3 uid="uid://il7olc82ns7f"]
 
 [ext_resource type="Script" path="res://scripts/Targeting.gd" id="1_xnina"]
 [ext_resource type="Script" path="res://scenes/combat_manager.gd" id="2_hh3fv"]
@@ -19,6 +19,7 @@
 [ext_resource type="Resource" uid="uid://60omj8j38mfk" path="res://resources/Skills/Lightning_Bolt.tres" id="15_n7e50"]
 [ext_resource type="Texture2D" uid="uid://b6rhxb71os38w" path="res://assets/hsrbg.png" id="16_7iixp"]
 [ext_resource type="Script" path="res://scenes/sound_manager.gd" id="17_bd8ds"]
+[ext_resource type="Resource" uid="uid://clidntww233oy" path="res://resources/Skills/Bloody_Slash.tres" id="17_o3a1s"]
 [ext_resource type="PackedScene" uid="uid://bi555vcqhi0p5" path="res://scenes/burger_enemy.tscn" id="17_oeje8"]
 [ext_resource type="AudioStream" uid="uid://c0fyotn8lqfkv" path="res://assets/fire hit.mp3" id="18_g8ami"]
 
@@ -167,7 +168,7 @@ position = Vector2(599, 467.75)
 [node name="Ally4" type="Node" parent="."]
 script = ExtResource("4_2mvrs")
 basic_atk = ExtResource("7_ytvil")
-skill_1 = ExtResource("8_ox83u")
+skill_1 = ExtResource("17_o3a1s")
 skill_2 = ExtResource("9_4meuk")
 ult = ExtResource("10_0ymtv")
 health = 100

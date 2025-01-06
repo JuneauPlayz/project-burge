@@ -6,8 +6,10 @@ extends Node
 @export var ally2 : Ally
 @export var ally3 : Ally
 @export var ally4 : Ally
+@export var allies : Array = []
 @export var enemy1 : Enemy
 @export var enemy2 : Enemy
+@export var enemies : Array = []
 
 var ally_list = [ally1, ally2, ally3, ally4]
 var enemy_list = [enemy1, enemy2]
@@ -48,8 +50,12 @@ signal reaction_finished
 func _ready() -> void:
 	# waiting for everything to load in
 	await get_tree().create_timer(0.1).timeout
-	var ally_list = [ally1, ally2, ally3, ally4]
-	enemy_list = [enemy1, enemy2]
+	enemies.append(enemy1)
+	enemies.append(enemy2)
+	allies.append(ally1)
+	allies.append(ally2)
+	allies.append(ally3)
+	allies.append(ally4)
 	ReactionManager.reaction_finished.connect(self.reaction_signal)
 	show_skills()
 	reset_skill_select()
@@ -65,6 +71,7 @@ func start_combat():
 func start_ally_turn():
 	show_ui()
 	turn_text.text = "Ally Turn"
+	ally_pre_status()
 	lose_shields()
 	show_skills()
 	reset_skill_select()
@@ -83,32 +90,38 @@ func execute_ally_turn():
 		print(str(skill.name) + " landed!")
 		hit.emit()
 		await get_tree().create_timer(0.35).timeout
+	await get_tree().create_timer(1).timeout
+	ally_post_status()
 	turn_text.text = "Enemy Turn"
 	ally_turn_done.emit()
 
 func enemy_turn():
+	await get_tree().create_timer(0.25).timeout
+	enemy_pre_status()
 	await get_tree().create_timer(1).timeout
 	var skill = enemy1.current_skill
-	ally1.receive_skill(skill.damage, skill.element)
-	ally2.receive_skill(skill.damage, skill.element)
-	ally3.receive_skill(skill.damage, skill.element)
-	ally4.receive_skill(skill.damage, skill.element)
+	ally1.receive_skill(skill)
+	ally2.receive_skill(skill)
+	ally3.receive_skill(skill)
+	ally4.receive_skill(skill)
 	hit.emit()
 	enemy1.change_skills()
+	await get_tree().create_timer(1).timeout
+	enemy_post_status()
 	await get_tree().create_timer(1).timeout
 	enemy_turn_done.emit()
 	
 func use_skill(skill,target):
 	if skill.friendly == false:
-		target.receive_skill(skill.damage, skill.element)
+		target.receive_skill(skill)
 		print("waiting use skill")
 		await reaction_finished
 		print("finished waiting use skill")
 	elif skill.friendly == true:
-		ally1.receive_skill_friendly(skill.damage, skill.element)
-		ally2.receive_skill_friendly(skill.damage, skill.element)
-		ally3.receive_skill_friendly(skill.damage, skill.element)
-		ally4.receive_skill_friendly(skill.damage, skill.element)
+		ally1.receive_skill_friendly(skill)
+		ally2.receive_skill_friendly(skill)
+		ally3.receive_skill_friendly(skill)
+		ally4.receive_skill_friendly(skill)
 
 func reaction_signal():
 	await get_tree().create_timer(0.01).timeout
@@ -422,11 +435,11 @@ func choose_target(skill : Skill):
 	hide_ui()
 	targeting_skill_info.visible = true
 	targeting_label.visible = true
-	for enemy in enemy_list:
+	for enemy in enemies:
 		enemy.enable_targeting_area()
 	new_spell_selected.emit()
 	var target = await target_chosen
-	for enemy in enemy_list:
+	for enemy in enemies:
 		enemy.disable_targeting_area()
 	print("target found, " + str(target))
 	show_skills()
@@ -443,3 +456,31 @@ func toggle_targeting_ui(skill):
 	targeting_skill_info.visible = !targeting_skill_info.visible
 	targeting_label.visible = !targeting_label.visible
 	
+#activate statuses
+func enemy_pre_status():
+	for enemy in enemies:
+		if enemy.status != []:
+			for status in enemy.status:
+				if status.pre_turn == 1:
+					enemy.execute_status(status)
+
+func enemy_post_status():
+	for enemy in enemies:
+		if enemy.status != []:
+			for status in enemy.status:
+				if status.pre_turn == 0:
+					enemy.execute_status(status)
+	
+func ally_pre_status():
+	for ally in allies:
+		if ally.status != []:
+			for status in ally.status:
+				if status.pre_turn == 1:
+					ally.execute_status(status)
+	
+func ally_post_status():
+	for ally in allies:
+		if ally.status != []:
+			for status in ally.status:
+				if status.pre_turn == 0:
+					ally.execute_status(status)

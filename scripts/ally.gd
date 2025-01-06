@@ -5,6 +5,7 @@ class_name Ally
 @export var skill_1: Skill
 @export var skill_2: Skill
 @export var ult: Skill
+@export var status : Array = []
 var current_element = "none"
 @onready var damage_number_origin: Node2D = $DamageNumberOrigin
 @onready var spell_select_ui: Control = $SpellSelectUi
@@ -25,27 +26,35 @@ func _ready() -> void:
 	hp_bar.set_maxhp(health)
 
 
-func receive_skill(damage: float, element: String):
+func receive_skill(skill):
 	var rounded : int
 	var reaction = ""
-	var r = await ReactionManager.reaction(current_element, element, self, damage, 1)
+	var r = await ReactionManager.reaction(current_element, skill.element, self, skill.damage, 1)
 	# no reaction
 	if (!r):
-		self.take_damage(damage)
-		DamageNumbers.display_number(damage, damage_number_origin.global_position, element, reaction)
+		self.take_damage(skill.damage)
+		DamageNumbers.display_number(skill.damage, damage_number_origin.global_position, skill.element, reaction)
 		# don't change current element if skill has no element
-		if (element != "none"):
-			current_element = element
+		if (skill.element != "none"):
+			current_element = skill.element
+	#handle status effects
+	if skill.status_effects != []:
+		for x in skill.status_effects:
+			status.append(x)
 	hp_bar.update_element(current_element)
 	
-func receive_skill_friendly(effect: float, element: String):
+func receive_skill_friendly(skill):
 	var rounded : int
 	var reaction = ""
-	var r = await ReactionManager.reaction(current_element, element, self, effect, 0)
-	self.receive_shielding(effect)
-	DamageNumbers.display_number_plus(effect, damage_number_origin.global_position, element, reaction)
-	if (element != "none"):
-		current_element = element
+	var r = await ReactionManager.reaction(current_element, skill.element, self, skill.damage, 0)
+	self.receive_shielding(skill.damage)
+	DamageNumbers.display_number_plus(skill.damage, damage_number_origin.global_position, skill.element, reaction)
+	if (skill.element != "none"):
+		current_element = skill.element
+	#handle status effects
+	if skill.status_effects != []:
+		for x in skill.status_effects:
+			status.append(x)
 	hp_bar.update_element(current_element)
 	
 	
@@ -80,3 +89,10 @@ func hide_skills():
 func set_shield(shield):
 	self.shield = shield
 	hp_bar.set_shield(shield)
+	
+func execute_status(status_effect):
+	take_damage(status_effect.damage)
+	DamageNumbers.display_number(status_effect.damage, damage_number_origin.global_position, status_effect.element, "")
+	status_effect.turns_remaining -= 1
+	if status_effect.turns_remaining == 0:
+		status.erase(status_effect)

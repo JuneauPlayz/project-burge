@@ -6,6 +6,7 @@ class_name Enemy
 var current_skill : Skill
 @export var current_element : String = "none"
 @export var reaction_primed = 0
+@export var status : Array = []
 @onready var damage_number_origin: Node2D = $DamageNumberOrigin
 var hp_bar
 @onready var skill_info: Control = $ShowNextSkill/SkillInfo
@@ -36,25 +37,29 @@ func _process(delta: float) -> void:
 	pass
 	
 
-func receive_skill(damage: float, element: String):
+func receive_skill(skill):
 	var rounded : int
 	var reaction = ""
 	if (!connected):
 		ReactionManager.reaction_finished.connect(self.reaction_signal)
 		connected = true
-	var r = await ReactionManager.reaction(current_element, element, self, damage, 1)
+	var r = await ReactionManager.reaction(current_element, skill.element, self, skill.damage, 1)
 	if (r):
 		print("waiting")
 		await reaction_ended 
 		print("waiting finished")
 	# no reaction
 	if (!r):
-		self.take_damage(damage)
-		DamageNumbers.display_number(damage, damage_number_origin.global_position, element, reaction)
+		self.take_damage(skill.damage)
+		DamageNumbers.display_number(skill.damage, damage_number_origin.global_position, skill.element, reaction)
 		check_if_dead()
 		# don't change current element if skill has no element
-		if (element != "none"):
-			current_element = element
+		if (skill.element != "none"):
+			current_element = skill.element
+	#handle status effects
+	if skill.status_effects != []:
+		for x in skill.status_effects:
+			status.append(x)
 	hp_bar.update_element(current_element)
 
 
@@ -91,3 +96,10 @@ func disable_targeting_area():
 
 func _on_targeting_area_pressed() -> void:
 	target_chosen.emit(self)
+	
+func execute_status(status_effect):
+	take_damage(status_effect.damage)
+	DamageNumbers.display_number(status_effect.damage, damage_number_origin.global_position, status_effect.element, "")
+	status_effect.turns_remaining -= 1
+	if status_effect.turns_remaining == 0:
+		status.erase(status_effect)
