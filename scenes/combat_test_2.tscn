@@ -228,7 +228,6 @@ scale = Vector2(0.705, 0.705)
 text = "Reset Choices"
 
 [node name="Background" type="Sprite2D" parent="."]
-visible = false
 self_modulate = Color(1, 1, 1, 0.411)
 z_index = -5
 position = Vector2(963, 539.5)
