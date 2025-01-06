@@ -9,3 +9,4 @@ damage = 10
 element = "lightning"
 damaging = true
 friendly = false
+status_effects = []

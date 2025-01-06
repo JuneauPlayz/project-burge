@@ -9,3 +9,4 @@ damage = 20
 element = "fire"
 damaging = true
 friendly = false
+status_effects = []

@@ -19,7 +19,7 @@
 [ext_resource type="Resource" uid="uid://60omj8j38mfk" path="res://resources/Skills/Lightning_Bolt.tres" id="15_n7e50"]
 [ext_resource type="Texture2D" uid="uid://b6rhxb71os38w" path="res://assets/hsrbg.png" id="16_7iixp"]
 [ext_resource type="Script" path="res://scenes/sound_manager.gd" id="17_bd8ds"]
-[ext_resource type="PackedScene" uid="uid://bi555vcqhi0p5" path="res://scenes/burger_enemy.tscn" id="17_oeje8"]
+[ext_resource type="PackedScene" path="res://scenes/burger_enemy.tscn" id="17_oeje8"]
 [ext_resource type="AudioStream" uid="uid://c0fyotn8lqfkv" path="res://assets/fire hit.mp3" id="18_g8ami"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mo5rj"]

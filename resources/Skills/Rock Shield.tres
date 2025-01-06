@@ -9,3 +9,4 @@ damage = 20
 element = "earth"
 damaging = false
 friendly = true
+status_effects = []

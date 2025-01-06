@@ -9,3 +9,4 @@ damage = 10
 element = "water"
 damaging = true
 friendly = false
+status_effects = []
