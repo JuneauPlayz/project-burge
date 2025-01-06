@@ -1,10 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://il7olc82ns7f"]
+[gd_scene load_steps=22 format=3 uid="uid://il7olc82ns7f"]
 
 [ext_resource type="Script" path="res://scripts/Targeting.gd" id="1_xnina"]
 [ext_resource type="Script" path="res://scenes/combat_manager.gd" id="2_hh3fv"]
 [ext_resource type="Script" path="res://scripts/SpellSelect.gd" id="2_jjymy"]
 [ext_resource type="Script" path="res://scripts/ally.gd" id="4_2mvrs"]
-[ext_resource type="PackedScene" uid="uid://sdwnoh61gawa" path="res://skill_info.tscn" id="7_hw5oh"]
 [ext_resource type="PackedScene" uid="uid://5spa5amgsxfm" path="res://scenes/hp_bar.tscn" id="7_pyguu"]
 [ext_resource type="Resource" uid="uid://t5il68wvfb0s" path="res://resources/basic_attack.tres" id="7_ytvil"]
 [ext_resource type="Resource" uid="uid://c3yogn8m318q2" path="res://resources/Fire_Bolt.tres" id="8_ox83u"]
@@ -24,9 +23,6 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_mo5rj"]
 font_size = 48
-
-[sub_resource type="LabelSettings" id="LabelSettings_g8qlp"]
-font_size = 24
 
 [node name="CombatTest2" type="Node2D"]
 
@@ -55,24 +51,6 @@ offset_right = 1035.0
 offset_bottom = 92.0
 text = "Ally Turn"
 label_settings = SubResource("LabelSettings_mo5rj")
-
-[node name="TargetingLabel" type="Label" parent="CombatManager"]
-visible = false
-offset_left = 121.0
-offset_top = 597.0
-offset_right = 351.0
-offset_bottom = 631.0
-text = "Choosing target for:
-
-(click on the sprite)"
-label_settings = SubResource("LabelSettings_g8qlp")
-
-[node name="TargetingSkillInfo" parent="CombatManager" instance=ExtResource("7_hw5oh")]
-visible = false
-offset_left = 389.0
-offset_top = 583.0
-offset_right = 389.0
-offset_bottom = 583.0
 
 [node name="Ally1" type="Node" parent="."]
 script = ExtResource("4_2mvrs")
@@ -196,9 +174,13 @@ position = Vector2(840, 459.75)
 
 [node name="BurgerEnemy" parent="." instance=ExtResource("17_oeje8")]
 position = Vector2(1454, 132)
+skill1 = ExtResource("8_ox83u")
+skill2 = ExtResource("9_4meuk")
 
 [node name="BurgerEnemy2" parent="." instance=ExtResource("17_oeje8")]
 position = Vector2(1113, 138)
+skill1 = ExtResource("8_ox83u")
+skill2 = ExtResource("9_4meuk")
 
 [node name="EndTurn" type="Button" parent="."]
 offset_left = 1521.0

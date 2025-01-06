@@ -1,8 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://il7olc82ns7f"]
+[gd_scene load_steps=28 format=3 uid="uid://il7olc82ns7f"]
 
+[ext_resource type="Texture2D" uid="uid://djyorqs13oxgy" path="res://assets/burger.jpg" id="1_to6ih"]
 [ext_resource type="Script" path="res://scripts/Targeting.gd" id="1_xnina"]
 [ext_resource type="Script" path="res://scenes/combat_manager.gd" id="2_hh3fv"]
 [ext_resource type="Script" path="res://scripts/SpellSelect.gd" id="2_jjymy"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="2_xoe2s"]
 [ext_resource type="Script" path="res://scripts/ally.gd" id="4_2mvrs"]
 [ext_resource type="PackedScene" uid="uid://sdwnoh61gawa" path="res://skill_info.tscn" id="7_hw5oh"]
 [ext_resource type="PackedScene" uid="uid://5spa5amgsxfm" path="res://scenes/hp_bar.tscn" id="7_pyguu"]
@@ -19,14 +21,21 @@
 [ext_resource type="Resource" uid="uid://60omj8j38mfk" path="res://resources/Lightning_Bolt.tres" id="15_n7e50"]
 [ext_resource type="Texture2D" uid="uid://b6rhxb71os38w" path="res://assets/hsrbg.png" id="16_7iixp"]
 [ext_resource type="Script" path="res://scenes/sound_manager.gd" id="17_bd8ds"]
-[ext_resource type="PackedScene" uid="uid://bi555vcqhi0p5" path="res://scenes/burger_enemy.tscn" id="17_oeje8"]
 [ext_resource type="AudioStream" uid="uid://c0fyotn8lqfkv" path="res://assets/fire hit.mp3" id="18_g8ami"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mo5rj"]
 font_size = 48
 
-[sub_resource type="LabelSettings" id="LabelSettings_g8qlp"]
-font_size = 24
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2dfrq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_82obb"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u57id"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0napr"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="CombatTest2" type="Node2D"]
 
@@ -56,23 +65,110 @@ offset_bottom = 92.0
 text = "Ally Turn"
 label_settings = SubResource("LabelSettings_mo5rj")
 
-[node name="TargetingLabel" type="Label" parent="CombatManager"]
-visible = false
-offset_left = 121.0
-offset_top = 597.0
-offset_right = 351.0
-offset_bottom = 631.0
-text = "Choosing target for:
+[node name="BurgerEnemy" type="Node" parent="."]
+script = ExtResource("2_xoe2s")
+skill1 = ExtResource("8_ox83u")
+skill2 = ExtResource("9_4meuk")
+health = 200
 
-(click on the sprite)"
-label_settings = SubResource("LabelSettings_g8qlp")
+[node name="Burger" type="Sprite2D" parent="BurgerEnemy"]
+position = Vector2(1603, 375)
+scale = Vector2(0.202917, 0.175208)
+texture = ExtResource("1_to6ih")
 
-[node name="TargetingSkillInfo" parent="CombatManager" instance=ExtResource("7_hw5oh")]
+[node name="HP Bar" parent="BurgerEnemy" instance=ExtResource("7_pyguu")]
+offset_left = 1486.0
+offset_top = 557.0
+offset_right = -154.0
+offset_bottom = -437.0
+
+[node name="DamageNumberOrigin" type="Node2D" parent="BurgerEnemy"]
+position = Vector2(1623, 634)
+
+[node name="ShowNextSkill" type="Control" parent="BurgerEnemy"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="BurgerEnemy/ShowNextSkill"]
+layout_mode = 0
+offset_left = 1393.0
+offset_top = 46.0
+offset_right = 1470.0
+offset_bottom = 69.0
+text = "Next Skill:"
+
+[node name="SkillInfo" parent="BurgerEnemy/ShowNextSkill" instance=ExtResource("7_hw5oh")]
+layout_mode = 1
+offset_left = 1496.0
+offset_top = 41.0
+offset_right = 1496.0
+offset_bottom = 41.0
+
+[node name="TargetingArea" type="Button" parent="BurgerEnemy"]
 visible = false
-offset_left = 389.0
-offset_top = 583.0
-offset_right = 389.0
-offset_bottom = 583.0
+offset_left = 1479.0
+offset_top = 272.0
+offset_right = 1726.0
+offset_bottom = 594.0
+theme_override_styles/focus = SubResource("StyleBoxFlat_2dfrq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_82obb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_u57id")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0napr")
+
+[node name="BurgerEnemy2" type="Node" parent="."]
+script = ExtResource("2_xoe2s")
+skill1 = ExtResource("8_ox83u")
+skill2 = ExtResource("9_4meuk")
+health = 200
+
+[node name="Burger" type="Sprite2D" parent="BurgerEnemy2"]
+position = Vector2(1311, 372)
+scale = Vector2(0.202917, 0.175208)
+texture = ExtResource("1_to6ih")
+
+[node name="HP Bar" parent="BurgerEnemy2" instance=ExtResource("7_pyguu")]
+offset_left = 1212.0
+offset_top = 557.0
+offset_right = -428.0
+offset_bottom = -437.0
+
+[node name="DamageNumberOrigin" type="Node2D" parent="BurgerEnemy2"]
+position = Vector2(1255, 642)
+
+[node name="ShowNextSkill" type="Control" parent="BurgerEnemy2"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -325.0
+offset_right = -285.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="BurgerEnemy2/ShowNextSkill"]
+layout_mode = 0
+offset_left = 1393.0
+offset_top = 46.0
+offset_right = 1470.0
+offset_bottom = 69.0
+text = "Next Skill:"
+
+[node name="SkillInfo" parent="BurgerEnemy2/ShowNextSkill" instance=ExtResource("7_hw5oh")]
+layout_mode = 1
+offset_left = 1496.0
+offset_top = 41.0
+offset_right = 1496.0
+offset_bottom = 41.0
+
+[node name="TargetingArea" type="Button" parent="BurgerEnemy2"]
+visible = false
+offset_left = 1191.0
+offset_top = 266.0
+offset_right = 1434.0
+offset_bottom = 625.0
+theme_override_styles/focus = SubResource("StyleBoxFlat_2dfrq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_82obb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_u57id")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0napr")
 
 [node name="Ally1" type="Node" parent="."]
 script = ExtResource("4_2mvrs")
@@ -194,12 +290,6 @@ texture = ExtResource("14_hgdfq")
 [node name="DamageNumberOrigin" type="Node2D" parent="Ally4"]
 position = Vector2(840, 459.75)
 
-[node name="BurgerEnemy" parent="." instance=ExtResource("17_oeje8")]
-position = Vector2(1454, 132)
-
-[node name="BurgerEnemy2" parent="." instance=ExtResource("17_oeje8")]
-position = Vector2(1113, 138)
-
 [node name="EndTurn" type="Button" parent="."]
 offset_left = 1521.0
 offset_top = 685.0
@@ -233,6 +323,7 @@ volume_db = -16.0
 [connection signal="hit" from="CombatManager" to="SoundManager" method="_on_combat_manager_hit"]
 [connection signal="new_spell_selected" from="CombatManager" to="StateMachine/SpellSelect" method="_on_combat_manager_new_spell_selected"]
 [connection signal="target_selected" from="CombatManager" to="StateMachine/Targeting" method="_on_combat_manager_target_selected"]
+[connection signal="pressed" from="BurgerEnemy/TargetingArea" to="BurgerEnemy" method="_on_targeting_area_pressed"]
 [connection signal="new_select" from="Ally1/SpellSelectUi" to="CombatManager" method="_on_spell_select_ui_new_select"]
 [connection signal="new_select" from="Ally2/SpellSelectUi" to="CombatManager" method="_on_spell_select_ui_2_new_select"]
 [connection signal="new_select" from="Ally3/SpellSelectUi" to="CombatManager" method="_on_spell_select_ui_3_new_select"]

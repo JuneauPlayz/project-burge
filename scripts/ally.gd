@@ -71,8 +71,11 @@ func receive_shielding(shielding: int):
 	shield += shielding
 	hp_bar.set_shield(shield)
 
-func toggle_skills():
-	spell_select_ui.visible = !spell_select_ui.visible
+func show_skills():
+	spell_select_ui.visible = true
+	
+func hide_skills():
+	spell_select_ui.visible = false
 	
 func set_shield(shield):
 	self.shield = shield

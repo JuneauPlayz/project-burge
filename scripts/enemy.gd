@@ -10,9 +10,12 @@ var current_skill : Skill
 var hp_bar
 @onready var skill_info: Control = $ShowNextSkill/SkillInfo
 var connected = false
+@onready var targeting_area: Button = $TargetingArea
+@onready var combat_manager: Node = %CombatManager
 
 signal skill_end
 signal reaction_ended
+signal target_chosen
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,6 +27,8 @@ func _ready() -> void:
 	hp_bar = get_child(1)
 	hp_bar.set_hp(health)
 	hp_bar.set_maxhp(health)
+	self.target_chosen.connect(combat_manager.target_signal)
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -78,3 +83,11 @@ func change_skills():
 	skill_info.skill = current_skill
 	skill_info.update_skill_info()
 	
+func enable_targeting_area():
+	targeting_area.visible = true
+
+func disable_targeting_area():
+	targeting_area.visible = false
+
+func _on_targeting_area_pressed() -> void:
+	target_chosen.emit(self)
