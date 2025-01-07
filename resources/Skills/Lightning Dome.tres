@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3 uid="uid://cf3f0mnd7a8pe"]
+
+[ext_resource type="Script" path="res://scripts/skill.gd" id="1_io4iu"]
+
+[resource]
+script = ExtResource("1_io4iu")
+name = "Lightning Dome"
+damage = 5
+element = "lightning"
+damaging = true
+healing = false
+shielding = false
+friendly = false
+status_effects = []
+target_type = "all_enemies"

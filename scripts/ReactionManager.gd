@@ -3,6 +3,8 @@ extends Node
 var vaporize_mult = 2
 var shock_mult = 0.25
 var erupt_mult = 3
+var detonate_main_mult = 1.5
+var detonate_side_mult = 0.5
 signal reaction_finished
 var BUBBLE = preload("res://resources/Status Effects/Bubble.tres")
 
@@ -33,8 +35,13 @@ func reaction(elem1 : String, elem2 : String, unit : Unit, value, hostile : int)
 				"lightning":
 					res_value = roundi(value)
 					reaction = " Detonate!"
-					if hostile == 1:
-						DamageNumbers.display_number(unit.take_damage(res_value * hostile), unit.get_child(2).global_position, elem2, reaction)
+					DamageNumbers.display_number(unit.take_damage(res_value * detonate_main_mult), unit.get_child(2).global_position, elem2, reaction)
+					if (unit.hasLeft() or unit.hasRight()):
+						await get_tree().create_timer(0.2).timeout
+					if (unit.hasLeft()):
+						DamageNumbers.display_number(unit.left.take_damage(res_value * detonate_side_mult), unit.left.get_child(2).global_position, elem2, "")
+					if (unit.hasRight()):
+						DamageNumbers.display_number(unit.right.take_damage(res_value * detonate_side_mult), unit.right.get_child(2).global_position, elem2, "")
 					unit.current_element = "none"
 				"earth":
 					res_value = roundi(value)
@@ -94,8 +101,13 @@ func reaction(elem1 : String, elem2 : String, unit : Unit, value, hostile : int)
 				"fire":
 					res_value = roundi(value)
 					reaction = " Detonate!"
-					if hostile == 1:
-						DamageNumbers.display_number(unit.take_damage(res_value * hostile), unit.get_child(2).global_position, elem2, reaction)
+					DamageNumbers.display_number(unit.take_damage(res_value * detonate_main_mult), unit.get_child(2).global_position, elem2, reaction)
+					if (unit.hasLeft() or unit.hasRight()):
+						await get_tree().create_timer(0.2).timeout
+					if (unit.hasLeft()):
+						DamageNumbers.display_number(unit.left.take_damage(res_value * detonate_side_mult), unit.left.get_child(2).global_position, elem2, "")
+					if (unit.hasRight()):
+						DamageNumbers.display_number(unit.right.take_damage(res_value * detonate_side_mult), unit.right.get_child(2).global_position, elem2, "")
 					unit.current_element = "none"
 				"water":
 					reaction = " Shock!"

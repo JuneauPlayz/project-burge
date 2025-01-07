@@ -9,6 +9,9 @@ extends Node
 @export var allies : Array = []
 @export var enemy1 : Enemy
 @export var enemy2 : Enemy
+@export var enemy3 : Enemy
+@export var enemy4 : Enemy
+
 @export var enemies : Array = []
 
 var ally_list = [ally1, ally2, ally3, ally4]
@@ -50,12 +53,38 @@ signal reaction_finished
 func _ready() -> void:
 	# waiting for everything to load in
 	await get_tree().create_timer(0.1).timeout
-	enemies.append(enemy1)
-	enemies.append(enemy2)
+	if (enemy1 != null):
+		enemies.append(enemy1)
+	if (enemy2 != null):
+		enemies.append(enemy2)
+	if (enemy3 != null):
+		enemies.append(enemy3)
+	if (enemy4 != null):
+		enemies.append(enemy4)
 	allies.append(ally1)
 	allies.append(ally2)
 	allies.append(ally3)
 	allies.append(ally4)
+	# setting left and right for units
+	for n in range(enemies.size()):
+		if n > 0:
+			enemies[n].left = enemies[n-1]
+		else:
+			enemies[n].left = null
+		if n < enemies.size()-1:
+			enemies[n].right = enemies[n+1]
+		else:
+			enemies[n].right = null
+	for n in range(allies.size()):
+		if n > 0:
+			allies[n].left = allies[n-1]
+		else:
+			allies[n].left = null
+		if n < enemies.size()-1:
+			allies[n].right = allies[n+1]
+		else:
+			allies[n].right = null
+		
 	ReactionManager.reaction_finished.connect(self.reaction_signal)
 	show_skills()
 	reset_skill_select()
@@ -118,6 +147,13 @@ func use_skill(skill,target):
 			else:
 				for ally in allies:
 					ally.receive_skill(skill)
+		if (skill.target_type == "all_enemies"):
+			if (skill.friendly == true):
+				for enemy in enemies:
+					enemy.receive_skill_friendly(skill)
+			else:
+				for enemy in enemies:
+					enemy.receive_skill(skill)
 	else:
 		if skill.damaging == true:
 			target.receive_skill(skill)

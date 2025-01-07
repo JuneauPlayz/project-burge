@@ -5,5 +5,13 @@ class_name Unit
 @export var max_health = 0
 @export var shield = 0
 
+var left : Unit
+var right : Unit
 @export var defense : float
 @export var status_resistance: float
+
+func hasLeft():
+	return left != null
+	
+func hasRight():
+	return right != null

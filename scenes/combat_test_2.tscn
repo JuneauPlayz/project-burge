@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://il7olc82ns7f"]
+[gd_scene load_steps=29 format=3 uid="uid://il7olc82ns7f"]
 
 [ext_resource type="Script" path="res://scripts/Targeting.gd" id="1_xnina"]
 [ext_resource type="Script" path="res://scenes/combat_manager.gd" id="2_hh3fv"]
@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://sdwnoh61gawa" path="res://skill_info.tscn" id="7_hw5oh"]
 [ext_resource type="PackedScene" uid="uid://5spa5amgsxfm" path="res://scenes/hp_bar.tscn" id="7_pyguu"]
 [ext_resource type="Resource" uid="uid://t5il68wvfb0s" path="res://resources/Skills/basic_attack.tres" id="7_ytvil"]
-[ext_resource type="Resource" uid="uid://c3yogn8m318q2" path="res://resources/Skills/Fire_Bolt.tres" id="8_ox83u"]
+[ext_resource type="Resource" uid="uid://b70k44ljti3df" path="res://resources/Skills/Wildfire.tres" id="8_66rri"]
 [ext_resource type="Resource" uid="uid://dooqfwlwxly5w" path="res://resources/Skills/Water_Bolt.tres" id="9_4meuk"]
 [ext_resource type="Resource" uid="uid://025hve2nq35j" path="res://resources/Skills/Healing_Bloom.tres" id="9_j4haq"]
 [ext_resource type="Resource" uid="uid://dcf2ccmtpg225" path="res://resources/Skills/Fire_Spear.tres" id="10_0ymtv"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://tlvpop5rp1x6" path="res://scenes/spell_select_ui.tscn" id="11_kfp4s"]
 [ext_resource type="Texture2D" uid="uid://c3vp6cnsau7i1" path="res://assets/stelletrash.png" id="12_xxdvk"]
 [ext_resource type="Texture2D" uid="uid://defrd4fdejdu1" path="res://assets/miyabii.png" id="13_3288v"]
+[ext_resource type="Resource" uid="uid://cf3f0mnd7a8pe" path="res://resources/Skills/Lightning Dome.tres" id="13_pyil1"]
 [ext_resource type="Texture2D" uid="uid://qlvy3vq13goh" path="res://assets/yatta.png" id="14_hgdfq"]
 [ext_resource type="Resource" uid="uid://60omj8j38mfk" path="res://resources/Skills/Lightning_Bolt.tres" id="15_n7e50"]
 [ext_resource type="Texture2D" uid="uid://b6rhxb71os38w" path="res://assets/hsrbg.png" id="16_7iixp"]
@@ -23,8 +24,8 @@
 [ext_resource type="Resource" uid="uid://clidntww233oy" path="res://resources/Skills/Bloody_Slash.tres" id="17_o3a1s"]
 [ext_resource type="PackedScene" uid="uid://bi555vcqhi0p5" path="res://scenes/burger_enemy.tscn" id="17_oeje8"]
 [ext_resource type="AudioStream" uid="uid://c0fyotn8lqfkv" path="res://assets/fire hit.mp3" id="18_g8ami"]
-[ext_resource type="Resource" uid="uid://d0sxdut8uscys" path="res://resources/Skills/AOEEarth.tres" id="21_st4wd"]
-[ext_resource type="Resource" uid="uid://cr3bbtfskjida" path="res://resources/Skills/AOEFire.tres" id="22_bh7xm"]
+[ext_resource type="Resource" uid="uid://d0sxdut8uscys" path="res://resources/Skills/EnemyAOEEarth.tres" id="21_st4wd"]
+[ext_resource type="Resource" uid="uid://cr3bbtfskjida" path="res://resources/Skills/EnemyAOEFire.tres" id="22_bh7xm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mo5rj"]
 font_size = 48
@@ -42,7 +43,7 @@ script = ExtResource("1_xnina")
 [node name="SpellSelect" type="Node" parent="StateMachine"]
 script = ExtResource("2_jjymy")
 
-[node name="CombatManager" type="Node" parent="." node_paths=PackedStringArray("ally1", "ally2", "ally3", "ally4", "enemy1", "enemy2")]
+[node name="CombatManager" type="Node" parent="." node_paths=PackedStringArray("ally1", "ally2", "ally3", "ally4", "enemy1", "enemy2", "enemy3")]
 unique_name_in_owner = true
 script = ExtResource("2_hh3fv")
 ally1 = NodePath("../Ally1")
@@ -51,6 +52,7 @@ ally3 = NodePath("../Ally3")
 ally4 = NodePath("../Ally4")
 enemy1 = NodePath("../BurgerEnemy")
 enemy2 = NodePath("../BurgerEnemy2")
+enemy3 = NodePath("../BurgerEnemy3")
 
 [node name="TurnText" type="Label" parent="CombatManager"]
 offset_left = 829.0
@@ -81,8 +83,8 @@ offset_bottom = 583.0
 [node name="Ally1" type="Node" parent="."]
 script = ExtResource("4_2mvrs")
 basic_atk = ExtResource("7_ytvil")
-skill_1 = ExtResource("8_ox83u")
-skill_2 = ExtResource("9_4meuk")
+skill_1 = ExtResource("9_4meuk")
+skill_2 = ExtResource("8_66rri")
 ult = ExtResource("9_j4haq")
 health = 100
 max_health = 100
@@ -112,8 +114,8 @@ texture = ExtResource("11_4linb")
 [node name="Ally2" type="Node" parent="."]
 script = ExtResource("4_2mvrs")
 basic_atk = ExtResource("7_ytvil")
-skill_1 = ExtResource("8_ox83u")
-skill_2 = ExtResource("9_4meuk")
+skill_1 = ExtResource("9_4meuk")
+skill_2 = ExtResource("13_pyil1")
 ult = ExtResource("10_r3sqd")
 health = 100
 max_health = 100
@@ -203,14 +205,17 @@ scale = Vector2(0.354839, 0.341837)
 texture = ExtResource("14_hgdfq")
 
 [node name="BurgerEnemy" parent="." instance=ExtResource("17_oeje8")]
-position = Vector2(1454, 132)
+position = Vector2(969, 143)
 skill1 = ExtResource("21_st4wd")
 skill2 = ExtResource("22_bh7xm")
 
 [node name="BurgerEnemy2" parent="." instance=ExtResource("17_oeje8")]
-position = Vector2(1113, 138)
+position = Vector2(1277, 141)
 skill1 = ExtResource("22_bh7xm")
 skill2 = ExtResource("21_st4wd")
+
+[node name="BurgerEnemy3" parent="." instance=ExtResource("17_oeje8")]
+position = Vector2(1594, 141)
 
 [node name="EndTurn" type="Button" parent="."]
 offset_left = 1521.0
