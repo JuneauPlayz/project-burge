@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://il7olc82ns7f"]
+[gd_scene load_steps=30 format=3 uid="uid://il7olc82ns7f"]
 
 [ext_resource type="Script" path="res://scripts/Targeting.gd" id="1_xnina"]
 [ext_resource type="Script" path="res://scenes/combat_manager.gd" id="2_hh3fv"]
@@ -26,6 +26,7 @@
 [ext_resource type="AudioStream" uid="uid://c0fyotn8lqfkv" path="res://assets/fire hit.mp3" id="18_g8ami"]
 [ext_resource type="Resource" uid="uid://d0sxdut8uscys" path="res://resources/Skills/EnemyAOEEarth.tres" id="21_st4wd"]
 [ext_resource type="Resource" uid="uid://cr3bbtfskjida" path="res://resources/Skills/EnemyAOEFire.tres" id="22_bh7xm"]
+[ext_resource type="AudioStream" uid="uid://4rhr7pwkbdml" path="res://assets/cliack.mp3" id="27_506a6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mo5rj"]
 font_size = 48
@@ -246,6 +247,10 @@ script = ExtResource("17_bd8ds")
 stream = ExtResource("18_g8ami")
 volume_db = -16.0
 
+[node name="click noise" type="AudioStreamPlayer2D" parent="SoundManager"]
+stream = ExtResource("27_506a6")
+
+[connection signal="click" from="CombatManager" to="SoundManager" method="_on_combat_manager_click"]
 [connection signal="hit" from="CombatManager" to="SoundManager" method="_on_combat_manager_hit"]
 [connection signal="new_spell_selected" from="CombatManager" to="StateMachine/SpellSelect" method="_on_combat_manager_new_spell_selected"]
 [connection signal="target_selected" from="CombatManager" to="StateMachine/Targeting" method="_on_combat_manager_target_selected"]

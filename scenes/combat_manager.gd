@@ -48,6 +48,8 @@ var combat_finished = false
 var first_turn = true
 
 signal hit
+signal click
+
 signal signal_received
 signal reaction_finished
 func _ready() -> void:
@@ -177,6 +179,7 @@ func lose_shields():
 func _on_spell_select_ui_new_select() -> void:
 	var spell_select_ui: Control = $"../Ally1/SpellSelectUi"
 	var change = false
+	click.emit()
 	# if selecting something when not already selected on that character
 	if (spell_select_ui.selected != 0 and ally1skill == -1):
 		ally1_pos = next_pos
@@ -234,6 +237,7 @@ func _on_spell_select_ui_new_select() -> void:
 func _on_spell_select_ui_2_new_select() -> void:
 	var spell_select_ui: Control = $"../Ally2/SpellSelectUi"
 	var change = false
+	click.emit()
 	if (spell_select_ui.selected != 0 and ally2skill == -1):
 		ally2_pos = next_pos
 		next_pos += 1
@@ -288,6 +292,7 @@ func _on_spell_select_ui_2_new_select() -> void:
 func _on_spell_select_ui_3_new_select() -> void:
 	var spell_select_ui: Control = $"../Ally3/SpellSelectUi"
 	var change = false
+	click.emit()
 	if (spell_select_ui.selected != 0 and ally3skill == -1):
 		ally3_pos = next_pos
 		next_pos += 1
@@ -341,6 +346,7 @@ func _on_spell_select_ui_3_new_select() -> void:
 func _on_spell_select_ui_4_new_select() -> void:
 	var spell_select_ui: Control = $"../Ally4/SpellSelectUi"
 	var change = false
+	click.emit()
 	if (spell_select_ui.selected != 0 and ally4skill == -1):
 		ally4_pos = next_pos
 		next_pos += 1
@@ -439,9 +445,11 @@ func reset_skill_select():
 	update_skill_positions()
 	
 func _on_end_turn_pressed() -> void:
+	click.emit()
 	execute_ally_turn()
 
 func _on_reset_choices_pressed() -> void:
+	click.emit()
 	action_queue = []
 	target_queue = []
 	next_pos = 0
@@ -490,6 +498,7 @@ func choose_target(skill : Skill):
 		show_skills()
 		show_ui()
 		toggle_targeting_ui(skill)
+		click.emit()
 		return target
 	else:
 		return null
