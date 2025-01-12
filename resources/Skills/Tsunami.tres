@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3 uid="uid://iduq6xm3eww5"]
+
+[ext_resource type="Script" path="res://scripts/skill.gd" id="1_d5pb4"]
+
+[resource]
+script = ExtResource("1_d5pb4")
+name = "Tsunami"
+damage = 0
+element = "water"
+damaging = false
+healing = false
+shielding = false
+friendly = false
+status_effects = []
+target_type = "all_units"

@@ -156,6 +156,18 @@ func use_skill(skill,target):
 			else:
 				for enemy in enemies:
 					enemy.receive_skill(skill)
+		if (skill.target_type == "all_units"):
+			if (skill.friendly == true):
+				for enemy in enemies:
+					enemy.receive_skill_friendly(skill)
+				for ally in allies:
+					ally.receive_skill_friendly(skill)
+			else:
+				for enemy in enemies:
+					enemy.receive_skill(skill)
+				for ally in allies:
+					ally.receive_skill(skill)
+			
 	else:
 		if skill.damaging == true:
 			target.receive_skill(skill)

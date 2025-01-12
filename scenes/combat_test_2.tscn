@@ -1,9 +1,10 @@
-[gd_scene load_steps=30 format=3 uid="uid://il7olc82ns7f"]
+[gd_scene load_steps=32 format=3 uid="uid://il7olc82ns7f"]
 
 [ext_resource type="Script" path="res://scripts/Targeting.gd" id="1_xnina"]
 [ext_resource type="Script" path="res://scenes/combat_manager.gd" id="2_hh3fv"]
 [ext_resource type="Script" path="res://scripts/SpellSelect.gd" id="2_jjymy"]
 [ext_resource type="Script" path="res://scripts/ally.gd" id="4_2mvrs"]
+[ext_resource type="Resource" uid="uid://bhnvgvm5xsfv3" path="res://resources/Skills/Firestorm.tres" id="6_xnp21"]
 [ext_resource type="PackedScene" uid="uid://sdwnoh61gawa" path="res://skill_info.tscn" id="7_hw5oh"]
 [ext_resource type="PackedScene" uid="uid://5spa5amgsxfm" path="res://scenes/hp_bar.tscn" id="7_pyguu"]
 [ext_resource type="Resource" uid="uid://t5il68wvfb0s" path="res://resources/Skills/basic_attack.tres" id="7_ytvil"]
@@ -18,8 +19,9 @@
 [ext_resource type="Texture2D" uid="uid://defrd4fdejdu1" path="res://assets/miyabii.png" id="13_3288v"]
 [ext_resource type="Resource" uid="uid://cf3f0mnd7a8pe" path="res://resources/Skills/Lightning Dome.tres" id="13_pyil1"]
 [ext_resource type="Texture2D" uid="uid://qlvy3vq13goh" path="res://assets/yatta.png" id="14_hgdfq"]
-[ext_resource type="Resource" uid="uid://60omj8j38mfk" path="res://resources/Skills/Lightning_Bolt.tres" id="15_n7e50"]
+[ext_resource type="Resource" uid="uid://iduq6xm3eww5" path="res://resources/Skills/Tsunami.tres" id="14_i3e5a"]
 [ext_resource type="Texture2D" uid="uid://b6rhxb71os38w" path="res://assets/hsrbg.png" id="16_7iixp"]
+[ext_resource type="Resource" uid="uid://d3hsiqbosdsp6" path="res://resources/Skills/Waterfall.tres" id="16_f43bm"]
 [ext_resource type="Script" path="res://scenes/sound_manager.gd" id="17_bd8ds"]
 [ext_resource type="Resource" uid="uid://clidntww233oy" path="res://resources/Skills/Bloody_Slash.tres" id="17_o3a1s"]
 [ext_resource type="PackedScene" uid="uid://bi555vcqhi0p5" path="res://scenes/burger_enemy.tscn" id="17_oeje8"]
@@ -83,7 +85,7 @@ offset_bottom = 583.0
 
 [node name="Ally1" type="Node" parent="."]
 script = ExtResource("4_2mvrs")
-basic_atk = ExtResource("7_ytvil")
+basic_atk = ExtResource("6_xnp21")
 skill_1 = ExtResource("9_4meuk")
 skill_2 = ExtResource("8_66rri")
 ult = ExtResource("9_j4haq")
@@ -115,7 +117,7 @@ texture = ExtResource("11_4linb")
 [node name="Ally2" type="Node" parent="."]
 script = ExtResource("4_2mvrs")
 basic_atk = ExtResource("7_ytvil")
-skill_1 = ExtResource("9_4meuk")
+skill_1 = ExtResource("14_i3e5a")
 skill_2 = ExtResource("13_pyil1")
 ult = ExtResource("10_r3sqd")
 health = 100
@@ -146,7 +148,7 @@ texture = ExtResource("12_xxdvk")
 [node name="Ally3" type="Node" parent="."]
 script = ExtResource("4_2mvrs")
 basic_atk = ExtResource("7_ytvil")
-skill_1 = ExtResource("15_n7e50")
+skill_1 = ExtResource("16_f43bm")
 skill_2 = ExtResource("9_4meuk")
 ult = ExtResource("10_0ymtv")
 health = 100

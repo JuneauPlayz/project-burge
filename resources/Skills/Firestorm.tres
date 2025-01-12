@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3 uid="uid://bhnvgvm5xsfv3"]
+
+[ext_resource type="Script" path="res://scripts/skill.gd" id="1_h2siv"]
+
+[resource]
+script = ExtResource("1_h2siv")
+name = "Ignite"
+damage = 0
+element = "fire"
+damaging = false
+healing = false
+shielding = false
+friendly = false
+status_effects = []
+target_type = "all_units"

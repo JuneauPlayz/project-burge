@@ -8,5 +8,6 @@ class_name Skill
 @export var healing = false
 @export var shielding = false
 @export var friendly = false
+
 @export var status_effects : Array = []
-@export_enum("single_enemy", "single_ally", "all_enemies", "all_allies") var target_type : String
+@export_enum("single_enemy", "single_ally", "all_enemies", "all_allies", "all_units") var target_type : String

@@ -28,7 +28,9 @@ func update_skill_info():
 			target = "to all allies"
 		"all_enemies":
 			target = "to all enemies"
-
+		"all_units":
+			target = "to all units"
+	
 	if skill.damaging == true:
 		description.text += "Deals " + str(skill.damage) + " " + str(skill.element) + " damage\nto " + target
 	if skill.shielding == true:
@@ -36,5 +38,7 @@ func update_skill_info():
 	if skill.healing == true:
 		description.text += "Heals " + str(skill.damage) + " to " + target
 	
+	if description.text == "" and skill.element != "none":
+		description.text = "Applies " + skill.element + " to " + target
 		
 	
