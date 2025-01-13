@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3 uid="uid://ddoguurpcf2jb"]
+
+[ext_resource type="Script" path="res://scripts/skill.gd" id="1_5a5q7"]
+
+[resource]
+script = ExtResource("1_5a5q7")
+name = "Vaporstrike"
+damage = 30
+element = "fire"
+damaging = true
+healing = false
+shielding = false
+friendly = false
+requirement = true
+reaction_requirement = "vaporize"
+requirement_count = 5
+status_effects = []
+target_type = "single_enemy"

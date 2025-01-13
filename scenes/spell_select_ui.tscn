@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://tlvpop5rp1x6"]
+[gd_scene load_steps=19 format=3 uid="uid://tlvpop5rp1x6"]
 
 [ext_resource type="Script" path="res://scenes/spell_select_ui.gd" id="1_jbfqo"]
 [ext_resource type="PackedScene" uid="uid://sdwnoh61gawa" path="res://skill_info.tscn" id="2_bnrmv"]
@@ -16,6 +16,9 @@ corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 expand_margin_top = 17.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rghh4"]
+bg_color = Color(0.255, 0.311, 0.287, 0.87)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1dgm8"]
 content_margin_right = 0.0
 bg_color = Color(0.246653, 0.378583, 0.631853, 1)
@@ -25,6 +28,9 @@ bg_color = Color(0.180392, 0.180392, 0.180392, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c8eds"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_667es"]
+bg_color = Color(0.254902, 0.309804, 0.286275, 0.870588)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ni84r"]
 bg_color = Color(0.247059, 0.380392, 0.631373, 1)
 
@@ -33,11 +39,17 @@ bg_color = Color(0.180392, 0.180392, 0.180392, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_edv3q"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pfass"]
+bg_color = Color(0.254902, 0.309804, 0.286275, 0.870588)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q85v1"]
 bg_color = Color(0.247059, 0.380392, 0.631373, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lt1l8"]
 bg_color = Color(0.180392, 0.180392, 0.180392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v4ccb"]
+bg_color = Color(0.254902, 0.309804, 0.286275, 0.870588)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i2ev1"]
 bg_color = Color(0.247059, 0.380392, 0.631373, 1)
@@ -82,6 +94,7 @@ mouse_filter = 1
 custom_minimum_size = Vector2(261, 39)
 layout_mode = 2
 size_flags_horizontal = 0
+theme_override_styles/disabled = SubResource("StyleBoxFlat_rghh4")
 theme_override_styles/hover = SubResource("StyleBoxFlat_1dgm8")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ur654")
 text = "Basic Attack"
@@ -99,6 +112,7 @@ mouse_filter = 2
 [node name="S1" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/SP1Panel"]
 custom_minimum_size = Vector2(0, 39)
 layout_mode = 2
+theme_override_styles/disabled = SubResource("StyleBoxFlat_667es")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ni84r")
 theme_override_styles/normal = SubResource("StyleBoxFlat_sleic")
 text = "Spell 1"
@@ -117,6 +131,7 @@ mouse_filter = 2
 [node name="S2" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/SP2Panel"]
 custom_minimum_size = Vector2(0, 39)
 layout_mode = 2
+theme_override_styles/disabled = SubResource("StyleBoxFlat_pfass")
 theme_override_styles/hover = SubResource("StyleBoxFlat_q85v1")
 theme_override_styles/normal = SubResource("StyleBoxFlat_lt1l8")
 text = "Spell 2"
@@ -135,6 +150,7 @@ mouse_filter = 2
 [node name="ULT" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/ULTPanel"]
 custom_minimum_size = Vector2(0, 39)
 layout_mode = 2
+theme_override_styles/disabled = SubResource("StyleBoxFlat_v4ccb")
 theme_override_styles/hover = SubResource("StyleBoxFlat_i2ev1")
 theme_override_styles/normal = SubResource("StyleBoxFlat_s2255")
 text = "Ultimate

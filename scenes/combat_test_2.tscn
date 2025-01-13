@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://il7olc82ns7f"]
+[gd_scene load_steps=33 format=3 uid="uid://il7olc82ns7f"]
 
 [ext_resource type="Script" path="res://scripts/Targeting.gd" id="1_xnina"]
 [ext_resource type="Script" path="res://scenes/combat_manager.gd" id="2_hh3fv"]
@@ -28,6 +28,7 @@
 [ext_resource type="AudioStream" uid="uid://c0fyotn8lqfkv" path="res://assets/fire hit.mp3" id="18_g8ami"]
 [ext_resource type="Resource" uid="uid://d0sxdut8uscys" path="res://resources/Skills/EnemyAOEEarth.tres" id="21_st4wd"]
 [ext_resource type="Resource" uid="uid://cr3bbtfskjida" path="res://resources/Skills/EnemyAOEFire.tres" id="22_bh7xm"]
+[ext_resource type="Resource" uid="uid://ddoguurpcf2jb" path="res://resources/Skills/Vaporstrike.tres" id="22_m2i6g"]
 [ext_resource type="AudioStream" uid="uid://4rhr7pwkbdml" path="res://assets/cliack.mp3" id="27_506a6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mo5rj"]
@@ -181,7 +182,7 @@ script = ExtResource("4_2mvrs")
 basic_atk = ExtResource("7_ytvil")
 skill_1 = ExtResource("17_o3a1s")
 skill_2 = ExtResource("9_4meuk")
-ult = ExtResource("10_0ymtv")
+ult = ExtResource("22_m2i6g")
 health = 100
 max_health = 100
 

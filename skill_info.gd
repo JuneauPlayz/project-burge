@@ -29,7 +29,7 @@ func update_skill_info():
 		"all_enemies":
 			target = "to all enemies"
 		"all_units":
-			target = "to all units"
+			target = "to all units"	
 	
 	if skill.damaging == true:
 		description.text += "Deals " + str(skill.damage) + " " + str(skill.element) + " damage\nto " + target
@@ -41,4 +41,5 @@ func update_skill_info():
 	if description.text == "" and skill.element != "none":
 		description.text = "Applies " + skill.element + " to " + target
 		
-	
+	if skill.requirement == true:
+		description.text += "\nRequires " + str(skill.requirement_count) + " " + skill.reaction_requirement + " procs to use"

@@ -101,6 +101,7 @@ func start_combat():
 	
 func start_ally_turn():
 	show_ui()
+	check_requirements()
 	turn_text.text = "Ally Turn"
 	ally_pre_status()
 	lose_shields()
@@ -115,6 +116,9 @@ func execute_ally_turn():
 	for n in range(action_queue.size()):
 		var skill = action_queue[n]
 		var target = target_queue[n]
+		if skill.requirement == true:
+			if skill.reaction_requirement == "vaporize":
+				ReactionManager.vaporize_count -= skill.requirement_count
 		use_skill(skill,target)
 		print("waiting for reaction")
 		await reaction_finished
@@ -552,3 +556,16 @@ func ally_post_status():
 			for status in ally.status:
 				if status.pre_turn == 0:
 					ally.execute_status(status)
+					
+func check_requirements():
+	for ally in allies:
+		var skill = ally.ult
+		if skill.requirement == true:
+			if skill.reaction_requirement == "vaporize":
+				if ReactionManager.vaporize_count >= skill.requirement_count:
+					# spell select ui must be first child in ally
+					ally.get_child(0).enable(4)
+				else:
+					ally.get_child(0).disable(4)
+		
+			

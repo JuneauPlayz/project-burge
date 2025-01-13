@@ -39,6 +39,14 @@ func load_skills():
 	s_1.text = skill2.name
 	s_2.text = skill3.name
 	ult.text = skill4.name
+	if skill1.requirement == true:
+		ba_1.disabled = true
+	if skill2.requirement == true:
+		s_1.disabled = true
+	if skill3.requirement == true:
+		s_2.disabled = true
+	if skill4.requirement == true:
+		ult.disabled = true
 
 func _on_button_pressed() -> void:
 	if selected != 1:
@@ -115,7 +123,27 @@ func reset():
 	update_color(ult, gray)
 	selected = 0
 	
-
+func enable(num):
+	match num:
+		1:
+			ba_1.disabled = false
+		2:
+			s_1.disabled = false
+		3:
+			s_2.disabled = false
+		4:
+			ult.disabled = false
+			
+func disable(num):
+	match num:
+		1:
+			ba_1.disabled = true
+		2:
+			s_1.disabled = true
+		3:
+			s_2.disabled = true
+		4:
+			ult.disabled = true
 
 func _on_ba_1_mouse_entered() -> void:
 	skill_info_1.visible = true
