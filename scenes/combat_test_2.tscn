@@ -212,6 +212,7 @@ texture = ExtResource("14_hgdfq")
 position = Vector2(969, 143)
 skill1 = ExtResource("21_st4wd")
 skill2 = ExtResource("22_bh7xm")
+health = 10
 
 [node name="BurgerEnemy2" parent="." instance=ExtResource("17_oeje8")]
 position = Vector2(1277, 141)

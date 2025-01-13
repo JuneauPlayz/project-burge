@@ -7,11 +7,11 @@ extends Node
 @export var ally3 : Ally
 @export var ally4 : Ally
 @export var allies : Array = []
+
 @export var enemy1 : Enemy
 @export var enemy2 : Enemy
 @export var enemy3 : Enemy
 @export var enemy4 : Enemy
-
 @export var enemies : Array = []
 
 var ally_list = [ally1, ally2, ally3, ally4]
@@ -68,30 +68,19 @@ func _ready() -> void:
 	allies.append(ally3)
 	allies.append(ally4)
 	# setting left and right for units
-	for n in range(enemies.size()):
-		if n > 0:
-			enemies[n].left = enemies[n-1]
-		else:
-			enemies[n].left = null
-		if n < enemies.size()-1:
-			enemies[n].right = enemies[n+1]
-		else:
-			enemies[n].right = null
-	for n in range(allies.size()):
-		if n > 0:
-			allies[n].left = allies[n-1]
-		else:
-			allies[n].left = null
-		if n < enemies.size()-1:
-			allies[n].right = allies[n+1]
-		else:
-			allies[n].right = null
+	set_enemy_pos()
 		
 	ReactionManager.reaction_finished.connect(self.reaction_signal)
 	show_skills()
 	reset_skill_select()
 	start_combat()
-	
+
+#use this function to print whatever you want
+func debug_printer():
+	for x in enemy2.status:
+		print("found a status: ")
+		print(enemy2.status)
+
 func start_combat():
 	while (!combat_finished):
 		start_ally_turn()
@@ -142,6 +131,7 @@ func enemy_turn():
 	await get_tree().create_timer(0.1).timeout
 	enemy_post_status()
 	await get_tree().create_timer(0.3).timeout
+	debug_printer()
 	enemy_turn_done.emit()
 	
 func use_skill(skill,target):
@@ -568,4 +558,22 @@ func check_requirements():
 				else:
 					ally.get_child(0).disable(4)
 		
-			
+func set_enemy_pos():
+	for n in range(enemies.size()):
+		if n > 0:
+			enemies[n].left = enemies[n-1]
+		else:
+			enemies[n].left = null
+		if n < enemies.size()-1:
+			enemies[n].right = enemies[n+1]
+		else:
+			enemies[n].right = null
+	for n in range(allies.size()):
+		if n > 0:
+			allies[n].left = allies[n-1]
+		else:
+			allies[n].left = null
+		if n < enemies.size()-1:
+			allies[n].right = allies[n+1]
+		else:
+			allies[n].right = null

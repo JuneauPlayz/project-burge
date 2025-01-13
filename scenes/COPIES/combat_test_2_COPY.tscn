@@ -228,7 +228,6 @@ script = ExtResource("19_60xe4")
 stream = ExtResource("20_0hm71")
 volume_db = -16.0
 
-[connection signal="hit" from="CombatManager" to="SoundManager" method="_on_combat_manager_hit"]
 [connection signal="new_select" from="Ally1/SpellSelectUi" to="CombatManager" method="_on_spell_select_ui_new_select"]
 [connection signal="new_select" from="Ally2/SpellSelectUi" to="CombatManager" method="_on_spell_select_ui_2_new_select"]
 [connection signal="new_select" from="Ally3/SpellSelectUi" to="CombatManager" method="_on_spell_select_ui_3_new_select"]

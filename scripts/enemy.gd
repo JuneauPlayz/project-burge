@@ -99,6 +99,8 @@ func check_if_dead():
 
 func die():
 	print("ded")
+	combat_manager.enemies.erase(self)
+	combat_manager.set_enemy_pos()
 	
 func change_skills():
 	if current_skill == skill1:
