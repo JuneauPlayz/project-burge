@@ -40,6 +40,7 @@ func update_skill_info():
 	
 	if description.text == "" and skill.element != "none":
 		description.text = "Applies " + skill.element + " to " + target
-		
+	if skill.double_hit == true:
+		description.text += "\nThen, deals " + str(skill.damage2) + " " + str(skill.element2) + " damage\nto the same target(s)"
 	if skill.requirement == true:
 		description.text += "\nRequires " + str(skill.requirement_count) + " " + skill.reaction_requirement + " procs to use"
