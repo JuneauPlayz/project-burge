@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_fcc46")
+name = "Bubble"
 pre_turn = 0
 damage = 0
 element = ""

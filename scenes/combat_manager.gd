@@ -78,8 +78,11 @@ func _ready() -> void:
 #use this function to print whatever you want
 func debug_printer():
 	for x in enemy2.status:
+		print("statuses remaining: " + str(len(enemy2.status)))
 		print("found a status: ")
-		print(enemy2.status)
+		print(x.turns_remaining)
+	if enemy2.status == []:
+		print("no statuses found")
 
 func start_combat():
 	while (!combat_finished):
