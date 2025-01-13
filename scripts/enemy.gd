@@ -44,10 +44,19 @@ func receive_skill(skill):
 		ReactionManager.reaction_finished.connect(self.reaction_signal)
 		connected = true
 	var r = await ReactionManager.reaction(current_element, skill.element, self, skill.damage, 1)
-	if (r):
-		print("waiting")
+	if (r): 
 		await reaction_ended 
-		print("waiting finished")
+		if skill.double_hit == true:
+			await get_tree().create_timer(0.3).timeout
+			var r2 = await ReactionManager.reaction(current_element, skill.element2, self, skill.damage2, 1)
+			if (r2):
+				await reaction_ended 
+			if (!r2):
+				self.take_damage(skill.damage)
+			DamageNumbers.display_number(skill.damage, damage_number_origin.global_position, skill.element, reaction)
+			check_if_dead()
+			if (skill.element != "none"):
+				current_element = skill.element
 	# no reaction
 	if (!r):
 		self.take_damage(skill.damage)
@@ -56,6 +65,17 @@ func receive_skill(skill):
 		# don't change current element if skill has no element
 		if (skill.element != "none"):
 			current_element = skill.element
+		if skill.double_hit == true:
+			await get_tree().create_timer(0.3).timeout
+			var r2 = await ReactionManager.reaction(current_element, skill.element2, self, skill.damage2, 1)
+			if (r2):
+				await reaction_ended 
+			if (!r2):
+				self.take_damage(skill.damage)
+			DamageNumbers.display_number(skill.damage, damage_number_origin.global_position, skill.element, reaction)
+			check_if_dead()
+			if (skill.element != "none"):
+				current_element = skill.element
 	#handle status effects
 	if skill.status_effects != []:
 		for x in skill.status_effects:
@@ -64,7 +84,6 @@ func receive_skill(skill):
 
 
 func reaction_signal():
-	print("reaction signal received")
 	reaction_ended.emit()
 	
 	

@@ -3,11 +3,16 @@ class_name Skill
 
 @export var name: String
 @export var damage : int = 5
-@export var element : String = ""
+@export_enum("none", "water", "fire", "lightning", "earth", "grass") var element : String
 @export var damaging = false
 @export var healing = false
 @export var shielding = false
 @export var friendly = false
+
+@export var double_hit = false
+@export var damage2 : int = 0
+@export_enum("none", "water", "fire", "lightning", "earth", "grass") var element2 : String
+
 @export var requirement = false
 @export_enum("vaporize","detonate","shock") var reaction_requirement : String
 @export var requirement_count = 0
