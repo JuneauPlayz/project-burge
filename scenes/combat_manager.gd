@@ -537,9 +537,10 @@ func enemy_post_status():
 				#if status.pre_turn == 0:
 					enemy.execute_status(status)
 		#remove any statuses with duration 0
-		for i in range (len(enemy.status)-1, -1, -1): 
+		for i in range (len(enemy.status)-1): 
 			if enemy.status[i].turns_remaining <= 0:
 				enemy.status.remove_at(i)
+				i -= 1
 	
 func ally_pre_status():
 	for ally in allies:
