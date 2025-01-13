@@ -80,7 +80,8 @@ func debug_printer():
 	for x in enemy2.status:
 		print("statuses remaining: " + str(len(enemy2.status)))
 		print("found a status: ")
-		print(x.turns_remaining)
+		print(x)
+		print("turns remaining: " + str(x.turns_remaining))
 	if enemy2.status == []:
 		print("no statuses found")
 
@@ -533,8 +534,12 @@ func enemy_post_status():
 	for enemy in enemies:
 		if enemy.status != []:
 			for status in enemy.status:
-				if status.pre_turn == 0:
+				#if status.pre_turn == 0:
 					enemy.execute_status(status)
+		#remove any statuses with duration 0
+		for i in range (len(enemy.status)-1, -1, -1): 
+			if enemy.status[i].turns_remaining <= 0:
+				enemy.status.remove_at(i)
 	
 func ally_pre_status():
 	for ally in allies:

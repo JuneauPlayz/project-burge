@@ -81,15 +81,9 @@ func receive_skill(skill):
 	#handle status effects
 	if skill.status_effects != []:
 		for x in skill.status_effects:
-			var unique_status = true
-			#first, look for duplicate status effects
-			for y in status: #currently only implemented for bleed
-				if x.name == y.name:
-					unique_status = false
-					var new_bleed = BLEED.duplicate()
-					status.append(new_bleed)
-			if unique_status == true:
-				status.append(x)
+			if x.name == "Bleed":
+				var new_bleed = BLEED.duplicate()
+				status.append(new_bleed)
 	hp_bar.update_element(current_element)
 
 
@@ -130,8 +124,7 @@ func _on_targeting_area_pressed() -> void:
 	target_chosen.emit(self)
 	
 func execute_status(status_effect):
+	print(status_effect)
 	take_damage(status_effect.damage)
 	DamageNumbers.display_number(status_effect.damage, damage_number_origin.global_position, status_effect.element, "")
 	status_effect.turns_remaining -= 1
-	if status_effect.turns_remaining <= 0:
-		status.erase(status_effect)
