@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://tlvpop5rp1x6"]
 
-[ext_resource type="Script" path="res://scenes/spell_select_ui.gd" id="1_jbfqo"]
-[ext_resource type="PackedScene" uid="uid://sdwnoh61gawa" path="res://skill_info.tscn" id="2_bnrmv"]
+[ext_resource type="Script" path="res://scripts/spell_select_ui.gd" id="1_6jhhb"]
+[ext_resource type="PackedScene" uid="uid://sdwnoh61gawa" path="res://scenes/reusables/skill_info.tscn" id="2_ae65f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tvmj8"]
 content_margin_left = 10.0
@@ -65,7 +65,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_top = 18.0
 offset_bottom = 18.0
-script = ExtResource("1_jbfqo")
+script = ExtResource("1_6jhhb")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 0
@@ -156,7 +156,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_s2255")
 text = "Ultimate
 "
 
-[node name="SkillInfo" parent="." instance=ExtResource("2_bnrmv")]
+[node name="SkillInfo" parent="." instance=ExtResource("2_ae65f")]
 visible = false
 layout_mode = 2
 anchors_preset = 0
@@ -167,7 +167,7 @@ offset_top = 25.0
 offset_right = 533.0
 offset_bottom = 48.0
 
-[node name="SkillInfo2" parent="." instance=ExtResource("2_bnrmv")]
+[node name="SkillInfo2" parent="." instance=ExtResource("2_ae65f")]
 visible = false
 layout_mode = 2
 anchors_preset = 0
@@ -178,7 +178,7 @@ offset_top = 56.0
 offset_right = 535.0
 offset_bottom = 79.0
 
-[node name="SkillInfo3" parent="." instance=ExtResource("2_bnrmv")]
+[node name="SkillInfo3" parent="." instance=ExtResource("2_ae65f")]
 visible = false
 layout_mode = 2
 anchors_preset = 0
@@ -189,7 +189,7 @@ offset_top = 87.0
 offset_right = 534.0
 offset_bottom = 110.0
 
-[node name="SkillInfo4" parent="." instance=ExtResource("2_bnrmv")]
+[node name="SkillInfo4" parent="." instance=ExtResource("2_ae65f")]
 visible = false
 layout_mode = 2
 anchors_preset = 0

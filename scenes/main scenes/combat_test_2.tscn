@@ -1,33 +1,33 @@
 [gd_scene load_steps=31 format=3 uid="uid://il7olc82ns7f"]
 
-[ext_resource type="Script" path="res://scripts/Targeting.gd" id="1_xnina"]
-[ext_resource type="Script" path="res://scenes/combat_manager.gd" id="2_hh3fv"]
-[ext_resource type="Script" path="res://scripts/SpellSelect.gd" id="2_jjymy"]
-[ext_resource type="Script" path="res://scripts/ally.gd" id="4_2mvrs"]
-[ext_resource type="Resource" uid="uid://bhnvgvm5xsfv3" path="res://resources/Skills/Firestorm.tres" id="6_xnp21"]
-[ext_resource type="PackedScene" uid="uid://sdwnoh61gawa" path="res://skill_info.tscn" id="7_hw5oh"]
-[ext_resource type="PackedScene" uid="uid://5spa5amgsxfm" path="res://scenes/hp_bar.tscn" id="7_pyguu"]
-[ext_resource type="Resource" uid="uid://t5il68wvfb0s" path="res://resources/Skills/basic_attack.tres" id="7_ytvil"]
-[ext_resource type="Resource" uid="uid://b70k44ljti3df" path="res://resources/Skills/Wildfire.tres" id="8_66rri"]
-[ext_resource type="Resource" uid="uid://dooqfwlwxly5w" path="res://resources/Skills/Water_Bolt.tres" id="9_4meuk"]
-[ext_resource type="Resource" uid="uid://025hve2nq35j" path="res://resources/Skills/Healing_Bloom.tres" id="9_j4haq"]
-[ext_resource type="Resource" uid="uid://bya4jpai0ygj5" path="res://resources/Skills/Rock Shield.tres" id="10_r3sqd"]
-[ext_resource type="Texture2D" uid="uid://b3bd5fw4hk3xb" path="res://assets/qiqifallen.png" id="11_4linb"]
-[ext_resource type="PackedScene" uid="uid://tlvpop5rp1x6" path="res://scenes/spell_select_ui.tscn" id="11_kfp4s"]
-[ext_resource type="Texture2D" uid="uid://c3vp6cnsau7i1" path="res://assets/stelletrash.png" id="12_xxdvk"]
-[ext_resource type="Texture2D" uid="uid://defrd4fdejdu1" path="res://assets/miyabii.png" id="13_3288v"]
-[ext_resource type="Resource" uid="uid://cf3f0mnd7a8pe" path="res://resources/Skills/Lightning Dome.tres" id="13_pyil1"]
-[ext_resource type="Texture2D" uid="uid://qlvy3vq13goh" path="res://assets/yatta.png" id="14_hgdfq"]
-[ext_resource type="Resource" uid="uid://iduq6xm3eww5" path="res://resources/Skills/Tsunami.tres" id="14_i3e5a"]
-[ext_resource type="Texture2D" uid="uid://b6rhxb71os38w" path="res://assets/hsrbg.png" id="16_7iixp"]
-[ext_resource type="Resource" uid="uid://d3hsiqbosdsp6" path="res://resources/Skills/Waterfall.tres" id="16_f43bm"]
-[ext_resource type="Script" path="res://scenes/sound_manager.gd" id="17_bd8ds"]
-[ext_resource type="Resource" uid="uid://clidntww233oy" path="res://resources/Skills/Bloody_Slash.tres" id="17_o3a1s"]
-[ext_resource type="PackedScene" uid="uid://bi555vcqhi0p5" path="res://scenes/burger_enemy.tscn" id="17_oeje8"]
-[ext_resource type="AudioStream" uid="uid://c0fyotn8lqfkv" path="res://assets/fire hit.mp3" id="18_g8ami"]
-[ext_resource type="Resource" uid="uid://d0sxdut8uscys" path="res://resources/Skills/EnemyAOEEarth.tres" id="21_st4wd"]
-[ext_resource type="Resource" uid="uid://cr3bbtfskjida" path="res://resources/Skills/EnemyAOEFire.tres" id="22_bh7xm"]
-[ext_resource type="AudioStream" uid="uid://4rhr7pwkbdml" path="res://assets/cliack.mp3" id="27_506a6"]
+[ext_resource type="Script" path="res://scripts/Targeting.gd" id="1_vaufx"]
+[ext_resource type="Script" path="res://scripts/SpellSelect.gd" id="2_xp76p"]
+[ext_resource type="Script" path="res://scripts/combat_manager.gd" id="3_u2x8x"]
+[ext_resource type="PackedScene" uid="uid://sdwnoh61gawa" path="res://scenes/reusables/skill_info.tscn" id="4_3k7f0"]
+[ext_resource type="Script" path="res://scripts/ally.gd" id="5_dnyit"]
+[ext_resource type="Resource" uid="uid://bhnvgvm5xsfv3" path="res://resources/Skills/Firestorm.tres" id="6_mx2yh"]
+[ext_resource type="Resource" uid="uid://dooqfwlwxly5w" path="res://resources/Skills/Water_Bolt.tres" id="7_kxb1f"]
+[ext_resource type="Resource" uid="uid://b70k44ljti3df" path="res://resources/Skills/Wildfire.tres" id="8_gp3c1"]
+[ext_resource type="Resource" uid="uid://025hve2nq35j" path="res://resources/Skills/Healing_Bloom.tres" id="9_kmx04"]
+[ext_resource type="PackedScene" uid="uid://tlvpop5rp1x6" path="res://scenes/reusables/spell_select_ui.tscn" id="10_k02w6"]
+[ext_resource type="PackedScene" uid="uid://5spa5amgsxfm" path="res://scenes/reusables/hp_bar.tscn" id="11_prxqe"]
+[ext_resource type="Texture2D" uid="uid://gsryiov15e6m" path="res://assets/qiqifallen.png" id="12_203yp"]
+[ext_resource type="Resource" uid="uid://t5il68wvfb0s" path="res://resources/Skills/basic_attack.tres" id="13_fwaem"]
+[ext_resource type="Resource" uid="uid://iduq6xm3eww5" path="res://resources/Skills/Tsunami.tres" id="14_v2sh8"]
+[ext_resource type="Resource" uid="uid://cf3f0mnd7a8pe" path="res://resources/Skills/Lightning Dome.tres" id="15_selj1"]
+[ext_resource type="Resource" uid="uid://bya4jpai0ygj5" path="res://resources/Skills/Rock Shield.tres" id="16_3xdua"]
+[ext_resource type="Texture2D" uid="uid://c3vp6cnsau7i1" path="res://assets/stelletrash.png" id="17_x6clk"]
+[ext_resource type="Resource" uid="uid://d3hsiqbosdsp6" path="res://resources/Skills/Waterfall.tres" id="18_nptcf"]
+[ext_resource type="Texture2D" uid="uid://defrd4fdejdu1" path="res://assets/miyabii.png" id="19_8dgup"]
+[ext_resource type="Resource" uid="uid://clidntww233oy" path="res://resources/Skills/Bloody_Slash.tres" id="20_m48hw"]
+[ext_resource type="Texture2D" uid="uid://qlvy3vq13goh" path="res://assets/yatta.png" id="21_u2qe4"]
+[ext_resource type="PackedScene" uid="uid://bi555vcqhi0p5" path="res://scenes/units/enemies/burger_enemy.tscn" id="22_5gd5a"]
+[ext_resource type="Resource" uid="uid://cr3bbtfskjida" path="res://resources/EnemySkills/EnemyAOEFire.tres" id="23_n0tbm"]
+[ext_resource type="Resource" uid="uid://d0sxdut8uscys" path="res://resources/EnemySkills/EnemyAOEEarth.tres" id="24_jnwsm"]
+[ext_resource type="Texture2D" uid="uid://b6rhxb71os38w" path="res://assets/hsrbg.png" id="25_p4v8e"]
+[ext_resource type="Script" path="res://scripts/sound_manager.gd" id="26_x07ll"]
+[ext_resource type="AudioStream" uid="uid://c0fyotn8lqfkv" path="res://assets/fire hit.mp3" id="27_v7xe6"]
+[ext_resource type="AudioStream" uid="uid://4rhr7pwkbdml" path="res://assets/cliack.mp3" id="28_prpkx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mo5rj"]
 font_size = 48
@@ -40,14 +40,14 @@ font_size = 24
 [node name="StateMachine" type="Node" parent="."]
 
 [node name="Targeting" type="Node" parent="StateMachine"]
-script = ExtResource("1_xnina")
+script = ExtResource("1_vaufx")
 
 [node name="SpellSelect" type="Node" parent="StateMachine"]
-script = ExtResource("2_jjymy")
+script = ExtResource("2_xp76p")
 
 [node name="CombatManager" type="Node" parent="." node_paths=PackedStringArray("ally1", "ally2", "ally3", "ally4", "enemy1", "enemy2", "enemy3")]
 unique_name_in_owner = true
-script = ExtResource("2_hh3fv")
+script = ExtResource("3_u2x8x")
 ally1 = NodePath("../Ally1")
 ally2 = NodePath("../Ally2")
 ally3 = NodePath("../Ally3")
@@ -75,7 +75,7 @@ text = "Choosing target for:
 (click on the sprite)"
 label_settings = SubResource("LabelSettings_g8qlp")
 
-[node name="TargetingSkillInfo" parent="CombatManager" instance=ExtResource("7_hw5oh")]
+[node name="TargetingSkillInfo" parent="CombatManager" instance=ExtResource("4_3k7f0")]
 visible = false
 offset_left = 389.0
 offset_top = 583.0
@@ -83,22 +83,22 @@ offset_right = 389.0
 offset_bottom = 583.0
 
 [node name="Ally1" type="Node" parent="."]
-script = ExtResource("4_2mvrs")
-basic_atk = ExtResource("6_xnp21")
-skill_1 = ExtResource("9_4meuk")
-skill_2 = ExtResource("8_66rri")
-ult = ExtResource("9_j4haq")
+script = ExtResource("5_dnyit")
+basic_atk = ExtResource("6_mx2yh")
+skill_1 = ExtResource("7_kxb1f")
+skill_2 = ExtResource("8_gp3c1")
+ult = ExtResource("9_kmx04")
 health = 100
 max_health = 100
 
-[node name="SpellSelectUi" parent="Ally1" instance=ExtResource("11_kfp4s")]
+[node name="SpellSelectUi" parent="Ally1" instance=ExtResource("10_k02w6")]
 offset_left = 27.0
 offset_top = 589.0
 offset_right = 27.0
 offset_bottom = 589.0
 scale = Vector2(0.705, 0.705)
 
-[node name="HP Bar" parent="Ally1" instance=ExtResource("7_pyguu")]
+[node name="HP Bar" parent="Ally1" instance=ExtResource("11_prxqe")]
 offset_left = 34.0
 offset_top = 490.0
 offset_right = -1595.0
@@ -111,25 +111,25 @@ position = Vector2(115, 444)
 [node name="Qiqifallen" type="Sprite2D" parent="Ally1"]
 position = Vector2(119, 388)
 scale = Vector2(0.261113, 0.242546)
-texture = ExtResource("11_4linb")
+texture = ExtResource("12_203yp")
 
 [node name="Ally2" type="Node" parent="."]
-script = ExtResource("4_2mvrs")
-basic_atk = ExtResource("7_ytvil")
-skill_1 = ExtResource("14_i3e5a")
-skill_2 = ExtResource("13_pyil1")
-ult = ExtResource("10_r3sqd")
+script = ExtResource("5_dnyit")
+basic_atk = ExtResource("13_fwaem")
+skill_1 = ExtResource("14_v2sh8")
+skill_2 = ExtResource("15_selj1")
+ult = ExtResource("16_3xdua")
 health = 100
 max_health = 100
 
-[node name="SpellSelectUi" parent="Ally2" instance=ExtResource("11_kfp4s")]
+[node name="SpellSelectUi" parent="Ally2" instance=ExtResource("10_k02w6")]
 offset_left = 249.0
 offset_top = 589.0
 offset_right = 249.0
 offset_bottom = 589.0
 scale = Vector2(0.705, 0.705)
 
-[node name="HP Bar" parent="Ally2" instance=ExtResource("7_pyguu")]
+[node name="HP Bar" parent="Ally2" instance=ExtResource("11_prxqe")]
 offset_left = 260.0
 offset_top = 492.0
 offset_right = -1378.0
@@ -142,25 +142,25 @@ position = Vector2(337, 457.75)
 [node name="Stelletrash" type="Sprite2D" parent="Ally2"]
 position = Vector2(345, 385)
 scale = Vector2(0.402062, 0.326291)
-texture = ExtResource("12_xxdvk")
+texture = ExtResource("17_x6clk")
 
 [node name="Ally3" type="Node" parent="."]
-script = ExtResource("4_2mvrs")
-basic_atk = ExtResource("7_ytvil")
-skill_1 = ExtResource("16_f43bm")
-skill_2 = ExtResource("9_4meuk")
-ult = ExtResource("9_j4haq")
+script = ExtResource("5_dnyit")
+basic_atk = ExtResource("13_fwaem")
+skill_1 = ExtResource("18_nptcf")
+skill_2 = ExtResource("7_kxb1f")
+ult = ExtResource("9_kmx04")
 health = 100
 max_health = 100
 
-[node name="SpellSelectUi" parent="Ally3" instance=ExtResource("11_kfp4s")]
+[node name="SpellSelectUi" parent="Ally3" instance=ExtResource("10_k02w6")]
 offset_left = 471.0
 offset_top = 590.0
 offset_right = 471.0
 offset_bottom = 590.0
 scale = Vector2(0.705, 0.705)
 
-[node name="HP Bar" parent="Ally3" instance=ExtResource("7_pyguu")]
+[node name="HP Bar" parent="Ally3" instance=ExtResource("11_prxqe")]
 offset_left = 480.0
 offset_top = 492.0
 offset_right = -1158.0
@@ -173,25 +173,25 @@ position = Vector2(599, 467.75)
 [node name="Miyabii" type="Sprite2D" parent="Ally3"]
 position = Vector2(562, 389)
 scale = Vector2(0.348301, 0.307655)
-texture = ExtResource("13_3288v")
+texture = ExtResource("19_8dgup")
 
 [node name="Ally4" type="Node" parent="."]
-script = ExtResource("4_2mvrs")
-basic_atk = ExtResource("7_ytvil")
-skill_1 = ExtResource("17_o3a1s")
-skill_2 = ExtResource("9_4meuk")
-ult = ExtResource("10_r3sqd")
+script = ExtResource("5_dnyit")
+basic_atk = ExtResource("13_fwaem")
+skill_1 = ExtResource("20_m48hw")
+skill_2 = ExtResource("7_kxb1f")
+ult = ExtResource("16_3xdua")
 health = 100
 max_health = 100
 
-[node name="SpellSelectUi" parent="Ally4" instance=ExtResource("11_kfp4s")]
+[node name="SpellSelectUi" parent="Ally4" instance=ExtResource("10_k02w6")]
 offset_left = 691.0
 offset_top = 592.0
 offset_right = 691.0
 offset_bottom = 592.0
 scale = Vector2(0.705, 0.705)
 
-[node name="HP Bar" parent="Ally4" instance=ExtResource("7_pyguu")]
+[node name="HP Bar" parent="Ally4" instance=ExtResource("11_prxqe")]
 offset_left = 699.0
 offset_top = 491.0
 offset_right = -932.0
@@ -204,20 +204,18 @@ position = Vector2(840, 459.75)
 [node name="Yatta" type="Sprite2D" parent="Ally4"]
 position = Vector2(784, 382)
 scale = Vector2(0.354839, 0.341837)
-texture = ExtResource("14_hgdfq")
+texture = ExtResource("21_u2qe4")
 
-[node name="BurgerEnemy" parent="." instance=ExtResource("17_oeje8")]
+[node name="BurgerEnemy" parent="." instance=ExtResource("22_5gd5a")]
 position = Vector2(969, 143)
-skill1 = ExtResource("21_st4wd")
-skill2 = ExtResource("22_bh7xm")
 health = 10
 
-[node name="BurgerEnemy2" parent="." instance=ExtResource("17_oeje8")]
+[node name="BurgerEnemy2" parent="." instance=ExtResource("22_5gd5a")]
 position = Vector2(1277, 141)
-skill1 = ExtResource("22_bh7xm")
-skill2 = ExtResource("21_st4wd")
+skill1 = ExtResource("23_n0tbm")
+skill2 = ExtResource("24_jnwsm")
 
-[node name="BurgerEnemy3" parent="." instance=ExtResource("17_oeje8")]
+[node name="BurgerEnemy3" parent="." instance=ExtResource("22_5gd5a")]
 position = Vector2(1594, 141)
 
 [node name="EndTurn" type="Button" parent="."]
@@ -240,17 +238,17 @@ self_modulate = Color(1, 1, 1, 0.411)
 z_index = -5
 position = Vector2(963, 539.5)
 scale = Vector2(1.50312, 1.49861)
-texture = ExtResource("16_7iixp")
+texture = ExtResource("25_p4v8e")
 
 [node name="SoundManager" type="Node" parent="."]
-script = ExtResource("17_bd8ds")
+script = ExtResource("26_x07ll")
 
 [node name="firehit noise" type="AudioStreamPlayer2D" parent="SoundManager"]
-stream = ExtResource("18_g8ami")
+stream = ExtResource("27_v7xe6")
 volume_db = -16.0
 
 [node name="click noise" type="AudioStreamPlayer2D" parent="SoundManager"]
-stream = ExtResource("27_506a6")
+stream = ExtResource("28_prpkx")
 
 [connection signal="click" from="CombatManager" to="SoundManager" method="_on_combat_manager_click"]
 [connection signal="hit" from="CombatManager" to="SoundManager" method="_on_combat_manager_hit"]

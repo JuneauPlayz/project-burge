@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cd04nh7dihx4o"]
-
-[ext_resource type="Script" path="res://scripts/damage_manager.gd" id="1_nlpbp"]
-
-[node name="damage_manager" type="Node"]
-script = ExtResource("1_nlpbp")

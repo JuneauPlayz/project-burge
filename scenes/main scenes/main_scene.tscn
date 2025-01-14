@@ -9,26 +9,26 @@ font_size = 48
 script = ExtResource("1_3n5v6")
 
 [node name="Title" type="Label" parent="."]
-offset_left = 390.0
-offset_top = 69.0
-offset_right = 714.0
-offset_bottom = 178.0
+offset_left = 800.0
+offset_top = 246.0
+offset_right = 1124.0
+offset_bottom = 355.0
 text = "project burge "
 label_settings = SubResource("LabelSettings_k0nup")
 
 [node name="StartB" type="Button" parent="."]
-offset_left = 307.0
-offset_top = 233.0
-offset_right = 798.0
-offset_bottom = 289.0
+offset_left = 712.0
+offset_top = 359.0
+offset_right = 1203.0
+offset_bottom = 415.0
 theme_override_font_sizes/font_size = 24
 text = "Start Run"
 
 [node name="ExitGame" type="Button" parent="."]
-offset_left = 305.0
-offset_top = 324.0
-offset_right = 797.0
-offset_bottom = 377.0
+offset_left = 712.0
+offset_top = 438.0
+offset_right = 1204.0
+offset_bottom = 491.0
 theme_override_font_sizes/font_size = 24
 text = "Exit"
 

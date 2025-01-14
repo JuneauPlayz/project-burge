@@ -11,6 +11,7 @@ var current_element = "none"
 @onready var spell_select_ui: Control = $SpellSelectUi
 @onready var hp_bar: Control = $"HP Bar"
 var position = 0
+var combat_manager
 
 
 # special status checks
@@ -19,14 +20,16 @@ var bubbled = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# loading
+	await get_tree().create_timer(0.1).timeout
 	# spell select ui first child, hp bar ui second child
-	
+	combat_manager = get_parent().get_parent().get_combat_manager()
 	spell_select_ui.skill1 = basic_atk
 	spell_select_ui.skill2 = skill_1
 	spell_select_ui.skill3 = skill_2
 	spell_select_ui.skill4 = ult
 	spell_select_ui.load_skills()
-	
+	spell_select_ui.new_select.connect(combat_manager._on_spell_select_ui_new_select)
 	hp_bar.set_hp(max_health)
 	hp_bar.set_maxhp(max_health)
 

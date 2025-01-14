@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://scripts/ally.gd" id="1_fu3qc"]
 [ext_resource type="Resource" uid="uid://bhnvgvm5xsfv3" path="res://resources/Skills/Firestorm.tres" id="2_77fl0"]
-[ext_resource type="PackedScene" uid="uid://tlvpop5rp1x6" path="res://scenes/spell_select_ui.tscn" id="2_pcgfv"]
+[ext_resource type="PackedScene" uid="uid://tlvpop5rp1x6" path="res://scenes/reusables/spell_select_ui.tscn" id="2_pcgfv"]
 [ext_resource type="Resource" uid="uid://d3hsiqbosdsp6" path="res://resources/Skills/Waterfall.tres" id="3_oopdj"]
-[ext_resource type="PackedScene" uid="uid://5spa5amgsxfm" path="res://scenes/hp_bar.tscn" id="3_urihg"]
+[ext_resource type="PackedScene" uid="uid://5spa5amgsxfm" path="res://scenes/reusables/hp_bar.tscn" id="3_urihg"]
 [ext_resource type="Resource" uid="uid://bya4jpai0ygj5" path="res://resources/Skills/Rock Shield.tres" id="4_7yskb"]
-[ext_resource type="Texture2D" uid="uid://b3bd5fw4hk3xb" path="res://assets/qiqifallen.png" id="4_v6v76"]
+[ext_resource type="Texture2D" uid="uid://gsryiov15e6m" path="res://assets/qiqifallen.png" id="4_v6v76"]
 [ext_resource type="Resource" uid="uid://ddoguurpcf2jb" path="res://resources/Skills/Vaporstrike.tres" id="5_kdrfg"]
 
 [node name="Ally" type="Node2D"]

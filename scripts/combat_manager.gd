@@ -72,9 +72,7 @@ func _ready() -> void:
 	if (ally4 != null):
 		allies.append(ally4)
 	for i in range(len(allies)):
-		allies[i].get_spell_select().new_select.connect(_on_spell_select_ui_new_select)
 		allies[i].position = i+1
-		print(allies[i].title)
 	# setting left and right for units
 	set_enemy_pos()
 		
