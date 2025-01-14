@@ -63,10 +63,18 @@ func _ready() -> void:
 		enemies.append(enemy3)
 	if (enemy4 != null):
 		enemies.append(enemy4)
-	allies.append(ally1)
-	allies.append(ally2)
-	allies.append(ally3)
-	allies.append(ally4)
+	if (ally1 != null):
+		allies.append(ally1)
+	if (ally2 != null):
+		allies.append(ally2)
+	if (ally3 != null):
+		allies.append(ally3)
+	if (ally4 != null):
+		allies.append(ally4)
+	for i in range(len(allies)):
+		allies[i].get_spell_select().new_select.connect(_on_spell_select_ui_new_select)
+		allies[i].position = i+1
+		print(allies[i].title)
 	# setting left and right for units
 	set_enemy_pos()
 		
@@ -186,226 +194,93 @@ func lose_shields():
 	ally4.set_shield(0)
 	
 # char 1
-func _on_spell_select_ui_new_select() -> void:
-	var spell_select_ui: Control = $"../Ally1/SpellSelectUi"
+func _on_spell_select_ui_new_select(ally) -> void:
+	var spell_select_ui: Control = ally.get_spell_select()
 	var change = false
+	var ally_pos = 0
+	var allyskill = 0
+	match ally.position:
+		1:
+			allyskill = ally1skill
+			ally_pos = ally1_pos
+		2:
+			allyskill = ally2skill
+			ally_pos = ally2_pos
+		3:
+			allyskill = ally3skill
+			ally_pos = ally3_pos
+		4:
+			allyskill = ally4skill
+			ally_pos = ally4_pos
+	
 	click.emit()
 	# if selecting something when not already selected on that character
-	if (spell_select_ui.selected != 0 and ally1skill == -1):
-		ally1_pos = next_pos
+	if (spell_select_ui.selected != 0 and allyskill == -1):
+		ally_pos = next_pos
 		next_pos += 1
-		spell_select_ui.update_pos(ally1_pos + 1)
+		spell_select_ui.update_pos(ally_pos + 1)
 	# if changing selection and not unselecting
-	if (ally1skill != -1 and spell_select_ui.selected != 0):
-		action_queue.remove_at(ally1_pos)
-		target_queue.remove_at(ally1_pos)
+	if (allyskill != -1 and spell_select_ui.selected != 0):
+		action_queue.remove_at(ally_pos)
+		target_queue.remove_at(ally_pos)
 		change = true
-	ally1skill = spell_select_ui.selected
+	allyskill = spell_select_ui.selected
 	match spell_select_ui.selected:
 		# if unselecting
 		0:
 			next_pos -= 1
-			action_queue.remove_at(ally1_pos)
-			target_queue.remove_at(ally1_pos)
-			update_positions(ally1_pos)
+			action_queue.remove_at(ally_pos)
+			target_queue.remove_at(ally_pos)
+			update_positions(ally_pos)
 			spell_select_ui.update_pos(0)
-			ally1_pos = -1
+			ally_pos = -1
 			update_skill_positions()
-			ally1skill = -1
+			allyskill = -1
 		1:
 			if change:
-				action_queue.insert(ally1_pos,ally1.basic_atk)
-				target_queue.insert(ally1_pos,await choose_target(ally1.basic_atk))
+				action_queue.insert(ally_pos,ally.basic_atk)
+				target_queue.insert(ally_pos,await choose_target(ally.basic_atk))
 			else:
-				action_queue.append(ally1.basic_atk)
-				target_queue.append(await choose_target(ally1.basic_atk))
+				action_queue.append(ally.basic_atk)
+				target_queue.append(await choose_target(ally.basic_atk))
 		2:
 			if change:
-				action_queue.insert(ally1_pos,ally1.skill_1)
-				target_queue.insert(ally1_pos,await choose_target(ally1.skill_1))
+				action_queue.insert(ally_pos,ally.skill_1)
+				target_queue.insert(ally_pos,await choose_target(ally.skill_1))
 			else:
-				action_queue.append(ally1.skill_1)
-				target_queue.append(await choose_target(ally1.skill_1))
+				action_queue.append(ally.skill_1)
+				target_queue.append(await choose_target(ally.skill_1))
 		3:
 			if change:
-				action_queue.insert(ally1_pos,ally1.skill_2)
-				target_queue.insert(ally1_pos,await choose_target(ally1.skill_2))
+				action_queue.insert(ally_pos,ally.skill_2)
+				target_queue.insert(ally_pos,await choose_target(ally.skill_2))
 			else:
-				action_queue.append(ally1.skill_2)
-				target_queue.append(await choose_target(ally1.skill_2))
+				action_queue.append(ally.skill_2)
+				target_queue.append(await choose_target(ally.skill_2))
 		4:
 			if change:
-				action_queue.insert(ally1_pos,ally1.ult)
-				target_queue.insert(ally1_pos,await choose_target(ally1.ult))
+				action_queue.insert(ally_pos,ally.ult)
+				target_queue.insert(ally_pos,await choose_target(ally.ult))
 			else:
-				action_queue.append(ally1.ult)
-				target_queue.append(await choose_target(ally1.ult))
+				action_queue.append(ally.ult)
+				target_queue.append(await choose_target(ally.ult))
+	
+	match ally.position:
+		1:
+			ally1skill = allyskill
+			ally1_pos = ally_pos
+		2:
+			ally2skill = allyskill
+			ally2_pos = ally_pos
+		3:
+			ally3skill = allyskill
+			ally3_pos = ally_pos
+		4:
+			ally4skill = allyskill
+			ally4_pos = ally_pos
 	print(action_queue)
 		
 
-# char 2
-func _on_spell_select_ui_2_new_select() -> void:
-	var spell_select_ui: Control = $"../Ally2/SpellSelectUi"
-	var change = false
-	click.emit()
-	if (spell_select_ui.selected != 0 and ally2skill == -1):
-		ally2_pos = next_pos
-		next_pos += 1
-		spell_select_ui.update_pos(ally2_pos + 1)
-	if (ally2skill != -1 and spell_select_ui.selected != 0):
-		action_queue.remove_at(ally2_pos)
-		target_queue.remove_at(ally2_pos)
-		change = true
-	ally2skill = spell_select_ui.selected
-	
-	match spell_select_ui.selected:
-		0:
-			next_pos -= 1
-			action_queue.remove_at(ally2_pos)
-			target_queue.remove_at(ally2_pos)
-			update_positions(ally2_pos)
-			spell_select_ui.update_pos(0)
-			ally2_pos = -1
-			update_skill_positions()
-			ally2skill = -1
-		1:
-			if change:
-				action_queue.insert(ally2_pos,ally2.basic_atk)
-				target_queue.insert(ally2_pos,await choose_target(ally2.basic_atk))
-			else:
-				action_queue.append(ally2.basic_atk)
-				target_queue.append(await choose_target(ally2.basic_atk))
-		2:
-			if change:
-				action_queue.insert(ally2_pos,ally2.skill_1)
-				target_queue.insert(ally2_pos,await choose_target(ally2.skill_1))
-			else:
-				action_queue.append(ally2.skill_1)
-				target_queue.append(await choose_target(ally2.skill_1))
-		3:
-			if change:
-				action_queue.insert(ally2_pos,ally2.skill_2)
-				target_queue.insert(ally2_pos,await choose_target(ally2.skill_2))
-			else:
-				action_queue.append(ally2.skill_2)
-				target_queue.append(await choose_target(ally2.skill_2))
-		4:
-			if change:
-				action_queue.insert(ally2_pos,ally2.ult)
-				target_queue.insert(ally2_pos,await choose_target(ally2.ult))
-			else:
-				action_queue.append(ally2.ult)
-				target_queue.append(await choose_target(ally2.ult))
-	print(action_queue)
-
-# char 3
-func _on_spell_select_ui_3_new_select() -> void:
-	var spell_select_ui: Control = $"../Ally3/SpellSelectUi"
-	var change = false
-	click.emit()
-	if (spell_select_ui.selected != 0 and ally3skill == -1):
-		ally3_pos = next_pos
-		next_pos += 1
-		spell_select_ui.update_pos(ally3_pos + 1)
-	if (ally3skill != -1 and spell_select_ui.selected != 0):
-		action_queue.remove_at(ally3_pos)
-		target_queue.remove_at(ally3_pos)
-		change = true
-	ally3skill = spell_select_ui.selected
-	match spell_select_ui.selected:
-		0:
-			next_pos -= 1
-			action_queue.remove_at(ally3_pos)
-			target_queue.remove_at(ally3_pos)
-			update_positions(ally3_pos)
-			spell_select_ui.update_pos(0)
-			ally3_pos = -1
-			update_skill_positions()
-			ally3skill = -1
-		1:
-			if change:
-				action_queue.insert(ally3_pos,ally3.basic_atk)
-				target_queue.insert(ally3_pos,await choose_target(ally3.basic_atk))
-			else:
-				action_queue.append(ally3.basic_atk)
-				target_queue.append(await choose_target(ally3.basic_atk))
-		2:
-			if change:
-				action_queue.insert(ally3_pos,ally3.skill_1)
-				target_queue.insert(ally3_pos,await choose_target(ally3.skill_1))
-			else:
-				action_queue.append(ally3.skill_1)
-				target_queue.append(await choose_target(ally3.skill_1))
-		3:
-			if change:
-				action_queue.insert(ally3_pos,ally3.skill_2)
-				target_queue.insert(ally3_pos,await choose_target(ally3.skill_2))
-			else:
-				action_queue.append(ally3.skill_2)
-				target_queue.append(await choose_target(ally3.skill_2))
-		4:
-			if change:
-				action_queue.insert(ally3_pos,ally3.ult)
-				target_queue.insert(ally3_pos,await choose_target(ally3.ult))
-			else:
-				action_queue.append(ally3.ult)
-				target_queue.append(await choose_target(ally3.ult))
-	print(action_queue)
-
-# char 4
-func _on_spell_select_ui_4_new_select() -> void:
-	var spell_select_ui: Control = $"../Ally4/SpellSelectUi"
-	var change = false
-	click.emit()
-	if (spell_select_ui.selected != 0 and ally4skill == -1):
-		ally4_pos = next_pos
-		next_pos += 1
-		spell_select_ui.update_pos(ally4_pos + 1)
-	if (ally4skill != -1 and spell_select_ui.selected != 0):
-		action_queue.remove_at(ally4_pos)
-		target_queue.remove_at(ally4_pos)
-		change = true
-	ally4skill = spell_select_ui.selected
-	match spell_select_ui.selected:
-		0:
-			
-			next_pos -= 1
-			action_queue.remove_at(ally4_pos)
-			target_queue.remove_at(ally4_pos)
-			update_positions(ally4_pos)
-			spell_select_ui.update_pos(0)
-			ally4_pos = -1
-			update_skill_positions()
-			ally4skill = -1
-		1:
-			if change:
-				action_queue.insert(ally4_pos,ally4.basic_atk)
-				target_queue.insert(ally4_pos,await choose_target(ally4.basic_atk))
-			else:
-				action_queue.append(ally4.basic_atk)
-				target_queue.append(await choose_target(ally4.basic_atk))
-		2:
-			if change:
-				action_queue.insert(ally4_pos,ally4.skill_1)
-				target_queue.insert(ally4_pos,await choose_target(ally4.skill_1))
-			else:
-				action_queue.append(ally4.skill_1)
-				target_queue.append(await choose_target(ally4.skill_1))
-		3:
-			if change:
-				action_queue.insert(ally4_pos,ally4.skill_2)
-				target_queue.insert(ally4_pos,await choose_target(ally4.skill_2))
-			else:
-				action_queue.append(ally4.skill_2)
-				target_queue.append(await choose_target(ally4.skill_2))
-		4:
-			if change:
-				action_queue.insert(ally4_pos,ally4.ult)
-				target_queue.insert(ally4_pos,await choose_target(ally4.ult))
-			else:
-				action_queue.append(ally4.ult)
-				target_queue.append(await choose_target(ally4.ult))
-	print(action_queue)
 	
 func update_positions(cpos):
 	if ally1_pos > cpos:
@@ -418,10 +293,10 @@ func update_positions(cpos):
 		ally4_pos -= 1
 
 func update_skill_positions():
-	var spell_select_ui1: Control = $"../Ally1/SpellSelectUi"
-	var spell_select_ui2: Control = $"../Ally2/SpellSelectUi"
-	var spell_select_ui3: Control = $"../Ally3/SpellSelectUi"
-	var spell_select_ui4: Control = $"../Ally4/SpellSelectUi"
+	var spell_select_ui1 = ally1.get_spell_select()
+	var spell_select_ui2 = ally2.get_spell_select()
+	var spell_select_ui3 = ally3.get_spell_select()
+	var spell_select_ui4 = ally4.get_spell_select()
 	
 	spell_select_ui1.update_pos(ally1_pos + 1)
 	spell_select_ui2.update_pos(ally2_pos + 1)
@@ -429,10 +304,10 @@ func update_skill_positions():
 	spell_select_ui4.update_pos(ally4_pos + 1)
 
 func reset_skill_select():
-	var spell_select_ui1: Control = $"../Ally1/SpellSelectUi"
-	var spell_select_ui2: Control = $"../Ally2/SpellSelectUi"
-	var spell_select_ui3: Control = $"../Ally3/SpellSelectUi"
-	var spell_select_ui4: Control = $"../Ally4/SpellSelectUi"
+	var spell_select_ui1 = ally1.get_spell_select()
+	var spell_select_ui2 = ally2.get_spell_select()
+	var spell_select_ui3 = ally3.get_spell_select()
+	var spell_select_ui4 = ally4.get_spell_select()
 	action_queue = []
 	target_queue = []
 	next_pos = 0

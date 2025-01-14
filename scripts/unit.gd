@@ -9,6 +9,7 @@ var left : Unit
 var right : Unit
 @export var defense : float
 @export var status_resistance: float
+@export var title : String
 
 func hasLeft():
 	return left != null

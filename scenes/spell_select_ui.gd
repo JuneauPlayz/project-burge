@@ -77,7 +77,7 @@ func _on_ult_pressed() -> void:
 	update()
 	
 func update():
-	new_select.emit()
+	new_select.emit(get_parent())
 	match selected:
 		0:
 			update_color(ba_1, gray)

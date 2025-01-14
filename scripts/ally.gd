@@ -10,6 +10,8 @@ var current_element = "none"
 @onready var damage_number_origin: Node2D = $DamageNumberOrigin
 @onready var spell_select_ui: Control = $SpellSelectUi
 @onready var hp_bar: Control = $"HP Bar"
+var position = 0
+
 
 # special status checks
 var bubbled = false
@@ -18,6 +20,7 @@ var bubbled = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# spell select ui first child, hp bar ui second child
+	
 	spell_select_ui.skill1 = basic_atk
 	spell_select_ui.skill2 = skill_1
 	spell_select_ui.skill3 = skill_2
@@ -26,6 +29,7 @@ func _ready() -> void:
 	
 	hp_bar.set_hp(max_health)
 	hp_bar.set_maxhp(max_health)
+
 
 
 func receive_skill(skill):
@@ -115,3 +119,6 @@ func execute_status(status_effect):
 	status_effect.turns_remaining -= 1
 	if status_effect.turns_remaining == 0:
 		status.erase(status_effect)
+		
+func get_spell_select():
+	return spell_select_ui

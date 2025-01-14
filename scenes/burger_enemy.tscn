@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_5okij"]
 [ext_resource type="Texture2D" uid="uid://djyorqs13oxgy" path="res://assets/burger.jpg" id="1_qva00"]
-[ext_resource type="Resource" uid="uid://c3yogn8m318q2" path="res://resources/Skills/Fire_Bolt.tres" id="2_6yr5b"]
 [ext_resource type="PackedScene" uid="uid://5spa5amgsxfm" path="res://scenes/hp_bar.tscn" id="2_8kbd0"]
-[ext_resource type="Resource" uid="uid://dooqfwlwxly5w" path="res://resources/Skills/Water_Bolt.tres" id="3_saisv"]
+[ext_resource type="Resource" uid="uid://d0sxdut8uscys" path="res://resources/Skills/EnemyAOEEarth.tres" id="2_djpfd"]
+[ext_resource type="Resource" uid="uid://cr3bbtfskjida" path="res://resources/Skills/EnemyAOEFire.tres" id="3_begk6"]
 [ext_resource type="PackedScene" uid="uid://sdwnoh61gawa" path="res://skill_info.tscn" id="3_vj4v8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ebmkq"]
@@ -25,9 +25,10 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="BurgerEnemy" type="Node2D"]
+scale = Vector2(0.75, 0.75)
 script = ExtResource("1_5okij")
-skill1 = ExtResource("2_6yr5b")
-skill2 = ExtResource("3_saisv")
+skill1 = ExtResource("2_djpfd")
+skill2 = ExtResource("3_begk6")
 health = 200
 
 [node name="Burger" type="Sprite2D" parent="."]

@@ -12,7 +12,7 @@ var hp_bar
 @onready var skill_info: Control = $ShowNextSkill/SkillInfo
 var connected = false
 @onready var targeting_area: Button = $TargetingArea
-@onready var combat_manager: Node = %CombatManager
+var combat_manager: Node
 
 var BLEED = preload("res://resources/Status Effects/Bleed.tres")
 
@@ -23,6 +23,8 @@ signal target_chosen
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#always mak	e hp bar second child
+	await get_tree().create_timer(0.1).timeout
+	combat_manager = get_parent().get_parent().get_combat_manager()
 	current_skill = skill1
 	skill_info.skill = current_skill
 	skill_info.update_skill_info()
