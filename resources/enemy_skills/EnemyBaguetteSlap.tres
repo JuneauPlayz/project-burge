@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3 uid="uid://dy48dueo5v5f"]
+
+[ext_resource type="Script" path="res://scripts/skill.gd" id="1_b02tp"]
+
+[resource]
+script = ExtResource("1_b02tp")
+name = "Baguette Slap"
+damage = 5
+element = "none"
+damaging = true
+healing = false
+shielding = false
+friendly = false
+double_hit = true
+damage2 = 3
+element2 = "none"
+requirement = false
+reaction_requirement = ""
+requirement_count = 0
+status_effects = []
+target_type = "all_allies"

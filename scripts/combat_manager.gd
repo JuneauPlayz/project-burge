@@ -52,7 +52,7 @@ signal click
 
 signal signal_received
 signal reaction_finished
-func _ready() -> void:
+func combat_ready():
 	# waiting for everything to load in
 	await get_tree().create_timer(0.1).timeout
 	if (enemy1 != null):

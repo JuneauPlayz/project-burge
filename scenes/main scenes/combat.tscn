@@ -1,14 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://do6gwn47eylu7"]
+[gd_scene load_steps=12 format=3 uid="uid://do6gwn47eylu7"]
 
 [ext_resource type="Script" path="res://scripts/combat_scene.gd" id="1_3ou8c"]
 [ext_resource type="Script" path="res://scripts/Targeting.gd" id="2_0pyv8"]
 [ext_resource type="Script" path="res://scripts/SpellSelect.gd" id="3_2dlvl"]
 [ext_resource type="Script" path="res://scripts/combat_manager.gd" id="4_ucgqt"]
 [ext_resource type="PackedScene" uid="uid://sdwnoh61gawa" path="res://scenes/reusables/skill_info.tscn" id="5_2x1un"]
-[ext_resource type="PackedScene" uid="uid://bkkh4bxq8cu7n" path="res://scenes/units/allies/ally.tscn" id="6_oe458"]
-[ext_resource type="Resource" uid="uid://dcf2ccmtpg225" path="res://resources/Skills/Fire_Spear.tres" id="7_h2ixf"]
-[ext_resource type="Resource" uid="uid://025hve2nq35j" path="res://resources/Skills/Healing_Bloom.tres" id="8_6ar3q"]
-[ext_resource type="PackedScene" uid="uid://bi555vcqhi0p5" path="res://scenes/units/enemies/burger_enemy.tscn" id="9_nq8db"]
 [ext_resource type="Texture2D" uid="uid://b6rhxb71os38w" path="res://assets/hsrbg.png" id="10_thong"]
 [ext_resource type="Script" path="res://scripts/sound_manager.gd" id="11_sirah"]
 [ext_resource type="AudioStream" uid="uid://c0fyotn8lqfkv" path="res://assets/fire hit.mp3" id="12_8ib15"]
@@ -31,17 +27,9 @@ script = ExtResource("2_0pyv8")
 [node name="SpellSelect" type="Node" parent="StateMachine"]
 script = ExtResource("3_2dlvl")
 
-[node name="CombatManager" type="Node" parent="." node_paths=PackedStringArray("ally1", "ally2", "ally3", "ally4", "enemy1", "enemy2", "enemy3", "enemy4")]
+[node name="CombatManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("4_ucgqt")
-ally1 = NodePath("../Ally 1 Spot/Ally")
-ally2 = NodePath("../Ally 2 Spot/Ally")
-ally3 = NodePath("../Ally 3 Spot/Ally")
-ally4 = NodePath("../Ally 4 Spot/Ally")
-enemy1 = NodePath("../Enemy 1 Spot/BurgerEnemy")
-enemy2 = NodePath("../Enemy 2 Spot/BurgerEnemy")
-enemy3 = NodePath("../Enemy 3 Spot/BurgerEnemy")
-enemy4 = NodePath("../Enemy 4 Spot/BurgerEnemy")
 
 [node name="TurnText" type="Label" parent="CombatManager"]
 offset_left = 829.0
@@ -70,46 +58,36 @@ offset_right = 389.0
 offset_bottom = 583.0
 
 [node name="Ally 1 Spot" type="Node2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(115, 381)
 
-[node name="Ally" parent="Ally 1 Spot" instance=ExtResource("6_oe458")]
-basic_atk = ExtResource("7_h2ixf")
-skill_2 = ExtResource("8_6ar3q")
-
 [node name="Ally 2 Spot" type="Node2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(351, 383)
 
-[node name="Ally" parent="Ally 2 Spot" instance=ExtResource("6_oe458")]
-
 [node name="Ally 3 Spot" type="Node2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(583, 386)
 
-[node name="Ally" parent="Ally 3 Spot" instance=ExtResource("6_oe458")]
-
 [node name="Ally 4 Spot" type="Node2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(823, 389)
 
-[node name="Ally" parent="Ally 4 Spot" instance=ExtResource("6_oe458")]
-
 [node name="Enemy 1 Spot" type="Node2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(1005, 229)
 
-[node name="BurgerEnemy" parent="Enemy 1 Spot" instance=ExtResource("9_nq8db")]
-
 [node name="Enemy 2 Spot" type="Node2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(1228, 226)
 
-[node name="BurgerEnemy" parent="Enemy 2 Spot" instance=ExtResource("9_nq8db")]
-
 [node name="Enemy 3 Spot" type="Node2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(1453, 229)
 
-[node name="BurgerEnemy" parent="Enemy 3 Spot" instance=ExtResource("9_nq8db")]
-
 [node name="Enemy 4 Spot" type="Node2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(1676, 230)
-
-[node name="BurgerEnemy" parent="Enemy 4 Spot" instance=ExtResource("9_nq8db")]
 
 [node name="EndTurn" type="Button" parent="."]
 offset_left = 1521.0

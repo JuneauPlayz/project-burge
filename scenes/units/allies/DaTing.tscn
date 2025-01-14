@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://dm2ulo66o18gj"]
+
+[ext_resource type="Script" path="res://scripts/ally.gd" id="1_i4tor"]
+[ext_resource type="Resource" uid="uid://t5il68wvfb0s" path="res://resources/skills/basic_attack.tres" id="2_re63x"]
+[ext_resource type="Resource" uid="uid://dykdesfmc1oo8" path="res://resources/skills/Rock Throw.tres" id="3_fec7t"]
+[ext_resource type="Resource" uid="uid://bya4jpai0ygj5" path="res://resources/skills/Rock Shield.tres" id="4_odg37"]
+[ext_resource type="PackedScene" uid="uid://tlvpop5rp1x6" path="res://scenes/reusables/spell_select_ui.tscn" id="6_5f0m3"]
+[ext_resource type="PackedScene" uid="uid://5spa5amgsxfm" path="res://scenes/reusables/hp_bar.tscn" id="7_6n440"]
+[ext_resource type="Texture2D" uid="uid://n3m0naqaoeo" path="res://assets/DaTing.png" id="8_cbsro"]
+
+[node name="DaTing" type="Node2D"]
+position = Vector2(0, -2)
+scale = Vector2(1.1, 1.1)
+script = ExtResource("1_i4tor")
+basic_atk = ExtResource("2_re63x")
+skill_1 = ExtResource("3_fec7t")
+skill_2 = ExtResource("4_odg37")
+ult = ExtResource("4_odg37")
+health = 100
+max_health = 100
+title = "QiqiFallen"
+
+[node name="SpellSelectUi" parent="." instance=ExtResource("6_5f0m3")]
+offset_left = -95.0
+offset_top = 136.0
+offset_right = -95.0
+offset_bottom = 136.0
+scale = Vector2(0.705, 0.705)
+
+[node name="HP Bar" parent="." instance=ExtResource("7_6n440")]
+offset_left = -82.0
+offset_top = 63.0
+offset_right = -82.0
+offset_bottom = 63.0
+scale = Vector2(0.65, 0.65)
+
+[node name="DamageNumberOrigin" type="Node2D" parent="."]
+position = Vector2(-27, 42)
+
+[node name="Qiqifallen" type="Sprite2D" parent="."]
+position = Vector2(0, -44.5455)
+scale = Vector2(0.416, 0.387)
+texture = ExtResource("8_cbsro")

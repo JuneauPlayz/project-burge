@@ -1,0 +1,89 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdu4rddg2v2o7"]
+
+[ext_resource type="Script" path="res://scripts/character_select.gd" id="1_hd0vt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rnln8"]
+font_size = 56
+
+[sub_resource type="LabelSettings" id="LabelSettings_angxr"]
+font_size = 51
+
+[node name="Character Select" type="Node2D"]
+script = ExtResource("1_hd0vt")
+
+[node name="StartCombat" type="Button" parent="."]
+offset_left = 887.0
+offset_top = 718.0
+offset_right = 998.0
+offset_bottom = 749.0
+text = "Start Combat
+"
+
+[node name="Allies" type="Label" parent="."]
+offset_left = 189.0
+offset_top = 40.0
+offset_right = 332.0
+offset_bottom = 117.0
+text = "Allies"
+label_settings = SubResource("LabelSettings_rnln8")
+
+[node name="Pyromancer" type="Button" parent="Allies"]
+offset_left = -14.0
+offset_top = 114.0
+offset_right = 146.0
+offset_bottom = 167.0
+text = "Pyromancer
+"
+
+[node name="Katara" type="Button" parent="Allies"]
+offset_left = -21.0
+offset_top = 224.0
+offset_right = 149.0
+offset_bottom = 262.0
+text = "Katara"
+
+[node name="DaTing" type="Button" parent="Allies"]
+offset_left = -22.0
+offset_top = 316.0
+offset_right = 156.0
+offset_bottom = 349.0
+text = "DaTing
+"
+
+[node name="Freak" type="Button" parent="Allies"]
+offset_left = -7.0
+offset_top = 392.0
+offset_right = 131.0
+offset_bottom = 432.0
+text = "Freak"
+
+[node name="Qiqi" type="Button" parent="Allies"]
+offset_left = 7.0
+offset_top = 473.0
+offset_right = 131.0
+offset_bottom = 505.0
+text = "Qiqi"
+
+[node name="Enemies" type="Label" parent="."]
+offset_left = 1202.0
+offset_top = 52.0
+offset_right = 1409.0
+offset_bottom = 122.0
+text = "Enemies"
+label_settings = SubResource("LabelSettings_angxr")
+
+[node name="Burger" type="Button" parent="Enemies"]
+offset_left = 22.0
+offset_top = 105.0
+offset_right = 183.0
+offset_bottom = 136.0
+text = "Burger"
+
+[node name="Baguette" type="Button" parent="Enemies"]
+offset_left = 43.0
+offset_top = 177.0
+offset_right = 171.0
+offset_bottom = 223.0
+text = "Baguette"
+
+[connection signal="pressed" from="StartCombat" to="." method="_on_start_combat_pressed"]

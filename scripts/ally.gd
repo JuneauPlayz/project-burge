@@ -12,7 +12,9 @@ var current_element = "none"
 @onready var hp_bar: Control = $"HP Bar"
 var position = 0
 var combat_manager
+var connected = false
 
+signal reaction_ended
 
 # special status checks
 var bubbled = false
@@ -38,18 +40,47 @@ func _ready() -> void:
 func receive_skill(skill):
 	var rounded : int
 	var reaction = ""
+	if (!connected):
+		ReactionManager.reaction_finished.connect(self.reaction_signal)
+		connected = true
 	var r = await ReactionManager.reaction(current_element, skill.element, self, skill.damage, 1)
+	if (r): 
+		await reaction_ended 
+		if skill.double_hit == true:
+			await get_tree().create_timer(0.3).timeout
+			var r2 = await ReactionManager.reaction(current_element, skill.element2, self, skill.damage2, 1)
+			if (r2):
+				await reaction_ended 
+			if (!r2):
+				self.take_damage(skill.damage)
+			DamageNumbers.display_number(skill.damage, damage_number_origin.global_position, skill.element, reaction)
+			if (skill.element != "none"):
+				current_element = skill.element
 	# no reaction
 	if (!r):
-		DamageNumbers.display_number(self.take_damage(skill.damage), damage_number_origin.global_position, skill.element, reaction)
+		self.take_damage(skill.damage)
+		DamageNumbers.display_number(skill.damage, damage_number_origin.global_position, skill.element, reaction)
 		# don't change current element if skill has no element
 		if (skill.element != "none"):
 			current_element = skill.element
+		if skill.double_hit == true:
+			await get_tree().create_timer(0.3).timeout
+			var r2 = await ReactionManager.reaction(current_element, skill.element2, self, skill.damage2, 1)
+			if (r2):
+				await reaction_ended 
+			if (!r2):
+				self.take_damage(skill.damage)
+			DamageNumbers.display_number(skill.damage, damage_number_origin.global_position, skill.element, reaction)
+			if (skill.element != "none"):
+				current_element = skill.element
 	#handle status effects
 	if skill.status_effects != []:
 		for x in skill.status_effects:
 			status.append(x)
 	hp_bar.update_element(current_element)
+	
+func reaction_signal():
+	reaction_ended.emit()
 	
 func receive_skill_friendly(skill):
 	var rounded : int
