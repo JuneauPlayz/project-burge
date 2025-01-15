@@ -83,12 +83,12 @@ func combat_ready():
 
 #use this function to print whatever you want
 func debug_printer():
-	for x in enemy2.status:
-		print("statuses remaining: " + str(len(enemy2.status)))
+	for x in enemy1.status:
+		print("statuses remaining: " + str(len(enemy1.status)))
 		print("found a status: ")
 		print(x)
 		print("turns remaining: " + str(x.turns_remaining))
-	if enemy2.status == []:
+	if enemy1.status == []:
 		print("no statuses found")
 
 func start_combat():
@@ -186,10 +186,8 @@ func reaction_signal():
 	reaction_finished.emit()
 	
 func lose_shields():
-	ally1.set_shield(0)
-	ally2.set_shield(0)
-	ally3.set_shield(0)
-	ally4.set_shield(0)
+	for ally in allies:
+		ally.set_shield(0)
 	
 # char 1
 func _on_spell_select_ui_new_select(ally) -> void:
@@ -291,21 +289,36 @@ func update_positions(cpos):
 		ally4_pos -= 1
 
 func update_skill_positions():
-	var spell_select_ui1 = ally1.get_spell_select()
-	var spell_select_ui2 = ally2.get_spell_select()
-	var spell_select_ui3 = ally3.get_spell_select()
-	var spell_select_ui4 = ally4.get_spell_select()
-	
-	spell_select_ui1.update_pos(ally1_pos + 1)
-	spell_select_ui2.update_pos(ally2_pos + 1)
-	spell_select_ui3.update_pos(ally3_pos + 1)
-	spell_select_ui4.update_pos(ally4_pos + 1)
+	if ally1 != null:
+		var spell_select_ui1 = ally1.get_spell_select()
+		spell_select_ui1.update_pos(ally1_pos + 1)
+	if ally2 != null:
+		var spell_select_ui2 = ally2.get_spell_select()
+		spell_select_ui2.update_pos(ally2_pos + 1)
+	if ally3 != null:
+		var spell_select_ui3 = ally3.get_spell_select()
+		spell_select_ui3.update_pos(ally3_pos + 1)
+	if ally4 != null:
+		var spell_select_ui4 = ally4.get_spell_select()
+		spell_select_ui4.update_pos(ally4_pos + 1)
 
 func reset_skill_select():
-	var spell_select_ui1 = ally1.get_spell_select()
-	var spell_select_ui2 = ally2.get_spell_select()
-	var spell_select_ui3 = ally3.get_spell_select()
-	var spell_select_ui4 = ally4.get_spell_select()
+	if ally1 != null:
+		var spell_select_ui1 = ally1.get_spell_select()
+		spell_select_ui1.reset()
+		spell_select_ui1.update_pos(ally1_pos + 1)
+	if ally2 != null:
+		var spell_select_ui2 = ally2.get_spell_select()
+		spell_select_ui2.reset()
+		spell_select_ui2.update_pos(ally2_pos + 1)
+	if ally3 != null:
+		var spell_select_ui3 = ally3.get_spell_select()
+		spell_select_ui3.reset()
+		spell_select_ui3.update_pos(ally3_pos + 1)
+	if ally4 != null:
+		var spell_select_ui4 = ally4.get_spell_select()
+		spell_select_ui4.reset()
+		spell_select_ui4.update_pos(ally4_pos + 1)
 	action_queue = []
 	target_queue = []
 	next_pos = 0
@@ -317,14 +330,7 @@ func reset_skill_select():
 	ally2skill = -1
 	ally3skill = -1
 	ally4skill = -1
-	spell_select_ui1.reset()
-	spell_select_ui2.reset()
-	spell_select_ui3.reset()
-	spell_select_ui4.reset()
-	spell_select_ui1.update_pos(ally1_pos + 1)
-	spell_select_ui2.update_pos(ally2_pos + 1)
-	spell_select_ui3.update_pos(ally3_pos + 1)
-	spell_select_ui4.update_pos(ally4_pos + 1)
+
 	update_skill_positions()
 	
 func _on_end_turn_pressed() -> void:
@@ -344,16 +350,24 @@ func _on_reset_choices_pressed() -> void:
 	update_skill_positions()
 
 func show_skills():
-	ally1.show_skills()
-	ally2.show_skills()
-	ally3.show_skills()
-	ally4.show_skills()
+	if ally1 != null:
+		ally1.show_skills()
+	if ally2 != null:
+		ally2.show_skills()
+	if ally3 != null:
+		ally3.show_skills()
+	if ally4 != null:
+		ally4.show_skills()
 	
 func hide_skills():
-	ally1.hide_skills()
-	ally2.hide_skills()
-	ally3.hide_skills()
-	ally4.hide_skills()
+	if ally1 != null:
+		ally1.hide_skills()
+	if ally2 != null:
+		ally2.hide_skills()
+	if ally3 != null:
+		ally3.hide_skills()
+	if ally4 != null:
+		ally4.hide_skills()
 	
 func hide_ui():
 	end_turn.visible = false
@@ -455,7 +469,7 @@ func set_enemy_pos():
 			allies[n].left = allies[n-1]
 		else:
 			allies[n].left = null
-		if n < enemies.size()-1:
+		if n < allies.size()-1:
 			allies[n].right = allies[n+1]
 		else:
 			allies[n].right = null

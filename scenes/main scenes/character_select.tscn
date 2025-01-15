@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cdu4rddg2v2o7"]
+[gd_scene load_steps=6 format=3 uid="uid://cdu4rddg2v2o7"]
 
 [ext_resource type="Script" path="res://scripts/character_select.gd" id="1_hd0vt"]
 
@@ -7,6 +7,12 @@ font_size = 56
 
 [sub_resource type="LabelSettings" id="LabelSettings_angxr"]
 font_size = 51
+
+[sub_resource type="LabelSettings" id="LabelSettings_y2lgh"]
+font_size = 36
+
+[sub_resource type="LabelSettings" id="LabelSettings_an4f2"]
+font_size = 36
 
 [node name="Character Select" type="Node2D"]
 script = ExtResource("1_hd0vt")
@@ -28,6 +34,7 @@ text = "Allies"
 label_settings = SubResource("LabelSettings_rnln8")
 
 [node name="Pyromancer" type="Button" parent="Allies"]
+layout_mode = 0
 offset_left = -14.0
 offset_top = 114.0
 offset_right = 146.0
@@ -36,32 +43,36 @@ text = "Pyromancer
 "
 
 [node name="Katara" type="Button" parent="Allies"]
-offset_left = -21.0
-offset_top = 224.0
-offset_right = 149.0
-offset_bottom = 262.0
+layout_mode = 0
+offset_left = -14.0
+offset_top = 192.0
+offset_right = 145.0
+offset_bottom = 240.0
 text = "Katara"
 
 [node name="DaTing" type="Button" parent="Allies"]
-offset_left = -22.0
-offset_top = 316.0
-offset_right = 156.0
-offset_bottom = 349.0
+layout_mode = 0
+offset_left = -8.0
+offset_top = 265.0
+offset_right = 142.0
+offset_bottom = 315.0
 text = "DaTing
 "
 
 [node name="Freak" type="Button" parent="Allies"]
-offset_left = -7.0
-offset_top = 392.0
-offset_right = 131.0
-offset_bottom = 432.0
+layout_mode = 0
+offset_left = -9.0
+offset_top = 344.0
+offset_right = 145.0
+offset_bottom = 393.0
 text = "Freak"
 
 [node name="Qiqi" type="Button" parent="Allies"]
-offset_left = 7.0
-offset_top = 473.0
-offset_right = 131.0
-offset_bottom = 505.0
+layout_mode = 0
+offset_left = -8.0
+offset_top = 423.0
+offset_right = 139.0
+offset_bottom = 471.0
 text = "Qiqi"
 
 [node name="Enemies" type="Label" parent="."]
@@ -73,17 +84,42 @@ text = "Enemies"
 label_settings = SubResource("LabelSettings_angxr")
 
 [node name="Burger" type="Button" parent="Enemies"]
-offset_left = 22.0
-offset_top = 105.0
-offset_right = 183.0
-offset_bottom = 136.0
+layout_mode = 0
+offset_left = 15.0
+offset_top = 86.0
+offset_right = 204.0
+offset_bottom = 133.0
 text = "Burger"
 
 [node name="Baguette" type="Button" parent="Enemies"]
-offset_left = 43.0
-offset_top = 177.0
-offset_right = 171.0
-offset_bottom = 223.0
+layout_mode = 0
+offset_left = 22.0
+offset_top = 153.0
+offset_right = 187.0
+offset_bottom = 212.0
 text = "Baguette"
 
+[node name="AllyList" type="Label" parent="."]
+offset_left = 212.0
+offset_top = 817.0
+offset_right = 365.0
+offset_bottom = 867.0
+text = "Ally List: "
+label_settings = SubResource("LabelSettings_y2lgh")
+
+[node name="EnemyList" type="Label" parent="."]
+offset_left = 175.0
+offset_top = 960.0
+offset_right = 382.0
+offset_bottom = 1010.0
+text = "Enemy List: "
+label_settings = SubResource("LabelSettings_an4f2")
+
 [connection signal="pressed" from="StartCombat" to="." method="_on_start_combat_pressed"]
+[connection signal="pressed" from="Allies/Pyromancer" to="." method="_on_pyromancer_pressed"]
+[connection signal="pressed" from="Allies/Katara" to="." method="_on_katara_pressed"]
+[connection signal="pressed" from="Allies/DaTing" to="." method="_on_da_ting_pressed"]
+[connection signal="pressed" from="Allies/Freak" to="." method="_on_freak_pressed"]
+[connection signal="pressed" from="Allies/Qiqi" to="." method="_on_qiqi_pressed"]
+[connection signal="pressed" from="Enemies/Burger" to="." method="_on_burger_pressed"]
+[connection signal="pressed" from="Enemies/Baguette" to="." method="_on_baguette_pressed"]
