@@ -1,9 +1,12 @@
 extends Node
 var element_dict = {"none": Color.WHITE, "fire": Color.CORAL, "water": Color.DARK_CYAN, "lightning": Color.PURPLE, "earth": Color.SADDLE_BROWN, "grass": Color.WEB_GREEN}
 func display_number(value: int, position: Vector2, element : String, reaction : String):
+	var rng = RandomNumberGenerator.new()
+	var random_num = Vector2(rng.randf_range(-25,25), rng.randf_range(-25,25))
 	var number = Label.new()
 	value = -value
-	number.global_position = position
+	# randomizes where the number will spawn by a range of 25 px
+	number.global_position = position + random_num
 	number.text = str(value) + reaction
 	number.z_index = 5
 	number.label_settings = LabelSettings.new()
