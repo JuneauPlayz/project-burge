@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3 uid="uid://cucueo0alogd4"]
+
+[ext_resource type="Script" path="res://scripts/skill.gd" id="1_14qpp"]
+
+[resource]
+script = ExtResource("1_14qpp")
+name = "Flameburst"
+damage = 3
+element = "fire"
+damaging = true
+healing = false
+shielding = false
+friendly = false
+double_hit = false
+damage2 = 0
+element2 = ""
+requirement = false
+reaction_requirement = ""
+requirement_count = 0
+status_effects = []
+target_type = "all_enemies"
+unique = "Flameburst"

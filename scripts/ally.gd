@@ -43,7 +43,7 @@ func receive_skill(skill):
 	if (!connected):
 		ReactionManager.reaction_finished.connect(self.reaction_signal)
 		connected = true
-	var r = await ReactionManager.reaction(current_element, skill.element, self, skill.damage, 1)
+	var r = await ReactionManager.reaction(current_element, skill.element, self, skill.final_damage, 1)
 	if (r): 
 		await reaction_ended 
 		if skill.double_hit == true:
@@ -156,3 +156,6 @@ func execute_status(status_effect):
 		
 func get_spell_select():
 	return spell_select_ui
+
+func update_skills():
+	spell_select_ui.load_skills()

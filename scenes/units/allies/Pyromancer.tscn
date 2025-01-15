@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://bhnvgvm5xsfv3" path="res://resources/skills/Firestorm.tres" id="2_5oocg"]
 [ext_resource type="Resource" uid="uid://c3yogn8m318q2" path="res://resources/skills/Fire_Bolt.tres" id="2_arx5v"]
 [ext_resource type="Resource" uid="uid://b70k44ljti3df" path="res://resources/skills/Wildfire.tres" id="4_mf83k"]
-[ext_resource type="Resource" uid="uid://ddoguurpcf2jb" path="res://resources/skills/Vaporstrike.tres" id="5_3d02m"]
+[ext_resource type="Resource" uid="uid://cucueo0alogd4" path="res://resources/unique_skills/Flameburst.tres" id="5_u3a02"]
 [ext_resource type="PackedScene" uid="uid://tlvpop5rp1x6" path="res://scenes/reusables/spell_select_ui.tscn" id="6_dblxf"]
 [ext_resource type="PackedScene" uid="uid://5spa5amgsxfm" path="res://scenes/reusables/hp_bar.tscn" id="7_0s7j8"]
 [ext_resource type="Texture2D" uid="uid://133h4yyl8s4l" path="res://assets/chillpyro.png" id="8_jxfx5"]
@@ -16,7 +16,7 @@ script = ExtResource("1_735fd")
 basic_atk = ExtResource("2_arx5v")
 skill_1 = ExtResource("2_5oocg")
 skill_2 = ExtResource("4_mf83k")
-ult = ExtResource("5_3d02m")
+ult = ExtResource("5_u3a02")
 health = 100
 max_health = 100
 title = "Pyromancer"

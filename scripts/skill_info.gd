@@ -25,14 +25,17 @@ func update_skill_info():
 		"single_ally":
 			target = "an ally"
 		"all_allies":
-			target = "to all allies"
+			target = "all allies"
 		"all_enemies":
-			target = "to all enemies"
+			target = "all enemies"
 		"all_units":
-			target = "to all units"	
+			target = "all units"	
 	
 	if skill.damaging == true:
 		description.text += "Deals " + str(skill.damage) + " " + str(skill.element) + " damage\nto " + target
+	if skill.unique == "Flameburst":
+		description.text += " per fire reaction occured this fight\nTotal damage: " + str(skill.final_damage)
+		
 	if skill.shielding == true:
 		description.text += "Shields " + str(skill.damage) + " to " + target
 	if skill.healing == true:
@@ -44,3 +47,4 @@ func update_skill_info():
 		description.text += "\nThen, deals " + str(skill.damage2) + " " + str(skill.element2) + " damage\nto the same target(s)"
 	if skill.requirement == true:
 		description.text += "\nRequires " + str(skill.requirement_count) + " " + skill.reaction_requirement + " procs to use"
+	

@@ -47,7 +47,7 @@ func receive_skill(skill):
 	if (!connected):
 		ReactionManager.reaction_finished.connect(self.reaction_signal)
 		connected = true
-	var r = await ReactionManager.reaction(current_element, skill.element, self, skill.damage, 1)
+	var r = await ReactionManager.reaction(current_element, skill.element, self, skill.final_damage, 1)
 	if (r): 
 		await reaction_ended 
 		if skill.double_hit == true:
@@ -63,8 +63,8 @@ func receive_skill(skill):
 				current_element = skill.element
 	# no reaction
 	if (!r):
-		self.take_damage(skill.damage)
-		DamageNumbers.display_number(skill.damage, damage_number_origin.global_position, skill.element, reaction)
+		self.take_damage(skill.final_damage)
+		DamageNumbers.display_number(skill.final_damage, damage_number_origin.global_position, skill.element, reaction)
 		check_if_dead()
 		# don't change current element if skill has no element
 		if (skill.element != "none"):

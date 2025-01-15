@@ -145,6 +145,7 @@ func enemy_turn():
 	enemy_turn_done.emit()
 	
 func use_skill(skill,target):
+	skill.update()
 	if (target == null):
 		if (skill.target_type == "all_allies"):
 			if (skill.friendly == true):
@@ -330,6 +331,8 @@ func reset_skill_select():
 	ally2skill = -1
 	ally3skill = -1
 	ally4skill = -1
+	for ally in allies:
+		ally.update_skills()
 
 	update_skill_positions()
 	

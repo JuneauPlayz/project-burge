@@ -8,6 +8,7 @@ var detonate_main_mult = 1.5
 var detonate_side_mult = 0.5
 
 # reaction counts
+var fire_count = 0
 var vaporize_count = 0
 
 signal reaction_finished
@@ -29,6 +30,8 @@ func reaction(elem1 : String, elem2 : String, unit : Unit, value, hostile : int)
 	if (elem1 == elem2):
 		reaction_finished.emit()
 		return false
+	if (elem1 == "fire" or elem2 == "fire"):
+		fire_count += 1
 	match elem1:
 		# fire reactions
 		"fire":

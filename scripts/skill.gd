@@ -19,3 +19,12 @@ class_name Skill
 
 @export var status_effects : Array = []
 @export_enum("single_enemy", "single_ally", "all_enemies", "all_allies", "all_units") var target_type : String
+@export_enum("Flameburst") var unique : String
+var final_damage : int
+
+func _ready():
+	final_damage = damage
+func update():
+	if unique == "Flameburst":
+		final_damage = ReactionManager.fire_count * damage
+	

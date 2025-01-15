@@ -27,6 +27,10 @@ var blue = Color("3f61a1")
 var gray = Color("2e2e2e")
 
 func load_skills():
+	skill1.update()
+	skill2.update()
+	skill3.update()
+	skill4.update()
 	skill_info_1.skill = skill1
 	skill_info_1.update_skill_info()
 	skill_info_2.skill = skill2
