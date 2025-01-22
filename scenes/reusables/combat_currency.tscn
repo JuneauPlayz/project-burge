@@ -110,14 +110,14 @@ horizontal_alignment = 2
 [node name="Control4" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Nature" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Control4"]
+[node name="Grass" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Control4"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-text = "Nature Tokens:
+text = "Grass Tokens:
 "
 label_settings = SubResource("LabelSettings_wd6e5")
 
-[node name="NatureCount" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Control4"]
+[node name="GrassCount" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Control4"]
 custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 text = "0"

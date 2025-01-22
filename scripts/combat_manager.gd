@@ -101,7 +101,7 @@ func start_combat():
 	
 func start_ally_turn():
 	show_ui()
-	#check_requirements()
+	check_requirements()
 	turn_text.text = "Ally Turn"
 	ally_pre_status()
 	lose_shields()
@@ -146,6 +146,9 @@ func enemy_turn():
 	
 func use_skill(skill,target):
 	skill.update()
+	# token spending
+	if skill.cost > 0 or skill.cost2 > 0:
+			spend_skill_cost(skill)
 	if (target == null):
 		if (skill.target_type == "all_allies"):
 			if (skill.friendly == true):
@@ -180,7 +183,35 @@ func use_skill(skill,target):
 			await reaction_finished
 			print("finished waiting use skill")
 
-	
+func spend_skill_cost(skill):
+	var tokens1 = 0
+	var tokens2 = 0
+	print("spending tokens")
+	if skill.cost > 0:
+		match skill.token_type:
+			"fire":
+				GC.fire_tokens -= skill.cost
+			"water":
+				GC.water_tokens -= skill.cost
+			"lightning":
+				GC.lightning_tokens -= skill.cost
+			"grass":
+				GC.grass_tokens -= skill.cost
+			"earth":
+				GC.earth_tokens -= skill.cost
+	if skill.cost2 > 0:
+		match skill.token_type2:
+			"fire":
+				GC.fire_tokens -= skill.cost2
+			"water":
+				GC.water_tokens -= skill.cost2
+			"lightning":
+				GC.lightning_tokens -= skill.cost2
+			"grass":
+				GC.grass_tokens -= skill.cost2
+			"earth":
+				GC.earth_tokens -= skill.cost2
+	combat_currency.update()
 
 func reaction_signal():
 	await get_tree().create_timer(0.01).timeout
@@ -451,12 +482,49 @@ func ally_post_status():
 func check_requirements():
 	for ally in allies:
 		var skill = ally.ult
-		if skill.requirement == true:
-			if skill.reaction_requirement == "vaporize":
-				if true:
-					ally.get_child(0).enable(4)
-				else:
-					ally.get_child(0).disable(4)
+		var check = false
+		var tokens1 = 0
+		var tokens2 = 0
+		if skill.cost > 0:
+			match skill.token_type:
+				"fire":
+					tokens1 = GC.fire_tokens
+				"water":
+					tokens1 = GC.water_tokens
+				"lightning":
+					tokens1 = GC.lightning_tokens
+				"grass":
+					tokens1 = GC.grass_tokens
+				"earth":
+					tokens1 = GC.earth_tokens
+		if skill.cost2 > 0:
+			match skill.token_type2:
+				"fire":
+					tokens2 = GC.fire_tokens
+				"water":
+					tokens2 = GC.water_tokens
+				"lightning":
+					tokens2 = GC.lightning_tokens
+				"grass":
+					tokens2 = GC.grass_tokens
+				"earth":
+					tokens2 = GC.earth_tokens
+		if skill.cost > 0:
+			if skill.cost <= tokens1:
+				check = true
+			else:
+				check = false
+				
+		if skill.cost2 > 0:
+			if skill.cost2 <= tokens2:
+				check = true
+			else:
+				check = false
+		if skill.cost > 0 or skill.cost2 > 0:
+			if check:
+				ally.get_child(0).enable(4)
+			else:
+				ally.get_child(0).disable(4)
 		
 func set_enemy_pos():
 	for n in range(enemies.size()):

@@ -45,6 +45,10 @@ func update_skill_info():
 		description.text = "Applies " + skill.element + " to " + target
 	if skill.double_hit == true:
 		description.text += "\nThen, deals " + str(skill.damage2) + " " + str(skill.element2) + " damage\nto the same target(s)"
-	if skill.requirement == true:
-		description.text += "\nRequires " + str(skill.requirement_count) + " " + skill.reaction_requirement + " procs to use"
+	if skill.cost > 0:
+		description.text += "\nCosts " +  str(skill.cost) + " " + skill.token_type + " tokens"
+		if skill.cost2 > 0:
+			description.text += "\nand " + str(skill.cost2) + " " + skill.token_type2 + " tokens to use"
+		else:
+			description.text += " to use"
 	

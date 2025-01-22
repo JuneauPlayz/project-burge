@@ -18,7 +18,7 @@ skill_2 = ExtResource("3_axpgg")
 ult = ExtResource("4_hnoli")
 health = 200
 max_health = 200
-title = "QiqiFallen"
+title = "Freak"
 
 [node name="SpellSelectUi" parent="." instance=ExtResource("6_u15dp")]
 offset_left = -95.0

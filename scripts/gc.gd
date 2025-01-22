@@ -18,13 +18,13 @@ var enemy4 = null
 var fire_tokens = 0
 var water_tokens = 0
 var lightning_tokens = 0
-var nature_tokens = 0
+var grass_tokens = 0
 var earth_tokens = 0
 
 var fire_token_multiplier = 1
 var water_token_multiplier = 1
 var lightning_token_multiplier = 1
-var	nature_token_multiplier = 1
+var	grass_token_multiplier = 1
 var earth_token_multiplier = 1
 
 func vaporize():
@@ -40,7 +40,7 @@ func reset_tokens():
 	fire_tokens = 0
 	water_tokens = 0
 	lightning_tokens = 0
-	nature_tokens = 0
+	grass_tokens = 0
 	earth_tokens = 0
 
 func load_combat(ally1, ally2, ally3, ally4, enemy1, enemy2, enemy3, enemy4):
@@ -61,8 +61,8 @@ func add_token(element, count):
 			water_tokens += (count * water_token_multiplier)
 		"lightning":
 			lightning_tokens += (count * lightning_token_multiplier)
-		"nature":
-			nature_tokens += (count * nature_token_multiplier)
+		"grass":
+			grass_tokens += (count * grass_token_multiplier)
 		"earth":
 			earth_tokens += (count * earth_token_multiplier)
 			

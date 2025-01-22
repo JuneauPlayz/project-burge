@@ -21,7 +21,7 @@ var skill4 : Skill
 @onready var skill_info_3: Control = $SkillInfo3
 @onready var skill_info_4: Control = $SkillInfo4
 
-
+var initial_load = false
 
 var blue = Color("3f61a1")
 var gray = Color("2e2e2e")
@@ -43,14 +43,16 @@ func load_skills():
 	s_1.text = skill2.name
 	s_2.text = skill3.name
 	ult.text = skill4.name
-	if skill1.requirement == true:
-		ba_1.disabled = true
-	if skill2.requirement == true:
-		s_1.disabled = true
-	if skill3.requirement == true:
-		s_2.disabled = true
-	if skill4.requirement == true:
-		ult.disabled = true
+	if not initial_load:
+		if skill1.cost > 0:
+			ba_1.disabled = true
+		if skill2.cost > 0:
+			s_1.disabled = true
+		if skill3.cost > 0:
+			s_2.disabled = true
+		if skill4.cost > 0:
+			ult.disabled = true
+		initial_load = true
 
 func _on_button_pressed() -> void:
 	if selected != 1:
