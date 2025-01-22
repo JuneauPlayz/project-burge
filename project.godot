@@ -19,7 +19,7 @@ config/icon="res://assets/icon.svg"
 
 DamageNumbers="*res://scripts/DamageNumbers.gd"
 ReactionManager="*res://scripts/ReactionManager.gd"
-Global="*res://scripts/global.gd"
+GC="*res://scripts/gc.gd"
 
 [display]
 

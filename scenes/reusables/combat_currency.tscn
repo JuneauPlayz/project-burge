@@ -1,0 +1,141 @@
+[gd_scene load_steps=6 format=3 uid="uid://rtk527cyr7kb"]
+
+[ext_resource type="Script" path="res://scenes/reusables/combat_currency.gd" id="1_44acn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_evy26"]
+bg_color = Color(0.449653, 0.548845, 0.58154, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_bottom_right = 25
+shadow_size = 7
+
+[sub_resource type="LabelSettings" id="LabelSettings_a672k"]
+font_size = 29
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 0.988235)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wd6e5"]
+font_size = 21
+outline_size = 1
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.486275)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pyo7b"]
+font_size = 24
+
+[node name="CombatCurrency" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_44acn")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 263.0
+offset_bottom = 247.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_evy26")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Tokens:"
+label_settings = SubResource("LabelSettings_a672k")
+horizontal_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Control" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Fire" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Control"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Fire Tokens:"
+label_settings = SubResource("LabelSettings_wd6e5")
+
+[node name="FireCount" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Control"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_pyo7b")
+horizontal_alignment = 2
+
+[node name="Control2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Water" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Control2"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Water Tokens:"
+label_settings = SubResource("LabelSettings_wd6e5")
+
+[node name="WaterCount" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Control2"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_pyo7b")
+horizontal_alignment = 2
+
+[node name="Control3" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Lightning" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Control3"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Lightning Tokens:"
+label_settings = SubResource("LabelSettings_wd6e5")
+
+[node name="LightningCount" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Control3"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_pyo7b")
+horizontal_alignment = 2
+
+[node name="Control4" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Nature" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Control4"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Nature Tokens:
+"
+label_settings = SubResource("LabelSettings_wd6e5")
+
+[node name="NatureCount" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Control4"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_pyo7b")
+horizontal_alignment = 2
+
+[node name="Control5" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Earth" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Control5"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Earth Tokens:"
+label_settings = SubResource("LabelSettings_wd6e5")
+
+[node name="EarthCount" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Control5"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_pyo7b")
+horizontal_alignment = 2

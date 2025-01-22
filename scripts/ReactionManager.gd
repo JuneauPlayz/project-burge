@@ -7,9 +7,7 @@ var erupt_mult = 3
 var detonate_main_mult = 1.5
 var detonate_side_mult = 0.5
 
-# reaction counts
-var fire_count = 0
-var vaporize_count = 0
+
 
 signal reaction_finished
 
@@ -30,8 +28,6 @@ func reaction(elem1 : String, elem2 : String, unit : Unit, value, hostile : int)
 	if (elem1 == elem2):
 		reaction_finished.emit()
 		return false
-	if (elem1 == "fire" or elem2 == "fire"):
-		fire_count += 1
 	match elem1:
 		# fire reactions
 		"fire":
@@ -42,7 +38,7 @@ func reaction(elem1 : String, elem2 : String, unit : Unit, value, hostile : int)
 					if hostile == 1:
 						DamageNumbers.display_number(unit.take_damage(res_value * hostile), unit.get_child(2).global_position, elem2, reaction)
 					unit.current_element = "none"
-					vaporize_count += 1
+					GC.vaporize()
 				"lightning":
 					res_value = roundi(value)
 					reaction = " Detonate!"
@@ -87,7 +83,7 @@ func reaction(elem1 : String, elem2 : String, unit : Unit, value, hostile : int)
 					if hostile == 1:
 						DamageNumbers.display_number(unit.take_damage(res_value * hostile), unit.get_child(2).global_position, elem2, reaction)
 					unit.current_element = "none"
-					vaporize_count += 1
+					GC.vaporize()
 				"lightning":
 					reaction = " Shock!"
 					res_value = roundi(value * shock_mult)
@@ -100,6 +96,7 @@ func reaction(elem1 : String, elem2 : String, unit : Unit, value, hostile : int)
 						await get_tree().create_timer(0.2).timeout
 						DamageNumbers.display_number(unit.take_damage(res_value), unit.get_child(2).global_position, elem2, reaction)
 					unit.current_element = "lightning"
+					GC.shock()
 				"earth":
 					if hostile == 1:
 						DamageNumbers.display_number(unit.take_damage(roundi(value * hostile)), unit.get_child(2).global_position, elem2, reaction)
@@ -133,6 +130,7 @@ func reaction(elem1 : String, elem2 : String, unit : Unit, value, hostile : int)
 						await get_tree().create_timer(0.2).timeout
 						DamageNumbers.display_number(unit.take_damage(res_value), unit.get_child(2).global_position, elem2, reaction)
 					unit.current_element = "lightning"
+					GC.shock()
 				"earth":
 					if hostile == 1:
 						DamageNumbers.display_number(unit.take_damage(res_value * hostile), unit.get_child(2).global_position, elem2, reaction)
@@ -210,5 +208,3 @@ func reaction(elem1 : String, elem2 : String, unit : Unit, value, hostile : int)
 	return true
 					
 		
-func reset_counts():
-	vaporize_count = 0

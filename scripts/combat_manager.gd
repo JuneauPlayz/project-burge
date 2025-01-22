@@ -1,6 +1,7 @@
 extends Node
 
 @onready var turn_text: Label = $TurnText
+@onready var combat_currency: Control = $CombatCurrency
 
 @export var ally1 : Ally
 @export var ally2 : Ally
@@ -100,7 +101,7 @@ func start_combat():
 	
 func start_ally_turn():
 	show_ui()
-	check_requirements()
+	#check_requirements()
 	turn_text.text = "Ally Turn"
 	ally_pre_status()
 	lose_shields()
@@ -112,12 +113,11 @@ func start_ally_turn():
 func execute_ally_turn():
 	hide_skills()
 	hide_ui()
+	# skill execution
 	for n in range(action_queue.size()):
 		var skill = action_queue[n]
 		var target = target_queue[n]
-		if skill.requirement == true:
-			if skill.reaction_requirement == "vaporize":
-				ReactionManager.vaporize_count -= skill.requirement_count
+	
 		use_skill(skill,target)
 		print("waiting for reaction")
 		await reaction_finished
@@ -184,6 +184,8 @@ func use_skill(skill,target):
 
 func reaction_signal():
 	await get_tree().create_timer(0.01).timeout
+	# update currency ui
+	combat_currency.update()
 	reaction_finished.emit()
 	
 func lose_shields():
@@ -451,8 +453,7 @@ func check_requirements():
 		var skill = ally.ult
 		if skill.requirement == true:
 			if skill.reaction_requirement == "vaporize":
-				if ReactionManager.vaporize_count >= skill.requirement_count:
-					# spell select ui must be first child in ally
+				if true:
 					ally.get_child(0).enable(4)
 				else:
 					ally.get_child(0).disable(4)

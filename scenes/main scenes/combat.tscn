@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://do6gwn47eylu7"]
+[gd_scene load_steps=13 format=3 uid="uid://do6gwn47eylu7"]
 
 [ext_resource type="Script" path="res://scripts/combat_scene.gd" id="1_3ou8c"]
 [ext_resource type="Script" path="res://scripts/Targeting.gd" id="2_0pyv8"]
 [ext_resource type="Script" path="res://scripts/SpellSelect.gd" id="3_2dlvl"]
 [ext_resource type="Script" path="res://scripts/combat_manager.gd" id="4_ucgqt"]
 [ext_resource type="PackedScene" uid="uid://sdwnoh61gawa" path="res://scenes/reusables/skill_info.tscn" id="5_2x1un"]
+[ext_resource type="PackedScene" uid="uid://rtk527cyr7kb" path="res://scenes/reusables/combat_currency.tscn" id="6_b6b3n"]
 [ext_resource type="Texture2D" uid="uid://b6rhxb71os38w" path="res://assets/hsrbg.png" id="10_thong"]
 [ext_resource type="Script" path="res://scripts/sound_manager.gd" id="11_sirah"]
 [ext_resource type="AudioStream" uid="uid://c0fyotn8lqfkv" path="res://assets/fire hit.mp3" id="12_8ib15"]
@@ -57,43 +58,45 @@ offset_top = 583.0
 offset_right = 389.0
 offset_bottom = 583.0
 
+[node name="CombatCurrency" parent="CombatManager" instance=ExtResource("6_b6b3n")]
+
 [node name="Ally 1 Spot" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(115, 381)
+position = Vector2(115, 450)
 
 [node name="Ally 2 Spot" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(351, 383)
+position = Vector2(351, 450)
 
 [node name="Ally 3 Spot" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(583, 386)
+position = Vector2(583, 450)
 
 [node name="Ally 4 Spot" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(823, 389)
+position = Vector2(823, 450)
 
 [node name="Enemy 1 Spot" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(1005, 229)
+position = Vector2(1005, 350)
 
 [node name="Enemy 2 Spot" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(1228, 226)
+position = Vector2(1228, 350)
 
 [node name="Enemy 3 Spot" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(1453, 229)
+position = Vector2(1453, 350)
 
 [node name="Enemy 4 Spot" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(1676, 230)
+position = Vector2(1676, 350)
 
 [node name="EndTurn" type="Button" parent="."]
 offset_left = 1521.0
-offset_top = 685.0
+offset_top = 800.0
 offset_right = 1681.0
-offset_bottom = 722.0
+offset_bottom = 837.0
 text = "End Turn"
 
 [node name="ResetChoices" type="Button" parent="."]

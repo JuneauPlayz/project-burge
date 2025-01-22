@@ -28,36 +28,36 @@ func get_combat_manager():
 
 func load_units():
 	print("loading units")
-	if Global.ally1 != null:
-		var ally1 = Global.ally1.instantiate()
+	if GC.ally1 != null:
+		var ally1 = GC.ally1.instantiate()
 		ally_1_spot.add_child(ally1)
 		combat_manager.ally1 = ally1
-	if Global.ally2 != null:
-		var ally2 = Global.ally2.instantiate()
+	if GC.ally2 != null:
+		var ally2 = GC.ally2.instantiate()
 		ally_2_spot.add_child(ally2)
 		combat_manager.ally2 = ally2
-	if Global.ally3 != null:
-		var ally3 = Global.ally3.instantiate()
+	if GC.ally3 != null:
+		var ally3 = GC.ally3.instantiate()
 		ally_3_spot.add_child(ally3)
 		combat_manager.ally3 = ally3
-	if Global.ally4 != null:
-		var ally4 = Global.ally4.instantiate()
+	if GC.ally4 != null:
+		var ally4 = GC.ally4.instantiate()
 		ally_4_spot.add_child(ally4)
 		combat_manager.ally4 = ally4
-	if Global.enemy1 != null:
-		var enemy1 = Global.enemy1.instantiate()
+	if GC.enemy1 != null:
+		var enemy1 = GC.enemy1.instantiate()
 		enemy_1_spot.add_child(enemy1)
 		combat_manager.enemy1 = enemy1
-	if Global.enemy2 != null:
-		var enemy2 = Global.enemy2.instantiate()
+	if GC.enemy2 != null:
+		var enemy2 = GC.enemy2.instantiate()
 		enemy_2_spot.add_child(enemy2)
 		combat_manager.enemy2 = enemy2
-	if Global.enemy3 != null:
-		var enemy3 = Global.enemy3.instantiate()
+	if GC.enemy3 != null:
+		var enemy3 = GC.enemy3.instantiate()
 		enemy_3_spot.add_child(enemy3)
 		combat_manager.enemy3 = enemy3
-	if Global.enemy4 != null:
-		var enemy4 = Global.enemy4.instantiate()
+	if GC.enemy4 != null:
+		var enemy4 = GC.enemy4.instantiate()
 		enemy_4_spot.add_child(enemy4)
 		combat_manager.enemy4 = enemy4
 
