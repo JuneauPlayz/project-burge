@@ -78,19 +78,19 @@ position = Vector2(823, 450)
 
 [node name="Enemy 1 Spot" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(1005, 350)
+position = Vector2(1005, 150)
 
 [node name="Enemy 2 Spot" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(1228, 350)
+position = Vector2(1228, 150)
 
 [node name="Enemy 3 Spot" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(1453, 350)
+position = Vector2(1453, 150)
 
 [node name="Enemy 4 Spot" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(1676, 350)
+position = Vector2(1676, 150)
 
 [node name="EndTurn" type="Button" parent="."]
 offset_left = 1521.0
@@ -100,10 +100,10 @@ offset_bottom = 837.0
 text = "End Turn"
 
 [node name="ResetChoices" type="Button" parent="."]
-offset_left = 453.0
-offset_top = 805.75
-offset_right = 602.0
-offset_bottom = 840.75
+offset_left = 413.0
+offset_top = 922.0
+offset_right = 562.0
+offset_bottom = 957.0
 scale = Vector2(0.705, 0.705)
 text = "Reset Choices"
 

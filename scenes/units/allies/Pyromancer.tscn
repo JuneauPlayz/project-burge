@@ -29,10 +29,10 @@ offset_bottom = 136.0
 scale = Vector2(0.705, 0.705)
 
 [node name="HP Bar" parent="." instance=ExtResource("7_0s7j8")]
-offset_left = -82.0
-offset_top = 63.0
-offset_right = -82.0
-offset_bottom = 63.0
+offset_left = -80.9091
+offset_top = 68.1818
+offset_right = -80.9091
+offset_bottom = 68.1818
 scale = Vector2(0.65, 0.65)
 
 [node name="DamageNumberOrigin" type="Node2D" parent="."]

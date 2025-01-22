@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://tlvpop5rp1x6"]
+[gd_scene load_steps=21 format=3 uid="uid://tlvpop5rp1x6"]
 
 [ext_resource type="Script" path="res://scripts/spell_select_ui.gd" id="1_6jhhb"]
 [ext_resource type="PackedScene" uid="uid://sdwnoh61gawa" path="res://scenes/reusables/skill_info.tscn" id="2_ae65f"]
@@ -57,8 +57,19 @@ bg_color = Color(0.247059, 0.380392, 0.631373, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s2255"]
 bg_color = Color(0.223103, 0.223103, 0.223103, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6v8fa"]
+shadow_size = 8
+
 [sub_resource type="LabelSettings" id="LabelSettings_1aora"]
-font_color = Color(0.0887693, 0.0806547, 0.0997545, 1)
+font_size = 21
+font_color = Color(0.878646, 0.868238, 0.89352, 1)
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1vgtr"]
+font_size = 60
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
 [node name="SpellSelectUi" type="Control"]
 layout_mode = 3
@@ -208,19 +219,35 @@ offset_top = 119.0
 offset_right = 534.0
 offset_bottom = 142.0
 
+[node name="PositionContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 73.0
+offset_top = 246.0
+offset_right = 219.0
+offset_bottom = 368.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6v8fa")
+
 [node name="Position" type="Label" parent="."]
 layout_mode = 0
-offset_left = 59.0
-offset_top = -14.0
-offset_right = 251.0
-offset_bottom = 9.0
-text = "Position: "
+offset_left = 95.0
+offset_top = 249.0
+offset_right = 287.0
+offset_bottom = 279.0
+text = "POSITION"
 label_settings = SubResource("LabelSettings_1aora")
+
+[node name="PosNumber" type="Label" parent="."]
+layout_mode = 0
+offset_left = 127.0
+offset_top = 271.0
+offset_right = 167.0
+offset_bottom = 354.0
+label_settings = SubResource("LabelSettings_1vgtr")
 
 [connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/BA1Panel/ba_1" to="." method="_on_ba_1_mouse_entered"]
 [connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/BA1Panel/ba_1" to="." method="_on_ba_1_mouse_exited"]
-[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/BA1Panel/ba_1" to="." method="_on_ba_1_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/BA1Panel/ba_1" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/BA1Panel/ba_1" to="." method="_on_ba_1_pressed"]
 [connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/SP1Panel/S1" to="." method="_on_s_1_mouse_entered"]
 [connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/SP1Panel/S1" to="." method="_on_s_1_mouse_exited"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/SP1Panel/S1" to="." method="_on_s_1_pressed"]

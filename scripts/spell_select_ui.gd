@@ -10,6 +10,7 @@ signal new_select
 @onready var s_2: Button = $PanelContainer/MarginContainer/VBoxContainer/SP2Panel/S2
 @onready var ult: Button = $PanelContainer/MarginContainer/VBoxContainer/ULTPanel/ULT
 @onready var positionL : Label = $Position
+@onready var pos_number: Label = $PosNumber
 
 var element_dict = {"none": Color.WHITE, "fire": Color.CORAL, "water": Color.DARK_CYAN, "lightning": Color.PURPLE, "earth": Color.SADDLE_BROWN, "grass": Color.WEB_GREEN}
 
@@ -129,9 +130,9 @@ func update_font_color(button, color):
 	
 func update_pos(pos):
 	if pos > 0:
-		positionL.text = "Position: " + str(pos)
+		pos_number.text = str(pos)
 	else:
-		positionL.text = "Position: "
+		pos_number.text = ""
 	
 func reset():
 	update_color(ba_1, gray)

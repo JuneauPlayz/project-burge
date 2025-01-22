@@ -253,6 +253,7 @@ func _on_spell_select_ui_new_select(ally) -> void:
 	if (allyskill != -1 and spell_select_ui.selected != 0):
 		action_queue.remove_at(ally_pos)
 		target_queue.remove_at(ally_pos)
+		spell_select_ui.update_pos(0)
 		change = true
 	allyskill = spell_select_ui.selected
 	match spell_select_ui.selected:
@@ -262,9 +263,9 @@ func _on_spell_select_ui_new_select(ally) -> void:
 			action_queue.remove_at(ally_pos)
 			target_queue.remove_at(ally_pos)
 			update_positions(ally_pos)
-			spell_select_ui.update_pos(0)
 			ally_pos = -1
 			update_skill_positions()
+			spell_select_ui.update_pos(0)
 			allyskill = -1
 		1:
 			if change:
@@ -308,6 +309,7 @@ func _on_spell_select_ui_new_select(ally) -> void:
 		4:
 			ally4skill = allyskill
 			ally4_pos = ally_pos
+	
 	print(action_queue)
 		
 
