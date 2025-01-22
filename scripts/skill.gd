@@ -25,6 +25,7 @@ var final_damage : int
 func _ready():
 	final_damage = damage
 func update():
+	final_damage = damage
 	if unique == "Flameburst":
 		final_damage = ReactionManager.fire_count * damage
 	

@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://bct4eh82cq7e0"]
 
 [ext_resource type="Script" path="res://scripts/ally.gd" id="1_felic"]
-[ext_resource type="Resource" uid="uid://dooqfwlwxly5w" path="res://resources/skills/Water_Bolt.tres" id="2_upkei"]
-[ext_resource type="Resource" uid="uid://d3hsiqbosdsp6" path="res://resources/skills/Waterfall.tres" id="3_f0qav"]
-[ext_resource type="Resource" uid="uid://025hve2nq35j" path="res://resources/skills/Healing_Bloom.tres" id="4_2stdd"]
-[ext_resource type="Resource" uid="uid://ddoguurpcf2jb" path="res://resources/skills/Vaporstrike.tres" id="5_3ka55"]
+[ext_resource type="Resource" uid="uid://dooqfwlwxly5w" path="res://resources/Skills/Water_Bolt.tres" id="2_upkei"]
+[ext_resource type="Resource" uid="uid://d3hsiqbosdsp6" path="res://resources/Skills/Waterfall.tres" id="3_f0qav"]
+[ext_resource type="Resource" uid="uid://025hve2nq35j" path="res://resources/Skills/Healing_Bloom.tres" id="4_2stdd"]
+[ext_resource type="Resource" uid="uid://ddoguurpcf2jb" path="res://resources/Skills/Vaporstrike.tres" id="5_3ka55"]
 [ext_resource type="PackedScene" uid="uid://tlvpop5rp1x6" path="res://scenes/reusables/spell_select_ui.tscn" id="6_q4wtv"]
 [ext_resource type="PackedScene" uid="uid://5spa5amgsxfm" path="res://scenes/reusables/hp_bar.tscn" id="7_hxtre"]
 [ext_resource type="Texture2D" uid="uid://btf1pjieqwng5" path="res://assets/kataraa.png" id="8_0fmx1"]
@@ -17,8 +17,8 @@ basic_atk = ExtResource("2_upkei")
 skill_1 = ExtResource("3_f0qav")
 skill_2 = ExtResource("4_2stdd")
 ult = ExtResource("5_3ka55")
-health = 100
-max_health = 100
+health = 200
+max_health = 200
 title = "QiqiFallen"
 
 [node name="SpellSelectUi" parent="." instance=ExtResource("6_q4wtv")]

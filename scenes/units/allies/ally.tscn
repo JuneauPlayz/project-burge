@@ -1,13 +1,13 @@
 [gd_scene load_steps=9 format=3 uid="uid://bkkh4bxq8cu7n"]
 
 [ext_resource type="Script" path="res://scripts/ally.gd" id="1_fu3qc"]
-[ext_resource type="Resource" uid="uid://bhnvgvm5xsfv3" path="res://resources/skills/Firestorm.tres" id="2_77fl0"]
+[ext_resource type="Resource" uid="uid://bhnvgvm5xsfv3" path="res://resources/Skills/Firestorm.tres" id="2_77fl0"]
 [ext_resource type="PackedScene" uid="uid://tlvpop5rp1x6" path="res://scenes/reusables/spell_select_ui.tscn" id="2_pcgfv"]
-[ext_resource type="Resource" uid="uid://d3hsiqbosdsp6" path="res://resources/skills/Waterfall.tres" id="3_oopdj"]
+[ext_resource type="Resource" uid="uid://d3hsiqbosdsp6" path="res://resources/Skills/Waterfall.tres" id="3_oopdj"]
 [ext_resource type="PackedScene" uid="uid://5spa5amgsxfm" path="res://scenes/reusables/hp_bar.tscn" id="3_urihg"]
-[ext_resource type="Resource" uid="uid://bya4jpai0ygj5" path="res://resources/skills/Rock Shield.tres" id="4_7yskb"]
+[ext_resource type="Resource" uid="uid://bya4jpai0ygj5" path="res://resources/Skills/Rock Shield.tres" id="4_7yskb"]
 [ext_resource type="Texture2D" uid="uid://gsryiov15e6m" path="res://assets/qiqifallen.png" id="4_v6v76"]
-[ext_resource type="Resource" uid="uid://ddoguurpcf2jb" path="res://resources/skills/Vaporstrike.tres" id="5_kdrfg"]
+[ext_resource type="Resource" uid="uid://ddoguurpcf2jb" path="res://resources/Skills/Vaporstrike.tres" id="5_kdrfg"]
 
 [node name="Ally" type="Node2D"]
 position = Vector2(0, -2)
@@ -17,8 +17,8 @@ basic_atk = ExtResource("2_77fl0")
 skill_1 = ExtResource("3_oopdj")
 skill_2 = ExtResource("4_7yskb")
 ult = ExtResource("5_kdrfg")
-health = 100
-max_health = 100
+health = 200
+max_health = 200
 title = "QiqiFallen"
 
 [node name="SpellSelectUi" parent="." instance=ExtResource("2_pcgfv")]

@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://c37yh8fctlf2m"]
 
 [ext_resource type="Script" path="res://scripts/ally.gd" id="1_edi3q"]
-[ext_resource type="Resource" uid="uid://clidntww233oy" path="res://resources/skills/Bloody_Slash.tres" id="2_y40cn"]
-[ext_resource type="Resource" uid="uid://60omj8j38mfk" path="res://resources/skills/Lightning_Bolt.tres" id="3_axpgg"]
-[ext_resource type="Resource" uid="uid://cf3f0mnd7a8pe" path="res://resources/skills/Lightning Dome.tres" id="4_hnoli"]
+[ext_resource type="Resource" uid="uid://clidntww233oy" path="res://resources/Skills/Bloody_Slash.tres" id="2_y40cn"]
+[ext_resource type="Resource" uid="uid://60omj8j38mfk" path="res://resources/Skills/Lightning_Bolt.tres" id="3_axpgg"]
+[ext_resource type="Resource" uid="uid://cf3f0mnd7a8pe" path="res://resources/Skills/Lightning Dome.tres" id="4_hnoli"]
 [ext_resource type="PackedScene" uid="uid://tlvpop5rp1x6" path="res://scenes/reusables/spell_select_ui.tscn" id="6_u15dp"]
 [ext_resource type="Texture2D" uid="uid://dgqfnn2cu0y42" path="res://assets/freakydeaky.png" id="7_0lokd"]
 [ext_resource type="PackedScene" uid="uid://5spa5amgsxfm" path="res://scenes/reusables/hp_bar.tscn" id="7_w0a4y"]
@@ -16,8 +16,8 @@ basic_atk = ExtResource("2_y40cn")
 skill_1 = ExtResource("2_y40cn")
 skill_2 = ExtResource("3_axpgg")
 ult = ExtResource("4_hnoli")
-health = 100
-max_health = 100
+health = 200
+max_health = 200
 title = "QiqiFallen"
 
 [node name="SpellSelectUi" parent="." instance=ExtResource("6_u15dp")]

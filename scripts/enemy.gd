@@ -3,6 +3,7 @@ class_name Enemy
 
 @export var skill1 : Skill
 @export var skill2 : Skill
+@export var skill3 : Skill
 var current_skill : Skill
 @export var current_element : String = "none"
 @export var reaction_primed = 0
@@ -13,6 +14,8 @@ var hp_bar
 var connected = false
 @onready var targeting_area: Button = $TargetingArea
 var combat_manager: Node
+var rng
+var random_num
 
 var BLEED = preload("res://resources/Status Effects/Bleed.tres")
 
@@ -109,6 +112,7 @@ func die():
 	combat_manager.set_enemy_pos()
 	
 func change_skills():
+	
 	if current_skill == skill1:
 		current_skill = skill2
 	elif current_skill == skill2:
@@ -130,3 +134,15 @@ func execute_status(status_effect):
 	take_damage(status_effect.damage)
 	DamageNumbers.display_number(status_effect.damage, damage_number_origin.global_position, status_effect.element, "")
 	status_effect.turns_remaining -= 1
+	
+func random_skill():
+	rng = RandomNumberGenerator.new()
+	random_num = rng.randi_range(1,3)
+	match random_num:
+		1:
+			return skill1
+		2:
+			return skill2
+		3:
+			return skill3
+	
