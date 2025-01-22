@@ -516,7 +516,7 @@ func check_requirements():
 				check = false
 				
 		if skill.cost2 > 0:
-			if skill.cost2 <= tokens2:
+			if skill.cost <= tokens1 and skill.cost2 <= tokens2:
 				check = true
 			else:
 				check = false

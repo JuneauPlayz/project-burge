@@ -35,6 +35,13 @@ func shock():
 	add_token("lightning", 1)
 	add_token("water", 1)
 
+func detonate():
+	add_token("fire", 1)
+	add_token("lightning", 1)
+	
+func erupt():
+	add_token("fire", 1)
+	add_token("earth", 1)
 
 func reset_tokens():
 	fire_tokens = 0

@@ -50,8 +50,10 @@ func reaction(elem1 : String, elem2 : String, unit : Unit, value, hostile : int)
 					if (unit.hasRight()):
 						DamageNumbers.display_number(unit.right.take_damage(res_value * detonate_side_mult), unit.right.get_child(2).global_position, elem2, "")
 					unit.current_element = "none"
+					GC.detonate()
 				"earth":
 					res_value = roundi(value)
+					GC.erupt()
 					if (unit.shield > 0):
 						var shield = unit.shield
 						#if shield wont break
@@ -118,6 +120,7 @@ func reaction(elem1 : String, elem2 : String, unit : Unit, value, hostile : int)
 					if (unit.hasRight()):
 						DamageNumbers.display_number(unit.right.take_damage(res_value * detonate_side_mult), unit.right.get_child(2).global_position, elem2, "")
 					unit.current_element = "none"
+					GC.detonate()
 				"water":
 					reaction = " Shock!"
 					res_value = roundi(value * shock_mult)
@@ -147,6 +150,7 @@ func reaction(elem1 : String, elem2 : String, unit : Unit, value, hostile : int)
 					unit.current_element = "none"
 				"fire":
 					res_value = roundi(value)
+					GC.erupt()
 					if (unit.shield > 0):
 						var shield = unit.shield
 						#if shield wont break

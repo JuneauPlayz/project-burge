@@ -24,7 +24,7 @@ content_margin_right = 0.0
 bg_color = Color(0.246653, 0.378583, 0.631853, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ur654"]
-bg_color = Color(0.180392, 0.180392, 0.180392, 1)
+bg_color = Color(0.180392, 0.180392, 0.180392, 0.470588)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c8eds"]
 
@@ -55,7 +55,7 @@ bg_color = Color(0.254902, 0.309804, 0.286275, 0.870588)
 bg_color = Color(0.247059, 0.380392, 0.631373, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s2255"]
-bg_color = Color(0.180392, 0.180392, 0.180392, 1)
+bg_color = Color(0.223103, 0.223103, 0.223103, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_1aora"]
 font_color = Color(0.0887693, 0.0806547, 0.0997545, 1)
@@ -94,6 +94,8 @@ mouse_filter = 1
 custom_minimum_size = Vector2(261, 39)
 layout_mode = 2
 size_flags_horizontal = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.705882)
+theme_override_constants/outline_size = 10
 theme_override_styles/disabled = SubResource("StyleBoxFlat_rghh4")
 theme_override_styles/hover = SubResource("StyleBoxFlat_1dgm8")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ur654")
@@ -112,6 +114,8 @@ mouse_filter = 2
 [node name="S1" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/SP1Panel"]
 custom_minimum_size = Vector2(0, 39)
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.705882)
+theme_override_constants/outline_size = 10
 theme_override_styles/disabled = SubResource("StyleBoxFlat_667es")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ni84r")
 theme_override_styles/normal = SubResource("StyleBoxFlat_sleic")
@@ -131,6 +135,8 @@ mouse_filter = 2
 [node name="S2" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/SP2Panel"]
 custom_minimum_size = Vector2(0, 39)
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.705882)
+theme_override_constants/outline_size = 10
 theme_override_styles/disabled = SubResource("StyleBoxFlat_pfass")
 theme_override_styles/hover = SubResource("StyleBoxFlat_q85v1")
 theme_override_styles/normal = SubResource("StyleBoxFlat_lt1l8")
@@ -150,6 +156,8 @@ mouse_filter = 2
 [node name="ULT" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/ULTPanel"]
 custom_minimum_size = Vector2(0, 39)
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.705882)
+theme_override_constants/outline_size = 10
 theme_override_styles/disabled = SubResource("StyleBoxFlat_v4ccb")
 theme_override_styles/hover = SubResource("StyleBoxFlat_i2ev1")
 theme_override_styles/normal = SubResource("StyleBoxFlat_s2255")

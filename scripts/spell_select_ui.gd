@@ -11,6 +11,8 @@ signal new_select
 @onready var ult: Button = $PanelContainer/MarginContainer/VBoxContainer/ULTPanel/ULT
 @onready var positionL : Label = $Position
 
+var element_dict = {"none": Color.WHITE, "fire": Color.CORAL, "water": Color.DARK_CYAN, "lightning": Color.PURPLE, "earth": Color.SADDLE_BROWN, "grass": Color.WEB_GREEN}
+
 var skill1 : Skill
 var skill2 : Skill
 var skill3 : Skill
@@ -24,13 +26,17 @@ var skill4 : Skill
 var initial_load = false
 
 var blue = Color("3f61a1")
-var gray = Color("2e2e2e")
+var gray = Color("2e2e2e78")
 
 func load_skills():
 	skill1.update()
+	update_font_color(ba_1,element_dict.get(skill1.element))
 	skill2.update()
+	update_font_color(s_1,element_dict.get(skill2.element))
 	skill3.update()
+	update_font_color(s_2,element_dict.get(skill3.element))
 	skill4.update()
+	update_font_color(ult,element_dict.get(skill4.element))
 	skill_info_1.skill = skill1
 	skill_info_1.update_skill_info()
 	skill_info_2.skill = skill2
@@ -116,6 +122,11 @@ func update_color(button, color):
 	new_stylebox_normal.bg_color = color
 	button.add_theme_stylebox_override("normal", new_stylebox_normal)
 	
+	
+func update_font_color(button, color):
+	button.add_theme_color_override("font_color", color)
+
+	
 func update_pos(pos):
 	if pos > 0:
 		positionL.text = "Position: " + str(pos)
@@ -139,6 +150,8 @@ func enable(num):
 			s_2.disabled = false
 		4:
 			ult.disabled = false
+			print("enabling ult")
+			update_font_color(ult, Color.INDIAN_RED)
 			
 func disable(num):
 	match num:
