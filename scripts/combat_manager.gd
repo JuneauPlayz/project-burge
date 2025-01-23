@@ -38,6 +38,8 @@ var ally2_pos : int
 var ally3_pos : int
 var ally4_pos : int
 
+const TARGET_CURSOR = preload("res://assets/target cursor.png")
+const DEFAULT_CURSOR = preload("res://assets/defaultcursor.png")
 
 signal ally_turn_done
 signal enemy_turn_done
@@ -421,6 +423,7 @@ func choose_target(skill : Skill):
 		toggle_targeting_ui(skill)
 		hide_skills()
 		hide_ui()
+		Input.set_custom_mouse_cursor(TARGET_CURSOR, 0, Vector2(32,32))
 		targeting_skill_info.visible = true
 		targeting_label.visible = true
 		for enemy in enemies:
@@ -434,6 +437,7 @@ func choose_target(skill : Skill):
 		show_ui()
 		toggle_targeting_ui(skill)
 		click.emit()
+		Input.set_custom_mouse_cursor(DEFAULT_CURSOR, 0)
 		return target
 	else:
 		return null

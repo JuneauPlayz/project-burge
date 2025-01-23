@@ -16,6 +16,7 @@ var connected = false
 
 signal reaction_ended
 
+
 # special status checks
 var bubbled = false
 
