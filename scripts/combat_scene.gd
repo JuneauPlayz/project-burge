@@ -22,7 +22,7 @@ func _ready() -> void:
 	loading.visible = false
 	# bg music
 	var rng = RandomNumberGenerator.new()
-	var random_num = rng.randi_range(1,3)
+	var random_num = rng.randi_range(1,4)
 	match random_num:
 		1:
 			AudioPlayer.play_music("og", -32)
@@ -30,6 +30,8 @@ func _ready() -> void:
 			AudioPlayer.play_music("zinnia", -32)
 		3:
 			AudioPlayer.play_music("crimson", -32)
+		4:
+			AudioPlayer.play_music("iris", -32)
 	
 	combat_manager = get_child(1)
 	load_units()

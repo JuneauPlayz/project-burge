@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dv8hodwyldx1d"
+path="res://.godot/imported/Pokémon B2W2 - Champion Iris Battle Music (HQ).mp3-947c06780d918e3b5a376c83ec6b6457.mp3str"
+
+[deps]
+
+source_file="res://assets/Pokémon B2W2 - Champion Iris Battle Music (HQ).mp3"
+dest_files=["res://.godot/imported/Pokémon B2W2 - Champion Iris Battle Music (HQ).mp3-947c06780d918e3b5a376c83ec6b6457.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
