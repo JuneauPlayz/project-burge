@@ -1,24 +1,26 @@
-[gd_scene load_steps=16 format=3 uid="uid://do6gwn47eylu7"]
+[gd_scene load_steps=12 format=3 uid="uid://do6gwn47eylu7"]
 
 [ext_resource type="Script" path="res://scripts/combat_scene.gd" id="1_3ou8c"]
 [ext_resource type="Script" path="res://scripts/Targeting.gd" id="2_0pyv8"]
 [ext_resource type="Script" path="res://scripts/SpellSelect.gd" id="3_2dlvl"]
 [ext_resource type="Script" path="res://scripts/combat_manager.gd" id="4_ucgqt"]
 [ext_resource type="PackedScene" uid="uid://sdwnoh61gawa" path="res://scenes/reusables/skill_info.tscn" id="5_2x1un"]
+[ext_resource type="FontFile" uid="uid://ca0ii6rndnaqf" path="res://assets/pokemon_pixel_font.ttf" id="5_wtw4i"]
 [ext_resource type="PackedScene" uid="uid://rtk527cyr7kb" path="res://scenes/reusables/combat_currency.tscn" id="6_b6b3n"]
 [ext_resource type="Texture2D" uid="uid://bsae24ot6vmo6" path="res://assets/battle_bg.jpg" id="7_qh8p2"]
-[ext_resource type="AudioStream" uid="uid://cfkhbgceui1nd" path="res://assets/Pokémon Red, Blue & Yellow - Trainer Battle Music (HQ).mp3" id="11_h2560"]
-[ext_resource type="Script" path="res://scripts/sound_manager.gd" id="11_sirah"]
-[ext_resource type="AudioStream" uid="uid://c0fyotn8lqfkv" path="res://assets/fire hit.mp3" id="12_8ib15"]
-[ext_resource type="AudioStream" uid="uid://c21oivugcr44m" path="res://assets/Pokémon Omega Ruby & Alpha Sapphire - Vs Zinnia (Highest Quality).mp3" id="12_mtiye"]
-[ext_resource type="AudioStream" uid="uid://b5oofbncdalrq" path="res://assets/Crimson Highlands - Zodiac Battle.mp3" id="13_d5o3r"]
-[ext_resource type="AudioStream" uid="uid://4rhr7pwkbdml" path="res://assets/cliack.mp3" id="13_huww2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mo5rj"]
-font_size = 48
+font = ExtResource("5_wtw4i")
+font_size = 90
 
 [sub_resource type="LabelSettings" id="LabelSettings_g8qlp"]
-font_size = 24
+font = ExtResource("5_wtw4i")
+font_size = 36
+
+[sub_resource type="LabelSettings" id="LabelSettings_dcmsy"]
+font_size = 291
+outline_size = 9
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Combat" type="Node2D"]
 script = ExtResource("1_3ou8c")
@@ -45,10 +47,10 @@ label_settings = SubResource("LabelSettings_mo5rj")
 
 [node name="TargetingLabel" type="Label" parent="CombatManager"]
 visible = false
-offset_left = 121.0
-offset_top = 597.0
-offset_right = 351.0
-offset_bottom = 631.0
+offset_left = 30.0
+offset_top = 738.0
+offset_right = 262.0
+offset_bottom = 840.0
 text = "Choosing target for:
 
 (click on the sprite)"
@@ -56,10 +58,10 @@ label_settings = SubResource("LabelSettings_g8qlp")
 
 [node name="TargetingSkillInfo" parent="CombatManager" instance=ExtResource("5_2x1un")]
 visible = false
-offset_left = 389.0
-offset_top = 583.0
-offset_right = 389.0
-offset_bottom = 583.0
+offset_left = 288.0
+offset_top = 709.0
+offset_right = 288.0
+offset_bottom = 709.0
 
 [node name="CombatCurrency" parent="CombatManager" instance=ExtResource("6_b6b3n")]
 
@@ -117,33 +119,27 @@ position = Vector2(963, 539.5)
 scale = Vector2(1.708, 1.703)
 texture = ExtResource("7_qh8p2")
 
-[node name="SoundManager" type="Node" parent="."]
-script = ExtResource("11_sirah")
+[node name="Loading" type="Node2D" parent="."]
+visible = false
 
-[node name="firehit noise" type="AudioStreamPlayer2D" parent="SoundManager"]
-stream = ExtResource("12_8ib15")
-volume_db = -16.0
+[node name="Label" type="Label" parent="Loading"]
+z_index = 5
+offset_left = 11.0
+offset_top = 393.0
+offset_right = 1924.0
+offset_bottom = 649.0
+text = "Loading...
+"
+label_settings = SubResource("LabelSettings_dcmsy")
+horizontal_alignment = 1
 
-[node name="click noise" type="AudioStreamPlayer2D" parent="SoundManager"]
-stream = ExtResource("13_huww2")
+[node name="ColorRect" type="ColorRect" parent="Loading"]
+z_index = 3
+offset_left = -18.0
+offset_right = 1953.0
+offset_bottom = 1091.0
+color = Color(0.18359, 0.18359, 0.18359, 1)
 
-[node name="og music" type="AudioStreamPlayer2D" parent="SoundManager"]
-stream = ExtResource("11_h2560")
-volume_db = -25.0
-parameters/looping = true
-
-[node name="zinnia theme" type="AudioStreamPlayer2D" parent="SoundManager"]
-stream = ExtResource("12_mtiye")
-volume_db = -25.0
-parameters/looping = true
-
-[node name="crimson highlands" type="AudioStreamPlayer2D" parent="SoundManager"]
-stream = ExtResource("13_d5o3r")
-volume_db = -25.0
-parameters/looping = true
-
-[connection signal="click" from="CombatManager" to="SoundManager" method="_on_combat_manager_click"]
-[connection signal="hit" from="CombatManager" to="SoundManager" method="_on_combat_manager_hit"]
 [connection signal="new_spell_selected" from="CombatManager" to="StateMachine/SpellSelect" method="_on_combat_manager_new_spell_selected"]
 [connection signal="target_selected" from="CombatManager" to="StateMachine/Targeting" method="_on_combat_manager_target_selected"]
 [connection signal="pressed" from="EndTurn" to="CombatManager" method="_on_end_turn_pressed"]

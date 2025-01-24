@@ -13,11 +13,10 @@ func display_number(value: int, position: Vector2, element : String, reaction : 
 	
 	var color = element_dict.get(element)
 	
-	
 	number.label_settings.font_color = color
-	number.label_settings.font_size = 38
-	number.label_settings.outline_color = "#000"
-	number.label_settings.outline_size = 1
+	number.label_settings.font_size = 56
+	number.label_settings.outline_color = "#000000"
+	number.label_settings.outline_size = 10
 	
 	call_deferred("add_child", number)
 	await number.resized

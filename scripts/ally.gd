@@ -120,6 +120,7 @@ func receive_skill_friendly(skill):
 	
 	
 func take_damage(damage : int):
+	AudioPlayer.play_FX("fire_hit", -30)
 	var damage_left = damage
 	var total_dmg = damage
 	if bubbled:

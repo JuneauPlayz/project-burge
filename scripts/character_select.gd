@@ -7,7 +7,6 @@ const VENASAUR = preload("res://scenes/units/allies/Venasaur.tres")
 const BURGER_ENEMY = preload("res://scenes/units/enemies/burger_enemy.tscn")
 const BAGUETTE = preload("res://scenes/units/enemies/baguette.tscn")
 
-@onready var click: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var ally_list = []
 var ally_names = []
@@ -16,10 +15,6 @@ var enemy_names = []
 
 @onready var ally_list_label: Label = $AllyList
 @onready var enemy_list_label: Label = $EnemyList
-
-func _ready():
-	click.play()
-	
 
 func _on_start_combat_pressed() -> void:
 	ally_list.resize(4)
@@ -43,11 +38,11 @@ func _on_charizard_pressed() -> void:
 	
 
 func update_ally_list():
-	click.play()
+	AudioPlayer.play_FX("click",0)
 	ally_list_label.text = "Ally List: " + str(ally_names)
 	
 func update_enemy_list():
-	click.play()
+	AudioPlayer.play_FX("click",0)
 	enemy_list_label.text = "Enemy List: " + str(enemy_names)
 
 

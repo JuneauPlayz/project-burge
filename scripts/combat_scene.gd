@@ -9,22 +9,27 @@ extends Node2D
 @onready var enemy_2_spot: Node2D = %"Enemy 2 Spot"
 @onready var enemy_3_spot: Node2D = %"Enemy 3 Spot"
 @onready var enemy_4_spot: Node2D = %"Enemy 4 Spot"
-@onready var sound_manager: Node = $SoundManager
+@onready var loading: Node2D = $Loading
+
 
 const ALLY = preload("res://scenes/units/allies/ally.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# loading
+	loading.visible = true
+	await get_tree().create_timer(0.5).timeout
+	loading.visible = false
 	# bg music
 	var rng = RandomNumberGenerator.new()
 	var random_num = rng.randi_range(1,3)
 	match random_num:
 		1:
-			sound_manager.play_song("og")
+			AudioPlayer.play_music("og", -30)
 		2:
-			sound_manager.play_song("zinnia")
+			AudioPlayer.play_music("zinnia", -30)
 		3:
-			sound_manager.play_song("crimson")
+			AudioPlayer.play_music("crimson", -30)
 	
 	combat_manager = get_child(1)
 	load_units()

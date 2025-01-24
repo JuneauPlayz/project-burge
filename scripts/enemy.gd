@@ -98,6 +98,7 @@ func reaction_signal():
 	
 
 func take_damage(damage : int):
+	AudioPlayer.play_FX("fire_hit", -30)
 	health -= damage
 	hp_bar.set_hp(health)
 	return damage

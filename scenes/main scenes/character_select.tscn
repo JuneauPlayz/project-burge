@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cdu4rddg2v2o7"]
+[gd_scene load_steps=8 format=3 uid="uid://cdu4rddg2v2o7"]
 
 [ext_resource type="Script" path="res://scripts/character_select.gd" id="1_hd0vt"]
+[ext_resource type="Texture2D" uid="uid://c7bn1gnx4b71v" path="res://assets/grassy pixelated.jpg" id="2_7ac7o"]
 [ext_resource type="AudioStream" uid="uid://4rhr7pwkbdml" path="res://assets/cliack.mp3" id="2_48ova"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rnln8"]
@@ -10,19 +11,29 @@ font_size = 56
 font_size = 51
 
 [sub_resource type="LabelSettings" id="LabelSettings_y2lgh"]
-font_size = 36
+font_size = 54
+outline_size = 15
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_an4f2"]
-font_size = 36
+font_size = 54
+outline_size = 15
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Character Select" type="Node2D"]
 script = ExtResource("1_hd0vt")
 
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(1168, 552)
+scale = Vector2(3.2, 3.2)
+texture = ExtResource("2_7ac7o")
+
 [node name="StartCombat" type="Button" parent="."]
-offset_left = 887.0
-offset_top = 718.0
-offset_right = 998.0
-offset_bottom = 749.0
+offset_left = 858.0
+offset_top = 758.0
+offset_right = 1154.0
+offset_bottom = 829.0
+theme_override_font_sizes/font_size = 71
 text = "Start Combat
 "
 
@@ -40,6 +51,7 @@ offset_left = -14.0
 offset_top = 114.0
 offset_right = 146.0
 offset_bottom = 167.0
+theme_override_font_sizes/font_size = 41
 text = "Charizard
 "
 
@@ -49,6 +61,7 @@ offset_left = -15.0
 offset_top = 188.0
 offset_right = 152.0
 offset_bottom = 239.0
+theme_override_font_sizes/font_size = 41
 text = "Blastoise"
 
 [node name="Venasaur" type="Button" parent="Allies"]
@@ -57,6 +70,7 @@ offset_left = -10.0
 offset_top = 268.0
 offset_right = 145.0
 offset_bottom = 317.0
+theme_override_font_sizes/font_size = 41
 text = "Venasaur"
 
 [node name="Enemies" type="Label" parent="."]
@@ -73,6 +87,7 @@ offset_left = 15.0
 offset_top = 86.0
 offset_right = 204.0
 offset_bottom = 133.0
+theme_override_font_sizes/font_size = 41
 text = "Burger"
 
 [node name="Baguette" type="Button" parent="Enemies"]
@@ -81,21 +96,22 @@ offset_left = 22.0
 offset_top = 153.0
 offset_right = 187.0
 offset_bottom = 212.0
+theme_override_font_sizes/font_size = 41
 text = "Baguette"
 
 [node name="AllyList" type="Label" parent="."]
-offset_left = 212.0
-offset_top = 817.0
-offset_right = 365.0
-offset_bottom = 867.0
+offset_left = 232.0
+offset_top = 467.0
+offset_right = 385.0
+offset_bottom = 517.0
 text = "Ally List: "
 label_settings = SubResource("LabelSettings_y2lgh")
 
 [node name="EnemyList" type="Label" parent="."]
-offset_left = 175.0
-offset_top = 960.0
-offset_right = 382.0
-offset_bottom = 1010.0
+offset_left = 218.0
+offset_top = 608.0
+offset_right = 425.0
+offset_bottom = 658.0
 text = "Enemy List: "
 label_settings = SubResource("LabelSettings_an4f2")
 

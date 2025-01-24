@@ -1,9 +1,13 @@
 extends Node2D
-@onready var click: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
+func _ready():
+	AudioPlayer.play_music("lake", -35)
+	
 func _on_exit_game_pressed() -> void:
+	AudioPlayer.play_FX("click",0)
 	get_tree().quit()
 
 
 func _on_start_b_pressed() -> void:
+	AudioPlayer.play_FX("click",0)
 	get_tree().change_scene_to_file("res://scenes/main scenes/character_select.tscn")

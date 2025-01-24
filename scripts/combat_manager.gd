@@ -51,13 +51,14 @@ var combat_finished = false
 var first_turn = true
 
 signal hit
-signal click
+
 
 signal signal_received
 signal reaction_finished
+
 func combat_ready():
 	# waiting for everything to load in
-	click.emit()
+	AudioPlayer.play_FX("click",0)
 	await get_tree().create_timer(0.1).timeout
 	if (enemy1 != null):
 		enemies.append(enemy1)
@@ -246,7 +247,7 @@ func _on_spell_select_ui_new_select(ally) -> void:
 			allyskill = ally4skill
 			ally_pos = ally4_pos
 	
-	click.emit()
+	AudioPlayer.play_FX("click",0)
 	# if selecting something when not already selected on that character
 	if (spell_select_ui.selected != 0 and allyskill == -1):
 		ally_pos = next_pos
@@ -375,11 +376,11 @@ func reset_skill_select():
 	update_skill_positions()
 	
 func _on_end_turn_pressed() -> void:
-	click.emit()
+	AudioPlayer.play_FX("click",0)
 	execute_ally_turn()
 
 func _on_reset_choices_pressed() -> void:
-	click.emit()
+	AudioPlayer.play_FX("click",0)
 	action_queue = []
 	target_queue = []
 	next_pos = 0
@@ -437,7 +438,7 @@ func choose_target(skill : Skill):
 		show_skills()
 		show_ui()
 		toggle_targeting_ui(skill)
-		click.emit()
+		AudioPlayer.play_FX("click",0)
 		Input.set_custom_mouse_cursor(DEFAULT_CURSOR, 0)
 		return target
 	else:
@@ -451,6 +452,9 @@ func toggle_targeting_ui(skill):
 	targeting_skill_info.update_skill_info()
 	targeting_skill_info.visible = !targeting_skill_info.visible
 	targeting_label.visible = !targeting_label.visible
+	
+
+	
 	
 #activate statuses
 func enemy_pre_status():
