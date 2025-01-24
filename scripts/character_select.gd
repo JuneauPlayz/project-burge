@@ -9,6 +9,9 @@ const DA_TING = preload("res://scenes/units/allies/DaTing.tscn")
 const BURGER_ENEMY = preload("res://scenes/units/enemies/burger_enemy.tscn")
 const BAGUETTE = preload("res://scenes/units/enemies/baguette.tscn")
 
+@onready var click: AudioStreamPlayer2D = $AudioStreamPlayer2D
+
+
 var ally_list = []
 var ally_names = []
 var enemy_list = []
@@ -63,7 +66,9 @@ func _on_baguette_pressed() -> void:
 	update_enemy_list()
 
 func update_ally_list():
+	click.play()
 	ally_list_label.text = "Ally List: " + str(ally_names)
 	
 func update_enemy_list():
+	click.play()
 	enemy_list_label.text = "Enemy List: " + str(enemy_names)

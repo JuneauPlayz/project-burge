@@ -71,7 +71,7 @@ func receive_skill(skill):
 				await reaction_ended 
 			if (!r2):
 				self.take_damage(skill.damage)
-			DamageNumbers.display_number(skill.damage, damage_number_origin.global_position, skill.element, reaction)
+				DamageNumbers.display_number(skill.damage, damage_number_origin.global_position, skill.element, reaction)
 			if (skill.element != "none"):
 				current_element = skill.element
 	#handle status effects

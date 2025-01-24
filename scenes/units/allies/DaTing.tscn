@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://dm2ulo66o18gj"]
 
 [ext_resource type="Script" path="res://scripts/ally.gd" id="1_i4tor"]
-[ext_resource type="Resource" uid="uid://t5il68wvfb0s" path="res://resources/Skills/basic_attack.tres" id="2_re63x"]
-[ext_resource type="Resource" uid="uid://dykdesfmc1oo8" path="res://resources/Skills/Rock Throw.tres" id="3_fec7t"]
-[ext_resource type="Resource" uid="uid://bya4jpai0ygj5" path="res://resources/Skills/Rock Shield.tres" id="4_odg37"]
+[ext_resource type="Resource" uid="uid://t5il68wvfb0s" path="res://resources/Skills/physical/basic_attack.tres" id="2_re63x"]
+[ext_resource type="Resource" uid="uid://dykdesfmc1oo8" path="res://resources/Skills/earth/Rock Throw.tres" id="3_fec7t"]
+[ext_resource type="Resource" uid="uid://bya4jpai0ygj5" path="res://resources/Skills/earth/Rock Shield.tres" id="4_odg37"]
 [ext_resource type="PackedScene" uid="uid://tlvpop5rp1x6" path="res://scenes/reusables/spell_select_ui.tscn" id="6_5f0m3"]
 [ext_resource type="PackedScene" uid="uid://5spa5amgsxfm" path="res://scenes/reusables/hp_bar.tscn" id="7_6n440"]
 [ext_resource type="Texture2D" uid="uid://n3m0naqaoeo" path="res://assets/DaTing.png" id="8_cbsro"]

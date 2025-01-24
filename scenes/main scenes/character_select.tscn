@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdu4rddg2v2o7"]
+[gd_scene load_steps=7 format=3 uid="uid://cdu4rddg2v2o7"]
 
 [ext_resource type="Script" path="res://scripts/character_select.gd" id="1_hd0vt"]
+[ext_resource type="AudioStream" uid="uid://4rhr7pwkbdml" path="res://assets/cliack.mp3" id="2_48ova"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rnln8"]
 font_size = 56
@@ -114,6 +115,9 @@ offset_right = 382.0
 offset_bottom = 1010.0
 text = "Enemy List: "
 label_settings = SubResource("LabelSettings_an4f2")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_48ova")
 
 [connection signal="pressed" from="StartCombat" to="." method="_on_start_combat_pressed"]
 [connection signal="pressed" from="Allies/Pyromancer" to="." method="_on_pyromancer_pressed"]
