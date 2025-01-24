@@ -1,0 +1,44 @@
+[gd_scene load_steps=9 format=3 uid="uid://ebao16b2j48i"]
+
+[ext_resource type="Script" path="res://scripts/ally.gd" id="1_735fd"]
+[ext_resource type="Resource" uid="uid://bhnvgvm5xsfv3" path="res://resources/Skills/fire/Firestorm.tres" id="2_5oocg"]
+[ext_resource type="Resource" uid="uid://c3yogn8m318q2" path="res://resources/Skills/fire/Fire_Bolt.tres" id="2_arx5v"]
+[ext_resource type="Resource" uid="uid://b70k44ljti3df" path="res://resources/Skills/fire/Wildfire.tres" id="4_mf83k"]
+[ext_resource type="Resource" uid="uid://cucueo0alogd4" path="res://resources/unique_skills/Flameburst.tres" id="5_u3a02"]
+[ext_resource type="PackedScene" uid="uid://tlvpop5rp1x6" path="res://scenes/reusables/spell_select_ui.tscn" id="6_dblxf"]
+[ext_resource type="PackedScene" uid="uid://5spa5amgsxfm" path="res://scenes/reusables/hp_bar.tscn" id="7_0s7j8"]
+[ext_resource type="Texture2D" uid="uid://133h4yyl8s4l" path="res://assets/chillpyro.png" id="8_jxfx5"]
+
+[node name="Pyromancer" type="Node2D"]
+position = Vector2(0, -2)
+scale = Vector2(1.1, 1.1)
+script = ExtResource("1_735fd")
+basic_atk = ExtResource("2_arx5v")
+skill_1 = ExtResource("2_5oocg")
+skill_2 = ExtResource("4_mf83k")
+ult = ExtResource("5_u3a02")
+health = 200
+max_health = 200
+title = "Pyromancer"
+
+[node name="SpellSelectUi" parent="." instance=ExtResource("6_dblxf")]
+offset_left = -95.0
+offset_top = 136.0
+offset_right = -95.0
+offset_bottom = 136.0
+scale = Vector2(0.705, 0.705)
+
+[node name="HP Bar" parent="." instance=ExtResource("7_0s7j8")]
+offset_left = -80.9091
+offset_top = 68.1818
+offset_right = -80.9091
+offset_bottom = 68.1818
+scale = Vector2(0.65, 0.65)
+
+[node name="DamageNumberOrigin" type="Node2D" parent="."]
+position = Vector2(-27, 42)
+
+[node name="Qiqifallen" type="Sprite2D" parent="."]
+position = Vector2(0, -59)
+scale = Vector2(0.766, 0.713)
+texture = ExtResource("8_jxfx5")

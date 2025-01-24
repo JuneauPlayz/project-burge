@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="AllyRes" load_steps=7 format=3 uid="uid://2stwmc2jhy14"]
+
+[ext_resource type="Script" path="res://scripts/AllyRes.gd" id="1_yixfq"]
+[ext_resource type="Resource" uid="uid://dooqfwlwxly5w" path="res://resources/Skills/water/Water_Bolt.tres" id="2_la8mt"]
+[ext_resource type="Resource" uid="uid://iduq6xm3eww5" path="res://resources/Skills/water/Tsunami.tres" id="3_p8goe"]
+[ext_resource type="Resource" uid="uid://d3hsiqbosdsp6" path="res://resources/Skills/water/Waterfall.tres" id="4_i7vsk"]
+[ext_resource type="Resource" uid="uid://ddoguurpcf2jb" path="res://resources/Skills/fire/Vaporstrike.tres" id="5_0h1p8"]
+[ext_resource type="Texture2D" uid="uid://lusgwdgw1no1" path="res://assets/Blastoise.png" id="6_iyk0c"]
+
+[resource]
+script = ExtResource("1_yixfq")
+skill1 = ExtResource("2_la8mt")
+skill2 = ExtResource("3_p8goe")
+skill3 = ExtResource("4_i7vsk")
+skill4 = ExtResource("5_0h1p8")
+sprite = ExtResource("6_iyk0c")
+sprite_scale = 1.25

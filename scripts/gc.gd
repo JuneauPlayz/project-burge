@@ -5,10 +5,10 @@ var is_dragging = false
 #combat
 
 #units
-var ally1 = null
-var ally2 = null
-var ally3 = null
-var ally4 = null
+var ally1 : AllyRes
+var ally2 = AllyRes
+var ally3 = AllyRes
+var ally4 = AllyRes
 var enemy1 = null
 var enemy2 = null
 var enemy3 = null

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="AllyRes" load_steps=7 format=3 uid="uid://bchghb71yo8ln"]
+
+[ext_resource type="Script" path="res://scripts/AllyRes.gd" id="1_5rsqq"]
+[ext_resource type="Resource" uid="uid://c3yogn8m318q2" path="res://resources/Skills/fire/Fire_Bolt.tres" id="2_odqjc"]
+[ext_resource type="Texture2D" uid="uid://4geq5yb7tf1u" path="res://assets/charizard.png" id="2_ury01"]
+[ext_resource type="Resource" uid="uid://b70k44ljti3df" path="res://resources/Skills/fire/Wildfire.tres" id="3_5igym"]
+[ext_resource type="Resource" uid="uid://dcf2ccmtpg225" path="res://resources/Skills/fire/Fire_Spear.tres" id="4_qw73q"]
+[ext_resource type="Resource" uid="uid://bhnvgvm5xsfv3" path="res://resources/Skills/fire/Firestorm.tres" id="5_tmger"]
+
+[resource]
+script = ExtResource("1_5rsqq")
+skill1 = ExtResource("2_odqjc")
+skill2 = ExtResource("3_5igym")
+skill3 = ExtResource("4_qw73q")
+skill4 = ExtResource("5_tmger")
+sprite = ExtResource("2_ury01")
+sprite_scale = 0.63

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="AllyRes" load_steps=7 format=3 uid="uid://rch61bky2ck8"]
+
+[ext_resource type="Script" path="res://scripts/AllyRes.gd" id="1_5s5xv"]
+[ext_resource type="Resource" uid="uid://tjrsdrdx2xsa" path="res://resources/Skills/grass/Grass Needle.tres" id="2_3o77x"]
+[ext_resource type="Resource" uid="uid://jmo84ycmrpiw" path="res://resources/Skills/grass/Leafstorm.tres" id="3_hfq6j"]
+[ext_resource type="Resource" uid="uid://bcnlggyd75qmg" path="res://resources/Skills/grass/Mega Drain.tres" id="4_stegg"]
+[ext_resource type="Resource" uid="uid://025hve2nq35j" path="res://resources/Skills/grass/Healing_Bloom.tres" id="5_1nouq"]
+[ext_resource type="Texture2D" uid="uid://dr5buhafiup2r" path="res://assets/venasaur (2).png" id="6_rlwy5"]
+
+[resource]
+script = ExtResource("1_5s5xv")
+skill1 = ExtResource("2_3o77x")
+skill2 = ExtResource("3_hfq6j")
+skill3 = ExtResource("4_stegg")
+skill4 = ExtResource("5_1nouq")
+sprite = ExtResource("6_rlwy5")
+sprite_scale = 0.39

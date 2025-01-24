@@ -5,18 +5,26 @@ class_name Ally
 @export var skill_1: Skill
 @export var skill_2: Skill
 @export var ult: Skill
+
 @export var status : Array = []
+
 var current_element = "none"
+
+@onready var sprite_spot: Sprite2D = $SpriteSpot
+
 @onready var damage_number_origin: Node2D = $DamageNumberOrigin
 @onready var spell_select_ui: Control = $SpellSelectUi
 @onready var hp_bar: Control = $"HP Bar"
+
 var position = 0
 var combat_manager
 var connected = false
 
+var res : AllyRes
+
 signal reaction_ended
 
-
+signal loaded
 # special status checks
 var bubbled = false
 
@@ -26,7 +34,13 @@ func _ready() -> void:
 	# loading
 	await get_tree().create_timer(0.1).timeout
 	# spell select ui first child, hp bar ui second child
-	combat_manager = get_parent().get_parent().get_combat_manager()
+	combat_manager = get_parent().get_parent().combat_manager
+	basic_atk = res.skill1
+	skill_1 = res.skill2
+	skill_2 = res.skill3
+	ult = res.skill4
+	sprite_spot.texture = load(res.sprite.resource_path)
+	sprite_spot.scale = Vector2(res.sprite_scale,res.sprite_scale)
 	spell_select_ui.skill1 = basic_atk
 	spell_select_ui.skill2 = skill_1
 	spell_select_ui.skill3 = skill_2

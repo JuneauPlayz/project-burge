@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://do6gwn47eylu7"]
+[gd_scene load_steps=16 format=3 uid="uid://do6gwn47eylu7"]
 
 [ext_resource type="Script" path="res://scripts/combat_scene.gd" id="1_3ou8c"]
 [ext_resource type="Script" path="res://scripts/Targeting.gd" id="2_0pyv8"]
@@ -6,9 +6,12 @@
 [ext_resource type="Script" path="res://scripts/combat_manager.gd" id="4_ucgqt"]
 [ext_resource type="PackedScene" uid="uid://sdwnoh61gawa" path="res://scenes/reusables/skill_info.tscn" id="5_2x1un"]
 [ext_resource type="PackedScene" uid="uid://rtk527cyr7kb" path="res://scenes/reusables/combat_currency.tscn" id="6_b6b3n"]
-[ext_resource type="Texture2D" uid="uid://b6rhxb71os38w" path="res://assets/hsrbg.png" id="10_thong"]
+[ext_resource type="Texture2D" uid="uid://bsae24ot6vmo6" path="res://assets/battle_bg.jpg" id="7_qh8p2"]
+[ext_resource type="AudioStream" uid="uid://cfkhbgceui1nd" path="res://assets/Pokémon Red, Blue & Yellow - Trainer Battle Music (HQ).mp3" id="11_h2560"]
 [ext_resource type="Script" path="res://scripts/sound_manager.gd" id="11_sirah"]
 [ext_resource type="AudioStream" uid="uid://c0fyotn8lqfkv" path="res://assets/fire hit.mp3" id="12_8ib15"]
+[ext_resource type="AudioStream" uid="uid://c21oivugcr44m" path="res://assets/Pokémon Omega Ruby & Alpha Sapphire - Vs Zinnia (Highest Quality).mp3" id="12_mtiye"]
+[ext_resource type="AudioStream" uid="uid://b5oofbncdalrq" path="res://assets/Crimson Highlands - Zodiac Battle.mp3" id="13_d5o3r"]
 [ext_resource type="AudioStream" uid="uid://4rhr7pwkbdml" path="res://assets/cliack.mp3" id="13_huww2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mo5rj"]
@@ -62,19 +65,19 @@ offset_bottom = 583.0
 
 [node name="Ally 1 Spot" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(115, 450)
+position = Vector2(95, 300)
 
 [node name="Ally 2 Spot" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(351, 450)
+position = Vector2(330, 300)
 
 [node name="Ally 3 Spot" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(583, 450)
+position = Vector2(565, 300)
 
 [node name="Ally 4 Spot" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(823, 450)
+position = Vector2(800, 300)
 
 [node name="Enemy 1 Spot" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -100,10 +103,10 @@ offset_bottom = 837.0
 text = "End Turn"
 
 [node name="ResetChoices" type="Button" parent="."]
-offset_left = 413.0
-offset_top = 922.0
-offset_right = 562.0
-offset_bottom = 957.0
+offset_left = 490.0
+offset_top = 942.0
+offset_right = 639.0
+offset_bottom = 977.0
 scale = Vector2(0.705, 0.705)
 text = "Reset Choices"
 
@@ -111,8 +114,8 @@ text = "Reset Choices"
 self_modulate = Color(1, 1, 1, 0.411)
 z_index = -5
 position = Vector2(963, 539.5)
-scale = Vector2(1.50312, 1.49861)
-texture = ExtResource("10_thong")
+scale = Vector2(1.708, 1.703)
+texture = ExtResource("7_qh8p2")
 
 [node name="SoundManager" type="Node" parent="."]
 script = ExtResource("11_sirah")
@@ -123,6 +126,21 @@ volume_db = -16.0
 
 [node name="click noise" type="AudioStreamPlayer2D" parent="SoundManager"]
 stream = ExtResource("13_huww2")
+
+[node name="og music" type="AudioStreamPlayer2D" parent="SoundManager"]
+stream = ExtResource("11_h2560")
+volume_db = -25.0
+parameters/looping = true
+
+[node name="zinnia theme" type="AudioStreamPlayer2D" parent="SoundManager"]
+stream = ExtResource("12_mtiye")
+volume_db = -25.0
+parameters/looping = true
+
+[node name="crimson highlands" type="AudioStreamPlayer2D" parent="SoundManager"]
+stream = ExtResource("13_d5o3r")
+volume_db = -25.0
+parameters/looping = true
 
 [connection signal="click" from="CombatManager" to="SoundManager" method="_on_combat_manager_click"]
 [connection signal="hit" from="CombatManager" to="SoundManager" method="_on_combat_manager_hit"]

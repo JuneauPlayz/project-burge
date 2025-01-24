@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://c37yh8fctlf2m"]
+
+[ext_resource type="Script" path="res://scripts/ally.gd" id="1_edi3q"]
+[ext_resource type="Resource" uid="uid://clidntww233oy" path="res://resources/Skills/physical/Bloody_Slash.tres" id="2_y40cn"]
+[ext_resource type="Resource" uid="uid://60omj8j38mfk" path="res://resources/Skills/lightning/Lightning_Bolt.tres" id="3_axpgg"]
+[ext_resource type="Resource" uid="uid://cf3f0mnd7a8pe" path="res://resources/Skills/lightning/Lightning Dome.tres" id="4_hnoli"]
+[ext_resource type="PackedScene" uid="uid://tlvpop5rp1x6" path="res://scenes/reusables/spell_select_ui.tscn" id="6_u15dp"]
+[ext_resource type="Texture2D" uid="uid://dgqfnn2cu0y42" path="res://assets/freakydeaky.png" id="7_0lokd"]
+[ext_resource type="PackedScene" uid="uid://5spa5amgsxfm" path="res://scenes/reusables/hp_bar.tscn" id="7_w0a4y"]
+
+[node name="Freak" type="Node2D"]
+position = Vector2(0, -2)
+scale = Vector2(1.1, 1.1)
+script = ExtResource("1_edi3q")
+basic_atk = ExtResource("2_y40cn")
+skill_1 = ExtResource("2_y40cn")
+skill_2 = ExtResource("3_axpgg")
+ult = ExtResource("4_hnoli")
+health = 200
+max_health = 200
+title = "Freak"
+
+[node name="SpellSelectUi" parent="." instance=ExtResource("6_u15dp")]
+offset_left = -95.0
+offset_top = 136.0
+offset_right = -95.0
+offset_bottom = 136.0
+scale = Vector2(0.705, 0.705)
+
+[node name="HP Bar" parent="." instance=ExtResource("7_w0a4y")]
+offset_left = -81.8182
+offset_top = 64.5455
+offset_right = -81.8182
+offset_bottom = 64.5455
+scale = Vector2(0.65, 0.65)
+
+[node name="DamageNumberOrigin" type="Node2D" parent="."]
+position = Vector2(-27, 42)
+
+[node name="Qiqifallen" type="Sprite2D" parent="."]
+position = Vector2(3.63636, -50.9091)
+scale = Vector2(0.451, 0.42)
+texture = ExtResource("7_0lokd")

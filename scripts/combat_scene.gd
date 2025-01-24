@@ -9,14 +9,28 @@ extends Node2D
 @onready var enemy_2_spot: Node2D = %"Enemy 2 Spot"
 @onready var enemy_3_spot: Node2D = %"Enemy 3 Spot"
 @onready var enemy_4_spot: Node2D = %"Enemy 4 Spot"
+@onready var sound_manager: Node = $SoundManager
 
-
+const ALLY = preload("res://scenes/units/allies/ally.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# bg music
+	var rng = RandomNumberGenerator.new()
+	var random_num = rng.randi_range(1,3)
+	match random_num:
+		1:
+			sound_manager.play_song("og")
+		2:
+			sound_manager.play_song("zinnia")
+		3:
+			sound_manager.play_song("crimson")
+	
 	combat_manager = get_child(1)
 	load_units()
 	combat_manager.combat_ready()
+	
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -29,19 +43,23 @@ func get_combat_manager():
 func load_units():
 	print("loading units")
 	if GC.ally1 != null:
-		var ally1 = GC.ally1.instantiate()
+		var ally1 = ALLY.instantiate()
+		ally1.res = GC.ally1
 		ally_1_spot.add_child(ally1)
 		combat_manager.ally1 = ally1
 	if GC.ally2 != null:
-		var ally2 = GC.ally2.instantiate()
+		var ally2 = ALLY.instantiate()
+		ally2.res = GC.ally2
 		ally_2_spot.add_child(ally2)
 		combat_manager.ally2 = ally2
 	if GC.ally3 != null:
-		var ally3 = GC.ally3.instantiate()
+		var ally3 = ALLY.instantiate()
+		ally3.res = GC.ally3
 		ally_3_spot.add_child(ally3)
 		combat_manager.ally3 = ally3
 	if GC.ally4 != null:
-		var ally4 = GC.ally4.instantiate()
+		var ally4 = ALLY.instantiate()
+		ally4.res = GC.ally4
 		ally_4_spot.add_child(ally4)
 		combat_manager.ally4 = ally4
 	if GC.enemy1 != null:

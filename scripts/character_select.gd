@@ -1,16 +1,13 @@
 extends Node2D
 
-const ALLY = preload("res://scenes/units/allies/ally.tscn")
-const KATARA = preload("res://scenes/units/allies/Katara.tscn")
-const PYROMANCER = preload("res://scenes/units/allies/Pyromancer.tscn")
-const FREAK = preload("res://scenes/units/allies/Freak.tscn")
-const DA_TING = preload("res://scenes/units/allies/DaTing.tscn") 
+const CHARIZARD = preload("res://scenes/units/allies/Charizard.tres")
+const BLASTOISE = preload("res://scenes/units/allies/Blastoise.tres")
+const VENASAUR = preload("res://scenes/units/allies/Venasaur.tres")
 
 const BURGER_ENEMY = preload("res://scenes/units/enemies/burger_enemy.tscn")
 const BAGUETTE = preload("res://scenes/units/enemies/baguette.tscn")
 
 @onready var click: AudioStreamPlayer2D = $AudioStreamPlayer2D
-
 
 var ally_list = []
 var ally_names = []
@@ -20,6 +17,10 @@ var enemy_names = []
 @onready var ally_list_label: Label = $AllyList
 @onready var enemy_list_label: Label = $EnemyList
 
+func _ready():
+	click.play()
+	
+
 func _on_start_combat_pressed() -> void:
 	ally_list.resize(4)
 	enemy_list.resize(4)
@@ -27,43 +28,19 @@ func _on_start_combat_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/main scenes/combat.tscn")
 
 # allies
-
-func _on_pyromancer_pressed() -> void:
-	ally_list.append(PYROMANCER)
-	ally_names.append("Pyromancer")
+func add_ally(res, name):
+	ally_list.append(res)
+	ally_names.append(name)
 	update_ally_list()
 	
-func _on_katara_pressed() -> void:
-	ally_list.append(KATARA)
-	ally_names.append("Katara")
-	update_ally_list()
-
-func _on_da_ting_pressed() -> void:
-	ally_list.append(DA_TING)
-	ally_names.append("DaTing")
-	update_ally_list()
-
-func _on_freak_pressed() -> void:
-	ally_list.append(FREAK)
-	ally_names.append("Freak")
-	update_ally_list()
-
-func _on_qiqi_pressed() -> void:
-	ally_list.append(ALLY)
-	ally_names.append("Qiqi")
-	update_ally_list()
+func add_enemy(res, name):
+	enemy_list.append(res)
+	enemy_names.append(name)
+	update_enemy_list()
 	
-#enemies
-
-func _on_burger_pressed() -> void:
-	enemy_list.append(BURGER_ENEMY)
-	enemy_names.append("Burger")
-	update_enemy_list()
-
-func _on_baguette_pressed() -> void:
-	enemy_list.append(BAGUETTE)
-	enemy_names.append("Baguette")
-	update_enemy_list()
+func _on_charizard_pressed() -> void:
+	add_ally(CHARIZARD,"CHARIZARD")
+	
 
 func update_ally_list():
 	click.play()
@@ -72,3 +49,18 @@ func update_ally_list():
 func update_enemy_list():
 	click.play()
 	enemy_list_label.text = "Enemy List: " + str(enemy_names)
+
+
+func _on_blastoise_pressed() -> void:
+	add_ally(BLASTOISE, "BLASTOISE")
+
+
+func _on_venasaur_pressed() -> void:
+	add_ally(VENASAUR, "VENASAUR")
+
+
+func _on_burger_pressed() -> void:
+	add_enemy(BURGER_ENEMY, "burger")
+	
+func _on_baguette_pressed() -> void:
+	add_enemy(BAGUETTE, "Baguette")

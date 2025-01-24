@@ -34,47 +34,30 @@ offset_bottom = 117.0
 text = "Allies"
 label_settings = SubResource("LabelSettings_rnln8")
 
-[node name="Pyromancer" type="Button" parent="Allies"]
+[node name="Charizard" type="Button" parent="Allies"]
 layout_mode = 0
 offset_left = -14.0
 offset_top = 114.0
 offset_right = 146.0
 offset_bottom = 167.0
-text = "Pyromancer
+text = "Charizard
 "
 
-[node name="Katara" type="Button" parent="Allies"]
+[node name="Blastoise" type="Button" parent="Allies"]
 layout_mode = 0
-offset_left = -14.0
-offset_top = 192.0
+offset_left = -15.0
+offset_top = 188.0
+offset_right = 152.0
+offset_bottom = 239.0
+text = "Blastoise"
+
+[node name="Venasaur" type="Button" parent="Allies"]
+layout_mode = 0
+offset_left = -10.0
+offset_top = 268.0
 offset_right = 145.0
-offset_bottom = 240.0
-text = "Katara"
-
-[node name="DaTing" type="Button" parent="Allies"]
-layout_mode = 0
-offset_left = -8.0
-offset_top = 265.0
-offset_right = 142.0
-offset_bottom = 315.0
-text = "DaTing
-"
-
-[node name="Freak" type="Button" parent="Allies"]
-layout_mode = 0
-offset_left = -9.0
-offset_top = 344.0
-offset_right = 145.0
-offset_bottom = 393.0
-text = "Freak"
-
-[node name="Qiqi" type="Button" parent="Allies"]
-layout_mode = 0
-offset_left = -8.0
-offset_top = 423.0
-offset_right = 139.0
-offset_bottom = 471.0
-text = "Qiqi"
+offset_bottom = 317.0
+text = "Venasaur"
 
 [node name="Enemies" type="Label" parent="."]
 offset_left = 1202.0
@@ -120,10 +103,8 @@ label_settings = SubResource("LabelSettings_an4f2")
 stream = ExtResource("2_48ova")
 
 [connection signal="pressed" from="StartCombat" to="." method="_on_start_combat_pressed"]
-[connection signal="pressed" from="Allies/Pyromancer" to="." method="_on_pyromancer_pressed"]
-[connection signal="pressed" from="Allies/Katara" to="." method="_on_katara_pressed"]
-[connection signal="pressed" from="Allies/DaTing" to="." method="_on_da_ting_pressed"]
-[connection signal="pressed" from="Allies/Freak" to="." method="_on_freak_pressed"]
-[connection signal="pressed" from="Allies/Qiqi" to="." method="_on_qiqi_pressed"]
+[connection signal="pressed" from="Allies/Charizard" to="." method="_on_charizard_pressed"]
+[connection signal="pressed" from="Allies/Blastoise" to="." method="_on_blastoise_pressed"]
+[connection signal="pressed" from="Allies/Venasaur" to="." method="_on_venasaur_pressed"]
 [connection signal="pressed" from="Enemies/Burger" to="." method="_on_burger_pressed"]
 [connection signal="pressed" from="Enemies/Baguette" to="." method="_on_baguette_pressed"]

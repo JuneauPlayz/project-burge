@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3 uid="uid://jmo84ycmrpiw"]
+
+[ext_resource type="Script" path="res://scripts/skill.gd" id="1_34xag"]
+
+[resource]
+script = ExtResource("1_34xag")
+name = "Leafstorm"
+damage = 5
+element = "grass"
+damaging = true
+healing = false
+shielding = false
+friendly = false
+double_hit = false
+damage2 = 0
+element2 = ""
+cost = 0
+token_type = ""
+cost2 = 0
+token_type2 = ""
+status_effects = []
+target_type = "all_enemies"
+unique = ""
