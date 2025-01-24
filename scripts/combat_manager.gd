@@ -130,6 +130,8 @@ func execute_ally_turn():
 		await get_tree().create_timer(0.35).timeout
 	await get_tree().create_timer(1).timeout
 	ally_post_status()
+	for enemy in enemies:
+		enemy.check_if_dead()
 	turn_text.text = "Enemy Turn"
 	ally_turn_done.emit()
 

@@ -61,7 +61,6 @@ func receive_skill(skill):
 			if (!r2):
 				self.take_damage(skill.damage)
 			DamageNumbers.display_number(skill.damage, damage_number_origin.global_position, skill.element, reaction)
-			check_if_dead()
 			if (skill.element != "none"):
 				current_element = skill.element
 	# no reaction
@@ -90,6 +89,7 @@ func receive_skill(skill):
 				var new_bleed = BLEED.duplicate()
 				status.append(new_bleed)
 	hp_bar.update_element(current_element)
+	check_if_dead()
 
 
 func reaction_signal():
