@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3 uid="uid://b7d8fygihjfqr"]
+
+[ext_resource type="Script" path="res://scripts/skill.gd" id="1_dh23c"]
+
+[resource]
+script = ExtResource("1_dh23c")
+name = "Hydro Blast"
+damage = 25
+element = "water"
+damaging = true
+healing = false
+shielding = false
+friendly = false
+double_hit = true
+damage2 = 5
+element2 = "water"
+cost = 5
+token_type = "water"
+cost2 = 0
+token_type2 = ""
+status_effects = []
+target_type = "all_enemies"
+unique = ""

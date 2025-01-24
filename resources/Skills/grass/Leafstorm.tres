@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_34xag")
 name = "Leafstorm"
-damage = 5
+damage = 10
 element = "grass"
 damaging = true
 healing = false
@@ -14,8 +14,8 @@ friendly = false
 double_hit = false
 damage2 = 0
 element2 = ""
-cost = 0
-token_type = ""
+cost = 2
+token_type = "grass"
 cost2 = 0
 token_type2 = ""
 status_effects = []

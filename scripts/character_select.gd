@@ -3,6 +3,7 @@ extends Node2D
 const CHARIZARD = preload("res://scenes/units/allies/Charizard.tres")
 const BLASTOISE = preload("res://scenes/units/allies/Blastoise.tres")
 const VENASAUR = preload("res://scenes/units/allies/Venasaur.tres")
+const PIKACHU = preload("res://scenes/units/allies/Pikachu.tres")
 
 const BURGER_ENEMY = preload("res://scenes/units/enemies/burger_enemy.tscn")
 const BAGUETTE = preload("res://scenes/units/enemies/baguette.tscn")
@@ -59,3 +60,7 @@ func _on_burger_pressed() -> void:
 	
 func _on_baguette_pressed() -> void:
 	add_enemy(BAGUETTE, "Baguette")
+
+
+func _on_pikachu_pressed() -> void:
+	add_ally(PIKACHU, "PIKACHU")

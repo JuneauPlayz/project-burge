@@ -25,11 +25,11 @@ func _ready() -> void:
 	var random_num = rng.randi_range(1,3)
 	match random_num:
 		1:
-			AudioPlayer.play_music("og", -30)
+			AudioPlayer.play_music("og", -32)
 		2:
-			AudioPlayer.play_music("zinnia", -30)
+			AudioPlayer.play_music("zinnia", -32)
 		3:
-			AudioPlayer.play_music("crimson", -30)
+			AudioPlayer.play_music("crimson", -32)
 	
 	combat_manager = get_child(1)
 	load_units()

@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scripts/ally.gd" id="1_edi3q"]
 [ext_resource type="Resource" uid="uid://clidntww233oy" path="res://resources/Skills/physical/Bloody_Slash.tres" id="2_y40cn"]
-[ext_resource type="Resource" uid="uid://60omj8j38mfk" path="res://resources/Skills/lightning/Lightning_Bolt.tres" id="3_axpgg"]
-[ext_resource type="Resource" uid="uid://cf3f0mnd7a8pe" path="res://resources/Skills/lightning/Lightning Dome.tres" id="4_hnoli"]
+[ext_resource type="Resource" uid="uid://60omj8j38mfk" path="res://resources/Skills/lightning/Thunder Bolt.tres" id="3_axpgg"]
+[ext_resource type="Resource" uid="uid://cf3f0mnd7a8pe" path="res://resources/Skills/lightning/Thunder Dome.tres" id="4_hnoli"]
 [ext_resource type="PackedScene" uid="uid://tlvpop5rp1x6" path="res://scenes/reusables/spell_select_ui.tscn" id="6_u15dp"]
 [ext_resource type="Texture2D" uid="uid://dgqfnn2cu0y42" path="res://assets/freakydeaky.png" id="7_0lokd"]
 [ext_resource type="PackedScene" uid="uid://5spa5amgsxfm" path="res://scenes/reusables/hp_bar.tscn" id="7_w0a4y"]

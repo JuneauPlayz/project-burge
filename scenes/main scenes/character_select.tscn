@@ -73,6 +73,15 @@ offset_bottom = 317.0
 theme_override_font_sizes/font_size = 41
 text = "Venasaur"
 
+[node name="Pikachu" type="Button" parent="Allies"]
+layout_mode = 0
+offset_left = -4.0
+offset_top = 334.0
+offset_right = 138.0
+offset_bottom = 391.0
+theme_override_font_sizes/font_size = 45
+text = "Pikachu"
+
 [node name="Enemies" type="Label" parent="."]
 offset_left = 1202.0
 offset_top = 52.0
@@ -122,5 +131,6 @@ stream = ExtResource("2_48ova")
 [connection signal="pressed" from="Allies/Charizard" to="." method="_on_charizard_pressed"]
 [connection signal="pressed" from="Allies/Blastoise" to="." method="_on_blastoise_pressed"]
 [connection signal="pressed" from="Allies/Venasaur" to="." method="_on_venasaur_pressed"]
+[connection signal="pressed" from="Allies/Pikachu" to="." method="_on_pikachu_pressed"]
 [connection signal="pressed" from="Enemies/Burger" to="." method="_on_burger_pressed"]
 [connection signal="pressed" from="Enemies/Baguette" to="." method="_on_baguette_pressed"]

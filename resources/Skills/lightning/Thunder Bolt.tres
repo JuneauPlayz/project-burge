@@ -4,10 +4,20 @@
 
 [resource]
 script = ExtResource("1_ttf18")
-name = "Lightning Bolt"
+name = "Thunder Bolt"
 damage = 10
 element = "lightning"
 damaging = true
+healing = false
+shielding = false
 friendly = false
+double_hit = false
+damage2 = 0
+element2 = ""
+cost = 0
+token_type = ""
+cost2 = 0
+token_type2 = ""
 status_effects = []
 target_type = "single_enemy"
+unique = ""

@@ -5,9 +5,19 @@
 [resource]
 script = ExtResource("1_v85ps")
 name = "Fire Spear"
-damage = 20
+damage = 30
 element = "fire"
 damaging = true
+healing = false
+shielding = false
 friendly = false
+double_hit = false
+damage2 = 0
+element2 = ""
+cost = 3
+token_type = "fire"
+cost2 = 0
+token_type2 = ""
 status_effects = []
 target_type = "single_enemy"
+unique = ""

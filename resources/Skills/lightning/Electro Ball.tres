@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3 uid="uid://ddrvp77dd5ima"]
+
+[ext_resource type="Script" path="res://scripts/skill.gd" id="1_i0p7o"]
+
+[resource]
+script = ExtResource("1_i0p7o")
+name = "Electro Ball"
+damage = 15
+element = "lightning"
+damaging = true
+healing = false
+shielding = false
+friendly = false
+double_hit = true
+damage2 = 15
+element2 = "lightning"
+cost = 3
+token_type = "lightning"
+cost2 = 0
+token_type2 = ""
+status_effects = []
+target_type = "single_enemy"
+unique = ""

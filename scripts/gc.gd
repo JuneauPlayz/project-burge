@@ -43,6 +43,19 @@ func erupt():
 	add_token("fire", 1)
 	add_token("earth", 1)
 
+func bloom():
+	add_token("water", 1)
+	add_token("grass", 1)
+
+func burn():
+	add_token("fire", 1)
+	add_token("grass", 1)
+
+func nitro():
+	add_token("grass", 1)
+	add_token("lightning", 1)
+	
+
 func reset_tokens():
 	fire_tokens = 0
 	water_tokens = 0

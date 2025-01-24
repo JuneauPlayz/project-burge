@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3 uid="uid://bfvyaecgwi1s6"]
+
+[ext_resource type="Script" path="res://scripts/skill.gd" id="1_hrbp0"]
+
+[resource]
+script = ExtResource("1_hrbp0")
+name = "Thunder"
+damage = 30
+element = "lightning"
+damaging = true
+healing = false
+shielding = false
+friendly = false
+double_hit = true
+damage2 = 15
+element2 = "lightning"
+cost = 8
+token_type = "lightning"
+cost2 = 0
+token_type2 = ""
+status_effects = []
+target_type = "all_enemies"
+unique = ""

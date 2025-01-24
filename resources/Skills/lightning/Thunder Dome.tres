@@ -4,12 +4,20 @@
 
 [resource]
 script = ExtResource("1_io4iu")
-name = "Lightning Dome"
+name = "Thunder Dome"
 damage = 5
 element = "lightning"
 damaging = true
 healing = false
 shielding = false
 friendly = false
+double_hit = false
+damage2 = 0
+element2 = ""
+cost = 2
+token_type = "lightning"
+cost2 = 0
+token_type2 = ""
 status_effects = []
 target_type = "all_enemies"
+unique = ""
