@@ -97,6 +97,7 @@ func receive_skill(skill):
 				var new_bleed = BLEED.duplicate()
 				status.append(new_bleed)
 	hp_bar.update_element(current_element)
+	check_if_dead()
 
 
 func reaction_signal():
