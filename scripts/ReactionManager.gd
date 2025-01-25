@@ -46,6 +46,8 @@ func reaction(elem1 : String, elem2 : String, unit : Unit, value, hostile : int)
 					res_value = roundi(value)
 					reaction = " Detonate!"
 					DamageNumbers.display_number(unit.take_damage(res_value * detonate_main_mult), unit.get_child(2).global_position, elem2, reaction)
+					if (unit == null):
+						return false
 					if (unit.hasLeft() or unit.hasRight()):
 						await get_tree().create_timer(0.2).timeout
 					if (unit.hasLeft()):
@@ -120,6 +122,8 @@ func reaction(elem1 : String, elem2 : String, unit : Unit, value, hostile : int)
 					res_value = roundi(value)
 					reaction = " Detonate!"
 					DamageNumbers.display_number(unit.take_damage(res_value * detonate_main_mult), unit.get_child(2).global_position, elem2, reaction)
+					if (unit == null):
+						return false
 					if (unit.hasLeft() or unit.hasRight()):
 						await get_tree().create_timer(0.2).timeout
 					if (unit.hasLeft()):
@@ -131,13 +135,22 @@ func reaction(elem1 : String, elem2 : String, unit : Unit, value, hostile : int)
 				"water":
 					reaction = " Shock!"
 					res_value = roundi(value * shock_mult)
+					# have to check if unit is dead before each instance of damage
 					if hostile == 1:
 						DamageNumbers.display_number(unit.take_damage(roundi(value * hostile)), unit.get_child(2).global_position, elem2, reaction)
 						await get_tree().create_timer(0.2).timeout
+						if (unit == null):
+							return false
 						DamageNumbers.display_number(unit.take_damage(res_value), unit.get_child(2).global_position, elem2, reaction)
 						await get_tree().create_timer(0.2).timeout
+						if (unit == null):
+							return false
 						DamageNumbers.display_number(unit.take_damage(res_value), unit.get_child(2).global_position, elem2, reaction)
+						if (unit == null):
+							return false
 						await get_tree().create_timer(0.2).timeout
+						if (unit == null):
+							return false
 						DamageNumbers.display_number(unit.take_damage(res_value), unit.get_child(2).global_position, elem2, reaction)
 					unit.current_element = "lightning"
 					GC.shock()

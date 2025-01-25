@@ -97,7 +97,6 @@ func receive_skill(skill):
 				var new_bleed = BLEED.duplicate()
 				status.append(new_bleed)
 	hp_bar.update_element(current_element)
-	check_if_dead()
 
 
 func reaction_signal():
@@ -106,10 +105,11 @@ func reaction_signal():
 	
 
 func take_damage(damage : int):
-	AudioPlayer.play_FX("fire_hit", -30)
-	health -= damage
-	hp_bar.set_hp(health)
-	check_if_dead()
+	if (self.visible == true):
+		AudioPlayer.play_FX("fire_hit", -30)
+		health -= damage
+		hp_bar.set_hp(health)
+		check_if_dead()
 	return damage
 
 func check_if_dead():
@@ -121,6 +121,8 @@ func die():
 	combat_manager.enemies.erase(self)
 	combat_manager.set_unit_pos()
 	died.emit()
+	self.visible = false
+	await get_tree().create_timer(1).timeout
 	queue_free()
 	
 func change_skills():

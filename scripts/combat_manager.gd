@@ -127,7 +127,8 @@ func execute_ally_turn():
 		use_skill(skill,target)
 		print("waiting for reaction")
 		# checks if target is dead, currently skips the rest of the loop (wont print landed)
-		if (target == null):
+		if (target == null or target.visible == false):
+			await get_tree().create_timer(0.1).timeout
 			continue
 		await reaction_finished
 		print(str(skill.name) + " landed!")
@@ -135,8 +136,6 @@ func execute_ally_turn():
 		await get_tree().create_timer(0.35).timeout
 	await get_tree().create_timer(1).timeout
 	ally_post_status()
-	for enemy in enemies:
-		enemy.check_if_dead()
 	turn_text.text = "Enemy Turn"
 	ally_turn_done.emit()
 

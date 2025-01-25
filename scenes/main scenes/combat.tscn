@@ -65,10 +65,10 @@ label_settings = SubResource("LabelSettings_g8qlp")
 
 [node name="TargetingControls" type="Label" parent="CombatManager/TargetingLabel"]
 layout_mode = 0
-offset_left = 734.0
-offset_top = -87.0
-offset_right = 1066.0
-offset_bottom = 138.0
+offset_left = 706.0
+offset_top = -14.0
+offset_right = 1046.0
+offset_bottom = 211.0
 text = "1  or Z for Enemy 1
 2  or X for Enemy 2
 3  or V for Enemy 3
