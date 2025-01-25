@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://didsupfyw66ha"]
 
-[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_nwpm1"]
-[ext_resource type="Resource" uid="uid://dy48dueo5v5f" path="res://resources/enemy_skills/EnemyBaguetteSlap.tres" id="2_uco41"]
-[ext_resource type="Texture2D" uid="uid://bljf8dm0b4fdy" path="res://assets/baguette.png" id="3_t0c4t"]
-[ext_resource type="PackedScene" uid="uid://5spa5amgsxfm" path="res://scenes/reusables/hp_bar.tscn" id="4_ovc0p"]
-[ext_resource type="PackedScene" uid="uid://sdwnoh61gawa" path="res://scenes/reusables/skill_info.tscn" id="5_alcot"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_ml356"]
+[ext_resource type="Resource" uid="uid://dy48dueo5v5f" path="res://resources/enemy_skills/EnemyBaguetteSlap.tres" id="2_3luuo"]
+[ext_resource type="Texture2D" uid="uid://bljf8dm0b4fdy" path="res://assets/baguette.png" id="3_n62cc"]
+[ext_resource type="PackedScene" uid="uid://5spa5amgsxfm" path="res://scenes/reusables/hp_bar.tscn" id="4_8i2d0"]
+[ext_resource type="PackedScene" uid="uid://sdwnoh61gawa" path="res://scenes/reusables/skill_info.tscn" id="5_gim1t"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ebmkq"]
 
@@ -23,21 +23,21 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ysnwy"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[node name="Baguette" type="Node2D"]
+[node name="Enemy" type="Node2D"]
 scale = Vector2(0.75, 0.75)
-script = ExtResource("1_nwpm1")
-skill1 = ExtResource("2_uco41")
-skill2 = ExtResource("2_uco41")
+script = ExtResource("1_ml356")
+skill1 = ExtResource("2_3luuo")
+skill2 = ExtResource("2_3luuo")
 health = 100
 max_health = 100
 title = "Baguette"
 
-[node name="Burger" type="Sprite2D" parent="."]
+[node name="SpriteSpot" type="Sprite2D" parent="."]
 position = Vector2(169.333, 325.333)
 scale = Vector2(0.938, 0.809)
-texture = ExtResource("3_t0c4t")
+texture = ExtResource("3_n62cc")
 
-[node name="HP Bar" parent="." instance=ExtResource("4_ovc0p")]
+[node name="HP Bar" parent="." instance=ExtResource("4_8i2d0")]
 offset_left = 67.9999
 offset_top = 471.0
 offset_right = 67.9999
@@ -69,7 +69,7 @@ offset_bottom = 69.0
 text = "Next Skill:"
 metadata/_edit_use_anchors_ = true
 
-[node name="SkillInfo" parent="ShowNextSkill" instance=ExtResource("5_alcot")]
+[node name="SkillInfo" parent="ShowNextSkill" instance=ExtResource("5_gim1t")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -28.5

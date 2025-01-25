@@ -10,9 +10,6 @@ func _ready() -> void:
 	description.text = ""
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 func update_skill_info():
 	description.text = ""
@@ -29,7 +26,11 @@ func update_skill_info():
 		"all_enemies":
 			target = "all enemies"
 		"all_units":
-			target = "all units"	
+			target = "all units"
+		"front_ally":
+			target = "the front ally"
+		"front_enemy":
+			target = "the front enemy"
 	
 	if skill.damaging == true:
 		description.text += "Deals " + str(skill.damage) + " " + str(skill.element) + " damage\nto " + target

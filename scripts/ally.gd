@@ -20,7 +20,7 @@ var position = 0
 var combat_manager
 var connected = false
 
-var res : AllyRes
+var res : UnitRes
 
 signal reaction_ended
 

@@ -16,8 +16,8 @@ basic_atk = ExtResource("2_77fl0")
 skill_1 = ExtResource("3_oopdj")
 skill_2 = ExtResource("4_7yskb")
 ult = ExtResource("5_kdrfg")
-health = 300
-max_health = 300
+health = 250
+max_health = 250
 title = "QiqiFallen"
 
 [node name="SpellSelectUi" parent="." instance=ExtResource("2_pcgfv")]

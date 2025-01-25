@@ -16,21 +16,36 @@ var connected = false
 var combat_manager: Node
 var rng
 var random_num
+var res : UnitRes
+@onready var sprite_spot: Sprite2D = $SpriteSpot
+
 
 var BLEED = preload("res://resources/Status Effects/Bleed.tres")
 
 signal skill_end
 signal reaction_ended
 signal target_chosen
+signal died
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#always mak	e hp bar second child
 	await get_tree().create_timer(0.1).timeout
 	combat_manager = get_parent().get_parent().get_combat_manager()
-	current_skill = skill1
+	self.died.connect(combat_manager.reaction_signal)
+	if res.skill1 != null:
+		skill1 = res.skill1
+		current_skill = skill1
+	if res.skill2 != null:
+		skill2 = res.skill2
+	if res.skill3 != null:
+		skill3 = res.skill3
+
+	sprite_spot.texture = load(res.sprite.resource_path)
+	sprite_spot.scale = Vector2(res.sprite_scale,res.sprite_scale)
 	skill_info.skill = current_skill
 	skill_info.update_skill_info()
+	
 	print(health)
 	hp_bar = get_child(1)
 	hp_bar.set_hp(health)
@@ -38,11 +53,6 @@ func _ready() -> void:
 	self.target_chosen.connect(combat_manager.target_signal)
 
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-	
 
 func receive_skill(skill):
 	var rounded : int
@@ -61,14 +71,12 @@ func receive_skill(skill):
 			if (!r2):
 				self.take_damage(skill.damage)
 			DamageNumbers.display_number(skill.damage, damage_number_origin.global_position, skill.element, reaction)
-			check_if_dead()
 			if (skill.element != "none"):
 				current_element = skill.element
 	# no reaction
 	if (!r):
 		self.take_damage(skill.final_damage)
 		DamageNumbers.display_number(skill.final_damage, damage_number_origin.global_position, skill.element, reaction)
-		check_if_dead()
 		# don't change current element if skill has no element
 		if (skill.element != "none"):
 			current_element = skill.element
@@ -80,7 +88,6 @@ func receive_skill(skill):
 			if (!r2):
 				self.take_damage(skill.damage)
 			DamageNumbers.display_number(skill.damage, damage_number_origin.global_position, skill.element, reaction)
-			check_if_dead()
 			if (skill.element != "none"):
 				current_element = skill.element
 	#handle status effects
@@ -101,6 +108,7 @@ func take_damage(damage : int):
 	AudioPlayer.play_FX("fire_hit", -30)
 	health -= damage
 	hp_bar.set_hp(health)
+	check_if_dead()
 	return damage
 
 func check_if_dead():
@@ -110,7 +118,9 @@ func check_if_dead():
 func die():
 	print("ded")
 	combat_manager.enemies.erase(self)
-	combat_manager.set_enemy_pos()
+	combat_manager.set_unit_pos()
+	died.emit()
+	queue_free()
 	
 func change_skills():
 	

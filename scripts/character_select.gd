@@ -5,9 +5,8 @@ const BLASTOISE = preload("res://scenes/units/allies/Blastoise.tres")
 const VENASAUR = preload("res://scenes/units/allies/Venasaur.tres")
 const PIKACHU = preload("res://scenes/units/allies/Pikachu.tres")
 
-const BURGER_ENEMY = preload("res://scenes/units/enemies/burger_enemy.tscn")
-const BAGUETTE = preload("res://scenes/units/enemies/baguette.tscn")
-
+const BAGUETTE = preload("res://scenes/units/enemies/Baguette.tres")
+const BURGER = preload("res://scenes/units/enemies/Burger.tres")
 
 var ally_list = []
 var ally_names = []
@@ -56,7 +55,7 @@ func _on_venasaur_pressed() -> void:
 
 
 func _on_burger_pressed() -> void:
-	add_enemy(BURGER_ENEMY, "burger")
+	add_enemy(BURGER, "burger")
 	
 func _on_baguette_pressed() -> void:
 	add_enemy(BAGUETTE, "Baguette")

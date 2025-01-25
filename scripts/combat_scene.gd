@@ -13,6 +13,7 @@ extends Node2D
 
 
 const ALLY = preload("res://scenes/units/allies/ally.tscn")
+const ENEMY = preload("res://scenes/units/enemies/enemy.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -70,19 +71,23 @@ func load_units():
 		ally_4_spot.add_child(ally4)
 		combat_manager.ally4 = ally4
 	if GC.enemy1 != null:
-		var enemy1 = GC.enemy1.instantiate()
+		var enemy1 = ENEMY.instantiate()
+		enemy1.res = GC.enemy1
 		enemy_1_spot.add_child(enemy1)
 		combat_manager.enemy1 = enemy1
 	if GC.enemy2 != null:
-		var enemy2 = GC.enemy2.instantiate()
+		var enemy2 = ENEMY.instantiate()
+		enemy2.res = GC.enemy2
 		enemy_2_spot.add_child(enemy2)
 		combat_manager.enemy2 = enemy2
 	if GC.enemy3 != null:
-		var enemy3 = GC.enemy3.instantiate()
+		var enemy3 = ENEMY.instantiate()
+		enemy3.res = GC.enemy3
 		enemy_3_spot.add_child(enemy3)
 		combat_manager.enemy3 = enemy3
 	if GC.enemy4 != null:
-		var enemy4 = GC.enemy4.instantiate()
+		var enemy4 = ENEMY.instantiate()
+		enemy4.res = GC.enemy4
 		enemy_4_spot.add_child(enemy4)
 		combat_manager.enemy4 = enemy4
 

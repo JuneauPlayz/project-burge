@@ -19,5 +19,5 @@ token_type = "grass"
 cost2 = 0
 token_type2 = ""
 status_effects = []
-target_type = "single_enemy"
+target_type = "front_enemy"
 unique = ""

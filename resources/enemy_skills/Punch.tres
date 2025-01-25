@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3 uid="uid://bajou4oeggcpy"]
+
+[ext_resource type="Script" path="res://scripts/skill.gd" id="1_xxt7t"]
+
+[resource]
+script = ExtResource("1_xxt7t")
+name = "Punch"
+damage = 20
+element = "none"
+damaging = true
+healing = false
+shielding = false
+friendly = false
+double_hit = false
+damage2 = 0
+element2 = ""
+cost = 0
+token_type = ""
+cost2 = 0
+token_type2 = ""
+status_effects = []
+target_type = "front_ally"
+unique = ""

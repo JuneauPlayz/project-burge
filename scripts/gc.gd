@@ -5,20 +5,21 @@ var is_dragging = false
 #combat
 
 #units
-var ally1 : AllyRes
-var ally2 = AllyRes
-var ally3 = AllyRes
-var ally4 = AllyRes
-var enemy1 = null
-var enemy2 = null
-var enemy3 = null
-var enemy4 = null
+var ally1 : UnitRes
+var ally2 : UnitRes
+var ally3 : UnitRes
+var ally4 : UnitRes
+
+var enemy1 : UnitRes
+var enemy2 : UnitRes
+var enemy3 : UnitRes
+var enemy4 : UnitRes
 
 #tokens
 var fire_tokens = 0
 var water_tokens = 0
 var lightning_tokens = 0
-var grass_tokens = 0
+var grass_tokens = 1
 var earth_tokens = 0
 
 var fire_token_multiplier = 1

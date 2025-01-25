@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="AllyRes" load_steps=7 format=3 uid="uid://bchghb71yo8ln"]
+[gd_resource type="Resource" script_class="UnitRes" load_steps=7 format=3 uid="uid://bchghb71yo8ln"]
 
-[ext_resource type="Script" path="res://scripts/AllyRes.gd" id="1_5rsqq"]
+[ext_resource type="Script" path="res://scripts/UnitRes.gd" id="1_5rsqq"]
 [ext_resource type="Resource" uid="uid://c3yogn8m318q2" path="res://resources/Skills/fire/Fire_Bolt.tres" id="2_odqjc"]
 [ext_resource type="Texture2D" uid="uid://4geq5yb7tf1u" path="res://assets/charizard.png" id="2_ury01"]
 [ext_resource type="Resource" uid="uid://b70k44ljti3df" path="res://resources/Skills/fire/Wildfire.tres" id="3_5igym"]

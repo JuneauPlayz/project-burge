@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="AllyRes" load_steps=7 format=3 uid="uid://coik84dyxxr16"]
 
-[ext_resource type="Script" path="res://scripts/AllyRes.gd" id="1_psg7m"]
+[ext_resource type="Script" path="res://scripts/UnitRes.gd" id="1_psg7m"]
 [ext_resource type="Resource" uid="uid://60omj8j38mfk" path="res://resources/Skills/lightning/Thunder Bolt.tres" id="2_sd5ql"]
 [ext_resource type="Resource" uid="uid://ddrvp77dd5ima" path="res://resources/Skills/lightning/Electro Ball.tres" id="3_e3nc1"]
 [ext_resource type="Resource" uid="uid://cf3f0mnd7a8pe" path="res://resources/Skills/lightning/Thunder Dome.tres" id="4_4t6l8"]

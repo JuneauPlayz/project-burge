@@ -1,5 +1,5 @@
 extends Resource
-class_name AllyRes
+class_name UnitRes
 
 @export var skill1 : Skill
 @export var skill2 : Skill
@@ -7,4 +7,4 @@ class_name AllyRes
 @export var skill4 : Skill
 
 @export var sprite : Texture
-@export var sprite_scale : float
+@export var sprite_scale = 1.0

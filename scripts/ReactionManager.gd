@@ -22,6 +22,9 @@ func _ready() -> void:
 func reaction(elem1 : String, elem2 : String, unit : Unit, value, hostile : int):
 	var reaction = ""
 	var res_value = value
+	# if unit is dead
+	if (unit == null):
+		return false
 	if (elem1 == "none" or elem2 == "none"): 
 		reaction_finished.emit()
 		return false

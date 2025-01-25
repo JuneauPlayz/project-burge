@@ -8,19 +8,24 @@ extends Node
 @export var ally3 : Ally
 @export var ally4 : Ally
 @export var allies : Array = []
+var front_ally : Ally
 
 @export var enemy1 : Enemy
 @export var enemy2 : Enemy
 @export var enemy3 : Enemy
 @export var enemy4 : Enemy
 @export var enemies : Array = []
+var front_enemy : Enemy
 
 var ally_list = [ally1, ally2, ally3, ally4]
 var enemy_list = [enemy1, enemy2]
 
 @export var action_queue = []
+var choosing_skills = false
 # parallel array for targets
 @export var target_queue = []
+var targeting = false
+
 @onready var end_turn: Button = $"../EndTurn"
 @onready var reset_choices: Button = $"../ResetChoices"
 @onready var targeting_label: Label = $TargetingLabel
@@ -79,22 +84,14 @@ func combat_ready():
 	for i in range(len(allies)):
 		allies[i].position = i+1
 	# setting left and right for units
-	set_enemy_pos()
+	set_unit_pos()
 		
 	ReactionManager.reaction_finished.connect(self.reaction_signal)
 	show_skills()
 	reset_skill_select()
 	start_combat()
 
-#use this function to print whatever you want
-func debug_printer():
-	for x in enemy1.status:
-		print("statuses remaining: " + str(len(enemy1.status)))
-		print("found a status: ")
-		print(x)
-		print("turns remaining: " + str(x.turns_remaining))
-	if enemy1.status == []:
-		print("no statuses found")
+
 
 func start_combat():
 	while (!combat_finished):
@@ -104,6 +101,7 @@ func start_combat():
 		await enemy_turn_done
 	
 func start_ally_turn():
+	set_unit_pos()
 	show_ui()
 	check_requirements()
 	turn_text.text = "Ally Turn"
@@ -112,18 +110,25 @@ func start_ally_turn():
 	show_skills()
 	reset_skill_select()
 	update_skill_positions()
+	choosing_skills = true
 
 	
 func execute_ally_turn():
+	choosing_skills = false
+	set_unit_pos()
 	hide_skills()
 	hide_ui()
 	# skill execution
 	for n in range(action_queue.size()):
+		if (action_queue.size() == 0):
+			continue
 		var skill = action_queue[n]
 		var target = target_queue[n]
-	
 		use_skill(skill,target)
 		print("waiting for reaction")
+		# checks if target is dead, currently skips the rest of the loop (wont print landed)
+		if (target == null):
+			continue
 		await reaction_finished
 		print(str(skill.name) + " landed!")
 		hit.emit()
@@ -145,7 +150,6 @@ func enemy_turn():
 	await get_tree().create_timer(0.1).timeout
 	enemy_post_status()
 	await get_tree().create_timer(0.3).timeout
-	debug_printer()
 	enemy_turn_done.emit()
 	
 func use_skill(skill,target):
@@ -153,7 +157,11 @@ func use_skill(skill,target):
 	# token spending
 	if skill.cost > 0 or skill.cost2 > 0:
 			spend_skill_cost(skill)
-	if (target == null):
+	if (skill.target_type == "front_ally"):
+		front_ally.receive_skill(skill)
+	elif (skill.target_type == "front_enemy"):
+		front_enemy.receive_skill(skill)
+	elif (target == null):
 		if (skill.target_type == "all_allies"):
 			if (skill.friendly == true):
 				for ally in allies:
@@ -179,7 +187,6 @@ func use_skill(skill,target):
 					enemy.receive_skill(skill)
 				for ally in allies:
 					ally.receive_skill(skill)
-			
 	else:
 		if skill.damaging == true:
 			target.receive_skill(skill)
@@ -376,8 +383,9 @@ func reset_skill_select():
 	update_skill_positions()
 	
 func _on_end_turn_pressed() -> void:
-	AudioPlayer.play_FX("click",0)
-	execute_ally_turn()
+	if (!targeting and choosing_skills):
+		AudioPlayer.play_FX("click",0)
+		execute_ally_turn()
 
 func _on_reset_choices_pressed() -> void:
 	AudioPlayer.play_FX("click",0)
@@ -422,6 +430,7 @@ func show_ui():
 	
 func choose_target(skill : Skill): 
 	if (skill.target_type == "single_enemy" or skill.target_type == "single_ally"):
+		targeting = true
 		toggle_targeting_ui(skill)
 		hide_skills()
 		hide_ui()
@@ -440,6 +449,7 @@ func choose_target(skill : Skill):
 		toggle_targeting_ui(skill)
 		AudioPlayer.play_FX("click",0)
 		Input.set_custom_mouse_cursor(DEFAULT_CURSOR, 0)
+		targeting = false
 		return target
 	else:
 		return null
@@ -447,6 +457,23 @@ func choose_target(skill : Skill):
 func target_signal(unit):
 	target_chosen.emit(unit)
 
+func _input(event):
+	if event.is_action_pressed("1"):
+		if (enemy1 != null):
+			target_chosen.emit(enemy1)
+	if event.is_action_pressed("2"):
+		if (enemy2 != null):
+			target_chosen.emit(enemy2)
+	if event.is_action_pressed("3"):
+		if (enemy3 != null):
+			target_chosen.emit(enemy3)
+	if event.is_action_pressed("4"):
+		if (enemy4 != null):
+			target_chosen.emit(enemy4)
+	if event.is_action_pressed("end_turn"):
+		_on_end_turn_pressed()
+			
+	
 func toggle_targeting_ui(skill):
 	targeting_skill_info.skill = skill
 	targeting_skill_info.update_skill_info()
@@ -547,7 +574,7 @@ func check_requirements():
 				else:
 					ally.get_child(0).disable(i)
 		
-func set_enemy_pos():
+func set_unit_pos():
 	for n in range(enemies.size()):
 		if n > 0:
 			enemies[n].left = enemies[n-1]
@@ -566,3 +593,7 @@ func set_enemy_pos():
 			allies[n].right = allies[n+1]
 		else:
 			allies[n].right = null
+	if enemies.size() > 0:
+		front_enemy = enemies[0]
+	if allies.size() > 0:
+		front_ally = allies[allies.size()-1]
