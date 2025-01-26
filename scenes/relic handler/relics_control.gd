@@ -31,7 +31,7 @@ func update() -> void:
 	
 	left_button.disabled = current_page <= 1
 	right_button.disabled = current_page >= max_page
-	
+
 func _tween_to(x_position: float) -> void:
 	if tween:
 		tween.kill()

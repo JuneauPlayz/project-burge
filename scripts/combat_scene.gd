@@ -25,6 +25,7 @@ var enemy4 : Enemy
 
 var enemies = []
 var allies = []
+@onready var relic_info: Control = %RelicInfo
 
 const ALLY = preload("res://scenes/units/allies/ally.tscn")
 const ENEMY = preload("res://scenes/units/enemies/enemy.tscn")
@@ -139,3 +140,5 @@ func load_units():
 		
 
 	
+func toggle_relic_tooltip():
+	relic_info.visible = !relic_info.visible

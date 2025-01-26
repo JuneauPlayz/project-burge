@@ -164,6 +164,7 @@ text = "Relic List:"
 label_settings = SubResource("LabelSettings_mncv2")
 
 [node name="Fire" type="Button" parent="Relics"]
+layout_mode = 0
 offset_left = -52.0
 offset_top = 150.0
 offset_right = 200.0

@@ -10,4 +10,5 @@ relic_name = "Fire Potion"
 id = "2"
 type = 2
 icon = ExtResource("1_42ris")
-tooltip = "Deals 5 Damage to all enemies at the beginning of ally turn"
+tooltip = "Deals 5 Damage to all
+enemies after ending turn"
