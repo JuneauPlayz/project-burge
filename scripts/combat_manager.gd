@@ -30,7 +30,7 @@ var targeting = false
 @onready var reset_choices: Button = $"../ResetChoices"
 @onready var targeting_label: Label = $TargetingLabel
 @onready var targeting_skill_info: Control = $TargetingSkillInfo
-@onready var relics: RelicHandler = $"../RelicHandler"
+@onready var relics : RelicHandler
 
 # relics
 const SHIELD_POTION = preload("res://resources/relics/shield_potion.tres")

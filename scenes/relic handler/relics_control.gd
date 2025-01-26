@@ -18,6 +18,7 @@ func _ready() -> void:
 	left_button.pressed.connect(_on_left_button_pressed)
 	right_button.pressed.connect(_on_right_button_pressed)
 	
+	# just to be safe incase theres a relic in this scene
 	for relic_ui : RelicUI in relics.get_children():
 		relic_ui.queue_free()
 	

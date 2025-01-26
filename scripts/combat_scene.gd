@@ -10,6 +10,9 @@ extends Node2D
 @onready var enemy_3_spot: Node2D = %"Enemy 3 Spot"
 @onready var enemy_4_spot: Node2D = %"Enemy 4 Spot"
 @onready var loading: Node2D = $Loading
+@onready var relic_handler_spot: Node2D = $RelicHandlerSpot
+
+const RELIC_HANDLER = preload("res://scenes/relic handler/relic_handler.tscn")
 
 var ally1 : Ally
 var ally2 : Ally
@@ -125,5 +128,14 @@ func load_units():
 		allies.append(ally3)
 	if (ally4 != null):
 		allies.append(ally4)
+	if (GC.relics != null):
+		# loads relics
+		var new_relic_handler = RELIC_HANDLER.instantiate()
+		relic_handler_spot.add_child(new_relic_handler)
+		for relic in GC.relics:
+			new_relic_handler.add_relic(relic)
+		combat_manager.relics = new_relic_handler
+		
+		
 
 	

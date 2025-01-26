@@ -10,4 +10,4 @@ relic_name = "Shield Potion"
 id = "1"
 type = 2
 icon = ExtResource("1_j6g0b")
-tooltip = ""
+tooltip = "Shields allies for 5 damage at the end of ally turn"

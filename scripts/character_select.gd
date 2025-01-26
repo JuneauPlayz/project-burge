@@ -8,14 +8,21 @@ const PIKACHU = preload("res://scenes/units/allies/Pikachu.tres")
 const BAGUETTE = preload("res://scenes/units/enemies/Baguette.tres")
 const BURGER = preload("res://scenes/units/enemies/Burger.tres")
 
+const RELIC_HANDLER = preload("res://scenes/relic handler/relic_handler.tscn")
+
+const SHIELD_POTION = preload("res://resources/relics/shield_potion.tres")
+const FIRE_POTION = preload("res://resources/relics/fire_potion.tres")
+
 var ally_list = []
 var ally_names = []
 var enemy_list = []
 var enemy_names = []
 
+var relic_list = []
 @onready var ally_list_label: Label = $AllyList
 @onready var enemy_list_label: Label = $EnemyList
-
+@onready var relic_list_label: Label = $Relics/RelicList
+	
 func _on_start_combat_pressed() -> void:
 	ally_list.resize(4)
 	enemy_list.resize(4)
@@ -33,6 +40,11 @@ func add_enemy(res, name):
 	enemy_names.append(name)
 	update_enemy_list()
 	
+func add_relic(res, name):
+	relic_list.append(name)
+	GC.relics.append(res)
+	update_relic_list()
+	
 func _on_charizard_pressed() -> void:
 	add_ally(CHARIZARD,"CHARIZARD")
 	
@@ -45,6 +57,9 @@ func update_enemy_list():
 	AudioPlayer.play_FX("click",0)
 	enemy_list_label.text = "Enemy List: " + str(enemy_names)
 
+func update_relic_list():
+	AudioPlayer.play_FX("click",0)
+	relic_list_label.text = "Relic List: " + str(relic_list)
 
 func _on_blastoise_pressed() -> void:
 	add_ally(BLASTOISE, "BLASTOISE")
@@ -63,3 +78,11 @@ func _on_baguette_pressed() -> void:
 
 func _on_pikachu_pressed() -> void:
 	add_ally(PIKACHU, "PIKACHU")
+
+
+func _on_shield_pressed() -> void:
+	add_relic(SHIELD_POTION, "Shield Potion")
+
+
+func _on_fire_pressed() -> void:
+	add_relic(FIRE_POTION, "Fire Potion")

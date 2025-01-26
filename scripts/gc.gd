@@ -15,6 +15,7 @@ var enemy2 : UnitRes
 var enemy3 : UnitRes
 var enemy4 : UnitRes
 
+var relics = []
 #tokens
 var fire_tokens = 0
 var water_tokens = 0
@@ -63,7 +64,8 @@ func reset_tokens():
 	lightning_tokens = 0
 	grass_tokens = 0
 	earth_tokens = 0
-
+	
+	
 func load_combat(ally1, ally2, ally3, ally4, enemy1, enemy2, enemy3, enemy4):
 	self.ally1 = ally1
 	self.ally2 = ally2

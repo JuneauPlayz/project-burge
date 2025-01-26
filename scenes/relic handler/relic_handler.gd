@@ -42,7 +42,7 @@ func add_relic(relic : Relic) -> void:
 	
 	var new_relic_ui = RELIC_UI.instantiate() as RelicUI
 	relics.add_child(new_relic_ui)
-	new_relic_ui.relic = relic
+	new_relic_ui.set_relic(relic)
 	new_relic_ui.relic.initialize_relic(new_relic_ui)
 
 func has_relic(id : String) -> bool:

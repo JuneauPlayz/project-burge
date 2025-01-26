@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cdu4rddg2v2o7"]
+[gd_scene load_steps=10 format=3 uid="uid://cdu4rddg2v2o7"]
 
 [ext_resource type="Script" path="res://scripts/character_select.gd" id="1_hd0vt"]
 [ext_resource type="Texture2D" uid="uid://c7bn1gnx4b71v" path="res://assets/grassy pixelated.jpg" id="2_7ac7o"]
@@ -18,6 +18,16 @@ outline_color = Color(0, 0, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_an4f2"]
 font_size = 54
 outline_size = 15
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8kvql"]
+font_size = 56
+outline_size = 9
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_mncv2"]
+font_size = 46
+outline_size = 9
 outline_color = Color(0, 0, 0, 1)
 
 [node name="Character Select" type="Node2D"]
@@ -127,6 +137,40 @@ label_settings = SubResource("LabelSettings_an4f2")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_48ova")
 
+[node name="Relics" type="Label" parent="."]
+offset_left = 1584.0
+offset_top = 269.0
+offset_right = 1689.0
+offset_bottom = 319.0
+text = "Relics"
+label_settings = SubResource("LabelSettings_8kvql")
+
+[node name="Shield" type="Button" parent="Relics"]
+layout_mode = 0
+offset_left = -52.0
+offset_top = 76.0
+offset_right = 200.0
+offset_bottom = 138.0
+theme_override_font_sizes/font_size = 48
+text = "Shield Potion"
+
+[node name="RelicList" type="Label" parent="Relics"]
+layout_mode = 0
+offset_left = -418.0
+offset_top = 616.0
+offset_right = -219.0
+offset_bottom = 697.0
+text = "Relic List:"
+label_settings = SubResource("LabelSettings_mncv2")
+
+[node name="Fire" type="Button" parent="Relics"]
+offset_left = -52.0
+offset_top = 150.0
+offset_right = 200.0
+offset_bottom = 212.0
+theme_override_font_sizes/font_size = 48
+text = "Fire Potion"
+
 [connection signal="pressed" from="StartCombat" to="." method="_on_start_combat_pressed"]
 [connection signal="pressed" from="Allies/Charizard" to="." method="_on_charizard_pressed"]
 [connection signal="pressed" from="Allies/Blastoise" to="." method="_on_blastoise_pressed"]
@@ -134,3 +178,5 @@ stream = ExtResource("2_48ova")
 [connection signal="pressed" from="Allies/Pikachu" to="." method="_on_pikachu_pressed"]
 [connection signal="pressed" from="Enemies/Burger" to="." method="_on_burger_pressed"]
 [connection signal="pressed" from="Enemies/Baguette" to="." method="_on_baguette_pressed"]
+[connection signal="pressed" from="Relics/Shield" to="." method="_on_shield_pressed"]
+[connection signal="pressed" from="Relics/Fire" to="." method="_on_fire_pressed"]

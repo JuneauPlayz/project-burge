@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://do6gwn47eylu7"]
+[gd_scene load_steps=13 format=3 uid="uid://do6gwn47eylu7"]
 
 [ext_resource type="Script" path="res://scripts/combat_scene.gd" id="1_3ou8c"]
 [ext_resource type="Script" path="res://scripts/Targeting.gd" id="2_0pyv8"]
@@ -8,7 +8,6 @@
 [ext_resource type="FontFile" uid="uid://ca0ii6rndnaqf" path="res://assets/pokemon_pixel_font.ttf" id="5_wtw4i"]
 [ext_resource type="PackedScene" uid="uid://rtk527cyr7kb" path="res://scenes/reusables/combat_currency.tscn" id="6_b6b3n"]
 [ext_resource type="Texture2D" uid="uid://bsae24ot6vmo6" path="res://assets/battle_bg.jpg" id="7_qh8p2"]
-[ext_resource type="PackedScene" uid="uid://dr6jeis04n42b" path="res://scenes/relic handler/relic_handler.tscn" id="9_18tlq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mo5rj"]
 font = ExtResource("5_wtw4i")
@@ -162,11 +161,8 @@ offset_right = 1953.0
 offset_bottom = 1091.0
 color = Color(0.18359, 0.18359, 0.18359, 1)
 
-[node name="RelicHandler" parent="." instance=ExtResource("9_18tlq")]
-offset_left = 330.0
-offset_top = -3.0
-offset_right = 930.0
-offset_bottom = 61.0
+[node name="RelicHandlerSpot" type="Node2D" parent="."]
+position = Vector2(295, 28)
 
 [connection signal="new_spell_selected" from="CombatManager" to="StateMachine/SpellSelect" method="_on_combat_manager_new_spell_selected"]
 [connection signal="target_selected" from="CombatManager" to="StateMachine/Targeting" method="_on_combat_manager_target_selected"]
