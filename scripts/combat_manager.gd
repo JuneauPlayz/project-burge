@@ -324,15 +324,19 @@ func _on_spell_select_ui_new_select(ally) -> void:
 		1:
 			ally1skill = allyskill
 			ally1_pos = ally_pos
+			spell_select_ui.update_pos(ally1_pos+1)
 		2:
 			ally2skill = allyskill
 			ally2_pos = ally_pos
+			spell_select_ui.update_pos(ally2_pos+1)
 		3:
 			ally3skill = allyskill
 			ally3_pos = ally_pos
+			spell_select_ui.update_pos(ally3_pos+1)
 		4:
 			ally4skill = allyskill
 			ally4_pos = ally_pos
+			spell_select_ui.update_pos(ally4_pos+1)
 	
 	print(action_queue)
 		
