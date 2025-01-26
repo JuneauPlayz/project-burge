@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Relic" load_steps=3 format=3 uid="uid://b00kue7gy7bje"]
+
+[ext_resource type="Texture2D" uid="uid://133h4yyl8s4l" path="res://assets/chillpyro.png" id="1_42ris"]
+[ext_resource type="Script" path="res://scenes/relic handler/relic.gd" id="1_qaimv"]
+
+[resource]
+script = ExtResource("1_qaimv")
+relic_name = "Fire Potion"
+id = "2"
+type = 0
+icon = ExtResource("1_42ris")
+tooltip = ""

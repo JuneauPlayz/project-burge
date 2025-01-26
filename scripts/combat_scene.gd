@@ -11,6 +11,17 @@ extends Node2D
 @onready var enemy_4_spot: Node2D = %"Enemy 4 Spot"
 @onready var loading: Node2D = $Loading
 
+var ally1 : Ally
+var ally2 : Ally
+var ally3 : Ally
+var ally4 : Ally
+var enemy1 : Enemy
+var enemy2 : Enemy
+var enemy3 : Enemy
+var enemy4 : Enemy
+
+var enemies = []
+var allies = []
 
 const ALLY = preload("res://scenes/units/allies/ally.tscn")
 const ENEMY = preload("res://scenes/units/enemies/enemy.tscn")
@@ -51,44 +62,68 @@ func get_combat_manager():
 func load_units():
 	print("loading units")
 	if GC.ally1 != null:
-		var ally1 = ALLY.instantiate()
-		ally1.res = GC.ally1
-		ally_1_spot.add_child(ally1)
-		combat_manager.ally1 = ally1
+		var ally1s = ALLY.instantiate()
+		ally1 = ally1s
+		ally1s.res = GC.ally1
+		ally_1_spot.add_child(ally1s)
+		combat_manager.ally1 = ally1s
 	if GC.ally2 != null:
-		var ally2 = ALLY.instantiate()
-		ally2.res = GC.ally2
-		ally_2_spot.add_child(ally2)
-		combat_manager.ally2 = ally2
+		var ally2s = ALLY.instantiate()
+		ally2 = ally2s
+		ally2s.res = GC.ally2
+		ally_2_spot.add_child(ally2s)
+		combat_manager.ally2 = ally2s
 	if GC.ally3 != null:
-		var ally3 = ALLY.instantiate()
-		ally3.res = GC.ally3
-		ally_3_spot.add_child(ally3)
-		combat_manager.ally3 = ally3
+		var ally3s = ALLY.instantiate()
+		ally3 = ally3s
+		ally3s.res = GC.ally3
+		ally_3_spot.add_child(ally3s)
+		combat_manager.ally3 = ally3s
 	if GC.ally4 != null:
-		var ally4 = ALLY.instantiate()
-		ally4.res = GC.ally4
-		ally_4_spot.add_child(ally4)
-		combat_manager.ally4 = ally4
+		var ally4s = ALLY.instantiate()
+		ally4 = ally4s
+		ally4s.res = GC.ally4
+		ally_4_spot.add_child(ally4s)
+		combat_manager.ally4 = ally4s
 	if GC.enemy1 != null:
-		var enemy1 = ENEMY.instantiate()
-		enemy1.res = GC.enemy1
-		enemy_1_spot.add_child(enemy1)
-		combat_manager.enemy1 = enemy1
+		var enemy1s = ENEMY.instantiate()
+		enemy1 = enemy1s
+		enemy1s.res = GC.enemy1
+		enemy_1_spot.add_child(enemy1s)
+		combat_manager.enemy1 = enemy1s
 	if GC.enemy2 != null:
-		var enemy2 = ENEMY.instantiate()
-		enemy2.res = GC.enemy2
-		enemy_2_spot.add_child(enemy2)
-		combat_manager.enemy2 = enemy2
+		var enemy2s = ENEMY.instantiate()
+		enemy2 = enemy2s
+		enemy2s.res = GC.enemy2
+		enemy_2_spot.add_child(enemy2s)
+		combat_manager.enemy2 = enemy2s
 	if GC.enemy3 != null:
-		var enemy3 = ENEMY.instantiate()
-		enemy3.res = GC.enemy3
-		enemy_3_spot.add_child(enemy3)
-		combat_manager.enemy3 = enemy3
+		var enemy3s = ENEMY.instantiate()
+		enemy3 = enemy3s
+		enemy3s.res = GC.enemy3
+		enemy_3_spot.add_child(enemy3s)
+		combat_manager.enemy3 = enemy3s
 	if GC.enemy4 != null:
-		var enemy4 = ENEMY.instantiate()
-		enemy4.res = GC.enemy4
-		enemy_4_spot.add_child(enemy4)
-		combat_manager.enemy4 = enemy4
+		var enemy4s = ENEMY.instantiate()
+		enemy4 = enemy4s
+		enemy4s.res = GC.enemy4
+		enemy_4_spot.add_child(enemy4s)
+		combat_manager.enemy4 = enemy4s
+	if (enemy1 != null):
+		enemies.append(enemy1)
+	if (enemy2 != null):
+		enemies.append(enemy2)
+	if (enemy3 != null):
+		enemies.append(enemy3)
+	if (enemy4 != null):
+		enemies.append(enemy4)
+	if (ally1 != null):
+		allies.append(ally1)
+	if (ally2 != null):
+		allies.append(ally2)
+	if (ally3 != null):
+		allies.append(ally3)
+	if (ally4 != null):
+		allies.append(ally4)
 
 	

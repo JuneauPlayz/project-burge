@@ -28,6 +28,10 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 mouse_cursor/custom_image="res://assets/defaultcursor.png"
 
+[editor]
+
+script/templates_search_path="res://scripts/script_templates"
+
 [global_group]
 
 droppable=""

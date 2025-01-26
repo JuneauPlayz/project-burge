@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://dr6jeis04n42b"]
+
+[ext_resource type="Script" path="res://scenes/relic handler/relic_handler.gd" id="1_wgfm0"]
+[ext_resource type="Script" path="res://scenes/relic handler/relics_control.gd" id="2_cogcy"]
+[ext_resource type="PackedScene" uid="uid://dbmijg1lnjffl" path="res://scenes/relic handler/relic_ui.tscn" id="3_v4acn"]
+
+[node name="RelicHandler" type="HBoxContainer"]
+offset_right = 600.0
+offset_bottom = 64.0
+script = ExtResource("1_wgfm0")
+
+[node name="LeftButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "left"
+
+[node name="RelicsControl" type="Control" parent="." node_paths=PackedStringArray("left_button", "right_button")]
+clip_contents = true
+custom_minimum_size = Vector2(352, 0)
+layout_mode = 2
+script = ExtResource("2_cogcy")
+left_button = NodePath("../LeftButton")
+right_button = NodePath("../RightButton")
+
+[node name="Relics" type="HBoxContainer" parent="RelicsControl"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(352, 64)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 8
+
+[node name="RelicUI" parent="RelicsControl/Relics" instance=ExtResource("3_v4acn")]
+layout_mode = 2
+
+[node name="RelicUI2" parent="RelicsControl/Relics" instance=ExtResource("3_v4acn")]
+layout_mode = 2
+
+[node name="RelicUI3" parent="RelicsControl/Relics" instance=ExtResource("3_v4acn")]
+layout_mode = 2
+
+[node name="RelicUI4" parent="RelicsControl/Relics" instance=ExtResource("3_v4acn")]
+layout_mode = 2
+
+[node name="RelicUI5" parent="RelicsControl/Relics" instance=ExtResource("3_v4acn")]
+layout_mode = 2
+
+[node name="RelicUI6" parent="RelicsControl/Relics" instance=ExtResource("3_v4acn")]
+layout_mode = 2
+
+[node name="RelicUI7" parent="RelicsControl/Relics" instance=ExtResource("3_v4acn")]
+layout_mode = 2
+
+[node name="RightButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "right"

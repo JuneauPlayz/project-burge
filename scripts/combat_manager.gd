@@ -30,6 +30,10 @@ var targeting = false
 @onready var reset_choices: Button = $"../ResetChoices"
 @onready var targeting_label: Label = $TargetingLabel
 @onready var targeting_skill_info: Control = $TargetingSkillInfo
+@onready var relics: RelicHandler = $"../RelicHandler"
+
+# relics
+const SHIELD_POTION = preload("res://resources/relics/shield_potion.tres")
 
 var ally1skill : int
 var ally2skill : int
@@ -85,21 +89,23 @@ func combat_ready():
 		allies[i].position = i+1
 	# setting left and right for units
 	set_unit_pos()
-		
 	ReactionManager.reaction_finished.connect(self.reaction_signal)
-	show_skills()
-	reset_skill_select()
-	start_combat()
-
+	# relic stuff
+	relics.relics_activated.connect(_on_relics_activated)
+	relics.activate_relics_by_type(Relic.Type.START_OF_COMBAT)
 
 
 func start_combat():
+	show_skills()
+	reset_skill_select()
 	while (!combat_finished):
 		start_ally_turn()
 		await ally_turn_done
 		enemy_turn()
 		await enemy_turn_done
-	
+
+func end_battle():
+	pass
 func start_ally_turn():
 	set_unit_pos()
 	show_ui()
@@ -114,10 +120,6 @@ func start_ally_turn():
 
 	
 func execute_ally_turn():
-	choosing_skills = false
-	set_unit_pos()
-	hide_skills()
-	hide_ui()
 	# skill execution
 	for n in range(action_queue.size()):
 		if (action_queue.size() == 0):
@@ -225,6 +227,16 @@ func spend_skill_cost(skill):
 				GC.earth_tokens -= skill.cost2
 	combat_currency.update()
 
+func _on_relics_activated(type : Relic.Type) -> void:
+	match type:
+		Relic.Type.START_OF_COMBAT:
+			start_combat()
+		Relic.Type.END_OF_COMBAT:
+			end_battle()
+		Relic.Type.END_OF_TURN:
+			execute_ally_turn()
+		
+			
 func reaction_signal():
 	await get_tree().create_timer(0.01).timeout
 	# update currency ui
@@ -385,8 +397,14 @@ func reset_skill_select():
 	
 func _on_end_turn_pressed() -> void:
 	if (!targeting and choosing_skills):
+		#relics.add_relic(SHIELD_POTION)
 		AudioPlayer.play_FX("click",0)
-		execute_ally_turn()
+		# end of turn relics
+		choosing_skills = false
+		set_unit_pos()
+		hide_skills()
+		hide_ui()
+		relics.activate_relics_by_type(Relic.Type.END_OF_TURN)
 
 func _on_reset_choices_pressed() -> void:
 	AudioPlayer.play_FX("click",0)
