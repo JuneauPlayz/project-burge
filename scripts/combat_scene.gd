@@ -70,24 +70,28 @@ func load_units():
 		var ally1s = ALLY.instantiate()
 		ally1 = ally1s
 		ally1s.res = GC.ally1
+		GC.ally1.ally_num = 1
 		ally_1_spot.add_child(ally1s)
 		combat_manager.ally1 = ally1s
 	if GC.ally2 != null:
 		var ally2s = ALLY.instantiate()
 		ally2 = ally2s
 		ally2s.res = GC.ally2
+		GC.ally2.ally_num = 2
 		ally_2_spot.add_child(ally2s)
 		combat_manager.ally2 = ally2s
 	if GC.ally3 != null:
 		var ally3s = ALLY.instantiate()
 		ally3 = ally3s
 		ally3s.res = GC.ally3
+		GC.ally3.ally_num = 3
 		ally_3_spot.add_child(ally3s)
 		combat_manager.ally3 = ally3s
 	if GC.ally4 != null:
 		var ally4s = ALLY.instantiate()
 		ally4 = ally4s
 		ally4s.res = GC.ally4
+		GC.ally4.ally_num = 4
 		ally_4_spot.add_child(ally4s)
 		combat_manager.ally4 = ally4s
 	if GC.enemy1 != null:

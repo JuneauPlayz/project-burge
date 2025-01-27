@@ -50,7 +50,7 @@ func load_skills():
 	s_1.text = skill2.name
 	s_2.text = skill3.name
 	ult.text = skill4.name
-	if not initial_load:
+	if not initial_load and not get_parent().shop:
 		if skill1.cost > 0:
 			ba_1.disabled = true
 		if skill2.cost > 0:
@@ -151,9 +151,14 @@ func enable(num):
 			s_2.disabled = false
 		4:
 			ult.disabled = false
-			print("enabling ult")
 			update_font_color(ult, Color.INDIAN_RED)
-			
+
+func enable_all():
+	ba_1.disabled = false
+	s_1.disabled = false
+	s_2.disabled = false
+	ult.disabled = false
+
 func disable(num):
 	match num:
 		1:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bkkh4bxq8cu7n"]
+[gd_scene load_steps=20 format=3 uid="uid://bkkh4bxq8cu7n"]
 
 [ext_resource type="Script" path="res://scripts/ally.gd" id="1_fu3qc"]
 [ext_resource type="Resource" uid="uid://bhnvgvm5xsfv3" path="res://resources/Skills/fire/Firestorm.tres" id="2_77fl0"]
@@ -7,6 +7,52 @@
 [ext_resource type="PackedScene" uid="uid://5spa5amgsxfm" path="res://scenes/reusables/hp_bar.tscn" id="3_urihg"]
 [ext_resource type="Resource" uid="uid://bya4jpai0ygj5" path="res://resources/Skills/earth/Rock Shield.tres" id="4_7yskb"]
 [ext_resource type="Resource" uid="uid://ddoguurpcf2jb" path="res://resources/Skills/fire/Vaporstrike.tres" id="5_kdrfg"]
+[ext_resource type="Script" path="res://scripts/level_up_reward.gd" id="8_4ut3l"]
+[ext_resource type="PackedScene" uid="uid://sdwnoh61gawa" path="res://scenes/reusables/skill_info.tscn" id="9_6y37o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tvmj8"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+expand_margin_top = 17.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rghh4"]
+bg_color = Color(0.255, 0.311, 0.287, 0.87)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1dgm8"]
+content_margin_right = 0.0
+bg_color = Color(0.246653, 0.378583, 0.631853, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ur654"]
+bg_color = Color(0.180392, 0.180392, 0.180392, 0.470588)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c8eds"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_667es"]
+bg_color = Color(0.254902, 0.309804, 0.286275, 0.870588)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ni84r"]
+bg_color = Color(0.247059, 0.380392, 0.631373, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sleic"]
+bg_color = Color(0.180392, 0.180392, 0.180392, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0maum"]
+font_size = 32
+outline_size = 9
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_yqxn6"]
+font_size = 28
+outline_size = 9
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Ally" type="Node2D"]
 position = Vector2(85, 185)
@@ -42,3 +88,134 @@ position = Vector2(-27, 42)
 [node name="SpriteSpot" type="Sprite2D" parent="."]
 position = Vector2(1.81818, -68.1818)
 scale = Vector2(0.7, 0.7)
+
+[node name="LevelUpReward" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 178.182
+offset_top = 192.727
+offset_right = 178.182
+offset_bottom = 192.727
+scale = Vector2(0.75, 0.75)
+script = ExtResource("8_4ut3l")
+
+[node name="PanelContainer" type="PanelContainer" parent="LevelUpReward"]
+layout_mode = 0
+offset_left = -375.455
+offset_top = 204.545
+offset_right = -84.4545
+offset_bottom = 318.545
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_tvmj8")
+
+[node name="MarginContainer" type="MarginContainer" parent="LevelUpReward/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelUpReward/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="BA1Panel" type="PanelContainer" parent="LevelUpReward/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="option1" type="Button" parent="LevelUpReward/PanelContainer/MarginContainer/VBoxContainer/BA1Panel"]
+custom_minimum_size = Vector2(261, 39)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.705882)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 36
+theme_override_styles/disabled = SubResource("StyleBoxFlat_rghh4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1dgm8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ur654")
+text = "Option 1"
+
+[node name="VSeparator" type="VSeparator" parent="LevelUpReward/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_c8eds")
+
+[node name="SP1Panel" type="PanelContainer" parent="LevelUpReward/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="option2" type="Button" parent="LevelUpReward/PanelContainer/MarginContainer/VBoxContainer/SP1Panel"]
+custom_minimum_size = Vector2(0, 39)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.705882)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 36
+theme_override_styles/disabled = SubResource("StyleBoxFlat_667es")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ni84r")
+theme_override_styles/normal = SubResource("StyleBoxFlat_sleic")
+text = "Option 2
+"
+
+[node name="SkillInfo" parent="LevelUpReward" instance=ExtResource("9_6y37o")]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 272.0
+offset_top = 25.0
+offset_right = 533.0
+offset_bottom = 48.0
+
+[node name="SkillInfo2" parent="LevelUpReward" instance=ExtResource("9_6y37o")]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 274.0
+offset_top = 56.0
+offset_right = 535.0
+offset_bottom = 79.0
+
+[node name="Avaliable" type="Label" parent="LevelUpReward"]
+layout_mode = 0
+offset_left = -356.364
+offset_top = 335.758
+offset_right = -57.3636
+offset_bottom = 377.758
+text = "Level Up Reward Avaliable!"
+label_settings = SubResource("LabelSettings_0maum")
+
+[node name="SwapTutorial" type="Label" parent="LevelUpReward"]
+visible = false
+layout_mode = 0
+offset_left = -383.03
+offset_top = 128.485
+offset_right = -21.0303
+offset_bottom = 170.485
+text = "Click on a character spell to replace"
+label_settings = SubResource("LabelSettings_yqxn6")
+
+[node name="ConfirmSwap" type="Button" parent="LevelUpReward"]
+visible = false
+layout_mode = 0
+offset_left = -309.091
+offset_top = 373.333
+offset_right = -157.091
+offset_bottom = 413.333
+theme_override_font_sizes/font_size = 36
+text = "Confirm Swap"
+
+[connection signal="new_select" from="SpellSelectUi" to="." method="_on_spell_select_ui_new_select"]
+[connection signal="new_select" from="LevelUpReward" to="." method="_on_level_up_reward_new_select"]
+[connection signal="mouse_entered" from="LevelUpReward/PanelContainer/MarginContainer/VBoxContainer/BA1Panel/option1" to="LevelUpReward" method="_on_ba_1_mouse_entered"]
+[connection signal="mouse_exited" from="LevelUpReward/PanelContainer/MarginContainer/VBoxContainer/BA1Panel/option1" to="LevelUpReward" method="_on_ba_1_mouse_exited"]
+[connection signal="pressed" from="LevelUpReward/PanelContainer/MarginContainer/VBoxContainer/BA1Panel/option1" to="LevelUpReward" method="_on_ba_1_pressed"]
+[connection signal="pressed" from="LevelUpReward/PanelContainer/MarginContainer/VBoxContainer/BA1Panel/option1" to="LevelUpReward" method="_on_button_pressed"]
+[connection signal="mouse_entered" from="LevelUpReward/PanelContainer/MarginContainer/VBoxContainer/SP1Panel/option2" to="LevelUpReward" method="_on_s_1_mouse_entered"]
+[connection signal="mouse_exited" from="LevelUpReward/PanelContainer/MarginContainer/VBoxContainer/SP1Panel/option2" to="LevelUpReward" method="_on_s_1_mouse_exited"]
+[connection signal="pressed" from="LevelUpReward/PanelContainer/MarginContainer/VBoxContainer/SP1Panel/option2" to="LevelUpReward" method="_on_s_1_pressed"]
+[connection signal="pressed" from="LevelUpReward/ConfirmSwap" to="." method="_on_confirm_swap_pressed"]

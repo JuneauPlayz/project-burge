@@ -6,8 +6,15 @@ class_name Ally
 @export var skill_2: Skill
 @export var ult: Skill
 
+@export var ult_choice_1 : Skill
+@export var ult_choice_2 : Skill
 @export var status : Array = []
 
+var skill_swap_1 : Skill
+var skill_swap_1_spot : int
+var skill_swap_2 : Skill
+
+var ally_num : int
 var current_element = "none"
 
 @onready var sprite_spot: Sprite2D = $SpriteSpot
@@ -15,8 +22,12 @@ var current_element = "none"
 @onready var damage_number_origin: Node2D = $DamageNumberOrigin
 @onready var spell_select_ui: Control = $SpellSelectUi
 @onready var hp_bar: Control = $"HP Bar"
+@onready var level_up_reward: Control = $LevelUpReward
+@onready var swap_tutorial: Label = $LevelUpReward/SwapTutorial
+@onready var confirm_swap: Button = $LevelUpReward/ConfirmSwap
 
 var combat = true
+var shop = false
 
 var position = 0
 var combat_manager
@@ -42,6 +53,8 @@ func _ready() -> void:
 	skill_1 = res.skill2
 	skill_2 = res.skill3
 	ult = res.skill4
+	ult_choice_1 = res.ult_1
+	ult_choice_2 = res.ult_2
 	sprite_spot.texture = load(res.sprite.resource_path)
 	sprite_spot.scale = Vector2(res.sprite_scale,res.sprite_scale)
 	spell_select_ui.skill1 = basic_atk
@@ -54,7 +67,19 @@ func _ready() -> void:
 	hp_bar.set_hp(max_health)
 	hp_bar.set_maxhp(max_health)
 
-
+func update_vars():
+	basic_atk = res.skill1
+	skill_1 = res.skill2
+	skill_2 = res.skill3
+	ult = res.skill4
+	ult_choice_1 = res.ult_1
+	ult_choice_2 = res.ult_2
+	sprite_spot.texture = load(res.sprite.resource_path)
+	sprite_spot.scale = Vector2(res.sprite_scale,res.sprite_scale)
+	spell_select_ui.skill1 = basic_atk
+	spell_select_ui.skill2 = skill_1
+	spell_select_ui.skill3 = skill_2
+	spell_select_ui.skill4 = ult
 
 func receive_skill(skill):
 	var rounded : int
@@ -179,3 +204,68 @@ func get_spell_select():
 
 func update_skills():
 	spell_select_ui.load_skills()
+	
+func show_level_up(level):
+	level_up_reward.visible = true
+	match level:
+		1:
+			level_up_reward.load_skills(ult_choice_1, ult_choice_2)
+			
+
+
+func _on_spell_select_ui_new_select(ally) -> void:
+	skill_swap_1_spot = spell_select_ui.selected
+	if skill_swap_2 != null:
+		confirm_swap.visible = true
+
+
+func _on_level_up_reward_new_select(skill) -> void:
+	skill_swap_2 = skill
+	swap_tutorial.visible = true
+	if (skill_swap_1_spot > 0):
+		confirm_swap.visible = true
+
+
+func _on_confirm_swap_pressed() -> void:
+	match skill_swap_1_spot:
+		1:
+			basic_atk = skill_swap_2
+		2:
+			skill_1 = skill_swap_2
+		3:
+			skill_2 = skill_swap_2
+		4:
+			ult = skill_swap_2
+	level_up_reward.visible = false
+	update_ally_skills()
+	swap_tutorial.visible = false
+	
+func update_ally_skills():
+	spell_select_ui.skill1 = basic_atk
+	spell_select_ui.skill2 = skill_1
+	spell_select_ui.skill3 = skill_2
+	spell_select_ui.skill4 = ult
+	spell_select_ui.load_skills()
+	match ally_num:
+		1:
+			GC.ally1.skill1 = basic_atk
+			GC.ally1.skill2 = skill_1
+			GC.ally1.skill3 = skill_2
+			GC.ally1.skill4 = ult
+		2:
+			GC.ally2.skill1 = basic_atk
+			GC.ally2.skill2 = skill_1
+			GC.ally2.skill3 = skill_2
+			GC.ally2.skill4 = ult
+		3:
+			GC.ally3.skill1 = basic_atk
+			GC.ally3.skill2 = skill_1
+			GC.ally3.skill3 = skill_2
+			GC.ally3.skill4 = ult
+		4:
+			GC.ally4.skill1 = basic_atk
+			GC.ally4.skill2 = skill_1
+			GC.ally4.skill3 = skill_2
+			GC.ally4.skill4 = ult
+	pass
+	

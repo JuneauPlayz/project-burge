@@ -49,21 +49,25 @@ func load_units():
 		var ally1s = ALLY.instantiate()
 		ally1 = ally1s
 		ally1s.res = GC.ally1
+		ally1.ally_num = 1
 		ally_1_spot.add_child(ally1s)
 	if GC.ally2 != null:
 		var ally2s = ALLY.instantiate()
 		ally2 = ally2s
 		ally2s.res = GC.ally2
+		ally2.ally_num = 2
 		ally_2_spot.add_child(ally2s)
 	if GC.ally3 != null:
 		var ally3s = ALLY.instantiate()
 		ally3 = ally3s
 		ally3s.res = GC.ally3
+		ally3.ally_num = 3
 		ally_3_spot.add_child(ally3s)
 	if GC.ally4 != null:
 		var ally4s = ALLY.instantiate()
 		ally4 = ally4s
 		ally4s.res = GC.ally4
+		ally4.ally_num = 4
 		ally_4_spot.add_child(ally4s)
 	
 	if (ally1 != null):
@@ -76,6 +80,10 @@ func load_units():
 		allies.append(ally4)
 	for ally in allies:
 		ally.combat = false
+		ally.shop = true
+		ally.spell_select_ui.enable_all()
+		ally.update_vars()
+		ally.show_level_up(1)
 	if (GC.relics != null):
 		# loads relics
 		var new_relic_handler = RELIC_HANDLER.instantiate()

@@ -13,5 +13,7 @@ skill1 = ExtResource("2_3o77x")
 skill2 = ExtResource("3_hfq6j")
 skill3 = ExtResource("4_stegg")
 skill4 = ExtResource("5_1nouq")
+ult_1 = ExtResource("5_1nouq")
+ult_2 = ExtResource("4_stegg")
 sprite = ExtResource("6_rlwy5")
 sprite_scale = 0.39

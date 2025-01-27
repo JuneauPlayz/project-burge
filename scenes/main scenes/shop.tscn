@@ -49,16 +49,16 @@ horizontal_alignment = 1
 position = Vector2(216, 27)
 
 [node name="Ally 1 Spot" type="Node2D" parent="."]
-position = Vector2(80, 290)
+position = Vector2(45, 160)
 
 [node name="Ally 2 Spot" type="Node2D" parent="."]
-position = Vector2(323, 296)
+position = Vector2(295, 160)
 
 [node name="Ally 3 Spot" type="Node2D" parent="."]
-position = Vector2(526, 298)
+position = Vector2(545, 160)
 
 [node name="Ally 4 Spot" type="Node2D" parent="."]
-position = Vector2(734, 298)
+position = Vector2(795, 160)
 
 [node name="Item1Spot" type="Node2D" parent="."]
 position = Vector2(1044, 282)

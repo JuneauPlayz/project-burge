@@ -30,6 +30,7 @@ func update() -> void:
 	max_page = ceili(num_of_relics / float(RELICS_PER_PAGE))
 	
 	left_button.disabled = current_page <= 1
+	# makes an error but game still works so whatever
 	right_button = %RightButton
 	if right_button:
 		right_button.disabled = current_page >= max_page
