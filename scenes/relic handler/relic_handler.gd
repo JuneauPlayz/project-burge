@@ -3,7 +3,7 @@ extends HBoxContainer
 
 signal relics_activated(type: Relic.Type)
 
-const RELIC_APPLY_INTERVAL = 0.5
+const RELIC_APPLY_INTERVAL = 0.2
 const RELIC_UI = preload("res://scenes/relic handler/relic_ui.tscn")
 
 @onready var relics_control : RelicsControl = $RelicsControl
@@ -37,8 +37,8 @@ func add_relics(relics_array: Array[Relic]) -> void:
 		add_relic(relic)
 
 func add_relic(relic : Relic) -> void:
-	if has_relic(relic.id):
-		return
+	#if has_relic(relic.id):
+		#return
 	
 	var new_relic_ui = RELIC_UI.instantiate() as RelicUI
 	relics.add_child(new_relic_ui)

@@ -31,7 +31,7 @@ var targeting = false
 @onready var targeting_label: Label = $TargetingLabel
 @onready var targeting_skill_info: Control = $TargetingSkillInfo
 @onready var relics : RelicHandler
-
+@onready var victory_screen: Control = $"../VictoryScreen"
 # relics
 const SHIELD_POTION = preload("res://resources/relics/shield_potion.tres")
 
@@ -49,6 +49,7 @@ var ally4_pos : int
 
 const TARGET_CURSOR = preload("res://assets/target cursor.png")
 const DEFAULT_CURSOR = preload("res://assets/defaultcursor.png")
+
 
 signal ally_turn_done
 signal enemy_turn_done
@@ -138,8 +139,11 @@ func execute_ally_turn():
 		await get_tree().create_timer(0.35).timeout
 	await get_tree().create_timer(1).timeout
 	ally_post_status()
-	turn_text.text = "Enemy Turn"
-	ally_turn_done.emit()
+	if enemies.is_empty():
+		victory()
+	else:
+		turn_text.text = "Enemy Turn"
+		ally_turn_done.emit()
 
 func enemy_turn():
 	await get_tree().create_timer(0.25).timeout
@@ -154,6 +158,18 @@ func enemy_turn():
 	enemy_post_status()
 	await get_tree().create_timer(0.3).timeout
 	enemy_turn_done.emit()
+
+
+func victory():
+	victory_screen.visible = true
+	victory_screen.update_text("Victory!", 10)
+	victory_screen.continue_pressed.connect(self.finish_battle)
+	
+func defeat():
+	pass
+	
+func finish_battle():
+	get_tree().change_scene_to_file("res://scenes/main scenes/shop.tscn")
 	
 func use_skill(skill,target):
 	skill.update()

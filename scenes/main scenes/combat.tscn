@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://do6gwn47eylu7"]
+[gd_scene load_steps=15 format=3 uid="uid://do6gwn47eylu7"]
 
 [ext_resource type="Script" path="res://scripts/combat_scene.gd" id="1_3ou8c"]
 [ext_resource type="Script" path="res://scripts/Targeting.gd" id="2_0pyv8"]
@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://ca0ii6rndnaqf" path="res://assets/pokemon_pixel_font.ttf" id="5_wtw4i"]
 [ext_resource type="PackedScene" uid="uid://rtk527cyr7kb" path="res://scenes/reusables/combat_currency.tscn" id="6_b6b3n"]
 [ext_resource type="Texture2D" uid="uid://bsae24ot6vmo6" path="res://assets/battle_bg.jpg" id="7_qh8p2"]
+[ext_resource type="PackedScene" uid="uid://ydkggenx6prk" path="res://result_screen.tscn" id="8_xw3f4"]
 [ext_resource type="PackedScene" uid="uid://ppg1wk60cwxc" path="res://scenes/reusables/relic_info.tscn" id="9_mexx1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mo5rj"]
@@ -133,6 +134,14 @@ offset_bottom = 977.0
 scale = Vector2(0.705, 0.705)
 theme_override_font_sizes/font_size = 41
 text = "Reset Choices"
+
+[node name="VictoryScreen" parent="." node_paths=PackedStringArray("combat_manager") instance=ExtResource("8_xw3f4")]
+visible = false
+offset_left = 1230.0
+offset_top = 288.0
+offset_right = 1230.0
+offset_bottom = 288.0
+combat_manager = NodePath("../CombatManager")
 
 [node name="Background" type="Sprite2D" parent="."]
 self_modulate = Color(1, 1, 1, 0.411)

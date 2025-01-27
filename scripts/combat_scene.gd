@@ -12,6 +12,7 @@ extends Node2D
 @onready var loading: Node2D = $Loading
 @onready var relic_handler_spot: Node2D = $RelicHandlerSpot
 
+
 const RELIC_HANDLER = preload("res://scenes/relic handler/relic_handler.tscn")
 
 var ally1 : Ally

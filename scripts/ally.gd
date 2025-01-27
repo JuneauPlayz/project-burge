@@ -16,6 +16,8 @@ var current_element = "none"
 @onready var spell_select_ui: Control = $SpellSelectUi
 @onready var hp_bar: Control = $"HP Bar"
 
+var combat = true
+
 var position = 0
 var combat_manager
 var connected = false
@@ -34,7 +36,8 @@ func _ready() -> void:
 	# loading
 	await get_tree().create_timer(0.1).timeout
 	# spell select ui first child, hp bar ui second child
-	combat_manager = get_parent().get_parent().combat_manager
+	if (combat):
+		combat_manager = get_parent().get_parent().combat_manager
 	basic_atk = res.skill1
 	skill_1 = res.skill2
 	skill_2 = res.skill3
@@ -46,7 +49,8 @@ func _ready() -> void:
 	spell_select_ui.skill3 = skill_2
 	spell_select_ui.skill4 = ult
 	spell_select_ui.load_skills()
-	spell_select_ui.new_select.connect(combat_manager._on_spell_select_ui_new_select)
+	if combat:
+		spell_select_ui.new_select.connect(combat_manager._on_spell_select_ui_new_select)
 	hp_bar.set_hp(max_health)
 	hp_bar.set_maxhp(max_health)
 

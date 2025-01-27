@@ -30,7 +30,9 @@ func update() -> void:
 	max_page = ceili(num_of_relics / float(RELICS_PER_PAGE))
 	
 	left_button.disabled = current_page <= 1
-	right_button.disabled = current_page >= max_page
+	right_button = %RightButton
+	if right_button:
+		right_button.disabled = current_page >= max_page
 
 func _tween_to(x_position: float) -> void:
 	if tween:
