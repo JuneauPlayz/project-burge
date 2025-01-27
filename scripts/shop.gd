@@ -17,10 +17,25 @@ const ENEMY = preload("res://scenes/units/enemies/enemy.tscn")
 @onready var ally_2_spot: Node2D = $"Ally 2 Spot"
 @onready var ally_3_spot: Node2D = $"Ally 3 Spot"
 @onready var ally_4_spot: Node2D = $"Ally 4 Spot"
+@onready var item_1_spot: Node2D = $Item1Spot
+@onready var item_2_spot: Node2D = $Item2Spot
+@onready var item_3_spot: Node2D = $Item3Spot
+
+var spot_list = []
+var relics : RelicHandler
+
+@onready var gold_label: Label = $Gold
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	load_units()
+	update_gold()
+	spot_list.append(item_1_spot)
+	spot_list.append(item_2_spot)
+	spot_list.append(item_3_spot)
+	for spot in spot_list:
+		var item = spot.get_child(0)
+		item.update_item()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -64,5 +79,19 @@ func load_units():
 		# loads relics
 		var new_relic_handler = RELIC_HANDLER.instantiate()
 		relic_handler_spot.add_child(new_relic_handler)
+		relics = new_relic_handler
 		for relic in GC.relics:
 			new_relic_handler.add_relic(relic)
+
+
+func item_bought(item) -> void:
+	if item is Relic:
+		relics.add_relic(item)
+		print("adding relic")
+	elif item is Skill:
+		pass
+	update_gold()
+	
+
+func update_gold():
+	gold_label.text = "Gold: " + str(GC.gold)

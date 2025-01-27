@@ -163,6 +163,7 @@ func enemy_turn():
 func victory():
 	victory_screen.visible = true
 	victory_screen.update_text("Victory!", 10)
+	GC.add_gold(10)
 	victory_screen.continue_pressed.connect(self.finish_battle)
 	
 func defeat():

@@ -2,6 +2,10 @@ extends Node
 
 var is_dragging = false
 
+# global currencies
+var gold = 50
+var bonus_gold = 0
+var gold_multiplier = 1
 #combat
 
 #units
@@ -89,4 +93,5 @@ func add_token(element, count):
 		"earth":
 			earth_tokens += (count * earth_token_multiplier)
 			
-	
+func add_gold(count):
+	gold += (count + bonus_gold + gold_multiplier)

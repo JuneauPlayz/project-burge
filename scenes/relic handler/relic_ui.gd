@@ -5,7 +5,7 @@ extends Control
 
 @onready var icon : TextureRect = $Icon
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
-
+var shop = false
 
 
 func _ready() -> void:
@@ -27,14 +27,16 @@ func flash() -> void:
 	
 
 func _on_icon_mouse_entered() -> void:
-	var combat = get_tree().get_first_node_in_group("combat")
-	if combat:
-		combat.relic_info.update_relic_info(relic)
-		combat.toggle_relic_tooltip()
+	if (not shop):
+		var combat = get_tree().get_first_node_in_group("combat")
+		if combat:
+			combat.relic_info.update_relic_info(relic)
+			combat.toggle_relic_tooltip()
 
 
 func _on_icon_mouse_exited() -> void:
-	var combat = get_tree().get_first_node_in_group("combat")
-	if combat:
-		combat.relic_info.update_relic_info(relic)
-		combat.toggle_relic_tooltip()
+	if (not shop):
+		var combat = get_tree().get_first_node_in_group("combat")
+		if combat:
+			combat.relic_info.update_relic_info(relic)
+			combat.toggle_relic_tooltip()

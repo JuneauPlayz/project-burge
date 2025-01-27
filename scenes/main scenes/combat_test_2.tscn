@@ -21,7 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://defrd4fdejdu1" path="res://assets/miyabii.png" id="19_8dgup"]
 [ext_resource type="Resource" uid="uid://clidntww233oy" path="res://resources/Skills/physical/Bloody_Slash.tres" id="20_m48hw"]
 [ext_resource type="Texture2D" uid="uid://qlvy3vq13goh" path="res://assets/yatta.png" id="21_u2qe4"]
-[ext_resource type="PackedScene" uid="uid://bi555vcqhi0p5" path="res://scenes/units/enemies/burger_enemy.tscn" id="22_5gd5a"]
+[ext_resource type="PackedScene" path="res://scenes/units/enemies/burger_enemy.tscn" id="22_5gd5a"]
 [ext_resource type="Resource" uid="uid://cr3bbtfskjida" path="res://resources/enemy_skills/EnemyAOEFire.tres" id="23_n0tbm"]
 [ext_resource type="Resource" uid="uid://d0sxdut8uscys" path="res://resources/enemy_skills/EnemyAOEEarth.tres" id="24_jnwsm"]
 [ext_resource type="Texture2D" uid="uid://b6rhxb71os38w" path="res://assets/hsrbg.png" id="25_p4v8e"]

@@ -1,6 +1,5 @@
-[gd_scene load_steps=7 format=3 uid="uid://dbmijg1lnjffl"]
+[gd_scene load_steps=6 format=3 uid="uid://dbmijg1lnjffl"]
 
-[ext_resource type="Texture2D" uid="uid://di27sstbehnju" path="res://assets/shield potion.png" id="1_8v6nw"]
 [ext_resource type="Script" path="res://scenes/relic handler/relic_ui.gd" id="1_ayvix"]
 
 [sub_resource type="Animation" id="Animation_55se6"]
@@ -87,7 +86,6 @@ offset_bottom = 8.0
 pivot_offset = Vector2(32, 32)
 tooltip_text = "hallo
 "
-texture = ExtResource("1_8v6nw")
 expand_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

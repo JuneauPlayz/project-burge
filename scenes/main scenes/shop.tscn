@@ -1,13 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://2fhbkw2l8y0t"]
+[gd_scene load_steps=8 format=3 uid="uid://2fhbkw2l8y0t"]
 
-[ext_resource type="Script" path="res://scenes/main scenes/shop.gd" id="1_1no3t"]
+[ext_resource type="Script" path="res://scripts/shop.gd" id="1_1no3t"]
+[ext_resource type="PackedScene" uid="uid://i473wibgqlvt" path="res://scenes/reusables/shop_item.tscn" id="2_t2bjb"]
+[ext_resource type="Resource" uid="uid://b00kue7gy7bje" path="res://resources/relics/fire_potion.tres" id="3_30ysq"]
+[ext_resource type="Resource" uid="uid://jsbevql6t5av" path="res://resources/relics/shield_potion.tres" id="4_mgtfj"]
+[ext_resource type="Resource" uid="uid://ddrvp77dd5ima" path="res://resources/Skills/lightning/Electro Ball.tres" id="5_6vlnj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_k3r7d"]
+resource_local_to_scene = true
 font_size = 96
 outline_size = 9
 outline_color = Color(0, 0, 0, 1)
 
-[node name="Shop" type="Node2D"]
+[sub_resource type="LabelSettings" id="LabelSettings_1chno"]
+font_size = 72
+outline_size = 9
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Shop" type="Node2D" groups=["shop"]]
+position = Vector2(0, 2)
 script = ExtResource("1_1no3t")
 
 [node name="Title" type="Label" parent="."]
@@ -17,6 +28,15 @@ offset_right = 1920.0
 offset_bottom = 105.0
 text = "The Shop"
 label_settings = SubResource("LabelSettings_k3r7d")
+horizontal_alignment = 1
+
+[node name="Gold" type="Label" parent="."]
+offset_left = 680.0
+offset_top = 12.0
+offset_right = 2599.0
+offset_bottom = 114.0
+text = "Gold: "
+label_settings = SubResource("LabelSettings_1chno")
 horizontal_alignment = 1
 
 [node name="RelicHandlerSpot" type="Node2D" parent="."]
@@ -33,3 +53,26 @@ position = Vector2(526, 298)
 
 [node name="Ally 4 Spot" type="Node2D" parent="."]
 position = Vector2(734, 298)
+
+[node name="Item1Spot" type="Node2D" parent="."]
+position = Vector2(1044, 282)
+
+[node name="ShopItem" parent="Item1Spot" instance=ExtResource("2_t2bjb")]
+item = ExtResource("3_30ysq")
+price = 5
+
+[node name="Item2Spot" type="Node2D" parent="."]
+position = Vector2(1310, 278)
+
+[node name="ShopItem" parent="Item2Spot" instance=ExtResource("2_t2bjb")]
+item = ExtResource("4_mgtfj")
+price = 6
+
+[node name="Item3Spot" type="Node2D" parent="."]
+position = Vector2(1550, 278)
+
+[node name="ShopItem" parent="Item3Spot" instance=ExtResource("2_t2bjb")]
+item = ExtResource("5_6vlnj")
+price = 7
+
+[connection signal="draw" from="." to="." method="_on_draw"]
