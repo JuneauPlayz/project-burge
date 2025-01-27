@@ -5,6 +5,7 @@ const og_music = preload("res://assets/Pokémon Red, Blue & Yellow - Trainer Bat
 const crimson_highlands_music = preload("res://assets/Crimson Highlands - Zodiac Battle.mp3")
 const lake_music = preload("res://assets/Lake   Pokémon Diamond & Pearl Music Extended HD.mp3")
 const iris_music = preload("res://assets/Pokémon B2W2 - Champion Iris Battle Music (HQ).mp3")
+const wii_shop_music = preload("res://assets/Wii Shop Channel Main Theme (HQ).mp3")
 #sound fx
 const CLIACK = preload("res://assets/cliack.mp3")
 const FIRE_HIT = preload("res://assets/fire hit.mp3")
@@ -21,6 +22,8 @@ func play_music(song, volume):
 			stream = lake_music
 		"iris":
 			stream = iris_music
+		"wii_shop":
+			stream = wii_shop_music
 	stream.set_loop(true)
 	volume_db = volume-5
 	play()

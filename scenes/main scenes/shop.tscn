@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://2fhbkw2l8y0t"]
+[gd_scene load_steps=9 format=3 uid="uid://2fhbkw2l8y0t"]
 
 [ext_resource type="Script" path="res://scripts/shop.gd" id="1_1no3t"]
+[ext_resource type="Texture2D" uid="uid://brhs8ke2bqbhj" path="res://assets/cafe shop background.png" id="2_cw3t7"]
 [ext_resource type="PackedScene" uid="uid://i473wibgqlvt" path="res://scenes/reusables/shop_item.tscn" id="2_t2bjb"]
 [ext_resource type="Resource" uid="uid://b00kue7gy7bje" path="res://resources/relics/fire_potion.tres" id="3_30ysq"]
 [ext_resource type="Resource" uid="uid://jsbevql6t5av" path="res://resources/relics/shield_potion.tres" id="4_mgtfj"]
@@ -20,6 +21,11 @@ outline_color = Color(0, 0, 0, 1)
 [node name="Shop" type="Node2D" groups=["shop"]]
 position = Vector2(0, 2)
 script = ExtResource("1_1no3t")
+
+[node name="ShopBG" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.623529)
+position = Vector2(1025, 577)
+texture = ExtResource("2_cw3t7")
 
 [node name="Title" type="Label" parent="."]
 offset_left = 1.0
@@ -75,4 +81,13 @@ position = Vector2(1550, 278)
 item = ExtResource("5_6vlnj")
 price = 7
 
+[node name="NextCombat" type="Button" parent="."]
+offset_left = 1508.0
+offset_top = 897.0
+offset_right = 1726.0
+offset_bottom = 955.0
+theme_override_font_sizes/font_size = 72
+text = "Next Combat"
+
 [connection signal="draw" from="." to="." method="_on_draw"]
+[connection signal="pressed" from="NextCombat" to="." method="_on_next_combat_pressed"]

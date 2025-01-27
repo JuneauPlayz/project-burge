@@ -68,8 +68,9 @@ signal reaction_finished
 
 func combat_ready():
 	# waiting for everything to load in
-	AudioPlayer.play_FX("click",0)
+	
 	await get_tree().create_timer(0.1).timeout
+	reset_combat()
 	if (enemy1 != null):
 		enemies.append(enemy1)
 	if (enemy2 != null):
@@ -107,6 +108,7 @@ func start_combat():
 
 func end_battle():
 	pass
+	
 func start_ally_turn():
 	set_unit_pos()
 	show_ui()
@@ -164,6 +166,8 @@ func victory():
 	victory_screen.visible = true
 	victory_screen.update_text("Victory!", 10)
 	GC.add_gold(10)
+	hide_skills()
+	hide_ui()
 	victory_screen.continue_pressed.connect(self.finish_battle)
 	
 func defeat():
@@ -171,6 +175,12 @@ func defeat():
 	
 func finish_battle():
 	get_tree().change_scene_to_file("res://scenes/main scenes/shop.tscn")
+
+func reset_combat():
+	allies = []
+	enemies = []
+	GC.reset_tokens()
+	victory_screen.visible = false
 	
 func use_skill(skill,target):
 	skill.update()

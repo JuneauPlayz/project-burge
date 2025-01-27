@@ -28,6 +28,7 @@ var relics : RelicHandler
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	AudioPlayer.play_music("wii_shop", -30)
 	load_units()
 	update_gold()
 	spot_list.append(item_1_spot)
@@ -87,7 +88,7 @@ func load_units():
 func item_bought(item) -> void:
 	if item is Relic:
 		relics.add_relic(item)
-		print("adding relic")
+		GC.relics.append(item)
 	elif item is Skill:
 		pass
 	update_gold()
@@ -95,3 +96,8 @@ func item_bought(item) -> void:
 
 func update_gold():
 	gold_label.text = "Gold: " + str(GC.gold)
+
+
+func _on_next_combat_pressed() -> void:
+	GC.load_combat(GC.ally1,GC.ally2,GC.ally3,GC.ally4,GC.enemy1,GC.enemy2,GC.enemy3,GC.enemy4)
+	get_tree().change_scene_to_file("res://scenes/main scenes/combat.tscn")
