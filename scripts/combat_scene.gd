@@ -73,6 +73,7 @@ func load_units():
 		GC.ally1.ally_num = 1
 		ally_1_spot.add_child(ally1s)
 		combat_manager.ally1 = ally1s
+		GC.combat_ally1 = ally1s
 	if GC.ally2 != null:
 		var ally2s = ALLY.instantiate()
 		ally2 = ally2s
@@ -80,6 +81,7 @@ func load_units():
 		GC.ally2.ally_num = 2
 		ally_2_spot.add_child(ally2s)
 		combat_manager.ally2 = ally2s
+		GC.combat_ally2 = ally2s
 	if GC.ally3 != null:
 		var ally3s = ALLY.instantiate()
 		ally3 = ally3s
@@ -87,6 +89,7 @@ func load_units():
 		GC.ally3.ally_num = 3
 		ally_3_spot.add_child(ally3s)
 		combat_manager.ally3 = ally3s
+		GC.combat_ally3 = ally3s
 	if GC.ally4 != null:
 		var ally4s = ALLY.instantiate()
 		ally4 = ally4s
@@ -94,30 +97,36 @@ func load_units():
 		GC.ally4.ally_num = 4
 		ally_4_spot.add_child(ally4s)
 		combat_manager.ally4 = ally4s
+		GC.combat_ally4 = ally4s
 	if GC.enemy1 != null:
 		var enemy1s = ENEMY.instantiate()
 		enemy1 = enemy1s
 		enemy1s.res = GC.enemy1
 		enemy_1_spot.add_child(enemy1s)
 		combat_manager.enemy1 = enemy1s
+		GC.combat_enemy1 = enemy1s
 	if GC.enemy2 != null:
 		var enemy2s = ENEMY.instantiate()
 		enemy2 = enemy2s
 		enemy2s.res = GC.enemy2
 		enemy_2_spot.add_child(enemy2s)
 		combat_manager.enemy2 = enemy2s
+		GC.combat_enemy2 = enemy2s
 	if GC.enemy3 != null:
 		var enemy3s = ENEMY.instantiate()
 		enemy3 = enemy3s
 		enemy3s.res = GC.enemy3
 		enemy_3_spot.add_child(enemy3s)
 		combat_manager.enemy3 = enemy3s
+		GC.combat_enemy3 = enemy3s
 	if GC.enemy4 != null:
 		var enemy4s = ENEMY.instantiate()
 		enemy4 = enemy4s
 		enemy4s.res = GC.enemy4
 		enemy_4_spot.add_child(enemy4s)
 		combat_manager.enemy4 = enemy4s
+		GC.combat_enemy4 = enemy4s
+	GC.update_combat_lists()
 	if (enemy1 != null):
 		enemies.append(enemy1)
 	if (enemy2 != null):

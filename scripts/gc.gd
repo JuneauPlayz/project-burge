@@ -2,14 +2,14 @@ extends Node
 
 var is_dragging = false
 
-const GLOBAL_INTERVAL = 0.1
+const GLOBAL_INTERVAL = 0.15
 # global currencies
 var gold = 50
 var bonus_gold = 0
 var gold_multiplier = 1
 #combat
 
-#units
+#loading unit reses
 var ally1 : UnitRes
 var ally2 : UnitRes
 var ally3 : UnitRes
@@ -21,6 +21,21 @@ var enemy3 : UnitRes
 var enemy4 : UnitRes
 
 var relics = []
+
+# units in combat
+var combat_ally1 : Ally
+var combat_ally2 : Ally
+var combat_ally3 : Ally
+var combat_ally4 : Ally
+
+var combat_enemy1 : Enemy
+var combat_enemy2 : Enemy
+var combat_enemy3 : Enemy
+var combat_enemy4 : Enemy
+
+var combat_allies = []
+var combat_enemies = []
+
 #tokens
 var fire_tokens = 0
 var water_tokens = 0
@@ -109,3 +124,15 @@ func reset():
 	self.enemy4 = null
 	reset_tokens()
 	relics = []
+	
+func update_combat_lists():
+	combat_allies = []
+	combat_allies.append(combat_ally1)
+	combat_allies.append(combat_ally2)
+	combat_allies.append(combat_ally3)
+	combat_allies.append(combat_ally4)
+	combat_enemies = []
+	combat_enemies.append(combat_enemy1)
+	combat_enemies.append(combat_enemy2)
+	combat_enemies.append(combat_enemy3)
+	combat_enemies.append(combat_enemy4)

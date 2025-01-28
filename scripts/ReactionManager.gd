@@ -6,6 +6,10 @@ var shock_mult = 0.25
 var erupt_mult = 3
 var detonate_main_mult = 1.5
 var detonate_side_mult = 0.5
+var bloom_mult = 1
+
+var ally_bloom_healing = 5
+var enemy_bloom_healing = 5
 
 
 
@@ -115,6 +119,15 @@ func reaction(elem1 : String, elem2 : String, unit : Unit, value, hostile : int)
 					if hostile == 1:
 						DamageNumbers.display_number(unit.take_damage(roundi(value * hostile)), unit.get_child(2).global_position, elem2, reaction)
 					unit.current_element = "none"
+					if unit is Enemy:
+						for ally in GC.combat_allies:
+							print(ally.title)
+							ally.receive_healing(ally_bloom_healing * bloom_mult)
+							DamageNumbers.display_number_plus(ally_bloom_healing * bloom_mult, ally.damage_number_origin.global_position, "grass", "")
+					elif unit is Ally:
+						for enemy in GC.combat_enemies:
+							enemy.receieve_healing(enemy_bloom_healing)
+							DamageNumbers.display_number_plus(enemy_bloom_healing, enemy.damage_number_origin.global_position, "grass", "")
 					GC.bloom()
 		"lightning":
 			match elem2:
@@ -229,6 +242,15 @@ func reaction(elem1 : String, elem2 : String, unit : Unit, value, hostile : int)
 					if hostile == 1:
 						DamageNumbers.display_number(unit.take_damage(roundi(value * hostile)), unit.get_child(2).global_position, elem2, reaction)
 					unit.current_element = "none"
+					if unit is Enemy:
+						for ally in GC.combat_allies:
+							print(ally.title)
+							ally.receive_healing(ally_bloom_healing * bloom_mult)
+							DamageNumbers.display_number_plus(ally_bloom_healing * bloom_mult, ally.damage_number_origin.global_position, "grass", "")
+					elif unit is Ally:
+						for enemy in GC.combat_enemies:
+							enemy.receieve_healing(enemy_bloom_healing)
+							DamageNumbers.display_number_plus(enemy_bloom_healing, enemy.damage_number_origin.global_position, "grass", "")
 					GC.bloom()
 				"lightning":
 					reaction = " Nitro!"

@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_b02tp")
 name = "Baguette Slap"
-damage = 150
+damage = 100
 element = "none"
 damaging = true
 healing = false

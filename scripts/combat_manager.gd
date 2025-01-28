@@ -218,9 +218,8 @@ func use_skill(skill,target,unit):
 					ally.receive_skill_friendly(skill)
 			else:
 				for ally in allies:
-					print(ally.title)
 					ally.receive_skill(skill)
-					print(ally.title + " taking " + str(skill.damage) + " damage from " + unit.title)
+					#print(ally.title + " taking " + str(skill.damage) + " damage from " + unit.title)
 		if (skill.target_type == "all_enemies"):
 			if (skill.friendly == true):
 				for enemy in enemies:
