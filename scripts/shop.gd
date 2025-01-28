@@ -25,6 +25,12 @@ var spot_list = []
 var relics : RelicHandler
 
 @onready var gold_label: Label = $Gold
+@onready var confirm_swap: Button = $ConfirmSwap
+
+var new_skill : Skill
+var new_skill_ally : Ally
+
+signal swap_done
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -94,13 +100,32 @@ func load_units():
 			new_relic_handler.add_relic(relic)
 
 
-func item_bought(item) -> void:
+func item_bought(item, shop_item) -> void:
 	if item is Relic:
 		relics.add_relic(item)
 		GC.relics.append(item)
 	elif item is Skill:
-		pass
+		new_skill = item
+		buying_new_skill(shop_item)
+			
 	update_gold()
+	
+func buying_new_skill(shop_item):
+	new_skill_ally = null
+	for ally in allies:
+		ally.level_up_reward.visible = false
+	for spot in spot_list:
+			spot.visible = false
+	shop_item.get_parent().visible = true
+	confirm_swap.visible = true
+	shop_item.hide_buy()
+	await swap_done
+	for ally in allies:
+		ally.level_up_reward.visible = true
+	for spot in spot_list:
+		spot.visible = true
+	confirm_swap.visible = false
+	shop_item.show_buy()
 	
 
 func update_gold():
@@ -110,3 +135,9 @@ func update_gold():
 func _on_next_combat_pressed() -> void:
 	GC.load_combat(GC.ally1,GC.ally2,GC.ally3,GC.ally4,GC.enemy1,GC.enemy2,GC.enemy3,GC.enemy4)
 	get_tree().change_scene_to_file("res://scenes/main scenes/combat.tscn")
+	
+func _on_confirm_swap_pressed() -> void:
+	if (new_skill_ally):
+		new_skill_ally.skill_swap_2 = new_skill
+		new_skill_ally._on_confirm_swap_pressed()
+		swap_done.emit()

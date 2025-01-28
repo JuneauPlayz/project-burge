@@ -35,11 +35,15 @@ func update_item():
 	
 	buy.text = "Buy (" + str(price) + " Gold)"
 
-	
-
 
 func _on_buy_pressed() -> void:
 	if GC.gold >= price:
 		print("purchasing")
 		GC.gold -= price
-		purchased.emit(item)
+		purchased.emit(item, self)
+
+func hide_buy():
+	buy.visible = false
+	
+func show_buy():
+	buy.visible = true

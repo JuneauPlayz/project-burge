@@ -217,6 +217,10 @@ func _on_spell_select_ui_new_select(ally) -> void:
 	skill_swap_1_spot = spell_select_ui.selected
 	if skill_swap_2 != null:
 		confirm_swap.visible = true
+	if shop:
+		var shop = get_tree().get_first_node_in_group("shop")
+		shop.new_skill_ally = self
+		
 
 
 func _on_level_up_reward_new_select(skill) -> void:

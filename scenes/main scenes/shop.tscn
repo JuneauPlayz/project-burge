@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://2fhbkw2l8y0t"]
+[gd_scene load_steps=10 format=3 uid="uid://2fhbkw2l8y0t"]
 
 [ext_resource type="Script" path="res://scripts/shop.gd" id="1_1no3t"]
 [ext_resource type="Texture2D" uid="uid://brhs8ke2bqbhj" path="res://assets/cafe shop background.png" id="2_cw3t7"]
@@ -15,6 +15,11 @@ outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_1chno"]
 font_size = 72
+outline_size = 9
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_03k4o"]
+font_size = 28
 outline_size = 9
 outline_color = Color(0, 0, 0, 1)
 
@@ -89,5 +94,26 @@ offset_bottom = 955.0
 theme_override_font_sizes/font_size = 72
 text = "Next Combat"
 
+[node name="ConfirmSwap" type="Button" parent="."]
+visible = false
+offset_left = 1284.0
+offset_top = 193.0
+offset_right = 1548.0
+offset_bottom = 257.0
+theme_override_font_sizes/font_size = 64
+text = "Confirm Swap"
+
+[node name="SwapTutorial" type="Label" parent="ConfirmSwap"]
+layout_mode = 0
+offset_left = -61.0
+offset_top = -62.0
+offset_right = 301.0
+offset_bottom = -7.0
+text = "Click on an empty slot or 
+current spell to replace"
+label_settings = SubResource("LabelSettings_03k4o")
+horizontal_alignment = 1
+
 [connection signal="draw" from="." to="." method="_on_draw"]
 [connection signal="pressed" from="NextCombat" to="." method="_on_next_combat_pressed"]
+[connection signal="pressed" from="ConfirmSwap" to="." method="_on_confirm_swap_pressed"]
