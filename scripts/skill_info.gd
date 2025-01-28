@@ -31,6 +31,10 @@ func update_skill_info():
 			target = "the front ally"
 		"front_enemy":
 			target = "the front enemy"
+		"back_ally":
+			target = "the back ally"
+		"back_enemy":
+			target = "the back enemy"
 	
 	if skill.damaging == true:
 		description.text += "Deals " + str(skill.damage) + " " + str(skill.element) + " damage\nto " + target

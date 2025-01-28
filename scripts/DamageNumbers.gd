@@ -49,7 +49,7 @@ func display_number_plus(value: int, position: Vector2, element : String, reacti
 	
 	
 	number.label_settings.font_color = color
-	number.label_settings.font_size = 38
+	number.label_settings.font_size = 56
 	number.label_settings.outline_color = "#000000"
 	number.label_settings.outline_size = 10
 	

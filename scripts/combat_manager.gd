@@ -9,6 +9,7 @@ extends Node
 @export var ally4 : Ally
 @export var allies : Array = []
 var front_ally : Ally
+var back_ally : Ally
 
 @export var enemy1 : Enemy
 @export var enemy2 : Enemy
@@ -16,6 +17,7 @@ var front_ally : Ally
 @export var enemy4 : Enemy
 @export var enemies : Array = []
 var front_enemy : Enemy
+var back_enemy : Enemy
 
 var ally_list = [ally1, ally2, ally3, ally4]
 var enemy_list = [enemy1, enemy2]
@@ -213,6 +215,10 @@ func use_skill(skill,target,unit):
 		front_ally.receive_skill(skill)
 	elif (skill.target_type == "front_enemy"):
 		front_enemy.receive_skill(skill)
+	elif (skill.target_type == "back_ally"):
+		back_ally.receive_skill(skill)
+	elif (skill.target_type == "back_enemy"):
+		back_enemy.receive_skill(skill)
 	elif (skill.target_type == "single_ally" and skill.friendly):
 		target.receive_skill_friendly(skill)
 	elif (target == null):
@@ -711,5 +717,7 @@ func set_unit_pos():
 			allies[n].right = null
 	if enemies.size() > 0:
 		front_enemy = enemies[0]
+		back_enemy = enemies[enemies.size()-1]
 	if allies.size() > 0:
 		front_ally = allies[allies.size()-1]
+		back_ally = allies[0]

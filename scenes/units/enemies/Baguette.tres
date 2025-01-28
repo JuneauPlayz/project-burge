@@ -1,12 +1,13 @@
-[gd_resource type="Resource" script_class="UnitRes" load_steps=4 format=3 uid="uid://5shsgidg58wn"]
+[gd_resource type="Resource" script_class="UnitRes" load_steps=5 format=3 uid="uid://5shsgidg58wn"]
 
 [ext_resource type="Script" path="res://scripts/UnitRes.gd" id="1_5sxkx"]
 [ext_resource type="Resource" uid="uid://dy48dueo5v5f" path="res://resources/enemy_skills/EnemyBaguetteSlap.tres" id="2_c2v7x"]
+[ext_resource type="Resource" uid="uid://cp50svdfs8qpy" path="res://resources/enemy_skills/yeet.tres" id="2_tx7q3"]
 [ext_resource type="Texture2D" uid="uid://bljf8dm0b4fdy" path="res://assets/baguette.png" id="3_p0ip3"]
 
 [resource]
 script = ExtResource("1_5sxkx")
-skill1 = ExtResource("2_c2v7x")
+skill1 = ExtResource("2_tx7q3")
 skill2 = ExtResource("2_c2v7x")
 skill3 = ExtResource("2_c2v7x")
 sprite = ExtResource("3_p0ip3")
