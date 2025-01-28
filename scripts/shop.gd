@@ -82,6 +82,7 @@ func load_units():
 		ally.combat = false
 		ally.shop = true
 		ally.spell_select_ui.enable_all()
+		ally.spell_select_ui.hide_position()
 		ally.update_vars()
 		ally.show_level_up(1)
 	if (GC.relics != null):

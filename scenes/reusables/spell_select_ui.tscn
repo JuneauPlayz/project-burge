@@ -111,7 +111,6 @@ theme_override_font_sizes/font_size = 36
 theme_override_styles/disabled = SubResource("StyleBoxFlat_rghh4")
 theme_override_styles/hover = SubResource("StyleBoxFlat_1dgm8")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ur654")
-text = "Basic Attack"
 
 [node name="VSeparator" type="VSeparator" parent="PanelContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 5)
@@ -132,7 +131,6 @@ theme_override_font_sizes/font_size = 36
 theme_override_styles/disabled = SubResource("StyleBoxFlat_667es")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ni84r")
 theme_override_styles/normal = SubResource("StyleBoxFlat_sleic")
-text = "Spell 1"
 
 [node name="VSeparator2" type="VSeparator" parent="PanelContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 5)
@@ -154,7 +152,6 @@ theme_override_font_sizes/font_size = 36
 theme_override_styles/disabled = SubResource("StyleBoxFlat_pfass")
 theme_override_styles/hover = SubResource("StyleBoxFlat_q85v1")
 theme_override_styles/normal = SubResource("StyleBoxFlat_lt1l8")
-text = "Spell 2"
 
 [node name="VSeparator3" type="VSeparator" parent="PanelContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 5)
@@ -176,7 +173,7 @@ theme_override_font_sizes/font_size = 36
 theme_override_styles/disabled = SubResource("StyleBoxFlat_v4ccb")
 theme_override_styles/hover = SubResource("StyleBoxFlat_i2ev1")
 theme_override_styles/normal = SubResource("StyleBoxFlat_s2255")
-text = "Ultimate
+text = "
 "
 
 [node name="SkillInfo" parent="." instance=ExtResource("2_ae65f")]
@@ -223,7 +220,12 @@ offset_top = 119.0
 offset_right = 534.0
 offset_bottom = 142.0
 
-[node name="PositionContainer" type="PanelContainer" parent="."]
+[node name="PositionUI" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PositionContainer" type="PanelContainer" parent="PositionUI"]
 layout_mode = 0
 offset_left = 73.0
 offset_top = 246.0
@@ -231,7 +233,7 @@ offset_right = 219.0
 offset_bottom = 368.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_6v8fa")
 
-[node name="Position" type="Label" parent="."]
+[node name="Position" type="Label" parent="PositionUI"]
 layout_mode = 0
 offset_left = 75.0
 offset_top = 248.0
@@ -242,7 +244,7 @@ text = "POSITION"
 label_settings = SubResource("LabelSettings_1aora")
 horizontal_alignment = 1
 
-[node name="PosNumber" type="Label" parent="."]
+[node name="PosNumber" type="Label" parent="PositionUI"]
 layout_mode = 0
 offset_left = 127.0
 offset_top = 285.0

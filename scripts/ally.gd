@@ -239,6 +239,7 @@ func _on_confirm_swap_pressed() -> void:
 	level_up_reward.visible = false
 	update_ally_skills()
 	swap_tutorial.visible = false
+	spell_select_ui.reset()
 	
 func update_ally_skills():
 	spell_select_ui.skill1 = basic_atk

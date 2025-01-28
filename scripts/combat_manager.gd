@@ -580,49 +580,50 @@ func check_requirements():
 					skill = ally.skill_2
 				4:
 					skill = ally.ult
-			var check = false
-			var tokens1 = 0
-			var tokens2 = 0
-			if skill.cost != null:
-				match skill.token_type:
-					"fire":
-						tokens1 = GC.fire_tokens
-					"water":
-						tokens1 = GC.water_tokens
-					"lightning":
-						tokens1 = GC.lightning_tokens
-					"grass":
-						tokens1 = GC.grass_tokens
-					"earth":
-						tokens1 = GC.earth_tokens
-			if skill.cost2 != null:
-				match skill.token_type2:
-					"fire":
-						tokens2 = GC.fire_tokens
-					"water":
-						tokens2 = GC.water_tokens
-					"lightning":
-						tokens2 = GC.lightning_tokens
-					"grass":
-						tokens2 = GC.grass_tokens
-					"earth":
-						tokens2 = GC.earth_tokens
-			if skill.cost != null:
-				if skill.cost <= tokens1:
-					check = true
-				else:
-					check = false
-					
-			if skill.cost2 != null:
-				if skill.cost <= tokens1 and skill.cost2 <= tokens2:
-					check = true
-				else:
-					check = false
-			if skill.cost > 0 or skill.cost2 > 0:
-				if check:
-					ally.get_child(0).enable(i)
-				else:
-					ally.get_child(0).disable(i)
+			if (skill):
+				var check = false
+				var tokens1 = 0
+				var tokens2 = 0
+				if skill.cost != null:
+					match skill.token_type:
+						"fire":
+							tokens1 = GC.fire_tokens
+						"water":
+							tokens1 = GC.water_tokens
+						"lightning":
+							tokens1 = GC.lightning_tokens
+						"grass":
+							tokens1 = GC.grass_tokens
+						"earth":
+							tokens1 = GC.earth_tokens
+				if skill.cost2 != null:
+					match skill.token_type2:
+						"fire":
+							tokens2 = GC.fire_tokens
+						"water":
+							tokens2 = GC.water_tokens
+						"lightning":
+							tokens2 = GC.lightning_tokens
+						"grass":
+							tokens2 = GC.grass_tokens
+						"earth":
+							tokens2 = GC.earth_tokens
+				if skill.cost != null:
+					if skill.cost <= tokens1:
+						check = true
+					else:
+						check = false
+						
+				if skill.cost2 != null:
+					if skill.cost <= tokens1 and skill.cost2 <= tokens2:
+						check = true
+					else:
+						check = false
+				if skill.cost > 0 or skill.cost2 > 0:
+					if check:
+						ally.get_child(0).enable(i)
+					else:
+						ally.get_child(0).disable(i)
 		
 func set_unit_pos():
 	for n in range(enemies.size()):
