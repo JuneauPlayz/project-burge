@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bkkh4bxq8cu7n"]
+[gd_scene load_steps=26 format=3 uid="uid://bkkh4bxq8cu7n"]
 
 [ext_resource type="Script" path="res://scripts/ally.gd" id="1_fu3qc"]
 [ext_resource type="Resource" uid="uid://bhnvgvm5xsfv3" path="res://resources/Skills/fire/Firestorm.tres" id="2_77fl0"]
@@ -53,6 +53,23 @@ outline_color = Color(0, 0, 0, 1)
 font_size = 28
 outline_size = 9
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fqkb2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k7wpu"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u6cuy"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_857xx"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_25kx1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ipxiy"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="Ally" type="Node2D"]
 position = Vector2(85, 185)
@@ -181,7 +198,6 @@ offset_right = 535.0
 offset_bottom = 79.0
 
 [node name="Avaliable" type="Label" parent="LevelUpReward"]
-visible = false
 layout_mode = 0
 offset_left = -356.364
 offset_top = 335.758
@@ -212,6 +228,19 @@ offset_bottom = 413.333
 theme_override_font_sizes/font_size = 36
 text = "Confirm Swap"
 
+[node name="TargetingArea" type="Button" parent="."]
+visible = false
+offset_left = -114.545
+offset_top = -228.182
+offset_right = 128.455
+offset_bottom = 130.818
+theme_override_styles/focus = SubResource("StyleBoxFlat_fqkb2")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_k7wpu")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_u6cuy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_857xx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_25kx1")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ipxiy")
+
 [connection signal="new_select" from="SpellSelectUi" to="." method="_on_spell_select_ui_new_select"]
 [connection signal="new_select" from="LevelUpReward" to="." method="_on_level_up_reward_new_select"]
 [connection signal="mouse_entered" from="LevelUpReward/PanelContainer/MarginContainer/VBoxContainer/BA1Panel/option1" to="LevelUpReward" method="_on_ba_1_mouse_entered"]
@@ -222,3 +251,4 @@ text = "Confirm Swap"
 [connection signal="mouse_exited" from="LevelUpReward/PanelContainer/MarginContainer/VBoxContainer/SP1Panel/option2" to="LevelUpReward" method="_on_s_1_mouse_exited"]
 [connection signal="pressed" from="LevelUpReward/PanelContainer/MarginContainer/VBoxContainer/SP1Panel/option2" to="LevelUpReward" method="_on_s_1_pressed"]
 [connection signal="pressed" from="LevelUpReward/ConfirmSwap" to="." method="_on_confirm_swap_pressed"]
+[connection signal="pressed" from="TargetingArea" to="." method="_on_targeting_area_pressed"]

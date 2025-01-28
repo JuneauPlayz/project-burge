@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3 uid="uid://cjot7mdltdj0m"]
+
+[ext_resource type="Script" path="res://scripts/skill.gd" id="1_djlxy"]
+
+[resource]
+script = ExtResource("1_djlxy")
+name = "Healing Wish"
+damage = 20
+element = "grass"
+damaging = false
+healing = true
+shielding = false
+target_type = "single_ally"
+friendly = true
+lifesteal = false
+lifesteal_rate = 1.0
+cost = 0
+token_type = ""
+cost2 = 0
+token_type2 = ""
+status_effects = []
+double_hit = false
+damage2 = 0
+element2 = ""

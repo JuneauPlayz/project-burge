@@ -5,21 +5,20 @@
 [resource]
 script = ExtResource("1_b02tp")
 name = "Baguette Slap"
-damage = 100
+damage = 15
 element = "none"
 damaging = true
 healing = false
 shielding = false
+target_type = "all_allies"
 friendly = false
 lifesteal = false
 lifesteal_rate = 1.0
-double_hit = true
-damage2 = 3
-element2 = "none"
 cost = 0
 token_type = ""
 cost2 = 0
 token_type2 = ""
 status_effects = []
-target_type = "all_allies"
-unique = ""
+double_hit = true
+damage2 = 3
+element2 = "none"

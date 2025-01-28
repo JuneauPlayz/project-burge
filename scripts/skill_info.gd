@@ -34,8 +34,6 @@ func update_skill_info():
 	
 	if skill.damaging == true:
 		description.text += "Deals " + str(skill.damage) + " " + str(skill.element) + " damage\nto " + target
-	if skill.unique == "Flameburst":
-		description.text += " per fire reaction occured this fight\nTotal damage: " + str(skill.final_damage)
 		
 	if skill.shielding == true:
 		description.text += "Shields " + str(skill.damage) + " to " + target

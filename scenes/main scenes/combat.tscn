@@ -73,8 +73,8 @@ offset_right = 1046.0
 offset_bottom = 211.0
 text = "1  or Z for Enemy 1
 2  or X for Enemy 2
-3  or V for Enemy 3
-4  or C for Enemy 4"
+3  or C for Enemy 3
+4  or V for Enemy 4"
 label_settings = SubResource("LabelSettings_rfbdu")
 
 [node name="TargetingSkillInfo" parent="CombatManager" instance=ExtResource("5_2x1un")]

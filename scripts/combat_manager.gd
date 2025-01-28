@@ -25,6 +25,8 @@ var choosing_skills = false
 # parallel array for targets
 @export var target_queue = []
 var targeting = false
+
+var targeting_skill : Skill
 # parallel array for allies
 @export var ally_queue = []
 
@@ -211,6 +213,8 @@ func use_skill(skill,target,unit):
 		front_ally.receive_skill(skill)
 	elif (skill.target_type == "front_enemy"):
 		front_enemy.receive_skill(skill)
+	elif (skill.target_type == "single_ally" and skill.friendly):
+		target.receive_skill_friendly(skill)
 	elif (target == null):
 		if (skill.target_type == "all_allies"):
 			if (skill.friendly == true):
@@ -512,20 +516,29 @@ func show_ui():
 	
 func choose_target(skill : Skill): 
 	if (skill.target_type == "single_enemy" or skill.target_type == "single_ally"):
+		var target
 		targeting = true
+		targeting_skill = skill
 		toggle_targeting_ui(skill)
 		hide_skills()
 		hide_ui()
 		Input.set_custom_mouse_cursor(TARGET_CURSOR, 0, Vector2(32,32))
 		targeting_skill_info.visible = true
 		targeting_label.visible = true
-		for enemy in enemies:
-			enemy.enable_targeting_area()
-		new_spell_selected.emit()
-		var target = await target_chosen
-		for enemy in enemies:
-			enemy.disable_targeting_area()
-		print("target found, " + str(target))
+		if (not skill.friendly):
+			for enemy in enemies:
+				enemy.enable_targeting_area()
+			new_spell_selected.emit()
+			target = await target_chosen
+			for enemy in enemies:
+				enemy.disable_targeting_area()
+		elif (skill.friendly):
+			for ally in allies:
+				ally.enable_targeting_area()
+			new_spell_selected.emit()
+			target = await target_chosen
+			for ally in allies:
+				ally.disable_targeting_area()
 		show_skills()
 		show_ui()
 		toggle_targeting_ui(skill)
@@ -541,17 +554,37 @@ func target_signal(unit):
 
 func _input(event):
 	if event.is_action_pressed("1"):
-		if (enemy1 != null):
-			target_chosen.emit(enemy1)
+		if (targeting):
+			if (not targeting_skill.friendly):
+				if (enemy1 != null):
+					target_chosen.emit(enemy1)
+			elif (targeting_skill.friendly and targeting):
+				if (ally1 != null):
+					target_chosen.emit(ally1)
 	if event.is_action_pressed("2"):
-		if (enemy2 != null):
-			target_chosen.emit(enemy2)
+		if (targeting):
+			if (not targeting_skill.friendly and targeting):
+				if (enemy2 != null):
+					target_chosen.emit(enemy2)
+			elif (targeting_skill.friendly and targeting):
+				if (ally2 != null):
+					target_chosen.emit(ally2)
 	if event.is_action_pressed("3"):
-		if (enemy3 != null):
-			target_chosen.emit(enemy3)
+		if (targeting):
+			if (not targeting_skill.friendly and targeting):
+				if (enemy3 != null):
+					target_chosen.emit(enemy3)
+			elif (targeting_skill.friendly and targeting):
+				if (ally3 != null):
+					target_chosen.emit(ally3)
 	if event.is_action_pressed("4"):
-		if (enemy4 != null):
-			target_chosen.emit(enemy4)
+		if (targeting):
+			if (not targeting_skill.friendly and targeting):
+				if (enemy4 != null):
+					target_chosen.emit(enemy4)
+			elif (targeting_skill.friendly and targeting):
+				if (ally4 != null):
+					target_chosen.emit(ally4)
 	if event.is_action_pressed("end_turn"):
 		_on_end_turn_pressed()
 			

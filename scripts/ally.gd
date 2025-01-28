@@ -25,6 +25,7 @@ var current_element = "none"
 @onready var level_up_reward: Control = $LevelUpReward
 @onready var swap_tutorial: Label = $LevelUpReward/SwapTutorial
 @onready var confirm_swap: Button = $LevelUpReward/ConfirmSwap
+@onready var targeting_area: Button = $TargetingArea
 
 var combat = true
 var shop = false
@@ -38,7 +39,7 @@ var connected = false
 var res : UnitRes
 
 signal reaction_ended
-
+signal target_chosen
 signal loaded
 # special status checks
 var bubbled = false
@@ -68,6 +69,7 @@ func _ready() -> void:
 		spell_select_ui.new_select.connect(combat_manager._on_spell_select_ui_new_select)
 	hp_bar.set_hp(max_health)
 	hp_bar.set_maxhp(max_health)
+	self.target_chosen.connect(combat_manager.target_signal)
 
 func update_vars():
 	basic_atk = res.skill1
@@ -295,3 +297,11 @@ func update_ally_skills():
 			GC.ally4.skill4 = ult
 	pass
 	
+func enable_targeting_area():
+	targeting_area.visible = true
+
+func disable_targeting_area():
+	targeting_area.visible = false
+
+func _on_targeting_area_pressed() -> void:
+	target_chosen.emit(self)
