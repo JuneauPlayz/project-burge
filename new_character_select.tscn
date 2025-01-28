@@ -1,0 +1,166 @@
+[gd_scene load_steps=10 format=3 uid="uid://cejatt12ddojf"]
+
+[ext_resource type="Script" path="res://addons/tnowe_extra_controls/elements/draggable.gd" id="1_2r27m"]
+[ext_resource type="Script" path="res://new_character_select.gd" id="1_p63mp"]
+[ext_resource type="Texture2D" uid="uid://4geq5yb7tf1u" path="res://assets/charizard.png" id="2_6ye2v"]
+[ext_resource type="Texture2D" uid="uid://c7bn1gnx4b71v" path="res://assets/grassy pixelated.jpg" id="2_bhtpu"]
+[ext_resource type="Texture2D" uid="uid://lusgwdgw1no1" path="res://assets/Blastoise.png" id="4_ba5s1"]
+[ext_resource type="Texture2D" uid="uid://dr5buhafiup2r" path="res://assets/venasaur (2).png" id="5_f5d55"]
+[ext_resource type="Texture2D" uid="uid://dmsixe7n4f266" path="res://assets/pikachu.png" id="6_uythr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tbrfe"]
+font_size = 42
+outline_size = 9
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0i11v"]
+font_size = 136
+outline_size = 9
+outline_color = Color(0, 0, 0, 1)
+
+[node name="new_character_select" type="Node2D"]
+script = ExtResource("1_p63mp")
+
+[node name="Background" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.74902)
+position = Vector2(1168, 552)
+scale = Vector2(3.2, 3.2)
+texture = ExtResource("2_bhtpu")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+offset_left = 610.0
+offset_top = 220.0
+offset_right = 1310.0
+offset_bottom = 728.0
+theme_override_constants/h_separation = 100
+columns = 4
+
+[node name="Ally1Spot" type="ColorRect" parent="GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+
+[node name="Position" type="Label" parent="GridContainer/Ally1Spot"]
+layout_mode = 0
+offset_left = -9.0
+offset_top = -52.0
+offset_right = 117.0
+offset_bottom = -15.0
+text = "Back Ally
+"
+label_settings = SubResource("LabelSettings_tbrfe")
+
+[node name="Ally2Spot" type="ColorRect" parent="GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+
+[node name="Position" type="Label" parent="GridContainer/Ally2Spot"]
+offset_left = -13.0
+offset_top = -52.0
+offset_right = 118.0
+offset_bottom = -15.0
+text = "Middle Ally
+"
+label_settings = SubResource("LabelSettings_tbrfe")
+
+[node name="Ally3Spot" type="ColorRect" parent="GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+
+[node name="Position" type="Label" parent="GridContainer/Ally3Spot"]
+offset_left = -13.0
+offset_top = -52.0
+offset_right = 118.0
+offset_bottom = -15.0
+text = "Middle Ally"
+label_settings = SubResource("LabelSettings_tbrfe")
+
+[node name="Ally4Spot" type="ColorRect" parent="GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+
+[node name="Position" type="Label" parent="GridContainer/Ally4Spot"]
+offset_left = -9.0
+offset_top = -52.0
+offset_right = 117.0
+offset_bottom = -15.0
+text = "Front Ally"
+label_settings = SubResource("LabelSettings_tbrfe")
+
+[node name="Gap" type="Control" parent="GridContainer"]
+custom_minimum_size = Vector2(100, 300)
+layout_mode = 2
+
+[node name="Gap2" type="Control" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Gap3" type="Control" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Gap4" type="Control" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Charizard" type="Container" parent="GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+script = ExtResource("1_2r27m")
+grid_snap = Vector2(100, 100)
+
+[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Charizard"]
+position = Vector2(46, 51)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_6ye2v")
+
+[node name="Blastoise" type="Container" parent="GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+script = ExtResource("1_2r27m")
+grid_snap = Vector2(100, 100)
+
+[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Blastoise"]
+position = Vector2(46, 51)
+texture = ExtResource("4_ba5s1")
+
+[node name="Venasaur" type="Container" parent="GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+script = ExtResource("1_2r27m")
+grid_snap = Vector2(100, 100)
+
+[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Venasaur"]
+position = Vector2(46, 51)
+scale = Vector2(0.39, 0.39)
+texture = ExtResource("5_f5d55")
+
+[node name="Pikachu" type="Container" parent="GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+script = ExtResource("1_2r27m")
+grid_snap = Vector2(100, 100)
+
+[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Pikachu"]
+position = Vector2(46, 51)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("6_uythr")
+
+[node name="Begin Run" type="Button" parent="."]
+offset_left = 793.0
+offset_top = 811.0
+offset_right = 1127.0
+offset_bottom = 917.0
+theme_override_font_sizes/font_size = 111
+text = "Begin Run"
+
+[node name="Title" type="Label" parent="."]
+offset_left = 3.0
+offset_top = 20.0
+offset_right = 1920.0
+offset_bottom = 140.0
+text = "Choose Your Characters!"
+label_settings = SubResource("LabelSettings_0i11v")
+horizontal_alignment = 1
+
+[connection signal="drag_ended" from="GridContainer/Charizard" to="." method="_on_charizard_drag_ended"]
+[connection signal="drag_ended" from="GridContainer/Blastoise" to="." method="_on_blastoise_drag_ended"]
+[connection signal="drag_ended" from="GridContainer/Venasaur" to="." method="_on_venasaur_drag_ended"]
+[connection signal="drag_ended" from="GridContainer/Pikachu" to="." method="_on_pikachu_drag_ended"]
+[connection signal="pressed" from="Begin Run" to="." method="_on_begin_run_pressed"]
