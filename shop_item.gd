@@ -38,7 +38,7 @@ func update_item():
 
 func _on_buy_pressed() -> void:
 	if GC.gold >= price:
-		print("purchasing")
+		AudioPlayer.play_FX("click",-10)
 		GC.gold -= price
 		purchased.emit(item, self)
 

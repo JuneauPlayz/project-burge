@@ -125,7 +125,7 @@ func reaction(elem1 : String, elem2 : String, unit : Unit, value, hostile : int)
 					if (unit == null):
 						return false
 					if (unit.hasLeft() or unit.hasRight()):
-						await get_tree().create_timer(0.2).timeout
+						await get_tree().create_timer(GC.GLOBAL_INTERVAL-0.05).timeout
 					if (unit.hasLeft()):
 						DamageNumbers.display_number(unit.left.take_damage(res_value * detonate_side_mult), unit.left.get_child(2).global_position, elem2, "")
 					if (unit.hasRight()):

@@ -15,3 +15,4 @@ ult_1 = ExtResource("4_aj77v")
 ult_2 = ExtResource("5_0h1p8")
 sprite = ExtResource("6_iyk0c")
 sprite_scale = 1.25
+name = "Blastoise"

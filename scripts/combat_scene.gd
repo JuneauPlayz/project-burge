@@ -134,6 +134,8 @@ func load_units():
 		allies.append(ally3)
 	if (ally4 != null):
 		allies.append(ally4)
+	for ally in allies:
+		ally.update_vars()
 	if (GC.relics != null):
 		# loads relics
 		var new_relic_handler = RELIC_HANDLER.instantiate()

@@ -25,6 +25,8 @@ var choosing_skills = false
 # parallel array for targets
 @export var target_queue = []
 var targeting = false
+# parallel array for allies
+@export var ally_queue = []
 
 @onready var end_turn: Button = $"../EndTurn"
 @onready var reset_choices: Button = $"../ResetChoices"
@@ -59,6 +61,7 @@ signal target_chosen
 
 var combat_finished = false
 var first_turn = true
+var victorious = false
 
 signal hit
 
@@ -129,7 +132,8 @@ func execute_ally_turn():
 			continue
 		var skill = action_queue[n]
 		var target = target_queue[n]
-		use_skill(skill,target)
+		var ally = ally_queue[n]
+		use_skill(skill,target,ally)
 		print("waiting for reaction")
 		# checks if target is dead, currently skips the rest of the loop (wont print landed)
 		if (target == null or target.visible == false):
@@ -138,7 +142,7 @@ func execute_ally_turn():
 		await reaction_finished
 		print(str(skill.name) + " landed!")
 		hit.emit()
-		await get_tree().create_timer(0.35).timeout
+		await get_tree().create_timer(GC.GLOBAL_INTERVAL+0.05).timeout
 	await get_tree().create_timer(1).timeout
 	ally_post_status()
 	if enemies.is_empty():
@@ -152,29 +156,45 @@ func enemy_turn():
 	enemy_pre_status()
 	await get_tree().create_timer(0.3).timeout
 	for enemy in enemies:
-		use_skill(enemy.current_skill,null)
+		use_skill(enemy.current_skill,null,enemy)
 		hit.emit()
 		enemy.change_skills()
-		await get_tree().create_timer(0.45).timeout
+		await get_tree().create_timer(GC.GLOBAL_INTERVAL+0.05).timeout
 	await get_tree().create_timer(0.1).timeout
 	enemy_post_status()
 	await get_tree().create_timer(0.3).timeout
-	enemy_turn_done.emit()
+	if allies.is_empty():
+		defeat()
+	else:
+		enemy_turn_done.emit()
 
 
 func victory():
+	victorious = true
 	victory_screen.visible = true
 	victory_screen.update_text("Victory!", 10)
 	GC.add_gold(10)
 	hide_skills()
 	hide_ui()
 	victory_screen.continue_pressed.connect(self.finish_battle)
-	
+
 func defeat():
-	pass
+	victorious = false
+	victory_screen.visible = true
+	victory_screen.update_text("Defeat!", 0)
+	GC.add_gold(0)
+	hide_skills()
+	hide_ui()
+	for enemy in enemies:
+		enemy.visible = false
+	GC.reset()
+	victory_screen.continue_pressed.connect(self.finish_battle)
 	
 func finish_battle():
-	get_tree().change_scene_to_file("res://scenes/main scenes/shop.tscn")
+	if victorious:
+		get_tree().change_scene_to_file("res://scenes/main scenes/shop.tscn")
+	if not victorious:
+		get_tree().change_scene_to_file("res://scenes/main scenes/main_scene.tscn")
 
 func reset_combat():
 	allies = []
@@ -182,7 +202,7 @@ func reset_combat():
 	GC.reset_tokens()
 	victory_screen.visible = false
 	
-func use_skill(skill,target):
+func use_skill(skill,target,unit):
 	skill.update()
 	# token spending
 	if skill.cost > 0 or skill.cost2 > 0:
@@ -198,7 +218,9 @@ func use_skill(skill,target):
 					ally.receive_skill_friendly(skill)
 			else:
 				for ally in allies:
+					print(ally.title)
 					ally.receive_skill(skill)
+					print(ally.title + " taking " + str(skill.damage) + " damage from " + unit.title)
 		if (skill.target_type == "all_enemies"):
 			if (skill.friendly == true):
 				for enemy in enemies:
@@ -223,6 +245,8 @@ func use_skill(skill,target):
 			print("waiting use skill")
 			await reaction_finished
 			print("finished waiting use skill")
+	if (skill.lifesteal):
+		unit.receive_healing(roundi(skill.damage * skill.lifesteal_rate))
 
 func spend_skill_cost(skill):
 	var tokens1 = 0
@@ -293,8 +317,7 @@ func _on_spell_select_ui_new_select(ally) -> void:
 		4:
 			allyskill = ally4skill
 			ally_pos = ally4_pos
-	
-	AudioPlayer.play_FX("click",0)
+
 	# if selecting something when not already selected on that character
 	if (spell_select_ui.selected != 0 and allyskill == -1):
 		ally_pos = next_pos
@@ -304,6 +327,7 @@ func _on_spell_select_ui_new_select(ally) -> void:
 	if (allyskill != -1 and spell_select_ui.selected != 0):
 		action_queue.remove_at(ally_pos)
 		target_queue.remove_at(ally_pos)
+		ally_queue.remove_at(ally_pos)
 		spell_select_ui.update_pos(0)
 		change = true
 	allyskill = spell_select_ui.selected
@@ -313,6 +337,7 @@ func _on_spell_select_ui_new_select(ally) -> void:
 			next_pos -= 1
 			action_queue.remove_at(ally_pos)
 			target_queue.remove_at(ally_pos)
+			ally_queue.remove_at(ally_pos)
 			update_positions(ally_pos)
 			ally_pos = -1
 			update_skill_positions()
@@ -322,30 +347,38 @@ func _on_spell_select_ui_new_select(ally) -> void:
 			if change:
 				action_queue.insert(ally_pos,ally.basic_atk)
 				target_queue.insert(ally_pos,await choose_target(ally.basic_atk))
+				ally_queue.insert(ally_pos,ally)
 			else:
 				action_queue.append(ally.basic_atk)
 				target_queue.append(await choose_target(ally.basic_atk))
+				ally_queue.append(ally)
 		2:
 			if change:
 				action_queue.insert(ally_pos,ally.skill_1)
 				target_queue.insert(ally_pos,await choose_target(ally.skill_1))
+				ally_queue.insert(ally_pos,ally)
 			else:
 				action_queue.append(ally.skill_1)
 				target_queue.append(await choose_target(ally.skill_1))
+				ally_queue.append(ally)
 		3:
 			if change:
 				action_queue.insert(ally_pos,ally.skill_2)
 				target_queue.insert(ally_pos,await choose_target(ally.skill_2))
+				ally_queue.insert(ally_pos,ally)
 			else:
 				action_queue.append(ally.skill_2)
 				target_queue.append(await choose_target(ally.skill_2))
+				ally_queue.append(ally)
 		4:
 			if change:
 				action_queue.insert(ally_pos,ally.ult)
 				target_queue.insert(ally_pos,await choose_target(ally.ult))
+				ally_queue.insert(ally_pos,ally)
 			else:
 				action_queue.append(ally.ult)
 				target_queue.append(await choose_target(ally.ult))
+				ally_queue.append(ally)
 	
 	match ally.position:
 		1:
@@ -364,8 +397,6 @@ func _on_spell_select_ui_new_select(ally) -> void:
 			ally4skill = allyskill
 			ally4_pos = ally_pos
 			spell_select_ui.update_pos(ally4_pos+1)
-	
-	print(action_queue)
 		
 
 	
@@ -412,6 +443,7 @@ func reset_skill_select():
 		spell_select_ui4.update_pos(ally4_pos + 1)
 	action_queue = []
 	target_queue = []
+	ally_queue = []
 	next_pos = 0
 	ally1_pos = -1
 	ally2_pos = -1
@@ -441,6 +473,7 @@ func _on_reset_choices_pressed() -> void:
 	AudioPlayer.play_FX("click",0)
 	action_queue = []
 	target_queue = []
+	ally_queue = []
 	next_pos = 0
 	ally1_pos = -1
 	ally2_pos = -1

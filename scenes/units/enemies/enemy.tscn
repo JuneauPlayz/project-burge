@@ -1,10 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://didsupfyw66ha"]
+[gd_scene load_steps=13 format=3 uid="uid://didsupfyw66ha"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_ml356"]
 [ext_resource type="Resource" uid="uid://dy48dueo5v5f" path="res://resources/enemy_skills/EnemyBaguetteSlap.tres" id="2_3luuo"]
 [ext_resource type="Texture2D" uid="uid://bljf8dm0b4fdy" path="res://assets/baguette.png" id="3_n62cc"]
 [ext_resource type="PackedScene" uid="uid://5spa5amgsxfm" path="res://scenes/reusables/hp_bar.tscn" id="4_8i2d0"]
 [ext_resource type="PackedScene" uid="uid://sdwnoh61gawa" path="res://scenes/reusables/skill_info.tscn" id="5_gim1t"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hiluv"]
+font_size = 42
+outline_size = 9
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ebmkq"]
 
@@ -55,18 +60,19 @@ offset_right = -285.0
 offset_bottom = 40.0
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="ShowNextSkill"]
+[node name="NextSkillLabel" type="Label" parent="ShowNextSkill"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -28.5
-anchor_top = -1.15
-anchor_right = -28.5
-anchor_bottom = -1.15
+anchor_left = -25.2
+anchor_top = -2.21667
+anchor_right = -23.975
+anchor_bottom = -1.86667
 offset_left = 1393.0
 offset_top = 46.0
 offset_right = 1470.0
 offset_bottom = 69.0
 text = "Next Skill:"
+label_settings = SubResource("LabelSettings_hiluv")
 metadata/_edit_use_anchors_ = true
 
 [node name="SkillInfo" parent="ShowNextSkill" instance=ExtResource("5_gim1t")]

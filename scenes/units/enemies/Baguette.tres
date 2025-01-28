@@ -11,3 +11,4 @@ skill2 = ExtResource("2_c2v7x")
 skill3 = ExtResource("2_c2v7x")
 sprite = ExtResource("3_p0ip3")
 sprite_scale = 1.0
+name = "Baguette"

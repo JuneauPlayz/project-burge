@@ -14,3 +14,4 @@ ult_1 = ExtResource("3_e3nc1")
 ult_2 = ExtResource("5_ioqke")
 sprite = ExtResource("6_vnyy7")
 sprite_scale = 0.39
+name = "Pikachu"

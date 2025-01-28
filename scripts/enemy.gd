@@ -40,7 +40,9 @@ func _ready() -> void:
 		skill2 = res.skill2
 	if res.skill3 != null:
 		skill3 = res.skill3
-
+	if res.name != null:
+		title = res.name
+	print("title:" + title)
 	sprite_spot.texture = load(res.sprite.resource_path)
 	sprite_spot.scale = Vector2(res.sprite_scale,res.sprite_scale)
 	skill_info.skill = current_skill
@@ -98,6 +100,11 @@ func receive_skill(skill):
 				status.append(new_bleed)
 	hp_bar.update_element(current_element)
 
+func receive_healing(healing: int):
+	health += healing
+	if health >= max_health:
+		health = max_health
+	hp_bar.set_hp(health)
 
 func reaction_signal():
 	reaction_ended.emit()
@@ -118,11 +125,12 @@ func check_if_dead():
 
 func die():
 	print("ded")
-	combat_manager.enemies.erase(self)
-	combat_manager.set_unit_pos()
 	died.emit()
 	self.visible = false
-	await get_tree().create_timer(1).timeout
+	# wont erase itself until after the skill is done
+	await get_tree().create_timer(GC.GLOBAL_INTERVAL).timeout
+	combat_manager.enemies.erase(self)
+	combat_manager.set_unit_pos()
 	queue_free()
 	
 func change_skills():

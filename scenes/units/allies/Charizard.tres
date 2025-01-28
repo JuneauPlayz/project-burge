@@ -15,3 +15,4 @@ ult_1 = ExtResource("4_qw73q")
 ult_2 = ExtResource("7_8hf2u")
 sprite = ExtResource("2_ury01")
 sprite_scale = 0.63
+name = "Charizard"

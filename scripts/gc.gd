@@ -2,6 +2,7 @@ extends Node
 
 var is_dragging = false
 
+const GLOBAL_INTERVAL = 0.1
 # global currencies
 var gold = 50
 var bonus_gold = 0
@@ -95,3 +96,16 @@ func add_token(element, count):
 			
 func add_gold(count):
 	gold += (count + bonus_gold + gold_multiplier)
+	
+func reset():
+	gold = 0
+	self.ally1 = null
+	self.ally2 = null
+	self.ally3 = null
+	self.ally4 = null
+	self.enemy1 = null
+	self.enemy2 = null
+	self.enemy3 = null
+	self.enemy4 = null
+	reset_tokens()
+	relics = []

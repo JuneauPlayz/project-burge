@@ -9,11 +9,11 @@ class_name Skill
 @export var shielding = false
 @export var friendly = false
 
+@export var lifesteal = false
+@export var lifesteal_rate : float = 1.0
 @export var double_hit = false
 @export var damage2 : int = 0
 @export_enum("none", "water", "fire", "lightning", "earth", "grass") var element2 : String
-
-
 
 @export var cost = 0
 @export_enum("water", "fire", "lightning", "earth", "grass") var token_type : String

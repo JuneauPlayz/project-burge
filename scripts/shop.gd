@@ -26,6 +26,7 @@ var relics : RelicHandler
 
 @onready var gold_label: Label = $Gold
 @onready var confirm_swap: Button = $ConfirmSwap
+@onready var next_combat: Button = $NextCombat
 
 var new_skill : Skill
 var new_skill_ally : Ally
@@ -114,18 +115,22 @@ func buying_new_skill(shop_item):
 	new_skill_ally = null
 	for ally in allies:
 		ally.level_up_reward.visible = false
+		ally.spell_select_ui.reset()
 	for spot in spot_list:
 			spot.visible = false
 	shop_item.get_parent().visible = true
 	confirm_swap.visible = true
 	shop_item.hide_buy()
+	next_combat.visible = false
 	await swap_done
 	for ally in allies:
-		ally.level_up_reward.visible = true
+		if not ally.level_up_complete:
+			ally.level_up_reward.visible = true
 	for spot in spot_list:
 		spot.visible = true
 	confirm_swap.visible = false
 	shop_item.show_buy()
+	next_combat.visible = true
 	
 
 func update_gold():
@@ -133,10 +138,12 @@ func update_gold():
 
 
 func _on_next_combat_pressed() -> void:
+	AudioPlayer.play_FX("click",-10)
 	GC.load_combat(GC.ally1,GC.ally2,GC.ally3,GC.ally4,GC.enemy1,GC.enemy2,GC.enemy3,GC.enemy4)
 	get_tree().change_scene_to_file("res://scenes/main scenes/combat.tscn")
 	
 func _on_confirm_swap_pressed() -> void:
+	AudioPlayer.play_FX("click",-10)
 	if (new_skill_ally):
 		new_skill_ally.skill_swap_2 = new_skill
 		new_skill_ally._on_confirm_swap_pressed()

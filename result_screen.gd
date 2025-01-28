@@ -15,8 +15,13 @@ func _process(delta: float) -> void:
 
 func update_text(result, gold):
 	result_title.text = result
-	gold_text.text = "+" + str(gold) + " Gold"
-	
+	if gold > 0:
+		gold_text.text = "+" + str(gold) + " Gold"
+	else:
+		gold_text.text = ""
+	if result == "Defeat!":
+		gold_text.text = "Better luck next time.."
+		
 
 
 func _on_continue_pressed() -> void:

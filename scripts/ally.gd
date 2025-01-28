@@ -29,6 +29,8 @@ var current_element = "none"
 var combat = true
 var shop = false
 
+var level_up_complete = false
+
 var position = 0
 var combat_manager
 var connected = false
@@ -74,6 +76,7 @@ func update_vars():
 	ult = res.skill4
 	ult_choice_1 = res.ult_1
 	ult_choice_2 = res.ult_2
+	title = res.name
 	sprite_spot.texture = load(res.sprite.resource_path)
 	sprite_spot.scale = Vector2(res.sprite_scale,res.sprite_scale)
 	spell_select_ui.skill1 = basic_atk
@@ -113,8 +116,8 @@ func receive_skill(skill):
 			if (r2):
 				await reaction_ended 
 			if (!r2):
-				self.take_damage(skill.damage)
-				DamageNumbers.display_number(skill.damage, damage_number_origin.global_position, skill.element, reaction)
+				self.take_damage(skill.damage2)
+				DamageNumbers.display_number(skill.damage2, damage_number_origin.global_position, skill.element2, reaction)
 			if (skill.element != "none"):
 				current_element = skill.element
 	#handle status effects
@@ -165,6 +168,7 @@ func take_damage(damage : int):
 			damage_left = 0
 		hp_bar.set_shield(shield)
 	health -= damage_left
+	check_if_dead()
 	hp_bar.set_hp(health)
 	return total_dmg
 
@@ -177,6 +181,19 @@ func receive_healing(healing: int):
 func receive_shielding(shielding: int):
 	shield += shielding
 	hp_bar.set_shield(shield)
+
+func check_if_dead():
+	if health <= 0:
+		die()
+
+func die():
+	print(title + " ded")
+	self.visible = false
+	await get_tree().create_timer(GC.GLOBAL_INTERVAL).timeout
+	# wont erase itself until after the skill is done
+	combat_manager.allies.erase(self)
+	combat_manager.set_unit_pos()
+	queue_free()
 
 func show_skills():
 	spell_select_ui.visible = true
@@ -214,6 +231,7 @@ func show_level_up(level):
 
 
 func _on_spell_select_ui_new_select(ally) -> void:
+	AudioPlayer.play_FX("click",-10)
 	skill_swap_1_spot = spell_select_ui.selected
 	if skill_swap_2 != null:
 		confirm_swap.visible = true
@@ -224,6 +242,7 @@ func _on_spell_select_ui_new_select(ally) -> void:
 
 
 func _on_level_up_reward_new_select(skill) -> void:
+	AudioPlayer.play_FX("click",-10)
 	skill_swap_2 = skill
 	swap_tutorial.visible = true
 	if (skill_swap_1_spot > 0):
@@ -231,6 +250,7 @@ func _on_level_up_reward_new_select(skill) -> void:
 
 
 func _on_confirm_swap_pressed() -> void:
+	AudioPlayer.play_FX("click",-10)
 	match skill_swap_1_spot:
 		1:
 			basic_atk = skill_swap_2
@@ -243,6 +263,7 @@ func _on_confirm_swap_pressed() -> void:
 	level_up_reward.visible = false
 	update_ally_skills()
 	swap_tutorial.visible = false
+	level_up_complete = true
 	spell_select_ui.reset()
 	
 func update_ally_skills():
