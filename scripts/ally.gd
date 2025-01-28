@@ -69,7 +69,8 @@ func _ready() -> void:
 		spell_select_ui.new_select.connect(combat_manager._on_spell_select_ui_new_select)
 	hp_bar.set_hp(max_health)
 	hp_bar.set_maxhp(max_health)
-	self.target_chosen.connect(combat_manager.target_signal)
+	if combat:
+		self.target_chosen.connect(combat_manager.target_signal)
 
 func update_vars():
 	basic_atk = res.skill1

@@ -13,6 +13,8 @@ var allies = []
 const ALLY = preload("res://scenes/units/allies/ally.tscn")
 const ENEMY = preload("res://scenes/units/enemies/enemy.tscn")
 
+@onready var reaction_panel: Control = $ReactionGuide/ReactionPanel
+
 @onready var ally_1_spot: Node2D = $"Ally 1 Spot"
 @onready var ally_2_spot: Node2D = $"Ally 2 Spot"
 @onready var ally_3_spot: Node2D = $"Ally 3 Spot"
@@ -148,3 +150,10 @@ func _on_confirm_swap_pressed() -> void:
 		new_skill_ally.skill_swap_2 = new_skill
 		new_skill_ally._on_confirm_swap_pressed()
 		swap_done.emit()
+
+
+func _on_reaction_guide_pressed() -> void:
+	if reaction_panel.visible:
+		reaction_panel.visible = false
+	elif not reaction_panel.visible:
+		reaction_panel.visible = true

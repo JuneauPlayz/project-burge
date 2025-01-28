@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://do6gwn47eylu7"]
+[gd_scene load_steps=16 format=3 uid="uid://do6gwn47eylu7"]
 
 [ext_resource type="Script" path="res://scripts/combat_scene.gd" id="1_3ou8c"]
 [ext_resource type="Script" path="res://scripts/Targeting.gd" id="2_0pyv8"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bsae24ot6vmo6" path="res://assets/battle_bg.jpg" id="7_qh8p2"]
 [ext_resource type="PackedScene" uid="uid://ydkggenx6prk" path="res://result_screen.tscn" id="8_xw3f4"]
 [ext_resource type="PackedScene" uid="uid://ppg1wk60cwxc" path="res://scenes/reusables/relic_info.tscn" id="9_mexx1"]
+[ext_resource type="PackedScene" uid="uid://cokl4xcoeufdp" path="res://scenes/reusables/reaction_panel.tscn" id="9_wlt5g"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mo5rj"]
 font = ExtResource("5_wtw4i")
@@ -85,6 +86,23 @@ offset_right = 491.0
 offset_bottom = 678.0
 
 [node name="CombatCurrency" parent="CombatManager" instance=ExtResource("6_b6b3n")]
+
+[node name="ReactionGuide" type="Button" parent="CombatManager"]
+offset_left = 1470.0
+offset_top = 945.0
+offset_right = 1917.0
+offset_bottom = 1016.0
+theme_override_font_sizes/font_size = 48
+text = "Open Reaction Guide"
+
+[node name="ReactionPanel" parent="CombatManager/ReactionGuide" instance=ExtResource("9_wlt5g")]
+visible = false
+layout_mode = 1
+offset_left = -1260.0
+offset_top = -885.0
+offset_right = -1260.0
+offset_bottom = -885.0
+scale = Vector2(0.9, 0.9)
 
 [node name="Ally 1 Spot" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -186,5 +204,6 @@ scale = Vector2(0.7, 0.7)
 
 [connection signal="new_spell_selected" from="CombatManager" to="StateMachine/SpellSelect" method="_on_combat_manager_new_spell_selected"]
 [connection signal="target_selected" from="CombatManager" to="StateMachine/Targeting" method="_on_combat_manager_target_selected"]
+[connection signal="pressed" from="CombatManager/ReactionGuide" to="." method="_on_reaction_guide_pressed"]
 [connection signal="pressed" from="EndTurn" to="CombatManager" method="_on_end_turn_pressed"]
 [connection signal="pressed" from="ResetChoices" to="CombatManager" method="_on_reset_choices_pressed"]

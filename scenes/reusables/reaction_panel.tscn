@@ -1,0 +1,292 @@
+[gd_scene load_steps=12 format=3 uid="uid://cokl4xcoeufdp"]
+
+[ext_resource type="Script" path="res://scenes/reusables/reaction_panel.gd" id="1_vmy8d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_evy26"]
+bg_color = Color(0.449653, 0.548845, 0.58154, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_bottom_right = 25
+shadow_size = 7
+
+[sub_resource type="LabelSettings" id="LabelSettings_gqkyi"]
+font_size = 74
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 0.988235)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r5ene"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0u22f"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pyo7b"]
+font_size = 36
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qqncj"]
+font_size = 28
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_02ugj"]
+font_size = 28
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ax82d"]
+font_size = 32
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vm6sf"]
+font_size = 32
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5oal1"]
+font_size = 36
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="ReactionPanel" type="Control"]
+z_index = 6
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vmy8d")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 98.0
+offset_top = 76.0
+offset_right = 1724.0
+offset_bottom = 949.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_evy26")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="Title" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Reaction Guide"
+label_settings = SubResource("LabelSettings_gqkyi")
+horizontal_alignment = 1
+
+[node name="VSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 34
+theme_override_styles/separator = SubResource("StyleBoxFlat_r5ene")
+
+[node name="Control" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Vaporize" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/Control"]
+custom_minimum_size = Vector2(450, 45)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = " Vaporize = [color=coral]Fire[/color] + [color=dark_cyan]Water[/color]
+"
+
+[node name="VSeparator" type="VSeparator" parent="PanelContainer/MarginContainer/VBoxContainer/Control"]
+layout_mode = 2
+theme_override_constants/separation = 25
+theme_override_styles/separator = SubResource("StyleBoxFlat_0u22f")
+
+[node name="VaporizeMult" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Control"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Vaporize Multiplier: 2x"
+label_settings = SubResource("LabelSettings_pyo7b")
+
+[node name="VSeparator2" type="VSeparator" parent="PanelContainer/MarginContainer/VBoxContainer/Control"]
+layout_mode = 2
+theme_override_constants/separation = 25
+theme_override_styles/separator = SubResource("StyleBoxFlat_0u22f")
+
+[node name="VaporizeDescription" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Control"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+text = "Multiplies the second element's damage by Vaporize Multiplier"
+label_settings = SubResource("LabelSettings_pyo7b")
+horizontal_alignment = 2
+
+[node name="Control2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Shock" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/Control2"]
+custom_minimum_size = Vector2(450, 45)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = " Shock = [color=dark_cyan]Water[/color] + [color=purple]Lightning[/color]"
+
+[node name="VSeparator" type="VSeparator" parent="PanelContainer/MarginContainer/VBoxContainer/Control2"]
+layout_mode = 2
+theme_override_constants/separation = 25
+theme_override_styles/separator = SubResource("StyleBoxFlat_0u22f")
+
+[node name="ShockMult" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Control2"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Shock Multiplier: 0.25x"
+label_settings = SubResource("LabelSettings_pyo7b")
+
+[node name="VSeparator2" type="VSeparator" parent="PanelContainer/MarginContainer/VBoxContainer/Control2"]
+layout_mode = 2
+theme_override_constants/separation = 25
+theme_override_styles/separator = SubResource("StyleBoxFlat_0u22f")
+
+[node name="ShockDescription" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Control2"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+text = "After shocking, deals 3 bonus instances of lightning damage
+ (Shock Multiplier x Second Element's Damage)"
+label_settings = SubResource("LabelSettings_qqncj")
+
+[node name="Control3" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Detonate" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/Control3"]
+custom_minimum_size = Vector2(450, 45)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = " Detonate = [color=coral]Fire[/color] + [color=purple]Lightning[/color]"
+
+[node name="VSeparator" type="VSeparator" parent="PanelContainer/MarginContainer/VBoxContainer/Control3"]
+layout_mode = 2
+theme_override_constants/separation = 25
+theme_override_styles/separator = SubResource("StyleBoxFlat_0u22f")
+
+[node name="DetonateMult" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Control3"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Detonate Multiplier: 1.5x
+Side Multiplier: 0.5x"
+label_settings = SubResource("LabelSettings_pyo7b")
+
+[node name="VSeparator2" type="VSeparator" parent="PanelContainer/MarginContainer/VBoxContainer/Control3"]
+layout_mode = 2
+theme_override_constants/separation = 25
+theme_override_styles/separator = SubResource("StyleBoxFlat_0u22f")
+
+[node name="DetonateDescription" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Control3"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+text = "Multiplies the second element's damage by Detonate Multiplier
+Deals (Side Multiplier x Second Element's Damage) to the left and right units"
+label_settings = SubResource("LabelSettings_02ugj")
+
+[node name="Control4" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Erupt" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/Control4"]
+custom_minimum_size = Vector2(450, 45)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = " Erupt = [color=saddle_brown]Earth[/color] + [color=coral]Fire[/color]"
+
+[node name="VSeparator" type="VSeparator" parent="PanelContainer/MarginContainer/VBoxContainer/Control4"]
+layout_mode = 2
+theme_override_constants/separation = 25
+theme_override_styles/separator = SubResource("StyleBoxFlat_0u22f")
+
+[node name="Erupt Multiplier" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Control4"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Erupt Multiplier: x3"
+label_settings = SubResource("LabelSettings_pyo7b")
+
+[node name="VSeparator2" type="VSeparator" parent="PanelContainer/MarginContainer/VBoxContainer/Control4"]
+layout_mode = 2
+theme_override_constants/separation = 25
+theme_override_styles/separator = SubResource("StyleBoxFlat_0u22f")
+
+[node name="FireCount2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Control4"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+text = "Multiplies the second element's damage by Erupt Multiplier against SHIELDS"
+label_settings = SubResource("LabelSettings_ax82d")
+horizontal_alignment = 2
+
+[node name="Control5" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Bloom" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/Control5"]
+custom_minimum_size = Vector2(450, 45)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = " Bloom = [color=dark_cyan]Water[/color] + [color=web_green]Grass[/color]"
+
+[node name="VSeparator" type="VSeparator" parent="PanelContainer/MarginContainer/VBoxContainer/Control5"]
+layout_mode = 2
+theme_override_constants/separation = 25
+theme_override_styles/separator = SubResource("StyleBoxFlat_0u22f")
+
+[node name="BloomHealing" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Control5"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Bloom Healing: 5"
+label_settings = SubResource("LabelSettings_pyo7b")
+
+[node name="VSeparator2" type="VSeparator" parent="PanelContainer/MarginContainer/VBoxContainer/Control5"]
+layout_mode = 2
+theme_override_constants/separation = 25
+theme_override_styles/separator = SubResource("StyleBoxFlat_0u22f")
+
+[node name="FireCount2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Control5"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+text = "On Bloom, heals the applier's team of the second element for Bloom Healing"
+label_settings = SubResource("LabelSettings_vm6sf")
+horizontal_alignment = 2
+
+[node name="Disclaimer" type="Label" parent="."]
+layout_mode = 0
+offset_left = 114.0
+offset_top = 86.0
+offset_right = 528.0
+offset_bottom = 118.0
+text = "The order of elements doesn't matter
+EX: Fire + Water and Water + Fire are both Vaporize.
+However, the vaporize bonus damage is only applied 
+to the second element's damage"
+label_settings = SubResource("LabelSettings_5oal1")
+
+[node name="Hide" type="Button" parent="."]
+custom_minimum_size = Vector2(65, 50)
+layout_mode = 0
+offset_left = 1641.0
+offset_top = 92.0
+offset_right = 1706.0
+offset_bottom = 150.0
+theme_override_font_sizes/font_size = 56
+text = "x"
+
+[connection signal="pressed" from="Hide" to="." method="_on_hide_pressed"]

@@ -11,6 +11,7 @@ extends Node2D
 @onready var enemy_4_spot: Node2D = %"Enemy 4 Spot"
 @onready var loading: Node2D = $Loading
 @onready var relic_handler_spot: Node2D = $RelicHandlerSpot
+@onready var reaction_panel: Control = $CombatManager/ReactionGuide/ReactionPanel
 
 
 const RELIC_HANDLER = preload("res://scenes/relic handler/relic_handler.tscn")
@@ -158,3 +159,14 @@ func load_units():
 	
 func toggle_relic_tooltip():
 	relic_info.visible = !relic_info.visible
+
+
+func _on_reaction_guide_pressed() -> void:
+	if reaction_panel.visible:
+		reaction_panel.visible = false
+		for enemy in enemies:
+			enemy.show_next_skill_info()
+	elif not reaction_panel.visible:
+		reaction_panel.visible = true
+		for enemy in enemies:
+			enemy.hide_next_skill_info()

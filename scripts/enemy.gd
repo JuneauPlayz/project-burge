@@ -18,6 +18,7 @@ var rng
 var random_num
 var res : UnitRes
 @onready var sprite_spot: Sprite2D = $SpriteSpot
+@onready var show_next_skill: Control = $ShowNextSkill
 
 
 var BLEED = preload("res://resources/Status Effects/Bleed.tres")
@@ -167,4 +168,10 @@ func random_skill():
 			return skill2
 		3:
 			return skill3
+			
+func hide_next_skill_info():
+	show_next_skill.visible = false
+	
+func show_next_skill_info():
+	show_next_skill.visible = true
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ydkggenx6prk"]
+[gd_scene load_steps=8 format=3 uid="uid://ydkggenx6prk"]
 
 [ext_resource type="Script" path="res://result_screen.gd" id="1_couv2"]
 
@@ -32,6 +32,8 @@ outline_color = Color(0, 0, 0, 1)
 font_size = 31
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ec5j4"]
 
 [node name="VictoryScreen" type="Control"]
 layout_mode = 3
@@ -81,6 +83,7 @@ label_settings = SubResource("LabelSettings_6s3dt")
 [node name="HSeparator" type="HSeparator" parent="PanelContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 150
+theme_override_styles/separator = SubResource("StyleBoxFlat_ec5j4")
 
 [node name="Continue" type="Button" parent="PanelContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2

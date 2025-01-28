@@ -54,6 +54,7 @@ custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 
 [node name="Position" type="Label" parent="GridContainer/Ally2Spot"]
+layout_mode = 0
 offset_left = -13.0
 offset_top = -52.0
 offset_right = 118.0
@@ -67,6 +68,7 @@ custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 
 [node name="Position" type="Label" parent="GridContainer/Ally3Spot"]
+layout_mode = 0
 offset_left = -13.0
 offset_top = -52.0
 offset_right = 118.0
@@ -79,6 +81,7 @@ custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 
 [node name="Position" type="Label" parent="GridContainer/Ally4Spot"]
+layout_mode = 0
 offset_left = -9.0
 offset_top = -52.0
 offset_right = 117.0
