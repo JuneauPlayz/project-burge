@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://5spa5amgsxfm"]
+[gd_scene load_steps=9 format=3 uid="uid://5spa5amgsxfm"]
 
 [ext_resource type="Script" path="res://scripts/hp_bar.gd" id="1_orq1w"]
 [ext_resource type="Texture2D" uid="uid://cfus0jnjm26vl" path="res://assets/shield.png" id="2_0hkbf"]
@@ -23,9 +23,6 @@ font_size = 48
 outline_size = 9
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 24
-
-[sub_resource type="LabelSettings" id="LabelSettings_lmenn"]
-font_size = 45
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cq0p4"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -72,14 +69,17 @@ offset_bottom = 96.75
 text = "0 / 0"
 label_settings = SubResource("LabelSettings_tqes5")
 
-[node name="CurrentElement" type="Label" parent="."]
+[node name="CurrentElement" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 25.0
-offset_top = -37.5
-offset_right = 184.0
-offset_bottom = 15.5
-text = "Element: "
-label_settings = SubResource("LabelSettings_lmenn")
+offset_left = 19.0
+offset_top = -37.0
+offset_right = 356.0
+offset_bottom = 16.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = " Element: None"
 
 [node name="ShieldBar" type="ProgressBar" parent="."]
 layout_mode = 0

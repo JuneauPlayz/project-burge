@@ -4,11 +4,11 @@ extends Control
 var max_hp = 0
 var hp = 0
 var shield = 0
-@onready var current_element: Label = $CurrentElement
+@onready var current_element: RichTextLabel = $CurrentElement
 @onready var shield_bar: ProgressBar = $ShieldBar
 @onready var shield_spr: Sprite2D = $Shield
 @onready var shield_label: Label = $ShieldLabel
-
+var element_dict = {"none": Color.WHITE, "fire": Color.CORAL, "water": Color.DARK_CYAN, "lightning": Color.PURPLE, "earth": Color.SADDLE_BROWN, "grass": Color.WEB_GREEN}
 func set_hp(newhp):
 	hp = newhp
 	progress_bar.value = hp
@@ -41,4 +41,18 @@ func update_text():
 		
 
 func update_element(element):
-	current_element.text = "Element: " + element
+	match element:
+		"":
+			current_element.text = " Element: None"
+		"none":
+			current_element.text = " Element: None"
+		"fire":
+			current_element.text = " Element: [color=coral]Fire[/color]"
+		"water":
+			current_element.text = " Element: [color=dark_cyan]Water[/color]"
+		"lightning":
+			current_element.text = " Element: [color=purple]Lightning[/color]"
+		"earth":
+			current_element.text = " Element: [color=saddle_brown]Earth[/color]"
+		"grass":
+			current_element.text = " Element: [color=web_green]Grass[/color]"
