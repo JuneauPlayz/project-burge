@@ -10,8 +10,9 @@ const BURGER = preload("res://scenes/units/enemies/Burger.tres")
 
 const RELIC_HANDLER = preload("res://scenes/relic handler/relic_handler.tscn")
 
-const SHIELD_POTION = preload("res://resources/relics/shield_potion.tres")
-const FIRE_POTION = preload("res://resources/relics/fire_potion.tres")
+const SHIELD_POTION = preload("res://scenes/relic handler/relics/shield_potion.tres")
+const FIRE_POTION = preload("res://scenes/relic handler/relics/fire_potion.tres")
+const VAPOR_ORB = preload("res://scenes/relic handler/relics/vapor_orb.tres")
 
 var ally_list = []
 var ally_names = []
@@ -86,3 +87,7 @@ func _on_shield_pressed() -> void:
 
 func _on_fire_pressed() -> void:
 	add_relic(FIRE_POTION, "Fire Potion")
+
+
+func _on_vapor_pressed() -> void:
+	add_relic(VAPOR_ORB, "Vapor Orb")

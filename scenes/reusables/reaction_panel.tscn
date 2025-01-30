@@ -420,7 +420,7 @@ layout_mode = 2
 theme_override_constants/separation = 25
 theme_override_styles/separator = SubResource("StyleBoxFlat_0u22f")
 
-[node name="VaporizeMult" type="Label" parent="PanelContainer/MarginContainer/Page2/Nitro"]
+[node name="NitroMult" type="Label" parent="PanelContainer/MarginContainer/Page2/Nitro"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 text = "Nitro Multiplier: 1.5x "
@@ -431,7 +431,7 @@ layout_mode = 2
 theme_override_constants/separation = 25
 theme_override_styles/separator = SubResource("StyleBoxFlat_0u22f")
 
-[node name="VaporizeDescription" type="Label" parent="PanelContainer/MarginContainer/Page2/Nitro"]
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/Page2/Nitro"]
 custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 text = "Adds the Nitro debuff to the unit, causing the next instance of damage taken
@@ -472,7 +472,7 @@ layout_mode = 2
 theme_override_constants/separation = 25
 theme_override_styles/separator = SubResource("StyleBoxFlat_0u22f")
 
-[node name="ShockMult" type="Label" parent="PanelContainer/MarginContainer/Page2/Burn"]
+[node name="BurnDamage" type="Label" parent="PanelContainer/MarginContainer/Page2/Burn"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 text = "Burn Damage: 10
@@ -524,7 +524,7 @@ layout_mode = 2
 theme_override_constants/separation = 25
 theme_override_styles/separator = SubResource("StyleBoxFlat_0u22f")
 
-[node name="DetonateMult" type="Label" parent="PanelContainer/MarginContainer/Page2/Muck"]
+[node name="MuckMult" type="Label" parent="PanelContainer/MarginContainer/Page2/Muck"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 text = "Muck Multipler: 0.75x"
@@ -575,7 +575,7 @@ layout_mode = 2
 theme_override_constants/separation = 25
 theme_override_styles/separator = SubResource("StyleBoxFlat_0u22f")
 
-[node name="EruptMult" type="Label" parent="PanelContainer/MarginContainer/Page2/Discharge"]
+[node name="DischargeMult" type="Label" parent="PanelContainer/MarginContainer/Page2/Discharge"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 text = "Discharge Multiplier: x1"
@@ -612,7 +612,7 @@ theme_override_styles/separator = SubResource("StyleBoxFlat_r5ene")
 custom_minimum_size = Vector2(0, 55)
 layout_mode = 2
 
-[node name="SowTokens" type="RichTextLabel" parent="PanelContainer/MarginContainer/Page2/Sow"]
+[node name="Sow" type="RichTextLabel" parent="PanelContainer/MarginContainer/Page2/Sow"]
 custom_minimum_size = Vector2(500, 48)
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -626,7 +626,7 @@ layout_mode = 2
 theme_override_constants/separation = 25
 theme_override_styles/separator = SubResource("StyleBoxFlat_0u22f")
 
-[node name="BloomHealing" type="Label" parent="PanelContainer/MarginContainer/Page2/Sow"]
+[node name="SowShielding" type="Label" parent="PanelContainer/MarginContainer/Page2/Sow"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 text = "Sow Shielding: 5"

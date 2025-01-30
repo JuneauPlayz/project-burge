@@ -38,8 +38,6 @@ var targeting_skill : Skill
 @onready var targeting_skill_info: Control = $TargetingSkillInfo
 @onready var relics : RelicHandler
 @onready var victory_screen: Control = $"../VictoryScreen"
-# relics
-const SHIELD_POTION = preload("res://resources/relics/shield_potion.tres")
 
 var ally1skill : int
 var ally2skill : int
