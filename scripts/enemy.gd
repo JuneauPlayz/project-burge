@@ -21,7 +21,9 @@ var res : UnitRes
 @onready var show_next_skill: Control = $ShowNextSkill
 
 
-var BLEED = preload("res://resources/Status Effects/Bleed.tres")
+const BLEED = preload("res://resources/Status Effects/Bleed.tres")
+const BUBBLE = preload("res://resources/Status Effects/Bubble.tres")
+const BURN = preload("res://resources/Status Effects/Burn.tres")
 
 signal skill_end
 signal reaction_ended
@@ -99,6 +101,9 @@ func receive_skill(skill):
 			if x.name == "Bleed":
 				var new_bleed = BLEED.duplicate()
 				status.append(new_bleed)
+			if x.name == "Burn":
+				var new_burn = BLEED.duplicate()
+				status.append(new_burn)
 	hp_bar.update_element(current_element)
 
 func receive_healing(healing: int):
@@ -153,7 +158,6 @@ func _on_targeting_area_pressed() -> void:
 	target_chosen.emit(self)
 	
 func execute_status(status_effect):
-	print(status_effect)
 	take_damage(status_effect.damage)
 	DamageNumbers.display_number(status_effect.damage, damage_number_origin.global_position, status_effect.element, "")
 	status_effect.turns_remaining -= 1

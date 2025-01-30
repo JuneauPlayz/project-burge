@@ -3,6 +3,7 @@ extends Node
 signal reaction_finished
 
 var BUBBLE = preload("res://resources/Status Effects/Bubble.tres")
+const BURN = preload("res://resources/Status Effects/Burn.tres")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -56,8 +57,6 @@ func reaction(elem1: String, elem2: String, unit: Unit, value, hostile: int) -> 
 					nitro(elem1, elem2, unit, value, hostile)
 		"earth":
 			match elem2:
-				"earth":
-					no_reaction(elem1, elem2, unit, value, hostile)
 				"fire":
 					erupt(elem1, elem2, unit, value, hostile)
 				"water":
@@ -68,8 +67,6 @@ func reaction(elem1: String, elem2: String, unit: Unit, value, hostile: int) -> 
 					bubble(elem1, elem2, unit, value, hostile)
 		"grass":
 			match elem2:
-				"grass":
-					no_reaction(elem1, elem2, unit, value, hostile)
 				"earth":
 					bubble(elem1, elem2, unit, value, hostile)
 				"fire":
@@ -129,6 +126,10 @@ func erupt(elem1: String, elem2: String, unit: Unit, value, hostile: int) -> voi
 
 func burn(elem1: String, elem2: String, unit: Unit, value, hostile: int) -> void:
 	var reaction_name = " Burn!"
+	var new_burn = BURN.duplicate()
+	new_burn.turns_remaining = GC.burn_length
+	new_burn.damage = GC.burn_damage
+	unit.status.append(new_burn)
 	if hostile == 1:
 		DamageNumbers.display_number(unit.take_damage(roundi(value * hostile)), unit.get_child(2).global_position, elem2, reaction_name)
 	unit.current_element = "none"
@@ -197,7 +198,5 @@ func bubble(elem1: String, elem2: String, unit: Unit, value, hostile: int) -> vo
 	reaction_finished.emit()
 
 func no_reaction(elem1: String, elem2: String, unit: Unit, value, hostile: int) -> void:
-	if hostile == 1:
-		DamageNumbers.display_number(unit.take_damage(roundi(value * hostile)), unit.get_child(2).global_position, elem2, "")
-	unit.current_element = "none"
 	reaction_finished.emit()
+	pass

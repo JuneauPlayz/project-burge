@@ -607,34 +607,49 @@ func enemy_pre_status():
 	for enemy in enemies:
 		if enemy.status != []:
 			for status in enemy.status:
-				if status.pre_turn == 1:
+				if status.pre_turn == true:
 					enemy.execute_status(status)
+		for i in range (len(enemy.status)): 
+			if i < len(enemy.status):
+				if enemy.status[i].turns_remaining <= 0:
+					enemy.status.remove_at(i)
+					i -= 1
 
 func enemy_post_status():
 	for enemy in enemies:
 		if enemy.status != []:
 			for status in enemy.status:
-				#if status.pre_turn == 0:
+				if status.pre_turn == false:
 					enemy.execute_status(status)
 		#remove any statuses with duration 0
-		for i in range (len(enemy.status)-1): 
-			if enemy.status[i].turns_remaining <= 0:
-				enemy.status.remove_at(i)
-				i -= 1
+		for i in range (len(enemy.status)): 
+			if i < len(enemy.status):
+				if enemy.status[i].turns_remaining <= 0:
+					enemy.status.remove_at(i)
+					i -= 1
 	
 func ally_pre_status():
 	for ally in allies:
 		if ally.status != []:
 			for status in ally.status:
-				if status.pre_turn == 1:
+				if status.pre_turn == true:
 					ally.execute_status(status)
-	
+		for i in range (len(ally.status)): 
+			if i < len(ally.status):
+				if ally.status[i].turns_remaining <= 0:
+					ally.status.remove_at(i)
+					i -= 1
 func ally_post_status():
 	for ally in allies:
 		if ally.status != []:
 			for status in ally.status:
-				if status.pre_turn == 0:
+				if status.pre_turn == false:
 					ally.execute_status(status)
+		for i in range (len(ally.status)): 
+			if i < len(ally.status):
+				if ally.status[i].turns_remaining <= 0:
+					ally.status.remove_at(i)
+					i -= 1
 					
 func check_requirements():
 	for ally in allies:

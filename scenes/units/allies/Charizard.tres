@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitRes" load_steps=8 format=3 uid="uid://bchghb71yo8ln"]
+[gd_resource type="Resource" script_class="UnitRes" load_steps=9 format=3 uid="uid://bchghb71yo8ln"]
 
 [ext_resource type="Script" path="res://scripts/UnitRes.gd" id="1_5rsqq"]
 [ext_resource type="Resource" uid="uid://c3yogn8m318q2" path="res://resources/Skills/fire/Fire_Bolt.tres" id="2_odqjc"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://b70k44ljti3df" path="res://resources/Skills/fire/Wildfire.tres" id="3_5igym"]
 [ext_resource type="Resource" uid="uid://drjm7bxw8bu8w" path="res://resources/Skills/fire/Fire Snipe.tres" id="4_8uraa"]
 [ext_resource type="Resource" uid="uid://dcf2ccmtpg225" path="res://resources/Skills/fire/Fire_Spear.tres" id="4_qw73q"]
+[ext_resource type="Resource" uid="uid://clidntww233oy" path="res://resources/Skills/physical/Bloody_Slash.tres" id="5_3hf8p"]
 [ext_resource type="Resource" uid="uid://ddoguurpcf2jb" path="res://resources/Skills/fire/Vaporstrike.tres" id="7_8hf2u"]
 
 [resource]
@@ -13,6 +14,7 @@ script = ExtResource("1_5rsqq")
 skill1 = ExtResource("2_odqjc")
 skill2 = ExtResource("3_5igym")
 skill3 = ExtResource("4_8uraa")
+skill4 = ExtResource("5_3hf8p")
 ult_1 = ExtResource("4_qw73q")
 ult_2 = ExtResource("7_8hf2u")
 sprite = ExtResource("2_ury01")

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Dot_Status" load_steps=2 format=3 uid="uid://dt8g5a7f2o4ny"]
+
+[ext_resource type="Script" path="res://scripts/DoT_Status.gd" id="1_806f8"]
+
+[resource]
+script = ExtResource("1_806f8")
+name = "Burn"
+pre_turn = true
+damage = 10
+element = "fire"
+turns_remaining = 2
+unique_type = ""

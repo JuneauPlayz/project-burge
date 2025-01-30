@@ -17,6 +17,10 @@ var skill_swap_2 : Skill
 var ally_num : int
 var current_element = "none"
 
+const BLEED = preload("res://resources/Status Effects/Bleed.tres")
+const BUBBLE = preload("res://resources/Status Effects/Bubble.tres")
+const BURN = preload("res://resources/Status Effects/Burn.tres")
+
 @onready var sprite_spot: Sprite2D = $SpriteSpot
 
 @onready var damage_number_origin: Node2D = $DamageNumberOrigin
@@ -126,7 +130,12 @@ func receive_skill(skill):
 	#handle status effects
 	if skill.status_effects != []:
 		for x in skill.status_effects:
-			status.append(x)
+			if x.name == "Bleed":
+				var new_bleed = BLEED.duplicate()
+				status.append(new_bleed)
+			if x.name == "Burn":
+				var new_burn = BLEED.duplicate()
+				status.append(new_burn)
 	hp_bar.update_element(current_element)
 	
 func reaction_signal():

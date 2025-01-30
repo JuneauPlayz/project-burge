@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_tm7is")
 name = "Bleed"
-pre_turn = 0
+pre_turn = false
 damage = 5
 element = "none"
 turns_remaining = 3
