@@ -2,8 +2,12 @@ extends Node
 
 signal reaction_finished
 
-var BUBBLE = preload("res://resources/Status Effects/Bubble.tres")
+const BLEED = preload("res://resources/Status Effects/Bleed.tres")
+const BUBBLE = preload("res://resources/Status Effects/Bubble.tres")
 const BURN = preload("res://resources/Status Effects/Burn.tres")
+const MUCK = preload("res://resources/Status Effects/Muck.tres")
+const NITRO = preload("res://resources/Status Effects/Nitro.tres")
+const SOW = preload("res://resources/Status Effects/Sow.tres")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -42,7 +46,7 @@ func reaction(elem1: String, elem2: String, unit: Unit, value, hostile: int) -> 
 				"lightning":
 					shock(elem1, elem2, unit, value, hostile)
 				"earth":
-					no_reaction(elem1, elem2, unit, value, hostile)
+					muck(elem1, elem2, unit, value, hostile)
 				"grass":
 					bloom(elem1, elem2, unit, value, hostile)
 		"lightning":
@@ -60,15 +64,15 @@ func reaction(elem1: String, elem2: String, unit: Unit, value, hostile: int) -> 
 				"fire":
 					erupt(elem1, elem2, unit, value, hostile)
 				"water":
-					no_reaction(elem1, elem2, unit, value, hostile)
+					muck(elem1, elem2, unit, value, hostile)
 				"lightning":
 					discharge(elem1, elem2, unit, value, hostile)
 				"grass":
-					bubble(elem1, elem2, unit, value, hostile)
+					sow(elem1, elem2, unit, value, hostile)
 		"grass":
 			match elem2:
 				"earth":
-					bubble(elem1, elem2, unit, value, hostile)
+					sow(elem1, elem2, unit, value, hostile)
 				"fire":
 					burn(elem1, elem2, unit, value, hostile)
 				"water":
@@ -153,28 +157,22 @@ func shock(elem1: String, elem2: String, unit: Unit, value, hostile: int) -> voi
 
 func bloom(elem1: String, elem2: String, unit: Unit, value, hostile: int) -> void:
 	var reaction_name = " Bloom!"
-	if hostile == 1:
-		DamageNumbers.display_number(unit.take_damage(roundi(value * hostile)), unit.get_child(2).global_position, elem2, reaction_name)
 	unit.current_element = "none"
-	if unit is Enemy:
-		for ally in GC.combat_allies:
-			if ally != null:
-				ally.receive_healing(GC.ally_bloom_healing * GC.bloom_mult)
-				DamageNumbers.display_number_plus(GC.ally_bloom_healing * GC.bloom_mult, ally.damage_number_origin.global_position, "grass", "")
-	elif unit is Ally:
-		for enemy in GC.combat_enemies:
-			if enemy != null:
-				enemy.receive_healing(GC.enemy_bloom_healing)
-				DamageNumbers.display_number_plus(GC.enemy_bloom_healing, enemy.damage_number_origin.global_position, "grass", "")
+	var bubble_effect = BUBBLE.duplicate()
+	DamageNumbers.display_number(unit.take_damage(roundi(value * hostile)), unit.get_child(2).global_position, elem2, reaction_name)
+	DamageNumbers.display_text(unit.get_child(2).global_position, "grass", "Bubbled!", 32)
+	unit.status.append(bubble_effect)
+	unit.current_element = "none"
 	GC.bloom()
 	reaction_finished.emit()
 
 func nitro(elem1: String, elem2: String, unit: Unit, value, hostile: int) -> void:
 	var reaction_name = " Nitro!"
-	if hostile == 1:
-		DamageNumbers.display_number(unit.take_damage(roundi(value * hostile)), unit.get_child(2).global_position, elem2, reaction_name)
+	var nitro_effect = NITRO.duplicate()
+	DamageNumbers.display_number(unit.take_damage(roundi(value * hostile)), unit.get_child(2).global_position, elem2, reaction_name)
+	DamageNumbers.display_text(unit.get_child(2).global_position, "lightning", reaction_name, 32)
+	unit.status.append(nitro_effect)
 	unit.current_element = "none"
-	GC.nitro()
 	reaction_finished.emit()
 
 func discharge(elem1: String, elem2: String, unit: Unit, value, hostile: int) -> void:
@@ -188,12 +186,21 @@ func discharge(elem1: String, elem2: String, unit: Unit, value, hostile: int) ->
 			DamageNumbers.display_number_size(enemy.take_damage(roundi(split_damage)), enemy.get_child(2).global_position, "none", reaction_name, 36)
 	reaction_finished.emit()
 	
-func bubble(elem1: String, elem2: String, unit: Unit, value, hostile: int) -> void:
-	var reaction_name = " Bubbled!"
-	var bubble_effect = BUBBLE.duplicate()
-	DamageNumbers.display_text(unit.get_child(2).global_position, "grass", reaction_name)
-	unit.status.append(bubble_effect)
-	unit.bubbled = true
+func sow(elem1: String, elem2: String, unit: Unit, value, hostile: int) -> void:
+	var reaction_name = " Sow!"
+	var sow_effect = SOW.duplicate()
+	DamageNumbers.display_number(unit.take_damage(roundi(value * hostile)), unit.get_child(2).global_position, elem2, reaction_name)
+	DamageNumbers.display_text(unit.get_child(2).global_position, "earth", reaction_name, 32)
+	unit.status.append(sow_effect)
+	unit.current_element = "none"
+	reaction_finished.emit()
+
+func muck(elem1: String, elem2: String, unit: Unit, value, hostile: int):
+	var reaction_name = " Muck!"
+	var muck_effect = MUCK.duplicate()
+	DamageNumbers.display_number(unit.take_damage(roundi(value * hostile)), unit.get_child(2).global_position, elem2, reaction_name)
+	DamageNumbers.display_text(unit.get_child(2).global_position, "earth", reaction_name, 32)
+	unit.status.append(muck_effect)
 	unit.current_element = "none"
 	reaction_finished.emit()
 

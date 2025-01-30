@@ -74,7 +74,7 @@ func display_number_size(value: int, position: Vector2, element : String, reacti
 
 func display_number_plus(value: int, position: Vector2, element : String, reaction : String):
 	var rng = RandomNumberGenerator.new()
-	var random_num = Vector2(rng.randf_range(-25,25), rng.randf_range(-25,25))
+	var random_num = Vector2(rng.randf_range(15,30), rng.randf_range(-25,25))
 	var number = Label.new()
 	number.global_position = position + random_num
 	number.text = "+" + str(value) + reaction
@@ -107,10 +107,12 @@ func display_number_plus(value: int, position: Vector2, element : String, reacti
 	await tween.finished
 	number.queue_free()
 	
-func display_text(position: Vector2, element : String, text : String):
+func display_text(position: Vector2, element : String, text : String, size : int):
+	var rng = RandomNumberGenerator.new()
+	var random_num = Vector2(rng.randf_range(15,30), rng.randf_range(-50,-25))
 	var number = Label.new()
 	number.text = text
-	number.global_position = position
+	number.global_position = position + random_num
 	number.z_index = 5
 	number.label_settings = LabelSettings.new()
 	
@@ -118,9 +120,9 @@ func display_text(position: Vector2, element : String, text : String):
 	
 	
 	number.label_settings.font_color = color
-	number.label_settings.font_size = 38
-	number.label_settings.outline_color = "#000"
-	number.label_settings.outline_size = 1
+	number.label_settings.font_size = size
+	number.label_settings.outline_color = "#000000"
+	number.label_settings.outline_size = 10
 	
 	call_deferred("add_child", number)
 	await number.resized

@@ -8,6 +8,10 @@ var gold = 50
 var bonus_gold = 0
 var gold_multiplier = 1
 #combat
+const FIRE_POTION = preload("res://scenes/relic handler/relics/fire_potion.tres")
+const SHIELD_POTION = preload("res://scenes/relic handler/relics/shield_potion.tres")
+const VAPOR_ORB = preload("res://scenes/relic handler/relics/vapor_orb.tres")
+
 
 #loading unit reses
 var ally1 : UnitRes
@@ -21,6 +25,7 @@ var enemy3 : UnitRes
 var enemy4 : UnitRes
 
 var relics = []
+var obtainable_relics = [FIRE_POTION, SHIELD_POTION, VAPOR_ORB]
 
 # units in combat
 var combat_ally1 : Ally
@@ -63,11 +68,15 @@ var detonate_main_mult = 1.5
 var detonate_side_mult = 0.5
 var bloom_mult = 1
 var nitro_mult = 1.5
+var bubble_mult = 0.5
 var burn_damage = 10
 var burn_length = 2
 var muck_mult = 0.75
 var discharge_mult = 1
 var sow_shielding = 5
+var sow_healing = 5
+var sow_healing_mult = 1
+var sow_shielding_mult = 1
 
 var ally_bloom_healing = 5
 var enemy_bloom_healing = 5

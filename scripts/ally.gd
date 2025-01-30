@@ -20,6 +20,9 @@ var current_element = "none"
 const BLEED = preload("res://resources/Status Effects/Bleed.tres")
 const BUBBLE = preload("res://resources/Status Effects/Bubble.tres")
 const BURN = preload("res://resources/Status Effects/Burn.tres")
+const MUCK = preload("res://resources/Status Effects/Muck.tres")
+const NITRO = preload("res://resources/Status Effects/Nitro.tres")
+const SOW = preload("res://resources/Status Effects/Sow.tres")
 
 @onready var sprite_spot: Sprite2D = $SpriteSpot
 
@@ -34,6 +37,7 @@ const BURN = preload("res://resources/Status Effects/Burn.tres")
 var combat = true
 var shop = false
 
+var level = 0
 var level_up_complete = false
 
 var position = 0
@@ -46,7 +50,10 @@ signal reaction_ended
 signal target_chosen
 signal loaded
 # special status checks
-var bubbled = false
+var bubble = false
+var muck = false
+var nitro = false
+var sow = false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -91,7 +98,7 @@ func update_vars():
 	spell_select_ui.skill3 = skill_2
 	spell_select_ui.skill4 = ult
 
-func receive_skill(skill):
+func receive_skill(skill, unit):
 	var rounded : int
 	var reaction = ""
 	if (!connected):
@@ -105,15 +112,14 @@ func receive_skill(skill):
 			var r2 = await ReactionManager.reaction(current_element, skill.element2, self, skill.damage2, 1)
 			if (r2):
 				await reaction_ended 
+				DamageNumbers.display_number(self.take_damage(skill.damage2), damage_number_origin.global_position, skill.element2, reaction)
 			if (!r2):
-				self.take_damage(skill.damage)
-			DamageNumbers.display_number(skill.damage, damage_number_origin.global_position, skill.element, reaction)
+				DamageNumbers.display_number(self.take_damage(skill.damage2), damage_number_origin.global_position, skill.element2, reaction)
 			if (skill.element != "none"):
 				current_element = skill.element
 	# no reaction
 	if (!r):
-		self.take_damage(skill.damage)
-		DamageNumbers.display_number(skill.damage, damage_number_origin.global_position, skill.element, reaction)
+		DamageNumbers.display_number(self.take_damage(skill.final_damage), damage_number_origin.global_position, skill.element, reaction)
 		# don't change current element if skill has no element
 		if (skill.element != "none"):
 			current_element = skill.element
@@ -123,8 +129,7 @@ func receive_skill(skill):
 			if (r2):
 				await reaction_ended 
 			if (!r2):
-				self.take_damage(skill.damage2)
-				DamageNumbers.display_number(skill.damage2, damage_number_origin.global_position, skill.element2, reaction)
+				DamageNumbers.display_number(self.take_damage(skill.damage2), damage_number_origin.global_position, skill.element2, reaction)
 			if (skill.element != "none"):
 				current_element = skill.element
 	#handle status effects
@@ -134,14 +139,33 @@ func receive_skill(skill):
 				var new_bleed = BLEED.duplicate()
 				status.append(new_bleed)
 			if x.name == "Burn":
-				var new_burn = BLEED.duplicate()
+				var new_burn = BURN.duplicate()
 				status.append(new_burn)
+			if x.name == "Bubble":
+				var new_bubble = BUBBLE.duplicate()
+				status.append(new_bubble)
+			if x.name == "Muck":
+				var new_muck = MUCK.duplicate()
+				status.append(new_muck)
+			if x.name == "Nitro":
+				var new_nitro = NITRO.duplicate()
+				status.append(new_nitro)
+	if sow:
+		unit.receive_healing(roundi(GC.sow_healing * GC.sow_healing_mult))
+		unit.receive_shielding(roundi(GC.sow_shielding * GC.sow_shielding_mult))
+		DamageNumbers.display_number_plus(roundi(GC.sow_healing * GC.sow_healing_mult), unit.damage_number_origin.global_position, "grass", "")
+		DamageNumbers.display_number_plus(roundi(GC.sow_shielding * GC.sow_shielding_mult), unit.damage_number_origin.global_position, "earth", "")
+		sow = false
+		for stati in status:
+			if stati.name == "Sow":
+				status.erase(stati)
+				DamageNumbers.display_text(self.damage_number_origin.global_position, "none", "Harvest!", 32)
 	hp_bar.update_element(current_element)
 	
 func reaction_signal():
 	reaction_ended.emit()
 	
-func receive_skill_friendly(skill):
+func receive_skill_friendly(skill, unit):
 	var rounded : int
 	var reaction = ""
 	var number = skill.damage
@@ -167,10 +191,24 @@ func take_damage(damage : int):
 	AudioPlayer.play_FX("fire_hit", -30)
 	var damage_left = damage
 	var total_dmg = damage
-	if bubbled:
-		damage_left = damage/2
+	if bubble:
+		damage_left = damage * GC.bubble_mult
 		total_dmg = damage_left
-		bubbled = false
+		bubble = false
+		DamageNumbers.display_text(self.damage_number_origin.global_position, "none", "Pop!", 32)
+		for stati in status:
+			if stati.name == "Bubble":
+				status.erase(stati)
+				self.receive_healing(GC.ally_bloom_healing * GC.bloom_mult)
+				DamageNumbers.display_number_plus(GC.ally_bloom_healing * GC.bloom_mult, damage_number_origin.global_position, "grass", "")
+	if nitro:
+		nitro = false
+		for stati in status:
+			if stati.name == "Nitro":
+				status.erase(stati)
+				damage_left = damage_left * GC.nitro_mult
+				DamageNumbers.display_text(self.damage_number_origin.global_position, "none", "Nitrate!", 32)
+		total_dmg = damage_left
 	if (shield > 0):
 		if (shield <= damage_left):
 			damage_left -= shield
@@ -218,15 +256,19 @@ func set_shield(shield):
 	hp_bar.set_shield(shield)
 	
 func execute_status(status_effect):
-	if (status_effect.unique_type == "bubble"):
-		if status_effect.turns_remaining > 0:
-			bubbled = true
-	if (status_effect.damage > 0):
+	if status_effect.event_based == false:
 		take_damage(status_effect.damage)
 		DamageNumbers.display_number(status_effect.damage, damage_number_origin.global_position, status_effect.element, "")
-	status_effect.turns_remaining -= 1
-	if status_effect.turns_remaining == 0:
-		status.erase(status_effect)
+		status_effect.turns_remaining -= 1
+	else:
+		if status_effect.name == "Bubble":
+			bubble = true
+		elif status_effect.name == "Muck":
+			muck = true
+		elif status_effect.name == "Nitro":
+			nitro = true
+		elif status_effect.name == "Sow":
+			sow = true
 		
 func get_spell_select():
 	return spell_select_ui

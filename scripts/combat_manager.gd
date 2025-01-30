@@ -210,50 +210,51 @@ func use_skill(skill,target,unit):
 	if skill.cost > 0 or skill.cost2 > 0:
 			spend_skill_cost(skill)
 	if (skill.target_type == "front_ally"):
-		front_ally.receive_skill(skill)
+		front_ally.receive_skill(skill,unit)
 	elif (skill.target_type == "front_enemy"):
-		front_enemy.receive_skill(skill)
+		front_enemy.receive_skill(skill,unit)
 	elif (skill.target_type == "back_ally"):
-		back_ally.receive_skill(skill)
+		back_ally.receive_skill(skill,unit)
 	elif (skill.target_type == "back_enemy"):
-		back_enemy.receive_skill(skill)
+		back_enemy.receive_skill(skill,unit)
 	elif (skill.target_type == "single_ally" and skill.friendly):
-		target.receive_skill_friendly(skill)
+		target.receive_skill_friendly(skill,unit)
 	elif (target == null):
 		if (skill.target_type == "all_allies"):
 			if (skill.friendly == true):
 				for ally in allies:
-					ally.receive_skill_friendly(skill)
+					ally.receive_skill_friendly(skill,unit)
 			else:
 				for ally in allies:
-					ally.receive_skill(skill)
+					ally.receive_skill(skill,unit)
 					#print(ally.title + " taking " + str(skill.damage) + " damage from " + unit.title)
 		if (skill.target_type == "all_enemies"):
 			if (skill.friendly == true):
 				for enemy in enemies:
-					enemy.receive_skill_friendly(skill)
+					enemy.receive_skill_friendly(skill,unit)
 			else:
 				for enemy in enemies:
-					enemy.receive_skill(skill)
+					enemy.receive_skill(skill,unit)
 		if (skill.target_type == "all_units"):
 			if (skill.friendly == true):
 				for enemy in enemies:
-					enemy.receive_skill_friendly(skill)
+					enemy.receive_skill_friendly(skill,unit)
 				for ally in allies:
-					ally.receive_skill_friendly(skill)
+					ally.receive_skill_friendly(skill,unit)
 			else:
 				for enemy in enemies:
-					enemy.receive_skill(skill)
+					enemy.receive_skill(skill,unit)
 				for ally in allies:
-					ally.receive_skill(skill)
+					ally.receive_skill(skill,unit)
 	else:
 		if skill.damaging == true:
-			target.receive_skill(skill)
+			target.receive_skill(skill,unit)
 			print("waiting use skill")
 			await reaction_finished
 			print("finished waiting use skill")
 	if (skill.lifesteal):
 		unit.receive_healing(roundi(skill.damage * skill.lifesteal_rate))
+				
 
 func spend_skill_cost(skill):
 	var tokens1 = 0

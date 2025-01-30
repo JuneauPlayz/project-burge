@@ -1,12 +1,13 @@
-[gd_resource type="Resource" script_class="Dot_Status" load_steps=2 format=3 uid="uid://cc71su8bmjhdj"]
+[gd_resource type="Resource" script_class="Status" load_steps=2 format=3 uid="uid://cc71su8bmjhdj"]
 
 [ext_resource type="Script" path="res://scripts/DoT_Status.gd" id="1_fcc46"]
 
 [resource]
 script = ExtResource("1_fcc46")
 name = "Bubble"
-pre_turn = 0
+pre_turn = true
 damage = 0
 element = ""
-turns_remaining = 0
+turns_remaining = 99
+event_based = true
 unique_type = "bubble"
