@@ -84,10 +84,10 @@ max_health = 250
 title = "QiqiFallen"
 
 [node name="SpellSelectUi" parent="." instance=ExtResource("2_pcgfv")]
-offset_left = -95.0
-offset_top = 136.0
-offset_right = -95.0
-offset_bottom = 136.0
+offset_left = -95.9091
+offset_top = 160.545
+offset_right = -95.9091
+offset_bottom = 160.545
 scale = Vector2(0.705, 0.705)
 metadata/_edit_use_anchors_ = true
 

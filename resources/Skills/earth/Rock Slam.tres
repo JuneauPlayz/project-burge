@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_gq4n6")
-name = "Rock Throw"
+name = "Rock Slam"
 damage = 10
 element = "earth"
 damaging = true

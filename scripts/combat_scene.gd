@@ -164,13 +164,13 @@ func toggle_relic_tooltip():
 func _on_reaction_guide_pressed() -> void:
 	if reaction_panel.visible:
 		reaction_panel.visible = false
-		for enemy in enemies:
-			enemy.show_next_skill_info()
-		for ally in allies:
-			ally.spell_select_ui.visible = true
+		#for enemy in enemies:
+			#enemy.show_next_skill_info()
+		#for ally in allies:
+			#ally.spell_select_ui.visible = true
 	elif not reaction_panel.visible:
 		reaction_panel.visible = true
-		for enemy in enemies:
-			enemy.hide_next_skill_info()
-		for ally in allies:
-			ally.spell_select_ui.visible = false
+		#for enemy in enemies:
+			#enemy.hide_next_skill_info()
+		#for ally in allies:
+			#ally.spell_select_ui.visible = false

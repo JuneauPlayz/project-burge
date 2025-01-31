@@ -8,6 +8,8 @@ var shield = 0
 @onready var shield_bar: ProgressBar = $ShieldBar
 @onready var shield_spr: Sprite2D = $Shield
 @onready var shield_label: Label = $ShieldLabel
+@onready var statuses_label: Label = $Statuses
+
 var element_dict = {"none": Color.WHITE, "fire": Color.CORAL, "water": Color.DARK_CYAN, "lightning": Color.PURPLE, "earth": Color.SADDLE_BROWN, "grass": Color.WEB_GREEN}
 func set_hp(newhp):
 	hp = newhp
@@ -56,3 +58,10 @@ func update_element(element):
 			current_element.text = " Element: [color=saddle_brown]Earth[/color]"
 		"grass":
 			current_element.text = " Element: [color=web_green]Grass[/color]"
+			
+func update_statuses(statuses):
+	statuses_label.text = ""
+	for status in statuses:
+		statuses_label.text += status.name
+		if not status.event_based:
+			statuses_label.text += ":" + str(status.turns_remaining)

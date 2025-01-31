@@ -82,7 +82,8 @@ func _ready() -> void:
 	hp_bar.set_maxhp(max_health)
 	if combat:
 		self.target_chosen.connect(combat_manager.target_signal)
-
+		hp_bar.update_statuses(status)
+	
 func update_vars():
 	basic_atk = res.skill1
 	skill_1 = res.skill2
@@ -98,38 +99,40 @@ func update_vars():
 	spell_select_ui.skill3 = skill_2
 	spell_select_ui.skill4 = ult
 
-func receive_skill(skill, unit):
+func receive_skill(skill, unit, value_multiplier):
 	var rounded : int
 	var reaction = ""
+	var value = skill.final_damage * value_multiplier
+	var value2 = skill.damage2 * value_multiplier
 	if (!connected):
 		ReactionManager.reaction_finished.connect(self.reaction_signal)
 		connected = true
-	var r = await ReactionManager.reaction(current_element, skill.element, self, skill.final_damage, 1)
+	var r = await ReactionManager.reaction(current_element, skill.element, self, value, 1)
 	if (r): 
 		await reaction_ended 
 		if skill.double_hit == true:
 			await get_tree().create_timer(0.3).timeout
-			var r2 = await ReactionManager.reaction(current_element, skill.element2, self, skill.damage2, 1)
+			var r2 = await ReactionManager.reaction(current_element, skill.element2, self, value2, 1)
 			if (r2):
 				await reaction_ended 
-				DamageNumbers.display_number(self.take_damage(skill.damage2), damage_number_origin.global_position, skill.element2, reaction)
+				DamageNumbers.display_number(self.take_damage(value2), damage_number_origin.global_position, skill.element2, reaction)
 			if (!r2):
-				DamageNumbers.display_number(self.take_damage(skill.damage2), damage_number_origin.global_position, skill.element2, reaction)
+				DamageNumbers.display_number(self.take_damage(value2), damage_number_origin.global_position, skill.element2, reaction)
 			if (skill.element != "none"):
 				current_element = skill.element
 	# no reaction
 	if (!r):
-		DamageNumbers.display_number(self.take_damage(skill.final_damage), damage_number_origin.global_position, skill.element, reaction)
+		DamageNumbers.display_number(self.take_damage(value), damage_number_origin.global_position, skill.element, reaction)
 		# don't change current element if skill has no element
 		if (skill.element != "none"):
 			current_element = skill.element
 		if skill.double_hit == true:
 			await get_tree().create_timer(0.3).timeout
-			var r2 = await ReactionManager.reaction(current_element, skill.element2, self, skill.damage2, 1)
+			var r2 = await ReactionManager.reaction(current_element, skill.element2, self, value2, 1)
 			if (r2):
 				await reaction_ended 
 			if (!r2):
-				DamageNumbers.display_number(self.take_damage(skill.damage2), damage_number_origin.global_position, skill.element2, reaction)
+				DamageNumbers.display_number(self.take_damage(value2), damage_number_origin.global_position, skill.element2, reaction)
 			if (skill.element != "none"):
 				current_element = skill.element
 	#handle status effects
@@ -159,23 +162,25 @@ func receive_skill(skill, unit):
 		for stati in status:
 			if stati.name == "Sow":
 				status.erase(stati)
+				hp_bar.update_statuses(status)
 				DamageNumbers.display_text(self.damage_number_origin.global_position, "none", "Harvest!", 32)
 	hp_bar.update_element(current_element)
 	
 func reaction_signal():
 	reaction_ended.emit()
 	
-func receive_skill_friendly(skill, unit):
+func receive_skill_friendly(skill, unit, value_multiplier):
 	var rounded : int
 	var reaction = ""
-	var number = skill.damage
-	var r = await ReactionManager.reaction(current_element, skill.element, self, skill.damage, 0)
+	var number = skill.damage * value_multiplier
+	var value = skill.damage * value_multiplier
+	var r = await ReactionManager.reaction(current_element, skill.element, self, value, 0)
 	if skill.shielding == true:
-		self.receive_shielding(skill.damage)
+		self.receive_shielding(value)
 	if skill.healing == true:
 		if (health + number >= max_health):
 			number = max_health - health
-		self.receive_healing(skill.damage)
+		self.receive_healing(value)
 	DamageNumbers.display_number_plus(number, damage_number_origin.global_position, skill.element, reaction)
 	if (skill.element != "none"):
 		current_element = skill.element
@@ -184,13 +189,14 @@ func receive_skill_friendly(skill, unit):
 		for x in skill.status_effects:
 			status.append(x)
 	hp_bar.update_element(current_element)
+	hp_bar.update_statuses(status)
 	
 	
 	
 func take_damage(damage : int):
 	AudioPlayer.play_FX("fire_hit", -30)
-	var damage_left = damage
-	var total_dmg = damage
+	var damage_left = roundi(damage)
+	var total_dmg = roundi(damage)
 	if bubble:
 		damage_left = damage * GC.bubble_mult
 		total_dmg = damage_left
@@ -199,6 +205,7 @@ func take_damage(damage : int):
 		for stati in status:
 			if stati.name == "Bubble":
 				status.erase(stati)
+				hp_bar.update_statuses(status)
 				self.receive_healing(GC.ally_bloom_healing * GC.bloom_mult)
 				DamageNumbers.display_number_plus(GC.ally_bloom_healing * GC.bloom_mult, damage_number_origin.global_position, "grass", "")
 	if nitro:
@@ -206,6 +213,7 @@ func take_damage(damage : int):
 		for stati in status:
 			if stati.name == "Nitro":
 				status.erase(stati)
+				hp_bar.update_statuses(status)
 				damage_left = damage_left * GC.nitro_mult
 				DamageNumbers.display_text(self.damage_number_origin.global_position, "none", "Nitrate!", 32)
 		total_dmg = damage_left
@@ -269,6 +277,7 @@ func execute_status(status_effect):
 			nitro = true
 		elif status_effect.name == "Sow":
 			sow = true
+	hp_bar.update_statuses(status)
 		
 func get_spell_select():
 	return spell_select_ui

@@ -146,9 +146,9 @@ text = "End Turn   (A)"
 
 [node name="ResetChoices" type="Button" parent="."]
 offset_left = 490.0
-offset_top = 942.0
-offset_right = 639.0
-offset_bottom = 977.0
+offset_top = 975.0
+offset_right = 677.0
+offset_bottom = 1020.0
 scale = Vector2(0.705, 0.705)
 theme_override_font_sizes/font_size = 41
 text = "Reset Choices"

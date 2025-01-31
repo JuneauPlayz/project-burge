@@ -88,6 +88,7 @@ func vaporize(elem1: String, elem2: String, unit: Unit, value, hostile: int) -> 
 		DamageNumbers.display_number(unit.take_damage(res_value * hostile), unit.get_child(2).global_position, elem2, reaction_name)
 	unit.current_element = "none"
 	GC.vaporize()
+	await get_tree().create_timer(0.01).timeout
 	reaction_finished.emit()
 
 func detonate(elem1: String, elem2: String, unit: Unit, value, hostile: int) -> void:
@@ -104,6 +105,7 @@ func detonate(elem1: String, elem2: String, unit: Unit, value, hostile: int) -> 
 		DamageNumbers.display_number(unit.right.take_damage(res_value * GC.detonate_side_mult), unit.right.get_child(2).global_position, elem2, "")
 	unit.current_element = "none"
 	GC.detonate()
+	await get_tree().create_timer(0.01).timeout
 	reaction_finished.emit()
 
 func erupt(elem1: String, elem2: String, unit: Unit, value, hostile: int) -> void:
@@ -126,6 +128,7 @@ func erupt(elem1: String, elem2: String, unit: Unit, value, hostile: int) -> voi
 	if hostile == 1:
 		DamageNumbers.display_number(res_value, unit.get_child(2).global_position, elem2, reaction_name)
 	unit.current_element = "none"
+	await get_tree().create_timer(0.01).timeout
 	reaction_finished.emit()
 
 func burn(elem1: String, elem2: String, unit: Unit, value, hostile: int) -> void:
@@ -134,10 +137,12 @@ func burn(elem1: String, elem2: String, unit: Unit, value, hostile: int) -> void
 	new_burn.turns_remaining = GC.burn_length
 	new_burn.damage = GC.burn_damage
 	unit.status.append(new_burn)
+	unit.hp_bar.update_statuses(unit.status)
 	if hostile == 1:
 		DamageNumbers.display_number(unit.take_damage(roundi(value * hostile)), unit.get_child(2).global_position, elem2, reaction_name)
 	unit.current_element = "none"
 	GC.burn()
+	await get_tree().create_timer(0.01).timeout
 	reaction_finished.emit()
 
 func shock(elem1: String, elem2: String, unit: Unit, value, hostile: int) -> void:
@@ -153,6 +158,7 @@ func shock(elem1: String, elem2: String, unit: Unit, value, hostile: int) -> voi
 		DamageNumbers.display_number(unit.take_damage(res_value), unit.get_child(2).global_position, elem2, reaction_name)
 	unit.current_element = "lightning"
 	GC.shock()
+	await get_tree().create_timer(0.01).timeout
 	reaction_finished.emit()
 
 func bloom(elem1: String, elem2: String, unit: Unit, value, hostile: int) -> void:
@@ -162,8 +168,10 @@ func bloom(elem1: String, elem2: String, unit: Unit, value, hostile: int) -> voi
 	DamageNumbers.display_number(unit.take_damage(roundi(value * hostile)), unit.get_child(2).global_position, elem2, reaction_name)
 	DamageNumbers.display_text(unit.get_child(2).global_position, "grass", "Bubbled!", 32)
 	unit.status.append(bubble_effect)
+	unit.hp_bar.update_statuses(unit.status)
 	unit.current_element = "none"
 	GC.bloom()
+	await get_tree().create_timer(0.01).timeout
 	reaction_finished.emit()
 
 func nitro(elem1: String, elem2: String, unit: Unit, value, hostile: int) -> void:
@@ -172,7 +180,9 @@ func nitro(elem1: String, elem2: String, unit: Unit, value, hostile: int) -> voi
 	DamageNumbers.display_number(unit.take_damage(roundi(value * hostile)), unit.get_child(2).global_position, elem2, reaction_name)
 	DamageNumbers.display_text(unit.get_child(2).global_position, "lightning", reaction_name, 32)
 	unit.status.append(nitro_effect)
+	unit.hp_bar.update_statuses(unit.status)
 	unit.current_element = "none"
+	await get_tree().create_timer(0.01).timeout
 	reaction_finished.emit()
 
 func discharge(elem1: String, elem2: String, unit: Unit, value, hostile: int) -> void:
@@ -192,7 +202,9 @@ func sow(elem1: String, elem2: String, unit: Unit, value, hostile: int) -> void:
 	DamageNumbers.display_number(unit.take_damage(roundi(value * hostile)), unit.get_child(2).global_position, elem2, reaction_name)
 	DamageNumbers.display_text(unit.get_child(2).global_position, "earth", reaction_name, 32)
 	unit.status.append(sow_effect)
+	unit.hp_bar.update_statuses(unit.status)
 	unit.current_element = "none"
+	await get_tree().create_timer(0.01).timeout
 	reaction_finished.emit()
 
 func muck(elem1: String, elem2: String, unit: Unit, value, hostile: int):
@@ -201,7 +213,9 @@ func muck(elem1: String, elem2: String, unit: Unit, value, hostile: int):
 	DamageNumbers.display_number(unit.take_damage(roundi(value * hostile)), unit.get_child(2).global_position, elem2, reaction_name)
 	DamageNumbers.display_text(unit.get_child(2).global_position, "earth", reaction_name, 32)
 	unit.status.append(muck_effect)
+	unit.hp_bar.update_statuses(unit.status)
 	unit.current_element = "none"
+	await get_tree().create_timer(0.01).timeout
 	reaction_finished.emit()
 
 func no_reaction(elem1: String, elem2: String, unit: Unit, value, hostile: int) -> void:

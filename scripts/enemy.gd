@@ -65,46 +65,71 @@ func _ready() -> void:
 	hp_bar = get_child(1)
 	hp_bar.set_hp(health)
 	hp_bar.set_maxhp(health)
+	hp_bar.update_statuses(status)
 	self.target_chosen.connect(combat_manager.target_signal)
 
 
 
-func receive_skill(skill, unit):
+func receive_skill(skill, unit, value_multiplier):
+	print("receiving skill" + skill.name)
 	var rounded : int
 	var reaction = ""
+	var value = skill.final_damage * value_multiplier
+	var value2 = skill.damage2 * value_multiplier
 	if (!connected):
 		ReactionManager.reaction_finished.connect(self.reaction_signal)
 		connected = true
-	var r = await ReactionManager.reaction(current_element, skill.element, self, skill.final_damage, 1)
+	var r = await ReactionManager.reaction(current_element, skill.element, self, value, 1)
 	if (r): 
+		print("waiting for reaction")
 		await reaction_ended 
+		print("reaction received")
 		if skill.double_hit == true:
 			await get_tree().create_timer(0.3).timeout
-			var r2 = await ReactionManager.reaction(current_element, skill.element2, self, skill.damage2, 1)
+			var r2 = await ReactionManager.reaction(current_element, skill.element2, self, value2, 1)
 			if (r2):
 				await reaction_ended 
-				DamageNumbers.display_number(self.take_damage(skill.damage2), damage_number_origin.global_position, skill.element2, reaction)
+				DamageNumbers.display_number(self.take_damage(value2), damage_number_origin.global_position, skill.element2, reaction)
 			if (!r2):
-				DamageNumbers.display_number(self.take_damage(skill.damage2), damage_number_origin.global_position, skill.element2, reaction)
+				DamageNumbers.display_number(self.take_damage(value2), damage_number_origin.global_position, skill.element2, reaction)
 			if (skill.element != "none"):
 				current_element = skill.element
 	# no reaction
 	if (!r):
-		DamageNumbers.display_number(self.take_damage(skill.final_damage), damage_number_origin.global_position, skill.element, reaction)
+		DamageNumbers.display_number(self.take_damage(value), damage_number_origin.global_position, skill.element, reaction)
 		# don't change current element if skill has no element
 		if (skill.element != "none"):
 			current_element = skill.element
 		if skill.double_hit == true:
 			await get_tree().create_timer(0.3).timeout
-			var r2 = await ReactionManager.reaction(current_element, skill.element2, self, skill.damage2, 1)
+			var r2 = await ReactionManager.reaction(current_element, skill.element2, self, value2, 1)
 			if (r2):
 				await reaction_ended 
 			if (!r2):
-				DamageNumbers.display_number(self.take_damage(skill.damage2), damage_number_origin.global_position, skill.element2, reaction)
+				DamageNumbers.display_number(self.take_damage(value2), damage_number_origin.global_position, skill.element2, reaction)
 			if (skill.element != "none"):
 				current_element = skill.element
 	#handle status effects
+	if skill.status_effects != []:
+		for x in skill.status_effects:
+			if x.name == "Bleed":
+				var new_bleed = BLEED.duplicate()
+				status.append(new_bleed)
+			if x.name == "Burn":
+				var new_burn = BURN.duplicate()
+				status.append(new_burn)
+			if x.name == "Bubble":
+				var new_bubble = BUBBLE.duplicate()
+				status.append(new_bubble)
+			if x.name == "Muck":
+				var new_muck = MUCK.duplicate()
+				status.append(new_muck)
+			if x.name == "Nitro":
+				var new_nitro = NITRO.duplicate()
+				status.append(new_nitro)
+	print("attempting to sow")
 	if sow:
+		print("sowing" + skill.name)
 		unit.receive_healing(roundi(GC.sow_healing * GC.sow_healing_mult))
 		unit.receive_shielding(roundi(GC.sow_shielding * GC.sow_shielding_mult))
 		DamageNumbers.display_number_plus(roundi(GC.sow_healing * GC.sow_healing_mult), unit.damage_number_origin.global_position, "grass", "")
@@ -113,15 +138,8 @@ func receive_skill(skill, unit):
 		for stati in status:
 			if stati.name == "Sow":
 				status.erase(stati)
+				hp_bar.update_statuses(status)
 				DamageNumbers.display_text(self.damage_number_origin.global_position, "none", "Harvest!", 32)
-	if skill.status_effects != []:
-		for x in skill.status_effects:
-			if x.name == "Bleed":
-				var new_bleed = BLEED.duplicate()
-				status.append(new_bleed)
-			if x.name == "Burn":
-				var new_burn = BLEED.duplicate()
-				status.append(new_burn)
 	hp_bar.update_element(current_element)
 
 func receive_healing(healing: int):
@@ -147,6 +165,7 @@ func take_damage(damage : int):
 		for stati in status:
 			if stati.name == "Bubble":
 				status.erase(stati)
+				hp_bar.update_statuses(status)
 				self.receive_healing(GC.ally_bloom_healing * GC.bloom_mult)
 				DamageNumbers.display_number_plus(GC.ally_bloom_healing * GC.bloom_mult, damage_number_origin.global_position, "grass", "")
 	if nitro:
@@ -154,6 +173,7 @@ func take_damage(damage : int):
 		for stati in status:
 			if stati.name == "Nitro":
 				status.erase(stati)
+				hp_bar.update_statuses(status)
 				damage_left = damage_left * GC.nitro_mult
 				DamageNumbers.display_text(self.damage_number_origin.global_position, "none", "Nitrate!", 32)
 		total_dmg = damage_left
@@ -207,6 +227,7 @@ func execute_status(status_effect):
 		take_damage(status_effect.damage)
 		DamageNumbers.display_number(status_effect.damage, damage_number_origin.global_position, status_effect.element, "")
 		status_effect.turns_remaining -= 1
+		hp_bar.update_statuses(status)
 	else:
 		if status_effect.name == "Bubble":
 			bubble = true

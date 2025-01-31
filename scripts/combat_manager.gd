@@ -136,7 +136,6 @@ func execute_ally_turn():
 		var target = target_queue[n]
 		var ally = ally_queue[n]
 		use_skill(skill,target,ally)
-		print("waiting for reaction")
 		# checks if target is dead, currently skips the rest of the loop (wont print landed)
 		if (target == null or target.visible == false):
 			await get_tree().create_timer(0.1).timeout
@@ -158,6 +157,7 @@ func enemy_turn():
 	enemy_pre_status()
 	await get_tree().create_timer(0.3).timeout
 	for enemy in enemies:
+		print("using enemy skill")
 		use_skill(enemy.current_skill,null,enemy)
 		hit.emit()
 		enemy.change_skills()
@@ -206,55 +206,60 @@ func reset_combat():
 	
 func use_skill(skill,target,unit):
 	skill.update()
+	var value_multiplier = 1
 	# token spending
+	if unit.muck == true:
+		unit.muck = false
+		value_multiplier = GC.muck_mult
+		for stati in unit.status:
+			if stati.name == "Muck":
+				unit.status.erase(stati)
+				unit.hp_bar.update_statuses(unit.status)
+				DamageNumbers.display_text(unit.damage_number_origin.global_position, "none", "wash", 32)
 	if skill.cost > 0 or skill.cost2 > 0:
 			spend_skill_cost(skill)
-	if (skill.target_type == "front_ally"):
-		front_ally.receive_skill(skill,unit)
-	elif (skill.target_type == "front_enemy"):
-		front_enemy.receive_skill(skill,unit)
-	elif (skill.target_type == "back_ally"):
-		back_ally.receive_skill(skill,unit)
-	elif (skill.target_type == "back_enemy"):
-		back_enemy.receive_skill(skill,unit)
-	elif (skill.target_type == "single_ally" and skill.friendly):
-		target.receive_skill_friendly(skill,unit)
-	elif (target == null):
-		if (skill.target_type == "all_allies"):
-			if (skill.friendly == true):
-				for ally in allies:
-					ally.receive_skill_friendly(skill,unit)
-			else:
-				for ally in allies:
-					ally.receive_skill(skill,unit)
-					#print(ally.title + " taking " + str(skill.damage) + " damage from " + unit.title)
-		if (skill.target_type == "all_enemies"):
-			if (skill.friendly == true):
-				for enemy in enemies:
-					enemy.receive_skill_friendly(skill,unit)
-			else:
-				for enemy in enemies:
-					enemy.receive_skill(skill,unit)
-		if (skill.target_type == "all_units"):
-			if (skill.friendly == true):
-				for enemy in enemies:
-					enemy.receive_skill_friendly(skill,unit)
-				for ally in allies:
-					ally.receive_skill_friendly(skill,unit)
-			else:
-				for enemy in enemies:
-					enemy.receive_skill(skill,unit)
-				for ally in allies:
-					ally.receive_skill(skill,unit)
+	if target != null:
+		target.receive_skill(skill,unit,value_multiplier)
 	else:
-		if skill.damaging == true:
-			target.receive_skill(skill,unit)
-			print("waiting use skill")
-			await reaction_finished
-			print("finished waiting use skill")
+		if (skill.target_type == "front_ally"):
+			front_ally.receive_skill(skill,unit,value_multiplier)
+		elif (skill.target_type == "front_enemy"):
+			front_enemy.receive_skill(skill,unit,value_multiplier)
+		elif (skill.target_type == "back_ally"):
+			back_ally.receive_skill(skill,unit,value_multiplier)
+		elif (skill.target_type == "back_enemy"):
+			back_enemy.receive_skill(skill,unit,value_multiplier)
+		elif (skill.target_type == "single_ally" and skill.friendly):
+			target.receive_skill_friendly(skill,unit,value_multiplier)
+		elif (target == null):
+			if (skill.target_type == "all_allies"):
+				if (skill.friendly == true):
+					for ally in allies:
+						ally.receive_skill_friendly(skill,unit,value_multiplier)
+				else:
+					for ally in allies:
+						ally.receive_skill(skill,unit,value_multiplier)
+						#print(ally.title + " taking " + str(skill.damage) + " damage from " + unit.title)
+			elif (skill.target_type == "all_enemies"):
+				if (skill.friendly == true):
+					for enemy in enemies:
+						enemy.receive_skill_friendly(skill,unit,value_multiplier)
+				else:
+					for enemy in enemies:
+						enemy.receive_skill(skill,unit,value_multiplier)
+			elif (skill.target_type == "all_units"):
+				if (skill.friendly == true):
+					for enemy in enemies:
+						enemy.receive_skill_friendly(skill,unit,value_multiplier)
+					for ally in allies:
+						ally.receive_skill_friendly(skill,unit,value_multiplier)
+				else:
+					for enemy in enemies:
+						enemy.receive_skill(skill,unit,value_multiplier)
+					for ally in allies:
+						ally.receive_skill(skill,unit,value_multiplier)
 	if (skill.lifesteal):
 		unit.receive_healing(roundi(skill.damage * skill.lifesteal_rate))
-				
 
 func spend_skill_cost(skill):
 	var tokens1 = 0
@@ -615,6 +620,8 @@ func enemy_pre_status():
 				if enemy.status[i].turns_remaining <= 0:
 					enemy.status.remove_at(i)
 					i -= 1
+		enemy.hp_bar.update_statuses(enemy.status)
+	
 
 func enemy_post_status():
 	for enemy in enemies:
@@ -628,6 +635,7 @@ func enemy_post_status():
 				if enemy.status[i].turns_remaining <= 0:
 					enemy.status.remove_at(i)
 					i -= 1
+		enemy.hp_bar.update_statuses(enemy.status)
 	
 func ally_pre_status():
 	for ally in allies:
@@ -640,6 +648,7 @@ func ally_pre_status():
 				if ally.status[i].turns_remaining <= 0:
 					ally.status.remove_at(i)
 					i -= 1
+		ally.hp_bar.update_statuses(ally.status)
 func ally_post_status():
 	for ally in allies:
 		if ally.status != []:
@@ -651,6 +660,7 @@ func ally_post_status():
 				if ally.status[i].turns_remaining <= 0:
 					ally.status.remove_at(i)
 					i -= 1
+		ally.hp_bar.update_statuses(ally.status)
 					
 func check_requirements():
 	for ally in allies:
