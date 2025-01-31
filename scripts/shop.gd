@@ -3,6 +3,8 @@ extends Node2D
 @onready var relic_handler_spot: Node2D = $RelicHandlerSpot
 const RELIC_HANDLER = preload("res://scenes/relic handler/relic_handler.tscn")
 
+const SHOP_ITEM = preload("res://scenes/reusables/shop_item.tscn")
+
 var ally1 : Ally
 var ally2 : Ally
 var ally3 : Ally
@@ -19,11 +21,20 @@ const ENEMY = preload("res://resources/units/enemies/enemy.tscn")
 @onready var ally_2_spot: Node2D = $"Ally 2 Spot"
 @onready var ally_3_spot: Node2D = $"Ally 3 Spot"
 @onready var ally_4_spot: Node2D = $"Ally 4 Spot"
-@onready var item_1_spot: Node2D = $Item1Spot
-@onready var item_2_spot: Node2D = $Item2Spot
-@onready var item_3_spot: Node2D = $Item3Spot
 
-var spot_list = []
+@onready var relic_1_spot: Node2D = $Relic1Spot
+@onready var relic_2_spot: Node2D = $Relic2Spot
+@onready var relic_3_spot: Node2D = $Relic3Spot
+
+@onready var spell_1_spot: Node2D = $Spell1Spot
+@onready var spell_2_spot: Node2D = $Spell2Spot
+@onready var spell_3_spot: Node2D = $Spell3Spot
+
+var relic_list = []
+var spell_list = []
+
+var shop_relics = []
+
 var relics : RelicHandler
 
 @onready var gold_label: Label = $Gold
@@ -40,17 +51,37 @@ func _ready() -> void:
 	AudioPlayer.play_music("wii_shop", -30)
 	load_units()
 	update_gold()
-	spot_list.append(item_1_spot)
-	spot_list.append(item_2_spot)
-	spot_list.append(item_3_spot)
-	for spot in spot_list:
-		var item = spot.get_child(0)
+	relic_list.append(relic_1_spot)
+	relic_list.append(relic_2_spot)
+	relic_list.append(relic_3_spot)
+	
+	spell_list.append(spell_1_spot)
+	spell_list.append(spell_2_spot)
+	spell_list.append(spell_3_spot)
+	
+	for spot in relic_list:
+		var item = SHOP_ITEM.instantiate()
+		spot.add_child(item)
+		item.item = GC.get_random_relic()
+		item.price = get_price(item.item)
 		item.update_item()
+		
+	for spot in spell_list:
+		var item = SHOP_ITEM.instantiate()
+		spot.add_child(item)
+		item.item = GC.get_random_skill()
+		item.price = get_price(item.item)
+		item.update_item()
+		
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func get_price(resource):
+	match resource.tier:
+		"1":
+			return 3
+		"2":
+			return 6
+		"3":
+			return 10
 
 func load_units():
 	print("loading units")
@@ -105,11 +136,13 @@ func load_units():
 
 func item_bought(item, shop_item) -> void:
 	if item is Relic:
-		relics.add_relic(item)
+		relics.purchase_relic(item)
 		GC.relics.append(item)
+		shop_item.queue_free()
 	elif item is Skill:
 		new_skill = item
 		buying_new_skill(shop_item)
+		shop_item.queue_free()
 			
 	update_gold()
 	
@@ -118,8 +151,10 @@ func buying_new_skill(shop_item):
 	for ally in allies:
 		ally.level_up_reward.visible = false
 		ally.spell_select_ui.reset()
-	for spot in spot_list:
-			spot.visible = false
+	for spot in relic_list:
+		spot.visible = false
+	for spot in spell_list:
+		spot.visible = false
 	shop_item.get_parent().visible = true
 	confirm_swap.visible = true
 	shop_item.hide_buy()
@@ -128,12 +163,12 @@ func buying_new_skill(shop_item):
 	for ally in allies:
 		if not ally.level_up_complete:
 			ally.level_up_reward.visible = true
-	for spot in spot_list:
+	for spot in relic_list:
+		spot.visible = true
+	for spot in spell_list:
 		spot.visible = true
 	confirm_swap.visible = false
-	shop_item.show_buy()
 	next_combat.visible = true
-	
 
 func update_gold():
 	gold_label.text = "Gold: " + str(GC.gold)

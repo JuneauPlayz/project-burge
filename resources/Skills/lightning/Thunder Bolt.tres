@@ -11,6 +11,7 @@ damaging = true
 healing = false
 shielding = false
 target_type = "single_enemy"
+purchaseable = false
 friendly = false
 lifesteal = false
 lifesteal_rate = 1.0

@@ -66,6 +66,7 @@ func get_combat_manager():
 	return combat_manager
 
 func load_units():
+	GC.skills = []
 	print("loading units")
 	if GC.ally1 != null:
 		var ally1s = ALLY.instantiate()
@@ -75,6 +76,10 @@ func load_units():
 		ally_1_spot.add_child(ally1s)
 		combat_manager.ally1 = ally1s
 		GC.combat_ally1 = ally1s
+		GC.skills.append(GC.ally1.skill1)
+		GC.skills.append(GC.ally1.skill2)
+		GC.skills.append(GC.ally1.skill3)
+		GC.skills.append(GC.ally1.skill4)
 	if GC.ally2 != null:
 		var ally2s = ALLY.instantiate()
 		ally2 = ally2s
@@ -83,6 +88,10 @@ func load_units():
 		ally_2_spot.add_child(ally2s)
 		combat_manager.ally2 = ally2s
 		GC.combat_ally2 = ally2s
+		GC.skills.append(GC.ally2.skill1)
+		GC.skills.append(GC.ally2.skill2)
+		GC.skills.append(GC.ally2.skill3)
+		GC.skills.append(GC.ally2.skill4)
 	if GC.ally3 != null:
 		var ally3s = ALLY.instantiate()
 		ally3 = ally3s
@@ -91,6 +100,10 @@ func load_units():
 		ally_3_spot.add_child(ally3s)
 		combat_manager.ally3 = ally3s
 		GC.combat_ally3 = ally3s
+		GC.skills.append(GC.ally3.skill1)
+		GC.skills.append(GC.ally3.skill2)
+		GC.skills.append(GC.ally3.skill3)
+		GC.skills.append(GC.ally3.skill4)
 	if GC.ally4 != null:
 		var ally4s = ALLY.instantiate()
 		ally4 = ally4s
@@ -99,6 +112,10 @@ func load_units():
 		ally_4_spot.add_child(ally4s)
 		combat_manager.ally4 = ally4s
 		GC.combat_ally4 = ally4s
+		GC.skills.append(GC.ally4.skill1)
+		GC.skills.append(GC.ally4.skill2)
+		GC.skills.append(GC.ally4.skill3)
+		GC.skills.append(GC.ally4.skill4)
 	if GC.enemy1 != null:
 		var enemy1s = ENEMY.instantiate()
 		enemy1 = enemy1s
@@ -154,7 +171,9 @@ func load_units():
 			new_relic_handler.add_relic(relic)
 		combat_manager.relics = new_relic_handler
 		
-		
+	for skill in GC.skills:
+		if skill == null:
+			GC.skills.erase(skill)
 
 	
 func toggle_relic_tooltip():
@@ -174,3 +193,7 @@ func _on_reaction_guide_pressed() -> void:
 			#enemy.hide_next_skill_info()
 		#for ally in allies:
 			#ally.spell_select_ui.visible = false
+
+
+func _on_win_pressed() -> void:
+	combat_manager.victory()

@@ -114,22 +114,20 @@ func erupt(elem1: String, elem2: String, unit: Unit, value, friendly: bool) -> v
 	var res_value = roundi(value)
 	unit.current_element = "none"
 	GC.erupt()
-	if unit.shield > 0:
-		var shield = unit.shield
-		if (value * GC.erupt_mult) < shield:
-			unit.take_damage(value * GC.erupt_mult)
-			res_value = value * GC.erupt_mult
-		else:
-			var shield_dmg = (shield + GC.erupt_mult - 1) / GC.erupt_mult
-			value -= shield_dmg
-			res_value = value + shield
-			unit.take_damage(res_value)
-			reaction_name = " Erupted!!"
-	else:
-		if not friendly:
-			unit.take_damage(res_value)
 	if not friendly:
-		DamageNumbers.display_number(res_value, unit.get_child(2).global_position, elem2, reaction_name)
+		if unit.shield > 0:
+			var shield = unit.shield
+			if (value * GC.erupt_mult) < shield:
+				DamageNumbers.display_number(unit.take_damage(value * GC.erupt_mult), unit.get_child(2).global_position, elem2, reaction_name)
+				res_value = value * GC.erupt_mult
+			else:
+				var shield_dmg = (shield + GC.erupt_mult - 1) / GC.erupt_mult
+				value -= shield_dmg
+				res_value = value + shield
+				DamageNumbers.display_number(unit.take_damage(res_value), unit.get_child(2).global_position, elem2, reaction_name)
+				reaction_name = " Erupted!!"
+		else:
+			DamageNumbers.display_number(unit.take_damage(res_value), unit.get_child(2).global_position, elem2, reaction_name)
 	await get_tree().create_timer(0.01).timeout
 	reaction_finished.emit()
 

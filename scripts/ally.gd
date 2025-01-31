@@ -172,11 +172,12 @@ func reaction_signal():
 	reaction_ended.emit()
 	
 func receive_skill_friendly(skill, unit, value_multiplier):
+	print("receiving friendly skill")
 	var rounded : int
 	var reaction = ""
 	var number = skill.damage * value_multiplier
 	var value = skill.damage * value_multiplier
-	var r = await ReactionManager.reaction(current_element, skill.element, self, value, 0)
+	var r = await ReactionManager.reaction(current_element, skill.element, self, value, skill.friendly)
 	if skill.shielding == true:
 		self.receive_shielding(value)
 	if skill.healing == true:
@@ -184,7 +185,7 @@ func receive_skill_friendly(skill, unit, value_multiplier):
 			number = max_health - health
 		self.receive_healing(value)
 	DamageNumbers.display_number_plus(number, damage_number_origin.global_position, skill.element, reaction)
-	if (skill.element != "none"):
+	if (skill.element == "none"):
 		current_element = skill.element
 	#handle status effects
 	if skill.status_effects != []:

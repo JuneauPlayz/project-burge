@@ -5,17 +5,17 @@
 [resource]
 script = ExtResource("1_tff2v")
 name = "Rock Shield"
-damage = 37
+damage = 20
 element = "earth"
 damaging = false
 healing = false
 shielding = true
-target_type = "all_allies"
+target_type = "single_ally"
 friendly = true
 lifesteal = false
 lifesteal_rate = 1.0
-cost = 0
-token_type = ""
+cost = 1
+token_type = "earth"
 cost2 = 0
 token_type2 = ""
 status_effects = []

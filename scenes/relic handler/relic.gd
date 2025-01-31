@@ -4,6 +4,7 @@ extends Resource
 enum Type {START_OF_TURN, START_OF_COMBAT, END_OF_TURN, END_OF_COMBAT, EVENT_BASED}
 
 @export var relic_name : String
+@export_enum("1","2","3") var tier : String = "1"
 @export var id : String
 @export var type : Type
 @export var icon : Texture

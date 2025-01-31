@@ -36,7 +36,7 @@ func add_relics(relics_array: Array[Relic]) -> void:
 	for relic : Relic in relics_array:
 		add_relic(relic)
 
-func add_relic(relic : Relic) -> void:
+func purchase_relic(relic : Relic) -> void:
 	#if has_relic(relic.id):
 		#return
 	
@@ -44,6 +44,12 @@ func add_relic(relic : Relic) -> void:
 	relics.add_child(new_relic_ui)
 	new_relic_ui.set_relic(relic)
 	new_relic_ui.relic.initialize_relic(new_relic_ui)
+	GC.obtainable_relics.erase(relic)
+
+func add_relic(relic : Relic):
+	var new_relic_ui = RELIC_UI.instantiate() as RelicUI
+	relics.add_child(new_relic_ui)
+	new_relic_ui.set_relic(relic)
 
 func has_relic(id : String) -> bool:
 	for relic_ui : RelicUI in relics.get_children():

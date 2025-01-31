@@ -8,6 +8,8 @@ class_name Skill
 @export var healing = false
 @export var shielding = false
 @export_enum("single_enemy", "single_ally", "all_enemies", "all_allies", "all_units", "front_enemy", "front_ally", "back_enemy", "back_ally", "random_enemy", "random_ally") var target_type : String
+@export var purchaseable = true
+@export_enum("1","2","3") var tier : String = "1"
 
 @export_category("Extras")
 @export var friendly = false

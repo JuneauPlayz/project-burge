@@ -1,11 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://2fhbkw2l8y0t"]
+[gd_scene load_steps=7 format=3 uid="uid://2fhbkw2l8y0t"]
 
 [ext_resource type="Script" path="res://scripts/shop.gd" id="1_1no3t"]
 [ext_resource type="Texture2D" uid="uid://brhs8ke2bqbhj" path="res://assets/cafe shop background.png" id="2_cw3t7"]
-[ext_resource type="PackedScene" uid="uid://i473wibgqlvt" path="res://scenes/reusables/shop_item.tscn" id="2_t2bjb"]
-[ext_resource type="Resource" uid="uid://b00kue7gy7bje" path="res://resources/relics/fire_potion.tres" id="3_30ysq"]
-[ext_resource type="Resource" uid="uid://jsbevql6t5av" path="res://resources/relics/shield_potion.tres" id="4_mgtfj"]
-[ext_resource type="Resource" uid="uid://ddrvp77dd5ima" path="res://resources/Skills/lightning/Electro Ball.tres" id="5_6vlnj"]
 [ext_resource type="PackedScene" uid="uid://cokl4xcoeufdp" path="res://scenes/reusables/reaction_panel.tscn" id="7_l61bu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_k3r7d"]
@@ -51,6 +47,24 @@ text = "Gold: "
 label_settings = SubResource("LabelSettings_1chno")
 horizontal_alignment = 1
 
+[node name="RelicsLabel" type="Label" parent="."]
+offset_left = 827.0
+offset_top = 173.0
+offset_right = 1393.0
+offset_bottom = 254.0
+text = "Relics:"
+label_settings = SubResource("LabelSettings_1chno")
+horizontal_alignment = 1
+
+[node name="Gold3" type="Label" parent="."]
+offset_left = 977.0
+offset_top = 442.0
+offset_right = 1229.0
+offset_bottom = 515.0
+text = "Skills:"
+label_settings = SubResource("LabelSettings_1chno")
+horizontal_alignment = 1
+
 [node name="RelicHandlerSpot" type="Node2D" parent="."]
 position = Vector2(216, 27)
 
@@ -66,26 +80,23 @@ position = Vector2(545, 160)
 [node name="Ally 4 Spot" type="Node2D" parent="."]
 position = Vector2(795, 160)
 
-[node name="Item1Spot" type="Node2D" parent="."]
-position = Vector2(1044, 282)
+[node name="Relic1Spot" type="Node2D" parent="."]
+position = Vector2(1044, 250)
 
-[node name="ShopItem" parent="Item1Spot" instance=ExtResource("2_t2bjb")]
-item = ExtResource("3_30ysq")
-price = 5
+[node name="Relic2Spot" type="Node2D" parent="."]
+position = Vector2(1310, 246)
 
-[node name="Item2Spot" type="Node2D" parent="."]
-position = Vector2(1310, 278)
+[node name="Relic3Spot" type="Node2D" parent="."]
+position = Vector2(1550, 246)
 
-[node name="ShopItem" parent="Item2Spot" instance=ExtResource("2_t2bjb")]
-item = ExtResource("4_mgtfj")
-price = 6
+[node name="Spell1Spot" type="Node2D" parent="."]
+position = Vector2(1044, 518)
 
-[node name="Item3Spot" type="Node2D" parent="."]
-position = Vector2(1550, 278)
+[node name="Spell2Spot" type="Node2D" parent="."]
+position = Vector2(1310, 514)
 
-[node name="ShopItem" parent="Item3Spot" instance=ExtResource("2_t2bjb")]
-item = ExtResource("5_6vlnj")
-price = 7
+[node name="Spell3Spot" type="Node2D" parent="."]
+position = Vector2(1550, 514)
 
 [node name="NextCombat" type="Button" parent="."]
 offset_left = 1505.0

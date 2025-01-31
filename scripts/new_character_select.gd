@@ -3,16 +3,19 @@ extends Node2D
 @onready var blastoise: Draggable = $GridContainer/Blastoise
 @onready var venasaur: Draggable = $GridContainer/Venasaur
 @onready var pikachu: Draggable = $GridContainer/Pikachu
+@onready var golem: Draggable = $GridContainer/Golem
 
 const CHARIZARD = preload("res://resources/units/allies/Charizard.tres")
 const BLASTOISE = preload("res://resources/units/allies/Blastoise.tres")
 const VENASAUR = preload("res://resources/units/allies/Venasaur.tres")
 const PIKACHU = preload("res://resources/units/allies/Pikachu.tres")
+const GOLEM = preload("res://resources/units/allies/Golem.tres")
 
 var charizard_spot
 var blastoise_spot
 var venasaur_spot
 var pikachu_spot
+var golem_spot
 
 const BAGUETTE = preload("res://resources/units/enemies/Baguette.tres")
 const BURGER_ENEMY = preload("res://resources/units/enemies/Burger.tres")
@@ -36,16 +39,20 @@ func _ready() -> void:
 	characters.append(blastoise)
 	characters.append(venasaur)
 	characters.append(pikachu)
+	characters.append(golem)
 	
 	character_res_list.append(CHARIZARD)
 	character_res_list.append(BLASTOISE)
 	character_res_list.append(VENASAUR)
 	character_res_list.append(PIKACHU)
+	character_res_list.append(GOLEM)
+	
 	update_positions()
 	_on_charizard_drag_ended()
 	_on_blastoise_drag_ended()
 	_on_venasaur_drag_ended()
 	_on_pikachu_drag_ended()
+	_on_golem_drag_ended()
 
 func update_positions():
 	if charizard:
@@ -56,6 +63,8 @@ func update_positions():
 		venasaur_spot = venasaur.global_position
 	if pikachu:
 		pikachu_spot = pikachu.global_position
+	if golem:
+		golem_spot = golem.global_position
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -87,10 +96,6 @@ func check_spot(char, og_spot):
 				update_positions()
 
 func _on_charizard_drag_ended() -> void:
-	print("hello" + str(charizard_spot))
-	if charizard:
-		print("Hi" + str(charizard.global_position))
-	print()
 	check_spot(charizard, charizard_spot)
 
 
@@ -104,3 +109,7 @@ func _on_venasaur_drag_ended() -> void:
 
 func _on_pikachu_drag_ended() -> void:
 	check_spot(pikachu, pikachu_spot)
+
+
+func _on_golem_drag_ended() -> void:
+	check_spot(golem, golem_spot)

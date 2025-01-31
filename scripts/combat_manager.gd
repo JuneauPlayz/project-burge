@@ -218,7 +218,7 @@ func use_skill(skill,target,unit):
 				DamageNumbers.display_text(unit.damage_number_origin.global_position, "none", "wash", 32)
 	if skill.cost > 0 or skill.cost2 > 0:
 			spend_skill_cost(skill)
-	if target != null:
+	if target != null and not skill.friendly:
 		target.receive_skill(skill,unit,value_multiplier)
 	else:
 		if (skill.target_type == "front_ally"):
@@ -590,35 +590,43 @@ func _input(event):
 	if event.is_action_pressed("1"):
 		if (targeting):
 			if (not targeting_skill.friendly):
-				if (enemy1 != null):
-					target_chosen.emit(enemy1)
+				if enemies.size() >= 1:
+					if (enemies[0] != null):
+						target_chosen.emit(enemies[0])
 			elif (targeting_skill.friendly and targeting):
-				if (ally1 != null):
-					target_chosen.emit(ally1)
+				if allies.size() >= 1:
+					if (allies[0] != null):
+						target_chosen.emit(allies[0])
 	if event.is_action_pressed("2"):
 		if (targeting):
 			if (not targeting_skill.friendly and targeting):
-				if (enemy2 != null):
-					target_chosen.emit(enemy2)
+				if enemies.size() >= 2:
+					if (enemies[1] != null):
+						target_chosen.emit(enemies[1])
 			elif (targeting_skill.friendly and targeting):
-				if (ally2 != null):
-					target_chosen.emit(ally2)
+				if allies.size() >= 2:
+					if (allies[1] != null):
+						target_chosen.emit(allies[1])
 	if event.is_action_pressed("3"):
 		if (targeting):
 			if (not targeting_skill.friendly and targeting):
-				if (enemy3 != null):
-					target_chosen.emit(enemy3)
+				if enemies.size() >= 3:
+					if (enemies[2] != null):
+						target_chosen.emit(enemies[2])
 			elif (targeting_skill.friendly and targeting):
-				if (ally3 != null):
-					target_chosen.emit(ally3)
+				if allies.size() >= 3:
+					if (allies[2] != null):
+						target_chosen.emit(allies[2])
 	if event.is_action_pressed("4"):
 		if (targeting):
 			if (not targeting_skill.friendly and targeting):
-				if (enemy4 != null):
-					target_chosen.emit(enemy4)
+				if enemies.size() >= 4:
+					if (enemies[3] != null):
+						target_chosen.emit(enemies[3])
 			elif (targeting_skill.friendly and targeting):
-				if (ally4 != null):
-					target_chosen.emit(ally4)
+				if allies.size() >= 4:
+					if (allies[3] != null):
+						target_chosen.emit(allies[3])
 	if event.is_action_pressed("end_turn"):
 		_on_end_turn_pressed()
 			

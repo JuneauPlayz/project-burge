@@ -141,16 +141,24 @@ offset_left = 1521.0
 offset_top = 800.0
 offset_right = 1681.0
 offset_bottom = 837.0
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 56
 text = "End Turn   (A)"
 
+[node name="Win" type="Button" parent="."]
+offset_left = 1161.0
+offset_top = 988.0
+offset_right = 1393.0
+offset_bottom = 1046.0
+theme_override_font_sizes/font_size = 56
+text = "win"
+
 [node name="ResetChoices" type="Button" parent="."]
-offset_left = 490.0
+offset_left = 450.0
 offset_top = 975.0
-offset_right = 677.0
-offset_bottom = 1020.0
+offset_right = 703.0
+offset_bottom = 1033.0
 scale = Vector2(0.705, 0.705)
-theme_override_font_sizes/font_size = 41
+theme_override_font_sizes/font_size = 56
 text = "Reset Choices"
 
 [node name="VictoryScreen" parent="." node_paths=PackedStringArray("combat_manager") instance=ExtResource("8_xw3f4")]
@@ -206,4 +214,5 @@ scale = Vector2(0.7, 0.7)
 [connection signal="target_selected" from="CombatManager" to="StateMachine/Targeting" method="_on_combat_manager_target_selected"]
 [connection signal="pressed" from="CombatManager/ReactionGuide" to="." method="_on_reaction_guide_pressed"]
 [connection signal="pressed" from="EndTurn" to="CombatManager" method="_on_end_turn_pressed"]
+[connection signal="pressed" from="Win" to="." method="_on_win_pressed"]
 [connection signal="pressed" from="ResetChoices" to="CombatManager" method="_on_reset_choices_pressed"]

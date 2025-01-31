@@ -1,7 +1,7 @@
-[gd_scene load_steps=26 format=3 uid="uid://bkkh4bxq8cu7n"]
+[gd_scene load_steps=27 format=3 uid="uid://bkkh4bxq8cu7n"]
 
 [ext_resource type="Script" path="res://scripts/ally.gd" id="1_fu3qc"]
-[ext_resource type="Resource" uid="uid://bhnvgvm5xsfv3" path="res://resources/Skills/fire/Firestorm.tres" id="2_77fl0"]
+[ext_resource type="Script" path="res://scripts/skill.gd" id="2_a5x6o"]
 [ext_resource type="PackedScene" uid="uid://tlvpop5rp1x6" path="res://scenes/reusables/spell_select_ui.tscn" id="2_pcgfv"]
 [ext_resource type="Resource" uid="uid://d3hsiqbosdsp6" path="res://resources/Skills/water/Waterfall.tres" id="3_oopdj"]
 [ext_resource type="PackedScene" uid="uid://5spa5amgsxfm" path="res://scenes/reusables/hp_bar.tscn" id="3_urihg"]
@@ -9,6 +9,29 @@
 [ext_resource type="Resource" uid="uid://ddoguurpcf2jb" path="res://resources/Skills/fire/Vaporstrike.tres" id="5_kdrfg"]
 [ext_resource type="Script" path="res://scripts/level_up_reward.gd" id="8_4ut3l"]
 [ext_resource type="PackedScene" uid="uid://sdwnoh61gawa" path="res://scenes/reusables/skill_info.tscn" id="9_6y37o"]
+
+[sub_resource type="Resource" id="Resource_njo12"]
+script = ExtResource("2_a5x6o")
+name = "Ignite"
+damage = 0
+element = "fire"
+damaging = false
+healing = false
+shielding = false
+target_type = "all_enemies"
+purchaseable = true
+tier = "1"
+friendly = false
+lifesteal = false
+lifesteal_rate = 1.0
+cost = 0
+token_type = ""
+cost2 = 0
+token_type2 = ""
+status_effects = []
+double_hit = false
+damage2 = 0
+element2 = ""
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tvmj8"]
 content_margin_left = 10.0
@@ -75,7 +98,7 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 position = Vector2(85, 185)
 scale = Vector2(1.1, 1.1)
 script = ExtResource("1_fu3qc")
-basic_atk = ExtResource("2_77fl0")
+basic_atk = SubResource("Resource_njo12")
 skill_1 = ExtResource("3_oopdj")
 skill_2 = ExtResource("4_7yskb")
 ult = ExtResource("5_kdrfg")

@@ -4,13 +4,14 @@
 
 [resource]
 script = ExtResource("1_io4iu")
-name = ""
+name = "Thunder Dome"
 damage = 20
 element = "lightning"
 damaging = true
 healing = false
 shielding = false
 target_type = "front_enemy"
+purchaseable = true
 friendly = false
 lifesteal = false
 lifesteal_rate = 1.0

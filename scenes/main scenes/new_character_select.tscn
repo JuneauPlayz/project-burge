@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cejatt12ddojf"]
+[gd_scene load_steps=11 format=3 uid="uid://cejatt12ddojf"]
 
 [ext_resource type="Script" path="res://scripts/new_character_select.gd" id="1_c5uuy"]
 [ext_resource type="Texture2D" uid="uid://c7bn1gnx4b71v" path="res://assets/grassy pixelated.jpg" id="2_kjqh1"]
@@ -12,6 +12,9 @@
 font_size = 42
 outline_size = 9
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_g3rqs"]
+load_path = "res://.godot/imported/golem.png-4ecf06b627a0b206e6315fdbd8983774.ctex"
 
 [sub_resource type="LabelSettings" id="LabelSettings_0i11v"]
 font_size = 136
@@ -33,7 +36,7 @@ offset_top = 220.0
 offset_right = 1310.0
 offset_bottom = 728.0
 theme_override_constants/h_separation = 100
-columns = 4
+columns = 5
 
 [node name="Ally1Spot" type="ColorRect" parent="GridContainer"]
 custom_minimum_size = Vector2(100, 100)
@@ -90,6 +93,10 @@ text = "Front Ally"
 label_settings = SubResource("LabelSettings_tbrfe")
 
 [node name="Gap" type="Control" parent="GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+
+[node name="Gap5" type="Control" parent="GridContainer"]
 custom_minimum_size = Vector2(100, 300)
 layout_mode = 2
 
@@ -100,6 +107,9 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Gap4" type="Control" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Gap6" type="Control" parent="GridContainer"]
 layout_mode = 2
 
 [node name="Charizard" type="Container" parent="GridContainer"]
@@ -145,6 +155,17 @@ position = Vector2(46, 51)
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("7_0rorh")
 
+[node name="Golem" type="Container" parent="GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+script = ExtResource("3_l2ywx")
+grid_snap = Vector2(100, 100)
+
+[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Golem"]
+position = Vector2(46, 51)
+scale = Vector2(0.35, 0.35)
+texture = SubResource("CompressedTexture2D_g3rqs")
+
 [node name="Begin Run" type="Button" parent="."]
 offset_left = 793.0
 offset_top = 811.0
@@ -166,4 +187,5 @@ horizontal_alignment = 1
 [connection signal="drag_ended" from="GridContainer/Blastoise" to="." method="_on_blastoise_drag_ended"]
 [connection signal="drag_ended" from="GridContainer/Venasaur" to="." method="_on_venasaur_drag_ended"]
 [connection signal="drag_ended" from="GridContainer/Pikachu" to="." method="_on_pikachu_drag_ended"]
+[connection signal="drag_ended" from="GridContainer/Golem" to="." method="_on_golem_drag_ended"]
 [connection signal="pressed" from="Begin Run" to="." method="_on_begin_run_pressed"]

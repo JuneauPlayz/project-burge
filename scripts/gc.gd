@@ -28,8 +28,10 @@ var enemy3 : UnitRes
 var enemy4 : UnitRes
 
 var relics = []
-var obtainable_relics = [FIRE_POTION, SHIELD_POTION, VAPOR_ORB]
+var obtainable_relics = []
 
+var skills = []
+var obtainable_skills = []
 # units in combat
 var combat_ally1 : Ally
 var combat_ally2 : Ally
@@ -166,6 +168,58 @@ var sow_grass_token_mult = 1
 var sow_earth_token_bonus = 0
 var sow_grass_token_bonus = 0
 
+func _ready():
+	var dir = DirAccess.open("res://resources/relics")
+	dir.list_dir_begin()
+	var file_name = dir.get_next()
+	while file_name != "":
+		var RELIC = load("res://resources/relics/" + file_name)
+		GC.obtainable_relics.append(RELIC)
+		file_name = dir.get_next()
+	var element = ""
+	for i in range(1,6):
+		match i:
+			1:
+				element = "fire"
+			2:
+				element = "water"
+			3:
+				element = "lightning"
+			4:
+				element = "grass"
+			5:
+				element = "earth"
+			6:
+				element = "physical"
+		dir = DirAccess.open("res://resources/Skills/" + element)
+		dir.list_dir_begin()
+		file_name = dir.get_next()
+		while file_name != "":
+			var SKILL = load("res://resources/Skills/" + element + "/" + file_name)
+			GC.obtainable_skills.append(SKILL)
+			file_name = dir.get_next()
+	for relic in GC.obtainable_relics:
+		print(relic.relic_name)
+func get_random_relic():
+	if GC.obtainable_relics == []:
+		return null
+	var rng = RandomNumberGenerator.new()
+	var random_num = rng.randi_range(0,obtainable_relics.size()-1)
+	var relic = obtainable_relics[random_num]
+	while relic in GC.relics:
+		random_num = rng.randi_range(0,obtainable_relics.size()-1)
+		relic = obtainable_relics[random_num]
+	return relic
+	
+func get_random_skill():
+	var rng = RandomNumberGenerator.new()
+	var random_num = rng.randi_range(0,obtainable_skills.size()-1)
+	var skill = obtainable_skills[random_num]
+	while skill in GC.skills:
+		random_num = rng.randi_range(0,obtainable_skills.size()-1)
+		skill = obtainable_skills[random_num]
+	return skill
+	
 func vaporize():
 	add_token("fire", (GC.vaporize_fire_token_base + GC.vaporize_fire_token_bonus) * GC.vaporize_fire_token_mult)
 	add_token("water", (GC.vaporize_water_token_base + GC.vaporize_water_token_bonus) * GC.vaporize_water_token_mult)
@@ -242,17 +296,153 @@ func add_gold(count):
 	gold += ((count + bonus_gold) * gold_multiplier)
 	
 func reset():
+	# Reset global currencies
 	gold = 0
-	self.ally1 = null
-	self.ally2 = null
-	self.ally3 = null
-	self.ally4 = null
-	self.enemy1 = null
-	self.enemy2 = null
-	self.enemy3 = null
-	self.enemy4 = null
-	reset_tokens()
+	bonus_gold = 0
+	gold_multiplier = 1
+
+	# Reset combat-related variables
+	current_reward = 10
+	combat_ally1 = null
+	combat_ally2 = null
+	combat_ally3 = null
+	combat_ally4 = null
+	combat_enemy1 = null
+	combat_enemy2 = null
+	combat_enemy3 = null
+	combat_enemy4 = null
+	combat_allies = []
+	combat_enemies = []
+
+	# Reset unit resources
+	ally1 = null
+	ally2 = null
+	ally3 = null
+	ally4 = null
+	enemy1 = null
+	enemy2 = null
+	enemy3 = null
+	enemy4 = null
+
+	# Reset relics and skills
 	relics = []
+	obtainable_relics = []
+	skills = []
+	obtainable_skills = []
+
+	# Reset tokens
+	reset_tokens()
+	fire_token_multiplier = 1
+	water_token_multiplier = 1
+	lightning_token_multiplier = 1
+	grass_token_multiplier = 1
+	earth_token_multiplier = 1
+	fire_token_bonus = 0
+	water_token_bonus = 0
+	lightning_token_bonus = 0
+	grass_token_bonus = 0
+	earth_token_bonus = 0
+
+	# Reset reaction multipliers and bonuses
+	vaporize_mult = 2
+	shock_mult = 0.25
+	erupt_mult = 3
+	detonate_main_mult = 1.5
+	detonate_side_mult = 0.5
+	bloom_mult = 1
+	nitro_mult = 1.5
+	bubble_mult = 0.5
+	burn_damage = 10
+	burn_length = 2
+	muck_mult = 0.75
+	discharge_mult = 1
+	sow_shielding = 5
+	sow_healing = 5
+	sow_healing_mult = 1
+	sow_shielding_mult = 1
+	ally_bloom_healing = 5
+	enemy_bloom_healing = 5
+
+	# Reset token base, mult, and bonus for each reaction
+	# Vaporize (Fire + Water)
+	vaporize_fire_token_base = 1
+	vaporize_water_token_base = 1
+	vaporize_fire_token_mult = 1
+	vaporize_water_token_mult = 1
+	vaporize_fire_token_bonus = 0
+	vaporize_water_token_bonus = 0
+
+	# Detonate (Fire + Lightning)
+	detonate_fire_token_base = 1
+	detonate_lightning_token_base = 1
+	detonate_fire_token_mult = 1
+	detonate_lightning_token_mult = 1
+	detonate_fire_token_bonus = 0
+	detonate_lightning_token_bonus = 0
+
+	# Erupt (Fire + Earth)
+	erupt_fire_token_base = 1
+	erupt_earth_token_base = 1
+	erupt_fire_token_mult = 1
+	erupt_earth_token_mult = 1
+	erupt_fire_token_bonus = 0
+	erupt_earth_token_bonus = 0
+
+	# Burn (Fire + Grass)
+	burn_fire_token_base = 1
+	burn_grass_token_base = 1
+	burn_fire_token_mult = 1
+	burn_grass_token_mult = 1
+	burn_fire_token_bonus = 0
+	burn_grass_token_bonus = 0
+
+	# Shock (Water + Lightning)
+	shock_water_token_base = 1
+	shock_lightning_token_base = 1
+	shock_water_token_mult = 1
+	shock_lightning_token_mult = 1
+	shock_water_token_bonus = 0
+	shock_lightning_token_bonus = 0
+
+	# Bloom (Water + Grass)
+	bloom_water_token_base = 1
+	bloom_grass_token_base = 1
+	bloom_water_token_mult = 1
+	bloom_grass_token_mult = 1
+	bloom_water_token_bonus = 0
+	bloom_grass_token_bonus = 0
+
+	# Nitro (Lightning + Grass)
+	nitro_lightning_token_base = 1
+	nitro_grass_token_base = 1
+	nitro_lightning_token_mult = 1
+	nitro_grass_token_mult = 1
+	nitro_lightning_token_bonus = 0
+	nitro_grass_token_bonus = 0
+
+	# Muck (Water + Earth)
+	muck_water_token_base = 1
+	muck_earth_token_base = 1
+	muck_water_token_mult = 1
+	muck_earth_token_mult = 1
+	muck_water_token_bonus = 0
+	muck_earth_token_bonus = 0
+
+	# Discharge (Earth + Lightning)
+	discharge_earth_token_base = 1
+	discharge_lightning_token_base = 1
+	discharge_earth_token_mult = 1
+	discharge_lightning_token_mult = 1
+	discharge_earth_token_bonus = 0
+	discharge_lightning_token_bonus = 0
+
+	# Sow (Earth + Grass)
+	sow_earth_token_base = 1
+	sow_grass_token_base = 1
+	sow_earth_token_mult = 1
+	sow_grass_token_mult = 1
+	sow_earth_token_bonus = 0
+	sow_grass_token_bonus = 0
 	
 func update_combat_lists():
 	combat_allies = []

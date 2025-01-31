@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="UnitRes" load_steps=5 format=3 uid="uid://brb2gubx0hm1h"]
+
+[ext_resource type="Script" path="res://scripts/UnitRes.gd" id="1_rsp8b"]
+[ext_resource type="Resource" uid="uid://dykdesfmc1oo8" path="res://resources/Skills/earth/Rock Throw.tres" id="2_famig"]
+[ext_resource type="Resource" uid="uid://bya4jpai0ygj5" path="res://resources/Skills/earth/Rock Shield.tres" id="3_3j15h"]
+[ext_resource type="Texture2D" uid="uid://pnpb0odeh88v" path="res://assets/golem.png" id="4_a2f0g"]
+
+[resource]
+script = ExtResource("1_rsp8b")
+starting_health = 125
+skill1 = ExtResource("2_famig")
+skill2 = ExtResource("3_3j15h")
+sprite = ExtResource("4_a2f0g")
+sprite_scale = 0.5
+name = "Golem"

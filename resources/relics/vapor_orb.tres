@@ -9,4 +9,6 @@ relic_name = "Vapor Orb"
 id = "3"
 type = 4
 icon = ExtResource("1_0jsa4")
-tooltip = "Adds 0.5x to Vaporize Multiplier, and Vaporize now gives +1 extra Fire Token."
+tooltip = "Adds 0.5x to Vaporize Multiplier, 
+and Vaporize now gives 
++1 extra Fire Token."
