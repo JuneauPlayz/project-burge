@@ -106,6 +106,7 @@ theme_override_constants/margin_right = 14
 theme_override_constants/margin_bottom = 6
 
 [node name="Page1" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+visible = false
 layout_mode = 2
 
 [node name="Title" type="Label" parent="PanelContainer/MarginContainer/Page1"]
@@ -176,50 +177,51 @@ layout_mode = 2
 theme_override_constants/separation = 6
 theme_override_styles/separator = SubResource("StyleBoxFlat_r5ene")
 
-[node name="Shock" type="HBoxContainer" parent="PanelContainer/MarginContainer/Page1"]
+[node name="Burn" type="HBoxContainer" parent="PanelContainer/MarginContainer/Page1"]
 custom_minimum_size = Vector2(0, 55)
 layout_mode = 2
 
-[node name="Shock" type="RichTextLabel" parent="PanelContainer/MarginContainer/Page1/Shock"]
+[node name="Burn" type="RichTextLabel" parent="PanelContainer/MarginContainer/Page1/Burn"]
 custom_minimum_size = Vector2(500, 55)
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 9
 theme_override_font_sizes/normal_font_size = 48
 bbcode_enabled = true
-text = " Shock = [color=dark_cyan]Water[/color] + [color=purple]Lightning[/color]"
+text = " Burn = [color=coral]Fire[/color] + [color=web_green]Grass[/color]"
 
-[node name="VSeparator" type="VSeparator" parent="PanelContainer/MarginContainer/Page1/Shock"]
+[node name="VSeparator" type="VSeparator" parent="PanelContainer/MarginContainer/Page1/Burn"]
 layout_mode = 2
 theme_override_constants/separation = 25
 theme_override_styles/separator = SubResource("StyleBoxFlat_0u22f")
 
-[node name="ShockMult" type="Label" parent="PanelContainer/MarginContainer/Page1/Shock"]
+[node name="BurnDamage" type="Label" parent="PanelContainer/MarginContainer/Page1/Burn"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-text = "Shock Multiplier: 0.25x"
+text = "Burn Damage: 10
+Burn Length: 2 turns"
 label_settings = SubResource("LabelSettings_pyo7b")
 
-[node name="VSeparator2" type="VSeparator" parent="PanelContainer/MarginContainer/Page1/Shock"]
+[node name="VSeparator2" type="VSeparator" parent="PanelContainer/MarginContainer/Page1/Burn"]
 layout_mode = 2
 theme_override_constants/separation = 25
 theme_override_styles/separator = SubResource("StyleBoxFlat_0u22f")
 
-[node name="ShockDescription" type="Label" parent="PanelContainer/MarginContainer/Page1/Shock"]
+[node name="ShockDescription" type="Label" parent="PanelContainer/MarginContainer/Page1/Burn"]
 custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
-text = "After shocking, deals 3 bonus instances of lightning damage. 
- (Shock Multiplier x Second Element's Damage)"
+text = "Adds the Burn debuff to the unit, causing them to take Burn Damage before their 
+turn and reduces the unit's healing received by 50% for Burn Length turns"
 label_settings = SubResource("LabelSettings_qqncj")
 
-[node name="ShockTokens" type="RichTextLabel" parent="PanelContainer/MarginContainer/Page1"]
+[node name="BurnTokens" type="RichTextLabel" parent="PanelContainer/MarginContainer/Page1"]
 custom_minimum_size = Vector2(100, 36)
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 9
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "        +1  [color=dark_cyan]Water[/color] Token  +1  [color=purple]Lightning[/color] Token"
+text = "        +1  [color=coral]Fire[/color] Token  +1  [color=web_green]Grass[/color] Token"
 scroll_active = false
 
 [node name="VSeparator3" type="HSeparator" parent="PanelContainer/MarginContainer/Page1"]
@@ -383,7 +385,6 @@ theme_override_constants/separation = 6
 theme_override_styles/separator = SubResource("StyleBoxFlat_r5ene")
 
 [node name="Page2" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
-visible = false
 layout_mode = 2
 
 [node name="Title" type="Label" parent="PanelContainer/MarginContainer/Page2"]
@@ -401,107 +402,53 @@ layout_mode = 2
 theme_override_constants/separation = 6
 theme_override_styles/separator = SubResource("StyleBoxFlat_xrk3w")
 
-[node name="Nitro" type="HBoxContainer" parent="PanelContainer/MarginContainer/Page2"]
+[node name="Shock" type="HBoxContainer" parent="PanelContainer/MarginContainer/Page2"]
 custom_minimum_size = Vector2(0, 55)
 layout_mode = 2
 
-[node name="Nitro" type="RichTextLabel" parent="PanelContainer/MarginContainer/Page2/Nitro"]
-custom_minimum_size = Vector2(500, 48)
-layout_mode = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 9
-theme_override_font_sizes/normal_font_size = 48
-bbcode_enabled = true
-text = " Nitro = [color=purple]Lightning[/color] + [color=web_green]Grass[/color]"
-scroll_active = false
-
-[node name="VSeparator" type="VSeparator" parent="PanelContainer/MarginContainer/Page2/Nitro"]
-layout_mode = 2
-theme_override_constants/separation = 25
-theme_override_styles/separator = SubResource("StyleBoxFlat_0u22f")
-
-[node name="NitroMult" type="Label" parent="PanelContainer/MarginContainer/Page2/Nitro"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-text = "Nitro Multiplier: 1.5x "
-label_settings = SubResource("LabelSettings_pyo7b")
-
-[node name="VSeparator2" type="VSeparator" parent="PanelContainer/MarginContainer/Page2/Nitro"]
-layout_mode = 2
-theme_override_constants/separation = 25
-theme_override_styles/separator = SubResource("StyleBoxFlat_0u22f")
-
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/Page2/Nitro"]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-text = "Adds the Nitro debuff to the unit, causing the next instance of damage taken
- by them to be multiplied by Nitro Multipler"
-label_settings = SubResource("LabelSettings_kgnrs")
-
-[node name="NitroTokens" type="RichTextLabel" parent="PanelContainer/MarginContainer/Page2"]
-custom_minimum_size = Vector2(100, 36)
-layout_mode = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 9
-theme_override_font_sizes/normal_font_size = 32
-bbcode_enabled = true
-text = "        +1  [color=purple]Lightning[/color] Token  +1  [color=web_green]Grass[/color] Token
-"
-scroll_active = false
-
-[node name="VSeparator2" type="HSeparator" parent="PanelContainer/MarginContainer/Page2"]
-layout_mode = 2
-theme_override_constants/separation = 6
-theme_override_styles/separator = SubResource("StyleBoxFlat_r5ene")
-
-[node name="Burn" type="HBoxContainer" parent="PanelContainer/MarginContainer/Page2"]
-custom_minimum_size = Vector2(0, 55)
-layout_mode = 2
-
-[node name="Burn" type="RichTextLabel" parent="PanelContainer/MarginContainer/Page2/Burn"]
+[node name="Shock" type="RichTextLabel" parent="PanelContainer/MarginContainer/Page2/Shock"]
 custom_minimum_size = Vector2(500, 55)
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 9
 theme_override_font_sizes/normal_font_size = 48
 bbcode_enabled = true
-text = " Burn = [color=coral]Fire[/color] + [color=web_green]Grass[/color]"
+text = " Shock = [color=dark_cyan]Water[/color] + [color=purple]Lightning[/color]"
 
-[node name="VSeparator" type="VSeparator" parent="PanelContainer/MarginContainer/Page2/Burn"]
+[node name="VSeparator" type="VSeparator" parent="PanelContainer/MarginContainer/Page2/Shock"]
 layout_mode = 2
 theme_override_constants/separation = 25
 theme_override_styles/separator = SubResource("StyleBoxFlat_0u22f")
 
-[node name="BurnDamage" type="Label" parent="PanelContainer/MarginContainer/Page2/Burn"]
+[node name="ShockMult" type="Label" parent="PanelContainer/MarginContainer/Page2/Shock"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-text = "Burn Damage: 10
-Burn Length: 2 turns"
+text = "Shock Multiplier: 0.25x"
 label_settings = SubResource("LabelSettings_pyo7b")
 
-[node name="VSeparator2" type="VSeparator" parent="PanelContainer/MarginContainer/Page2/Burn"]
+[node name="VSeparator2" type="VSeparator" parent="PanelContainer/MarginContainer/Page2/Shock"]
 layout_mode = 2
 theme_override_constants/separation = 25
 theme_override_styles/separator = SubResource("StyleBoxFlat_0u22f")
 
-[node name="ShockDescription" type="Label" parent="PanelContainer/MarginContainer/Page2/Burn"]
+[node name="ShockDescription" type="Label" parent="PanelContainer/MarginContainer/Page2/Shock"]
 custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
-text = "Adds the Burn debuff to the unit, causing them to take Burn Damage before their 
-turn and reduces the unit's healing received by 50% for Burn Length turns"
+text = "After shocking, deals 3 bonus instances of lightning damage. 
+ (Shock Multiplier x Second Element's Damage)"
 label_settings = SubResource("LabelSettings_qqncj")
 
-[node name="BurnTokens" type="RichTextLabel" parent="PanelContainer/MarginContainer/Page2"]
+[node name="ShockTokens" type="RichTextLabel" parent="PanelContainer/MarginContainer/Page2"]
 custom_minimum_size = Vector2(100, 36)
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 9
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "        +1  [color=coral]Fire[/color] Token  +1  [color=web_green]Grass[/color] Token"
+text = "        +1  [color=dark_cyan]Water[/color] Token  +1  [color=purple]Lightning[/color] Token"
 scroll_active = false
 
-[node name="VSeparator3" type="HSeparator" parent="PanelContainer/MarginContainer/Page2"]
+[node name="VSeparator2" type="HSeparator" parent="PanelContainer/MarginContainer/Page2"]
 layout_mode = 2
 theme_override_constants/separation = 6
 theme_override_styles/separator = SubResource("StyleBoxFlat_r5ene")
@@ -550,6 +497,59 @@ theme_override_constants/outline_size = 9
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "      +1  [color=dark_cyan]Water[/color] Token  +1  [color=saddle_brown]Earth[/color] Token"
+scroll_active = false
+
+[node name="VSeparator3" type="HSeparator" parent="PanelContainer/MarginContainer/Page2"]
+layout_mode = 2
+theme_override_constants/separation = 6
+theme_override_styles/separator = SubResource("StyleBoxFlat_r5ene")
+
+[node name="Nitro" type="HBoxContainer" parent="PanelContainer/MarginContainer/Page2"]
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
+
+[node name="Nitro" type="RichTextLabel" parent="PanelContainer/MarginContainer/Page2/Nitro"]
+custom_minimum_size = Vector2(500, 48)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = " Nitro = [color=purple]Lightning[/color] + [color=web_green]Grass[/color]"
+scroll_active = false
+
+[node name="VSeparator" type="VSeparator" parent="PanelContainer/MarginContainer/Page2/Nitro"]
+layout_mode = 2
+theme_override_constants/separation = 25
+theme_override_styles/separator = SubResource("StyleBoxFlat_0u22f")
+
+[node name="NitroMult" type="Label" parent="PanelContainer/MarginContainer/Page2/Nitro"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Nitro Multiplier: 1.5x "
+label_settings = SubResource("LabelSettings_pyo7b")
+
+[node name="VSeparator2" type="VSeparator" parent="PanelContainer/MarginContainer/Page2/Nitro"]
+layout_mode = 2
+theme_override_constants/separation = 25
+theme_override_styles/separator = SubResource("StyleBoxFlat_0u22f")
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/Page2/Nitro"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+text = "Adds the Nitro debuff to the unit, causing the next instance of damage taken
+ by them to be multiplied by Nitro Multipler"
+label_settings = SubResource("LabelSettings_kgnrs")
+
+[node name="NitroTokens" type="RichTextLabel" parent="PanelContainer/MarginContainer/Page2"]
+custom_minimum_size = Vector2(100, 36)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "        +1  [color=purple]Lightning[/color] Token  +1  [color=web_green]Grass[/color] Token
+"
 scroll_active = false
 
 [node name="VSeparator4" type="HSeparator" parent="PanelContainer/MarginContainer/Page2"]

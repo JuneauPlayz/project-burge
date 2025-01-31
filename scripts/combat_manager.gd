@@ -175,7 +175,7 @@ func victory():
 	victorious = true
 	victory_screen.visible = true
 	victory_screen.update_text("Victory!", 10)
-	GC.add_gold(10)
+	GC.add_gold(GC.current_reward)
 	hide_skills()
 	hide_ui()
 	victory_screen.continue_pressed.connect(self.finish_battle)
@@ -231,6 +231,30 @@ func use_skill(skill,target,unit):
 			back_enemy.receive_skill(skill,unit,value_multiplier)
 		elif (skill.target_type == "single_ally" and skill.friendly):
 			target.receive_skill_friendly(skill,unit,value_multiplier)
+		elif (skill.target_type == "random_enemy"):
+			var rng = RandomNumberGenerator.new()
+			var random_num = rng.randi_range(1,enemies.size())
+			match random_num:
+				1:
+					enemies[0].receive_skill(skill,unit,value_multiplier)
+				2:
+					enemies[1].receive_skill(skill,unit,value_multiplier)
+				3:
+					enemies[2].receive_skill(skill,unit,value_multiplier)
+				4:
+					enemies[3].receive_skill(skill,unit,value_multiplier)
+		elif (skill.target_type == "random_ally"):
+			var rng = RandomNumberGenerator.new()
+			var random_num = rng.randi_range(1,allies.size())
+			match random_num:
+				1:
+					allies[0].receive_skill(skill,unit,value_multiplier)
+				2:
+					allies[1].receive_skill(skill,unit,value_multiplier)
+				3:
+					allies[2].receive_skill(skill,unit,value_multiplier)
+				4:
+					allies[3].receive_skill(skill,unit,value_multiplier)
 		elif (target == null):
 			if (skill.target_type == "all_allies"):
 				if (skill.friendly == true):

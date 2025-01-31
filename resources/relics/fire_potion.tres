@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://b00kue7gy7bje"]
 
 [ext_resource type="Texture2D" uid="uid://133h4yyl8s4l" path="res://assets/chillpyro.png" id="1_42ris"]
-[ext_resource type="Script" path="res://scenes/relic handler/relic scripts/fire_potion.gd" id="2_py0vv"]
+[ext_resource type="Script" path="res://resources/relic scripts/fire_potion.gd" id="2_py0vv"]
 
 [resource]
 script = ExtResource("2_py0vv")

@@ -29,8 +29,8 @@ var enemies = []
 var allies = []
 @onready var relic_info: Control = %RelicInfo
 
-const ALLY = preload("res://scenes/units/allies/ally.tscn")
-const ENEMY = preload("res://scenes/units/enemies/enemy.tscn")
+const ALLY = preload("res://resources/units/allies/ally.tscn")
+const ENEMY = preload("res://resources/units/enemies/enemy.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

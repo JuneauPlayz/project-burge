@@ -63,6 +63,8 @@ func _ready() -> void:
 	# spell select ui first child, hp bar ui second child
 	if (combat):
 		combat_manager = get_parent().get_parent().combat_manager
+	health = res.starting_health
+	max_health = res.starting_health
 	basic_atk = res.skill1
 	skill_1 = res.skill2
 	skill_2 = res.skill3
@@ -107,12 +109,12 @@ func receive_skill(skill, unit, value_multiplier):
 	if (!connected):
 		ReactionManager.reaction_finished.connect(self.reaction_signal)
 		connected = true
-	var r = await ReactionManager.reaction(current_element, skill.element, self, value, 1)
+	var r = await ReactionManager.reaction(current_element, skill.element, self, value, skill.friendly)
 	if (r): 
 		await reaction_ended 
 		if skill.double_hit == true:
 			await get_tree().create_timer(0.3).timeout
-			var r2 = await ReactionManager.reaction(current_element, skill.element2, self, value2, 1)
+			var r2 = await ReactionManager.reaction(current_element, skill.element2, self, value2, skill.friendly)
 			if (r2):
 				await reaction_ended 
 				DamageNumbers.display_number(self.take_damage(value2), damage_number_origin.global_position, skill.element2, reaction)
@@ -128,7 +130,7 @@ func receive_skill(skill, unit, value_multiplier):
 			current_element = skill.element
 		if skill.double_hit == true:
 			await get_tree().create_timer(0.3).timeout
-			var r2 = await ReactionManager.reaction(current_element, skill.element2, self, value2, 1)
+			var r2 = await ReactionManager.reaction(current_element, skill.element2, self, value2, skill.friendly)
 			if (r2):
 				await reaction_ended 
 			if (!r2):
@@ -198,7 +200,7 @@ func take_damage(damage : int):
 	var damage_left = roundi(damage)
 	var total_dmg = roundi(damage)
 	if bubble:
-		damage_left = damage * GC.bubble_mult
+		damage_left = roundi(damage * GC.bubble_mult)
 		total_dmg = damage_left
 		bubble = false
 		DamageNumbers.display_text(self.damage_number_origin.global_position, "none", "Pop!", 32)
@@ -235,10 +237,12 @@ func receive_healing(healing: int):
 	if health >= max_health:
 		health = max_health
 	hp_bar.set_hp(health)
+	return healing
 	
 func receive_shielding(shielding: int):
 	shield += shielding
 	hp_bar.set_shield(shield)
+	return shielding
 
 func check_if_dead():
 	if health <= 0:

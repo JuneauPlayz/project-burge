@@ -4,18 +4,18 @@ extends Node2D
 @onready var venasaur: Draggable = $GridContainer/Venasaur
 @onready var pikachu: Draggable = $GridContainer/Pikachu
 
-const CHARIZARD = preload("res://scenes/units/allies/Charizard.tres")
-const BLASTOISE = preload("res://scenes/units/allies/Blastoise.tres")
-const VENASAUR = preload("res://scenes/units/allies/Venasaur.tres")
-const PIKACHU = preload("res://scenes/units/allies/Pikachu.tres")
+const CHARIZARD = preload("res://resources/units/allies/Charizard.tres")
+const BLASTOISE = preload("res://resources/units/allies/Blastoise.tres")
+const VENASAUR = preload("res://resources/units/allies/Venasaur.tres")
+const PIKACHU = preload("res://resources/units/allies/Pikachu.tres")
 
 var charizard_spot
 var blastoise_spot
 var venasaur_spot
 var pikachu_spot
 
-const BAGUETTE = preload("res://scenes/units/enemies/Baguette.tres")
-const BURGER_ENEMY = preload("res://scenes/units/enemies/Burger.tres")
+const BAGUETTE = preload("res://resources/units/enemies/Baguette.tres")
+const BURGER_ENEMY = preload("res://resources/units/enemies/Burger.tres")
 
 var characters = []
 var character_res_list = []
@@ -75,7 +75,7 @@ func _on_begin_run_pressed() -> void:
 			ally3 = character_res_list[i]
 		elif characters[i].global_position == ally_4_spot.global_position:
 			ally4 = character_res_list[i]
-	GC.load_combat(ally1,ally2,ally3,ally4,BURGER_ENEMY,BAGUETTE,BURGER_ENEMY,BAGUETTE)
+	GC.load_combat(ally1,ally2,ally3,ally4,GC.fight_1[0],GC.fight_1[1],GC.fight_1[2],GC.fight_1[3],10)
 	get_tree().change_scene_to_file("res://scenes/main scenes/combat.tscn")
 
 func check_spot(char, og_spot):

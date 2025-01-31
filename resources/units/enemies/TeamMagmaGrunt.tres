@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="UnitRes" load_steps=4 format=3 uid="uid://c257wxx44lh3l"]
+
+[ext_resource type="Script" path="res://scripts/UnitRes.gd" id="1_ro0vw"]
+[ext_resource type="Resource" uid="uid://cap1r3pplmwmf" path="res://resources/enemy_skills/Magma Strike.tres" id="2_0wqnq"]
+[ext_resource type="Texture2D" uid="uid://c2kjpavfw7w8x" path="res://assets/teammagmagrunt.png" id="2_d75wh"]
+
+[resource]
+script = ExtResource("1_ro0vw")
+starting_health = 150
+skill1 = ExtResource("2_0wqnq")
+sprite = ExtResource("2_d75wh")
+sprite_scale = 0.65
+name = "MagmaGrunt"

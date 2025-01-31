@@ -10,8 +10,8 @@ var ally4 : Ally
 
 var allies = []
 
-const ALLY = preload("res://scenes/units/allies/ally.tscn")
-const ENEMY = preload("res://scenes/units/enemies/enemy.tscn")
+const ALLY = preload("res://resources/units/allies/ally.tscn")
+const ENEMY = preload("res://resources/units/enemies/enemy.tscn")
 
 @onready var reaction_panel: Control = $ReactionGuide/ReactionPanel
 
@@ -141,7 +141,7 @@ func update_gold():
 
 func _on_next_combat_pressed() -> void:
 	AudioPlayer.play_FX("click",-10)
-	GC.load_combat(GC.ally1,GC.ally2,GC.ally3,GC.ally4,GC.enemy1,GC.enemy2,GC.enemy3,GC.enemy4)
+	GC.load_combat(GC.ally1,GC.ally2,GC.ally3,GC.ally4,GC.enemy1,GC.enemy2,GC.enemy3,GC.enemy4,GC.current_reward)
 	get_tree().change_scene_to_file("res://scenes/main scenes/combat.tscn")
 	
 func _on_confirm_swap_pressed() -> void:

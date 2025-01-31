@@ -1,12 +1,12 @@
 [gd_scene load_steps=10 format=3 uid="uid://cejatt12ddojf"]
 
-[ext_resource type="Script" path="res://addons/tnowe_extra_controls/elements/draggable.gd" id="1_2r27m"]
-[ext_resource type="Script" path="res://new_character_select.gd" id="1_p63mp"]
-[ext_resource type="Texture2D" uid="uid://4geq5yb7tf1u" path="res://assets/charizard.png" id="2_6ye2v"]
-[ext_resource type="Texture2D" uid="uid://c7bn1gnx4b71v" path="res://assets/grassy pixelated.jpg" id="2_bhtpu"]
-[ext_resource type="Texture2D" uid="uid://lusgwdgw1no1" path="res://assets/Blastoise.png" id="4_ba5s1"]
-[ext_resource type="Texture2D" uid="uid://dr5buhafiup2r" path="res://assets/venasaur (2).png" id="5_f5d55"]
-[ext_resource type="Texture2D" uid="uid://dmsixe7n4f266" path="res://assets/pikachu.png" id="6_uythr"]
+[ext_resource type="Script" path="res://scripts/new_character_select.gd" id="1_c5uuy"]
+[ext_resource type="Texture2D" uid="uid://c7bn1gnx4b71v" path="res://assets/grassy pixelated.jpg" id="2_kjqh1"]
+[ext_resource type="Script" path="res://addons/tnowe_extra_controls/elements/draggable.gd" id="3_l2ywx"]
+[ext_resource type="Texture2D" uid="uid://4geq5yb7tf1u" path="res://assets/charizard.png" id="4_go2d0"]
+[ext_resource type="Texture2D" uid="uid://lusgwdgw1no1" path="res://assets/Blastoise.png" id="5_i4hyv"]
+[ext_resource type="Texture2D" uid="uid://dr5buhafiup2r" path="res://assets/venasaur (2).png" id="6_2gi26"]
+[ext_resource type="Texture2D" uid="uid://dmsixe7n4f266" path="res://assets/pikachu.png" id="7_0rorh"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tbrfe"]
 font_size = 42
@@ -19,13 +19,13 @@ outline_size = 9
 outline_color = Color(0, 0, 0, 1)
 
 [node name="new_character_select" type="Node2D"]
-script = ExtResource("1_p63mp")
+script = ExtResource("1_c5uuy")
 
 [node name="Background" type="Sprite2D" parent="."]
 self_modulate = Color(1, 1, 1, 0.74902)
 position = Vector2(1168, 552)
 scale = Vector2(3.2, 3.2)
-texture = ExtResource("2_bhtpu")
+texture = ExtResource("2_kjqh1")
 
 [node name="GridContainer" type="GridContainer" parent="."]
 offset_left = 610.0
@@ -105,45 +105,45 @@ layout_mode = 2
 [node name="Charizard" type="Container" parent="GridContainer"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-script = ExtResource("1_2r27m")
+script = ExtResource("3_l2ywx")
 grid_snap = Vector2(100, 100)
 
 [node name="Sprite2D" type="Sprite2D" parent="GridContainer/Charizard"]
 position = Vector2(46, 51)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_6ye2v")
+texture = ExtResource("4_go2d0")
 
 [node name="Blastoise" type="Container" parent="GridContainer"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-script = ExtResource("1_2r27m")
+script = ExtResource("3_l2ywx")
 grid_snap = Vector2(100, 100)
 
 [node name="Sprite2D" type="Sprite2D" parent="GridContainer/Blastoise"]
 position = Vector2(46, 51)
-texture = ExtResource("4_ba5s1")
+texture = ExtResource("5_i4hyv")
 
 [node name="Venasaur" type="Container" parent="GridContainer"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-script = ExtResource("1_2r27m")
+script = ExtResource("3_l2ywx")
 grid_snap = Vector2(100, 100)
 
 [node name="Sprite2D" type="Sprite2D" parent="GridContainer/Venasaur"]
 position = Vector2(46, 51)
 scale = Vector2(0.39, 0.39)
-texture = ExtResource("5_f5d55")
+texture = ExtResource("6_2gi26")
 
 [node name="Pikachu" type="Container" parent="GridContainer"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-script = ExtResource("1_2r27m")
+script = ExtResource("3_l2ywx")
 grid_snap = Vector2(100, 100)
 
 [node name="Sprite2D" type="Sprite2D" parent="GridContainer/Pikachu"]
 position = Vector2(46, 51)
 scale = Vector2(0.35, 0.35)
-texture = ExtResource("6_uythr")
+texture = ExtResource("7_0rorh")
 
 [node name="Begin Run" type="Button" parent="."]
 offset_left = 793.0

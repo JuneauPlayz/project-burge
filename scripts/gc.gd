@@ -4,15 +4,18 @@ var is_dragging = false
 
 const GLOBAL_INTERVAL = 0.15
 # global currencies
-var gold = 50
+var gold = 0
 var bonus_gold = 0
 var gold_multiplier = 1
 #combat
-const FIRE_POTION = preload("res://scenes/relic handler/relics/fire_potion.tres")
-const SHIELD_POTION = preload("res://scenes/relic handler/relics/shield_potion.tres")
-const VAPOR_ORB = preload("res://scenes/relic handler/relics/vapor_orb.tres")
+var current_reward = 10
+const FIRE_POTION = preload("res://resources/relics/fire_potion.tres")
+const SHIELD_POTION = preload("res://resources/relics/shield_potion.tres")
+const VAPOR_ORB = preload("res://resources/relics/vapor_orb.tres")
 
-
+const TEAM_MAGMA_GRUNT = preload("res://resources/units/enemies/TeamMagmaGrunt.tres")
+# predetermined fights
+var fight_1 = [TEAM_MAGMA_GRUNT, TEAM_MAGMA_GRUNT, null, null]
 #loading unit reses
 var ally1 : UnitRes
 var ally2 : UnitRes
@@ -211,7 +214,7 @@ func reset_tokens():
 	earth_tokens = 0
 	
 	
-func load_combat(ally1, ally2, ally3, ally4, enemy1, enemy2, enemy3, enemy4):
+func load_combat(ally1, ally2, ally3, ally4, enemy1, enemy2, enemy3, enemy4, reward):
 	self.ally1 = ally1
 	self.ally2 = ally2
 	self.ally3 = ally3
@@ -220,6 +223,7 @@ func load_combat(ally1, ally2, ally3, ally4, enemy1, enemy2, enemy3, enemy4):
 	self.enemy2 = enemy2
 	self.enemy3 = enemy3
 	self.enemy4 = enemy4
+	current_reward = reward
 	
 func add_token(element, count):
 	match element:
@@ -235,7 +239,7 @@ func add_token(element, count):
 			earth_tokens += ((count + earth_token_bonus) * earth_token_multiplier)
 			
 func add_gold(count):
-	gold += (count + bonus_gold + gold_multiplier)
+	gold += ((count + bonus_gold) * gold_multiplier)
 	
 func reset():
 	gold = 0

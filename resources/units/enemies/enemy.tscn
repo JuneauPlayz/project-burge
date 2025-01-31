@@ -1,7 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://didsupfyw66ha"]
+[gd_scene load_steps=12 format=3 uid="uid://didsupfyw66ha"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_ml356"]
-[ext_resource type="Resource" uid="uid://dy48dueo5v5f" path="res://resources/enemy_skills/EnemyBaguetteSlap.tres" id="2_3luuo"]
 [ext_resource type="Texture2D" uid="uid://bljf8dm0b4fdy" path="res://assets/baguette.png" id="3_n62cc"]
 [ext_resource type="PackedScene" uid="uid://5spa5amgsxfm" path="res://scenes/reusables/hp_bar.tscn" id="4_8i2d0"]
 [ext_resource type="PackedScene" uid="uid://sdwnoh61gawa" path="res://scenes/reusables/skill_info.tscn" id="5_gim1t"]
@@ -31,8 +30,6 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [node name="Enemy" type="Node2D"]
 scale = Vector2(0.75, 0.75)
 script = ExtResource("1_ml356")
-skill1 = ExtResource("2_3luuo")
-skill2 = ExtResource("2_3luuo")
 health = 100
 max_health = 100
 title = "Baguette"

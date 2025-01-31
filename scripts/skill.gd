@@ -7,7 +7,7 @@ class_name Skill
 @export var damaging = false
 @export var healing = false
 @export var shielding = false
-@export_enum("single_enemy", "single_ally", "all_enemies", "all_allies", "all_units", "front_enemy", "front_ally", "back_enemy", "back_ally") var target_type : String
+@export_enum("single_enemy", "single_ally", "all_enemies", "all_allies", "all_units", "front_enemy", "front_ally", "back_enemy", "back_ally", "random_enemy", "random_ally") var target_type : String
 
 @export_category("Extras")
 @export var friendly = false

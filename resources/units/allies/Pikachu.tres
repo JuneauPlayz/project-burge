@@ -2,15 +2,16 @@
 
 [ext_resource type="Script" path="res://scripts/UnitRes.gd" id="1_psg7m"]
 [ext_resource type="Resource" uid="uid://60omj8j38mfk" path="res://resources/Skills/lightning/Thunder Bolt.tres" id="2_sd5ql"]
+[ext_resource type="Resource" uid="uid://cnw2l4om8k28e" path="res://resources/Skills/lightning/Thunder Punch.tres" id="3_2ycgk"]
 [ext_resource type="Resource" uid="uid://ddrvp77dd5ima" path="res://resources/Skills/lightning/Electro Ball.tres" id="3_e3nc1"]
-[ext_resource type="Resource" uid="uid://cf3f0mnd7a8pe" path="res://resources/Skills/lightning/Thunder Dome.tres" id="3_vlqy2"]
 [ext_resource type="Resource" uid="uid://bfvyaecgwi1s6" path="res://resources/Skills/lightning/Thunder.tres" id="5_ioqke"]
 [ext_resource type="Texture2D" uid="uid://dmsixe7n4f266" path="res://assets/pikachu.png" id="6_vnyy7"]
 
 [resource]
 script = ExtResource("1_psg7m")
+starting_health = 75
 skill1 = ExtResource("2_sd5ql")
-skill2 = ExtResource("3_vlqy2")
+skill2 = ExtResource("3_2ycgk")
 ult_1 = ExtResource("3_e3nc1")
 ult_2 = ExtResource("5_ioqke")
 sprite = ExtResource("6_vnyy7")

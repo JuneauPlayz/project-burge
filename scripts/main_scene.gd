@@ -10,4 +10,4 @@ func _on_exit_game_pressed() -> void:
 
 func _on_start_b_pressed() -> void:
 	AudioPlayer.play_FX("click",0)
-	get_tree().change_scene_to_file("res://scenes/main scenes/character_select.tscn")
+	get_tree().change_scene_to_file("res://scenes/main scenes/new_character_select.tscn")

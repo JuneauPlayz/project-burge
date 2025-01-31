@@ -46,6 +46,8 @@ func _ready() -> void:
 	await get_tree().create_timer(0.1).timeout
 	combat_manager = get_parent().get_parent().get_combat_manager()
 	self.died.connect(combat_manager.reaction_signal)
+	health = res.starting_health
+	max_health = res.starting_health
 	if res.skill1 != null:
 		skill1 = res.skill1
 		current_skill = skill1
@@ -79,14 +81,14 @@ func receive_skill(skill, unit, value_multiplier):
 	if (!connected):
 		ReactionManager.reaction_finished.connect(self.reaction_signal)
 		connected = true
-	var r = await ReactionManager.reaction(current_element, skill.element, self, value, 1)
+	var r = await ReactionManager.reaction(current_element, skill.element, self, value, skill.friendly)
 	if (r): 
 		print("waiting for reaction")
 		await reaction_ended 
 		print("reaction received")
 		if skill.double_hit == true:
 			await get_tree().create_timer(0.3).timeout
-			var r2 = await ReactionManager.reaction(current_element, skill.element2, self, value2, 1)
+			var r2 = await ReactionManager.reaction(current_element, skill.element2, self, value2, skill.friendly)
 			if (r2):
 				await reaction_ended 
 				DamageNumbers.display_number(self.take_damage(value2), damage_number_origin.global_position, skill.element2, reaction)
@@ -102,7 +104,7 @@ func receive_skill(skill, unit, value_multiplier):
 			current_element = skill.element
 		if skill.double_hit == true:
 			await get_tree().create_timer(0.3).timeout
-			var r2 = await ReactionManager.reaction(current_element, skill.element2, self, value2, 1)
+			var r2 = await ReactionManager.reaction(current_element, skill.element2, self, value2, skill.friendly)
 			if (r2):
 				await reaction_ended 
 			if (!r2):
@@ -147,6 +149,12 @@ func receive_healing(healing: int):
 	if health >= max_health:
 		health = max_health
 	hp_bar.set_hp(health)
+	return healing
+	
+func receive_shielding(shielding: int):
+	shield += shielding
+	hp_bar.set_shield(shield)
+	return shielding
 
 func reaction_signal():
 	reaction_ended.emit()
@@ -155,10 +163,10 @@ func reaction_signal():
 
 func take_damage(damage : int):
 	AudioPlayer.play_FX("fire_hit", -30)
-	var damage_left = damage
-	var total_dmg = damage
+	var damage_left = roundi(damage)
+	var total_dmg = roundi(damage)
 	if bubble:
-		damage_left = damage * GC.bubble_mult
+		damage_left = roundi(damage * GC.bubble_mult)
 		total_dmg = damage_left
 		bubble = false
 		DamageNumbers.display_text(self.damage_number_origin.global_position, "none", "Pop!", 32)
@@ -204,14 +212,6 @@ func die():
 	combat_manager.set_unit_pos()
 	queue_free()
 	
-func change_skills():
-	
-	if current_skill == skill1:
-		current_skill = skill2
-	elif current_skill == skill2:
-		current_skill = skill1
-	skill_info.skill = current_skill
-	skill_info.update_skill_info()
 	
 func enable_targeting_area():
 	targeting_area.visible = true
@@ -238,17 +238,22 @@ func execute_status(status_effect):
 		elif status_effect.name == "Sow":
 			sow = true
 	
-func random_skill():
+func change_skills():
 	rng = RandomNumberGenerator.new()
-	random_num = rng.randi_range(1,3)
+	random_num = 1
+	if skill2 != null:
+		random_num = rng.randi_range(1,2)
+	if skill3 != null:
+		random_num = rng.randi_range(1,3)
 	match random_num:
 		1:
-			return skill1
+			current_skill = skill1
 		2:
-			return skill2
+			current_skill = skill2
 		3:
-			return skill3
-			
+			current_skill = skill3
+	skill_info.skill = current_skill
+	skill_info.update_skill_info()
 func hide_next_skill_info():
 	show_next_skill.visible = false
 	

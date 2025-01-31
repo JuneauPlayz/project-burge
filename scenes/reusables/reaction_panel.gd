@@ -1,8 +1,8 @@
 extends Control
 @onready var vaporize_mult: Label = $PanelContainer/MarginContainer/Page1/Vaporize/VaporizeMult
 @onready var vaporize_tokens: RichTextLabel = $PanelContainer/MarginContainer/Page1/VaporizeTokens
-@onready var shock_mult: Label = $PanelContainer/MarginContainer/Page1/Shock/ShockMult
-@onready var shock_tokens: RichTextLabel = $PanelContainer/MarginContainer/Page1/ShockTokens
+@onready var shock_mult: Label = $PanelContainer/MarginContainer/Page2/Shock/ShockMult
+@onready var shock_tokens: RichTextLabel = $PanelContainer/MarginContainer/Page2/ShockTokens
 @onready var detonate_mult: Label = $PanelContainer/MarginContainer/Page1/Detonate/DetonateMult
 @onready var detonate_tokens: RichTextLabel = $PanelContainer/MarginContainer/Page1/DetonateTokens
 @onready var erupt_mult: Label = $PanelContainer/MarginContainer/Page1/Erupt/EruptMult
@@ -11,8 +11,8 @@ extends Control
 @onready var bloom_tokens: RichTextLabel = $PanelContainer/MarginContainer/Page1/BloomTokens
 @onready var nitro_mult: Label = $PanelContainer/MarginContainer/Page2/Nitro/NitroMult
 @onready var nitro_tokens: RichTextLabel = $PanelContainer/MarginContainer/Page2/NitroTokens
-@onready var burn_damage: Label = $PanelContainer/MarginContainer/Page2/Burn/BurnDamage
-@onready var burn_tokens: RichTextLabel = $PanelContainer/MarginContainer/Page2/BurnTokens
+@onready var burn_damage: Label = $PanelContainer/MarginContainer/Page1/Burn/BurnDamage
+@onready var burn_tokens: RichTextLabel = $PanelContainer/MarginContainer/Page1/BurnTokens
 @onready var muck_mult: Label = $PanelContainer/MarginContainer/Page2/Muck/MuckMult
 @onready var muck_tokens: RichTextLabel = $PanelContainer/MarginContainer/Page2/MuckTokens
 @onready var discharge_mult: Label = $PanelContainer/MarginContainer/Page2/Discharge/DischargeMult

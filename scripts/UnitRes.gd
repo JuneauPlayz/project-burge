@@ -1,6 +1,7 @@
 extends Resource
 class_name UnitRes
 
+@export var starting_health : int
 @export var skill1 : Skill
 @export var skill2 : Skill
 @export var skill3 : Skill

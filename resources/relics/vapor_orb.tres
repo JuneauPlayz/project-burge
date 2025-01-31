@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://ri585emt4d3a"]
 
 [ext_resource type="Texture2D" uid="uid://bn7nb2ypup127" path="res://assets/steamicon.png" id="1_0jsa4"]
-[ext_resource type="Script" path="res://scenes/relic handler/relic scripts/vapor_orb.gd" id="2_o3xtc"]
+[ext_resource type="Script" path="res://resources/relic scripts/vapor_orb.gd" id="2_o3xtc"]
 
 [resource]
 script = ExtResource("2_o3xtc")
