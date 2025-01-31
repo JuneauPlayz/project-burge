@@ -82,6 +82,7 @@ func _ready() -> void:
 			item.price = get_price(item.item)
 			item.update_item()
 			shop_skills.append(item.item)
+		item.skill_info.z_index -= 1
 		
 
 func get_price(resource):
