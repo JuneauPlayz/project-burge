@@ -14,8 +14,12 @@ const SHIELD_POTION = preload("res://resources/relics/shield_potion.tres")
 const VAPOR_ORB = preload("res://resources/relics/vapor_orb.tres")
 
 const TEAM_MAGMA_GRUNT = preload("res://resources/units/enemies/TeamMagmaGrunt.tres")
+
 # predetermined fights
+var current_fight = fight_1
 var fight_1 = [TEAM_MAGMA_GRUNT, TEAM_MAGMA_GRUNT, null, null]
+var fight_1_reward = 10
+
 #loading unit reses
 var ally1 : UnitRes
 var ally2 : UnitRes
@@ -196,7 +200,8 @@ func _ready():
 		file_name = dir.get_next()
 		while file_name != "":
 			var SKILL = load("res://resources/Skills/" + element + "/" + file_name)
-			GC.obtainable_skills.append(SKILL)
+			if SKILL.purchaseable == true:
+				GC.obtainable_skills.append(SKILL)
 			file_name = dir.get_next()
 	for relic in GC.obtainable_relics:
 		print(relic.relic_name)

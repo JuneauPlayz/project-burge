@@ -497,7 +497,6 @@ func reset_skill_select():
 	
 func _on_end_turn_pressed() -> void:
 	if (!targeting and choosing_skills):
-		#relics.add_relic(SHIELD_POTION)
 		AudioPlayer.play_FX("click",0)
 		# end of turn relics
 		choosing_skills = false

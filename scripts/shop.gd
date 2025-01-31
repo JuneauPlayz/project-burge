@@ -16,6 +16,7 @@ const ALLY = preload("res://resources/units/allies/ally.tscn")
 const ENEMY = preload("res://resources/units/enemies/enemy.tscn")
 
 @onready var reaction_panel: Control = $ReactionGuide/ReactionPanel
+@onready var relic_info: Control = %RelicInfo
 
 @onready var ally_1_spot: Node2D = $"Ally 1 Spot"
 @onready var ally_2_spot: Node2D = $"Ally 2 Spot"
@@ -34,6 +35,7 @@ var relic_list = []
 var spell_list = []
 
 var shop_relics = []
+var shop_skills = []
 
 var relics : RelicHandler
 
@@ -63,15 +65,23 @@ func _ready() -> void:
 		var item = SHOP_ITEM.instantiate()
 		spot.add_child(item)
 		item.item = GC.get_random_relic()
-		item.price = get_price(item.item)
-		item.update_item()
+		if GC.obtainable_relics.size() > 2:
+			while item.item in shop_relics:
+				item.item = GC.get_random_relic()
+			item.price = get_price(item.item)
+			item.update_item()
+			shop_relics.append(item.item)
 		
 	for spot in spell_list:
 		var item = SHOP_ITEM.instantiate()
 		spot.add_child(item)
 		item.item = GC.get_random_skill()
-		item.price = get_price(item.item)
-		item.update_item()
+		if GC.obtainable_skills.size() > 2:
+			while item.item in shop_skills:
+				item.item = GC.get_random_skill()
+			item.price = get_price(item.item)
+			item.update_item()
+			shop_skills.append(item.item)
 		
 
 func get_price(resource):
@@ -192,3 +202,7 @@ func _on_reaction_guide_pressed() -> void:
 		reaction_panel.visible = false
 	elif not reaction_panel.visible:
 		reaction_panel.visible = true
+
+
+func toggle_relic_tooltip():
+	relic_info.visible = !relic_info.visible

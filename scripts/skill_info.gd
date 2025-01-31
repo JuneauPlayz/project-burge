@@ -52,6 +52,18 @@ func update_skill_info():
 		description.text = "Applies " + skill.element + " to " + target
 	if skill.double_hit == true:
 		description.text += "\nThen, deals " + str(skill.damage2) + " " + str(skill.element2) + " damage\nto the same target(s)"
+	if skill.status_effects != []:
+		for x in skill.status_effects:
+			if x.name == "Bleed":
+				description.text += "\nApplies Bleed on targets"
+			if x.name == "Burn":
+				description.text += "\nApplies Burn on targets"
+			if x.name == "Bubble":
+				description.text += "\nApplies Bubble on targets"
+			if x.name == "Muck":
+				description.text += "\nApplies Muck on targets"
+			if x.name == "Nitro":
+				description.text += "\nApplies Nitro on targets"
 	if skill.cost > 0:
 		description.text += "\nCosts " +  str(skill.cost) + " " + skill.token_type + " tokens"
 		if skill.cost2 > 0:

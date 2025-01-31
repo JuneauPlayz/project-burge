@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3 uid="uid://i3q5vd6ou4km"]
+
+[ext_resource type="Script" path="res://scripts/skill.gd" id="1_a0ivi"]
+
+[resource]
+script = ExtResource("1_a0ivi")
+name = "Rock Barrier"
+damage = 30
+element = "earth"
+damaging = false
+healing = false
+shielding = true
+target_type = ""
+purchaseable = true
+tier = "1"
+friendly = false
+lifesteal = false
+lifesteal_rate = 1.0
+cost = 3
+token_type = "earth"
+cost2 = 0
+token_type2 = ""
+status_effects = []
+double_hit = false
+damage2 = 0
+element2 = ""

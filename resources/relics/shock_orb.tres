@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bo3se2l60exf2"]
+
+[ext_resource type="Script" path="res://resources/relic scripts/shock_orb.gd" id="1_y8v0v"]
+
+[resource]
+script = ExtResource("1_y8v0v")
+relic_name = "Shock Orb"
+tier = "1"
+id = ""
+type = 4
+tooltip = "Adds 0.2x to Shock Multiplier
+and Shock now gives
++1 Lightning Token."

@@ -5,17 +5,19 @@
 [resource]
 script = ExtResource("1_gq4n6")
 name = "Rock Slam"
-damage = 10
+damage = 5
 element = "earth"
 damaging = true
 healing = false
 shielding = false
 target_type = "all_enemies"
+purchaseable = true
+tier = "1"
 friendly = false
 lifesteal = false
 lifesteal_rate = 1.0
-cost = 0
-token_type = ""
+cost = 2
+token_type = "earth"
 cost2 = 0
 token_type2 = ""
 status_effects = []

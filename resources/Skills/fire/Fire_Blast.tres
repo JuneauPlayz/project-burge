@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3 uid="uid://bu0287d5t5207"]
+
+[ext_resource type="Script" path="res://scripts/skill.gd" id="1_onbw4"]
+
+[resource]
+script = ExtResource("1_onbw4")
+name = "Fire Blast"
+damage = 10
+element = "fire"
+damaging = true
+healing = false
+shielding = false
+target_type = "all_enemies"
+purchaseable = true
+tier = "2"
+friendly = false
+lifesteal = false
+lifesteal_rate = 1.0
+cost = 0
+token_type = ""
+cost2 = 0
+token_type2 = ""
+status_effects = []
+double_hit = true
+damage2 = 25
+element2 = "fire"

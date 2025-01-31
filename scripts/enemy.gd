@@ -129,6 +129,7 @@ func receive_skill(skill, unit, value_multiplier):
 			if x.name == "Nitro":
 				var new_nitro = NITRO.duplicate()
 				status.append(new_nitro)
+		hp_bar.update_statuses(status)
 	print("attempting to sow")
 	if sow:
 		print("sowing" + skill.name)

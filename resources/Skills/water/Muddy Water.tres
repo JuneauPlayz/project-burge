@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://dv6vx008xpgt7"]
+
+[ext_resource type="Script" path="res://scripts/skill.gd" id="1_2jwhe"]
+[ext_resource type="Resource" uid="uid://bdml5ghtlnrag" path="res://resources/Status Effects/Muck.tres" id="2_20t78"]
+
+[resource]
+script = ExtResource("1_2jwhe")
+name = "Muddy Water"
+damage = 5
+element = "water"
+damaging = true
+healing = false
+shielding = false
+target_type = "all_enemies"
+purchaseable = false
+tier = "1"
+friendly = false
+lifesteal = false
+lifesteal_rate = 1.0
+cost = 0
+token_type = ""
+cost2 = 0
+token_type2 = ""
+status_effects = [ExtResource("2_20t78")]
+double_hit = false
+damage2 = 0
+element2 = ""

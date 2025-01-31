@@ -5,16 +5,18 @@
 [resource]
 script = ExtResource("1_34xag")
 name = "Leafstorm"
-damage = 10
+damage = 5
 element = "grass"
 damaging = true
 healing = false
 shielding = false
 target_type = "all_enemies"
+purchaseable = true
+tier = "1"
 friendly = false
 lifesteal = false
 lifesteal_rate = 1.0
-cost = 2
+cost = 3
 token_type = "grass"
 cost2 = 0
 token_type2 = ""

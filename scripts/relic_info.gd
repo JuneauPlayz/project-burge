@@ -10,5 +10,6 @@ func _ready() -> void:
 
 
 func update_relic_info(relic):
-	relic_name.text = relic.relic_name
-	description.text = relic.tooltip
+	if relic != null:
+		relic_name.text = relic.relic_name
+		description.text = relic.tooltip
