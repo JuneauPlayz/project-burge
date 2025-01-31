@@ -73,7 +73,6 @@ func _ready() -> void:
 
 
 func receive_skill(skill, unit, value_multiplier):
-	print("receiving skill" + skill.name)
 	var rounded : int
 	var reaction = ""
 	var value = skill.final_damage * value_multiplier

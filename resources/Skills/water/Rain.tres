@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3 uid="uid://bjhv6vnfbi08q"]
+
+[ext_resource type="Script" path="res://scripts/skill.gd" id="1_spdx4"]
+
+[resource]
+script = ExtResource("1_spdx4")
+name = "Rain"
+damage = 0
+element = "water"
+damaging = false
+healing = false
+shielding = false
+target_type = "all_units"
+purchaseable = true
+tier = "1"
+friendly = false
+lifesteal = false
+lifesteal_rate = 1.0
+cost = 2
+token_type = "water"
+cost2 = 0
+token_type2 = ""
+status_effects = []
+double_hit = false
+damage2 = 0
+element2 = ""

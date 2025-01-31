@@ -124,7 +124,7 @@ func update_mult_labels() -> void:
 	discharge_tokens.text = "        +" + str(discharge_earth_tokens) + " [color=saddlebrown] Earth[/color]" + (" Tokens" if discharge_earth_tokens >= 2 else " Token") + "  +" + str(discharge_lightning_tokens) + " [color=purple] Lightning[/color]" + (" Tokens" if discharge_lightning_tokens >= 2 else " Token")
 
 	# Update sow label
-	sow_shielding.text = "Sow Shielding: " + str(GC.sow_shielding)
+	sow_shielding.text = "Sow Shielding: " + str(GC.sow_shielding) + "\nSow Healing: " + str(GC.sow_healing)
 	var sow_earth_tokens = (GC.sow_earth_token_base + GC.sow_earth_token_bonus) * GC.sow_earth_token_mult
 	var sow_grass_tokens = (GC.sow_grass_token_base + GC.sow_grass_token_bonus) * GC.sow_grass_token_mult
 	sow_tokens.text = "        +" + str(sow_earth_tokens) + " [color=saddlebrown] Earth[/color]" + (" Tokens" if sow_earth_tokens >= 2 else " Token") + "  +" + str(sow_grass_tokens) + " [color=webgreen] Grass[/color]" + (" Tokens" if sow_grass_tokens >= 2 else " Token")

@@ -3,8 +3,8 @@ extends Control
 const RELICS_PER_PAGE = 5
 const TWEEN_SCROLL_DURATION = 0.2
 
-@export var left_button : Button
-@export var right_button : Button
+@onready var left_button: Button = %LeftButton
+@onready var right_button: Button = %RightButton
 
 @onready var relics: HBoxContainer = %Relics
 @export var page_width = self.custom_minimum_size.x
@@ -31,7 +31,8 @@ func update() -> void:
 	
 	left_button.disabled = current_page <= 1
 	# makes an error but game still works so whatever
-	right_button = %RightButton
+	if (right_button == null):
+		right_button = %RightButton
 	if right_button:
 		right_button.disabled = current_page >= max_page
 

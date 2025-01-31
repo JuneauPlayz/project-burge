@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://crkjhbiu783ib"]
+
+[ext_resource type="Script" path="res://resources/relic scripts/sow_specialist.gd" id="1_n1fc2"]
+[ext_resource type="Texture2D" uid="uid://defrd4fdejdu1" path="res://assets/miyabii.png" id="1_vy0rr"]
+
+[resource]
+script = ExtResource("1_n1fc2")
+relic_name = "Sow Specialist"
+tier = "1"
+id = ""
+type = 4
+icon = ExtResource("1_vy0rr")
+tooltip = "Adds 10 to Sow Shielding
+Adds 10 to Sow Healing"

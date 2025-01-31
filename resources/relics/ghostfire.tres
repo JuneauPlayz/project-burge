@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bwhj7jk0eg4r2"]
+
+[ext_resource type="Texture2D" uid="uid://133h4yyl8s4l" path="res://assets/chillpyro.png" id="1_n731v"]
+[ext_resource type="Script" path="res://resources/relic scripts/ghostfire.gd" id="1_v84vh"]
+
+[resource]
+script = ExtResource("1_v84vh")
+relic_name = "Ghostfire"
+tier = "2"
+id = ""
+type = 4
+icon = ExtResource("1_n731v")
+tooltip = "When an ally uses a
+single enemy fire skill,
+a random enemy is also 
+hit with the same skill"

@@ -1,21 +1,33 @@
 extends Control
 
 @export var skill : Skill
-@onready var skill_name: Label = $PanelContainer/PanelContainer/MarginContainer/VBoxContainer/SkillName
-@onready var element: Label = $PanelContainer/PanelContainer/MarginContainer/VBoxContainer/Element
-@onready var description: Label = $PanelContainer/PanelContainer/MarginContainer/VBoxContainer/Description
+@onready var skill_name: RichTextLabel = %SkillName
+@onready var element: RichTextLabel = %Element
+@onready var description: Label = %Description
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	description.text = ""
 
-
-
 func update_skill_info():
 	description.text = ""
 	var target = ""
-	skill_name.text = skill.name
-	element.text = skill.element
+	skill_name.text = "[center]" + skill.name + "[/center]"
+	var element_text = ""
+	match skill.element:
+		"fire":
+			element_text = "[color=coral]Fire[/color]"
+		"water":
+			element_text = "[color=dark_cyan]Water[/color]"
+		"lightning":
+			element_text = "[color=purple]Lightning[/color]"
+		"grass":
+			element_text = "[color=web_green]Grass[/color]"
+		"earth":
+			element_text = "[color=saddle_brown]Earth[/color]"
+		
+	element.text = "[center]" + element_text + "[/center]"
 	match skill.target_type:
 		"single_enemy":
 			target = "an enemy"

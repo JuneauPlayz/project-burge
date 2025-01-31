@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cmmon0itrxfne"]
+
+[ext_resource type="Texture2D" uid="uid://bn7nb2ypup127" path="res://assets/steamicon.png" id="1_0iruf"]
+[ext_resource type="Script" path="res://resources/relic scripts/detonate_orb.gd" id="1_ui6iu"]
+
+[resource]
+script = ExtResource("1_ui6iu")
+relic_name = "Detonate Orb"
+tier = "1"
+id = ""
+type = 4
+icon = ExtResource("1_0iruf")
+tooltip = "Adds 0.5x to Detonate
+Main Mult and 0.25x to
+Detonate Side Mult"

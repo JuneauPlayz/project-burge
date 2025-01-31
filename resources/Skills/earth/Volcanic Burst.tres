@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3 uid="uid://byspe4087cnm6"]
+
+[ext_resource type="Script" path="res://scripts/skill.gd" id="1_pwhhr"]
+
+[resource]
+script = ExtResource("1_pwhhr")
+name = "Volcanic Burst"
+damage = 25
+element = "fire"
+damaging = true
+healing = false
+shielding = false
+target_type = "single_enemy"
+purchaseable = true
+tier = "1"
+friendly = false
+lifesteal = false
+lifesteal_rate = 1.0
+cost = 5
+token_type = "fire"
+cost2 = 5
+token_type2 = "earth"
+status_effects = []
+double_hit = true
+damage2 = 50
+element2 = "earth"

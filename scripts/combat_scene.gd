@@ -12,6 +12,7 @@ extends Node2D
 @onready var loading: Node2D = $Loading
 @onready var relic_handler_spot: Node2D = $RelicHandlerSpot
 @onready var reaction_panel: Control = $CombatManager/ReactionGuide/ReactionPanel
+@onready var combat_currency: Control = $CombatManager/CombatCurrency
 
 
 const RELIC_HANDLER = preload("res://scenes/relic handler/relic_handler.tscn")

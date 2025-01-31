@@ -22,6 +22,7 @@ const BURGER_ENEMY = preload("res://resources/units/enemies/Burger.tres")
 
 var characters = []
 var character_res_list = []
+
 @onready var ally_1_spot: ColorRect = $GridContainer/Ally1Spot
 @onready var ally_2_spot: ColorRect = $GridContainer/Ally2Spot
 @onready var ally_3_spot: ColorRect = $GridContainer/Ally3Spot
@@ -31,6 +32,10 @@ var ally1
 var ally2
 var ally3
 var ally4
+
+@onready var character_info: Label = $CharacterInfo
+@onready var skill_info_1: Control = $CharacterInfo/SkillInfo1
+@onready var skill_info_2: Control = $CharacterInfo/SkillInfo2
 
 
 # Called when the node enters the scene tree for the first time.
@@ -113,3 +118,30 @@ func _on_pikachu_drag_ended() -> void:
 
 func _on_golem_drag_ended() -> void:
 	check_spot(golem, golem_spot)
+
+func display_character_info(character):
+	character_info.visible = true
+	character_info.text = character.name
+	skill_info_1.skill = character.skill1
+	skill_info_2.skill = character.skill2
+	skill_info_1.update_skill_info()
+	skill_info_2.update_skill_info()
+	
+func _on_charizard_mouse_entered() -> void:
+	display_character_info(CHARIZARD)
+
+
+func _on_blastoise_mouse_entered() -> void:
+	display_character_info(BLASTOISE)
+
+
+func _on_venasaur_mouse_entered() -> void:
+	display_character_info(VENASAUR)
+
+
+func _on_pikachu_mouse_entered() -> void:
+	display_character_info(PIKACHU)
+
+
+func _on_golem_mouse_entered() -> void:
+	display_character_info(GOLEM)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cejatt12ddojf"]
+[gd_scene load_steps=14 format=3 uid="uid://cejatt12ddojf"]
 
 [ext_resource type="Script" path="res://scripts/new_character_select.gd" id="1_c5uuy"]
 [ext_resource type="Texture2D" uid="uid://c7bn1gnx4b71v" path="res://assets/grassy pixelated.jpg" id="2_kjqh1"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://lusgwdgw1no1" path="res://assets/Blastoise.png" id="5_i4hyv"]
 [ext_resource type="Texture2D" uid="uid://dr5buhafiup2r" path="res://assets/venasaur (2).png" id="6_2gi26"]
 [ext_resource type="Texture2D" uid="uid://dmsixe7n4f266" path="res://assets/pikachu.png" id="7_0rorh"]
+[ext_resource type="PackedScene" uid="uid://sdwnoh61gawa" path="res://scenes/reusables/skill_info.tscn" id="8_hnda8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tbrfe"]
 font_size = 42
@@ -15,6 +16,16 @@ outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_g3rqs"]
 load_path = "res://.godot/imported/golem.png-4ecf06b627a0b206e6315fdbd8983774.ctex"
+
+[sub_resource type="LabelSettings" id="LabelSettings_ghnwa"]
+font_size = 86
+outline_size = 9
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vlp3o"]
+font_size = 46
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_0i11v"]
 font_size = 136
@@ -166,6 +177,38 @@ position = Vector2(46, 51)
 scale = Vector2(0.35, 0.35)
 texture = SubResource("CompressedTexture2D_g3rqs")
 
+[node name="CharacterInfo" type="Label" parent="."]
+visible = false
+offset_left = 61.0
+offset_top = 254.0
+offset_right = 335.0
+offset_bottom = 331.0
+text = "Charizard"
+label_settings = SubResource("LabelSettings_ghnwa")
+
+[node name="SkillInfo1" parent="CharacterInfo" instance=ExtResource("8_hnda8")]
+layout_mode = 1
+offset_left = 45.0
+offset_top = 129.0
+offset_right = 45.0
+offset_bottom = 129.0
+
+[node name="SkillInfo2" parent="CharacterInfo" instance=ExtResource("8_hnda8")]
+layout_mode = 1
+offset_left = 45.0
+offset_top = 350.0
+offset_right = 45.0
+offset_bottom = 350.0
+
+[node name="Label" type="Label" parent="CharacterInfo"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 83.0
+offset_right = 244.0
+offset_bottom = 124.0
+text = "Starting Skills"
+label_settings = SubResource("LabelSettings_vlp3o")
+
 [node name="Begin Run" type="Button" parent="."]
 offset_left = 793.0
 offset_top = 811.0
@@ -184,8 +227,13 @@ label_settings = SubResource("LabelSettings_0i11v")
 horizontal_alignment = 1
 
 [connection signal="drag_ended" from="GridContainer/Charizard" to="." method="_on_charizard_drag_ended"]
+[connection signal="mouse_entered" from="GridContainer/Charizard" to="." method="_on_charizard_mouse_entered"]
 [connection signal="drag_ended" from="GridContainer/Blastoise" to="." method="_on_blastoise_drag_ended"]
+[connection signal="mouse_entered" from="GridContainer/Blastoise" to="." method="_on_blastoise_mouse_entered"]
 [connection signal="drag_ended" from="GridContainer/Venasaur" to="." method="_on_venasaur_drag_ended"]
+[connection signal="mouse_entered" from="GridContainer/Venasaur" to="." method="_on_venasaur_mouse_entered"]
 [connection signal="drag_ended" from="GridContainer/Pikachu" to="." method="_on_pikachu_drag_ended"]
+[connection signal="mouse_entered" from="GridContainer/Pikachu" to="." method="_on_pikachu_mouse_entered"]
 [connection signal="drag_ended" from="GridContainer/Golem" to="." method="_on_golem_drag_ended"]
+[connection signal="mouse_entered" from="GridContainer/Golem" to="." method="_on_golem_mouse_entered"]
 [connection signal="pressed" from="Begin Run" to="." method="_on_begin_run_pressed"]

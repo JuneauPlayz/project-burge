@@ -172,6 +172,10 @@ var sow_grass_token_mult = 1
 var sow_earth_token_bonus = 0
 var sow_grass_token_bonus = 0
 
+# event based relics
+var ghostfire = false
+var flow = false
+
 func _ready():
 	var dir = DirAccess.open("res://resources/relics")
 	dir.list_dir_begin()
@@ -305,7 +309,9 @@ func reset():
 	gold = 0
 	bonus_gold = 0
 	gold_multiplier = 1
-
+	
+	ghostfire = false
+	flow = false
 	# Reset combat-related variables
 	current_reward = 10
 	combat_ally1 = null

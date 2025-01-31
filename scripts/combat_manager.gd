@@ -100,9 +100,11 @@ func combat_ready():
 	# relic stuff
 	relics.relics_activated.connect(_on_relics_activated)
 	relics.activate_relics_by_type(Relic.Type.START_OF_COMBAT)
+	combat_currency.update()
 
 
 func start_combat():
+	combat_currency.update()
 	show_skills()
 	reset_skill_select()
 	while (!combat_finished):
@@ -170,7 +172,34 @@ func enemy_turn():
 	else:
 		enemy_turn_done.emit()
 
-
+func check_event_relics(skill,unit,value_multiplier,target):
+	if (GC.ghostfire and unit is Ally and skill.element == "fire"):
+		if (skill.target_type == "single_enemy" or skill.target_type == "back_enemy" or skill.target_type == "front_enemy"):
+			await get_tree().create_timer(0.1).timeout
+			var rng = RandomNumberGenerator.new()
+			var random_num = rng.randi_range(1,enemies.size())
+			match random_num:
+				1:
+					enemies[0].receive_skill(skill,unit,value_multiplier)
+				2:
+					enemies[1].receive_skill(skill,unit,value_multiplier)
+				3:
+					enemies[2].receive_skill(skill,unit,value_multiplier)
+				4:
+					enemies[3].receive_skill(skill,unit,value_multiplier)
+	if (GC.flow and unit is Ally and skill.element == "water"):
+		await get_tree().create_timer(0.1).timeout
+		var new_target = target
+		if skill.target_type == "back_enemy":
+			new_target = back_enemy
+		if skill.target_type == "front_enemy":
+			new_target = front_enemy
+		if (skill.target_type == "single_enemy"):
+			if new_target != null:
+				if new_target.left != null:
+					new_target.left.receive_skill(skill,unit,value_multiplier*0.5)
+				if new_target.right != null:
+					new_target.right.receive_skill(skill,unit,value_multiplier*0.5)
 func victory():
 	victorious = true
 	victory_screen.visible = true
@@ -216,6 +245,7 @@ func use_skill(skill,target,unit):
 				unit.status.erase(stati)
 				unit.hp_bar.update_statuses(unit.status)
 				DamageNumbers.display_text(unit.damage_number_origin.global_position, "none", "wash", 32)
+	check_event_relics(skill,unit,value_multiplier,target)
 	if skill.cost > 0 or skill.cost2 > 0:
 			spend_skill_cost(skill)
 	if target != null and not skill.friendly:
@@ -320,7 +350,7 @@ func _on_relics_activated(type : Relic.Type) -> void:
 		Relic.Type.START_OF_COMBAT:
 			start_combat()
 		Relic.Type.END_OF_COMBAT:
-			end_battle()
+			victory()
 		Relic.Type.END_OF_TURN:
 			execute_ally_turn()
 		

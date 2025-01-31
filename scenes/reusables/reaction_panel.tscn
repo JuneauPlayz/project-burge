@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cokl4xcoeufdp"]
+[gd_scene load_steps=18 format=3 uid="uid://cokl4xcoeufdp"]
 
 [ext_resource type="Script" path="res://scenes/reusables/reaction_panel.gd" id="1_vmy8d"]
 
@@ -60,6 +60,11 @@ font_size = 32
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_v0f5j"]
+font_size = 25
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_vm6sf"]
 font_size = 32
 outline_size = 5
@@ -86,6 +91,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vmy8d")
@@ -353,7 +360,8 @@ theme_override_styles/separator = SubResource("StyleBoxFlat_0u22f")
 [node name="BloomHealing" type="Label" parent="PanelContainer/MarginContainer/Page1/Bloom"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-text = "Bloom Healing: 5"
+text = "Bloom Healing: 5
+Bubble Mult = 0.5x"
 label_settings = SubResource("LabelSettings_pyo7b")
 
 [node name="VSeparator2" type="VSeparator" parent="PanelContainer/MarginContainer/Page1/Bloom"]
@@ -364,9 +372,9 @@ theme_override_styles/separator = SubResource("StyleBoxFlat_0u22f")
 [node name="FireCount2" type="Label" parent="PanelContainer/MarginContainer/Page1/Bloom"]
 custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
-text = "On Bloom, heals the applier's team of the second element for Bloom Healing"
-label_settings = SubResource("LabelSettings_vm6sf")
-horizontal_alignment = 2
+text = "On Bloom, adds the Bubble buff to the unit. After the unit is attacked, the bubble
+ will pop, multiplying the attack's damage by Bubble Mult and healing the unit for Bloom Healing"
+label_settings = SubResource("LabelSettings_v0f5j")
 
 [node name="BloomTokens" type="RichTextLabel" parent="PanelContainer/MarginContainer/Page1"]
 custom_minimum_size = Vector2(100, 36)
@@ -629,7 +637,8 @@ theme_override_styles/separator = SubResource("StyleBoxFlat_0u22f")
 [node name="SowShielding" type="Label" parent="PanelContainer/MarginContainer/Page2/Sow"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-text = "Sow Shielding: 5"
+text = "Sow Shielding: 5
+Sow Healing: 5"
 label_settings = SubResource("LabelSettings_pyo7b")
 
 [node name="VSeparator2" type="VSeparator" parent="PanelContainer/MarginContainer/Page2/Sow"]
@@ -640,9 +649,9 @@ theme_override_styles/separator = SubResource("StyleBoxFlat_0u22f")
 [node name="FireCount2" type="Label" parent="PanelContainer/MarginContainer/Page2/Sow"]
 custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
-text = "On Sow, shields the applier's team of the second element for Sow Shielding"
+text = "Adds the Sow debuff to the unit. If another unit hits this unit with a skill,
+the attacker will heal Sow Healing and gain Sow Shielding shield."
 label_settings = SubResource("LabelSettings_vm6sf")
-horizontal_alignment = 2
 
 [node name="SowTokens" type="RichTextLabel" parent="PanelContainer/MarginContainer/Page2"]
 custom_minimum_size = Vector2(100, 36)
