@@ -8,7 +8,7 @@ var gold = 0
 var bonus_gold = 0
 var gold_multiplier = 1
 #combat
-var current_reward = 3
+var current_reward = 6
 const FIRE_POTION = preload("res://resources/relics/fire_potion.tres")
 const SHIELD_POTION = preload("res://resources/relics/shield_potion.tres")
 const VAPOR_ORB = preload("res://resources/relics/vapor_orb.tres")
@@ -16,13 +16,15 @@ const CHILL_GUY = preload("res://resources/units/enemies/ChillGuy.tres")
 const PYROMANCER = preload("res://resources/units/enemies/pyromancer.tres")
 const TEAM_MAGMA_GRUNT = preload("res://resources/units/enemies/TeamMagmaGrunt.tres")
 const HYDROMANCER = preload("res://resources/units/enemies/hydromancer.tres")
+const BAGUETTE = preload("res://resources/units/enemies/Baguette.tres")
+const ORB_WIZARD = preload("res://resources/units/enemies/OrbWizard.tres")
 
 # predetermined fights
 
-var fight_1 = [TEAM_MAGMA_GRUNT, TEAM_MAGMA_GRUNT, null, null]
-var fight_1_reward = 3
+var fight_1 = [TEAM_MAGMA_GRUNT, CHILL_GUY, null, null]
+var fight_1_reward = 6
 
-var fight_2 = [CHILL_GUY, TEAM_MAGMA_GRUNT, null, null]
+var fight_2 = [CHILL_GUY, TEAM_MAGMA_GRUNT, BAGUETTE, ORB_WIZARD]
 var fight_2_reward = 6
 
 var fight_3 = [PYROMANCER, HYDROMANCER, null, null]

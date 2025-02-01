@@ -169,6 +169,8 @@ func enemy_turn():
 	await get_tree().create_timer(0.3).timeout
 	if allies.is_empty():
 		defeat()
+	if enemies.is_empty():
+		victory()
 	else:
 		enemy_turn_done.emit()
 

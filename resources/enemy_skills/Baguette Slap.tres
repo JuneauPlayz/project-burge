@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="Skill" load_steps=2 format=3 uid="uid://dy48dueo5v5f"]
 
-[ext_resource type="Script" path="res://scripts/skill.gd" id="1_b02tp"]
+[ext_resource type="Script" path="res://scripts/skill.gd" id="1_glaf3"]
 
 [resource]
-script = ExtResource("1_b02tp")
+script = ExtResource("1_glaf3")
 name = "Baguette Slap"
 damage = 15
 element = "none"
@@ -11,6 +11,8 @@ damaging = true
 healing = false
 shielding = false
 target_type = "all_allies"
+purchaseable = true
+tier = "1"
 friendly = false
 lifesteal = false
 lifesteal_rate = 1.0
