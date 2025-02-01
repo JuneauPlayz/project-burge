@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/relic handler/relic_handler.gd" id="1_wgfm0"]
 [ext_resource type="Script" path="res://scenes/relic handler/relics_control.gd" id="2_cogcy"]
 
-[node name="RelicHandler" type="HBoxContainer"]
+[node name="RelicHandler" type="HBoxContainer" groups=["relic_handler"]]
 offset_right = 600.0
 offset_bottom = 64.0
 script = ExtResource("1_wgfm0")

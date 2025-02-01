@@ -44,7 +44,8 @@ func purchase_relic(relic : Relic) -> void:
 	relics.add_child(new_relic_ui)
 	new_relic_ui.set_relic(relic)
 	new_relic_ui.relic.initialize_relic(new_relic_ui)
-	GC.obtainable_relics.erase(relic)
+	if relic in GC.obtainable_relics:
+		GC.obtainable_relics.erase(relic)
 
 func add_relic(relic : Relic):
 	var new_relic_ui = RELIC_UI.instantiate() as RelicUI

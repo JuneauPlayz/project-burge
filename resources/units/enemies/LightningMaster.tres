@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="UnitRes" load_steps=6 format=3 uid="uid://dvcb13xmw6orb"]
+
+[ext_resource type="Script" path="res://scripts/UnitRes.gd" id="1_8mrmj"]
+[ext_resource type="Resource" uid="uid://bpdn7san14clx" path="res://resources/enemy_skills/Lightning Punch.tres" id="2_bydnc"]
+[ext_resource type="Resource" uid="uid://2ymc28mkk5xq" path="res://resources/enemy_skills/EnemyAOELightning.tres" id="3_cvk14"]
+[ext_resource type="Resource" uid="uid://6rshatkdkcnk" path="res://resources/enemy_skills/Lightning Yeet.tres" id="4_wkxwl"]
+[ext_resource type="Texture2D" uid="uid://dqmohettbpuc1" path="res://assets/electro wizard.jpg" id="5_bqxr6"]
+
+[resource]
+script = ExtResource("1_8mrmj")
+starting_health = 200
+skill1 = ExtResource("2_bydnc")
+skill2 = ExtResource("3_cvk14")
+skill3 = ExtResource("4_wkxwl")
+sprite = ExtResource("5_bqxr6")
+sprite_scale = 0.39
+name = "Lightning Master"

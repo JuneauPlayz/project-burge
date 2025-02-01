@@ -3,7 +3,7 @@ extends Relic
 var member_var = 0
 
 func initialize_relic(owner : RelicUI) -> void:
-	#GC.lightning_strikes_twice = true
+	GC.lightning_strikes_twice = true
 	pass
 func activate_relic(owner: RelicUI) -> void:
 	print("this happens at specific times based on the Relic.Type property")

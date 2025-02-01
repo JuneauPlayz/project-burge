@@ -4,6 +4,7 @@ class_name Enemy
 @export var skill1 : Skill
 @export var skill2 : Skill
 @export var skill3 : Skill
+@export var skill4 : Skill
 var current_skill : Skill
 
 @export var current_element : String = "none"
@@ -55,6 +56,8 @@ func _ready() -> void:
 		skill2 = res.skill2
 	if res.skill3 != null:
 		skill3 = res.skill3
+	if res.skill4 != null:
+		skill4 = res.skill4
 	if res.name != null:
 		title = res.name
 	print("title:" + title)
@@ -143,6 +146,30 @@ func receive_skill(skill, unit, value_multiplier):
 				hp_bar.update_statuses(status)
 				DamageNumbers.display_text(self.damage_number_origin.global_position, "none", "Harvest!", 32)
 	hp_bar.update_element(current_element)
+
+
+func receive_skill_friendly(skill, unit, value_multiplier):
+	var rounded : int
+	var reaction = ""
+	var number = skill.damage * value_multiplier
+	var value = skill.damage * value_multiplier
+	var r = await ReactionManager.reaction(current_element, skill.element, self, value, skill.friendly)
+	if (!r):
+		if skill.shielding == true:
+			self.receive_shielding(value)
+		if skill.healing == true:
+			if (health + number >= max_health):
+				number = max_health - health
+			self.receive_healing(value)
+	DamageNumbers.display_number_plus(number, damage_number_origin.global_position, skill.element, reaction)
+	if (skill.element == "none"):
+		current_element = skill.element
+	#handle status effects
+	if skill.status_effects != []:
+		for x in skill.status_effects:
+			status.append(x)
+	hp_bar.update_element(current_element)
+	hp_bar.update_statuses(status)
 
 func receive_healing(healing: int):
 	health += healing
@@ -245,6 +272,8 @@ func change_skills():
 		random_num = rng.randi_range(1,2)
 	if skill3 != null:
 		random_num = rng.randi_range(1,3)
+	if skill4 != null:
+		random_num = rng.randi_range(1,4)
 	match random_num:
 		1:
 			current_skill = skill1
@@ -252,6 +281,8 @@ func change_skills():
 			current_skill = skill2
 		3:
 			current_skill = skill3
+		4:
+			current_skill = skill4
 	skill_info.skill = current_skill
 	skill_info.update_skill_info()
 func hide_next_skill_info():

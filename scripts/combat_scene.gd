@@ -37,8 +37,7 @@ const ENEMY = preload("res://resources/units/enemies/enemy.tscn")
 func _ready() -> void:
 	# loading
 	loading.visible = true
-	await get_tree().create_timer(0.5).timeout
-	loading.visible = false
+	await get_tree().create_timer(0.35).timeout
 	# bg music
 	var rng = RandomNumberGenerator.new()
 	var random_num = rng.randi_range(1,4)
@@ -55,6 +54,9 @@ func _ready() -> void:
 	combat_manager = get_child(1)
 	load_units()
 	combat_manager.combat_ready()
+	await get_tree().create_timer(0.15).timeout
+	loading.visible = false
+	
 	
 	
 
@@ -67,6 +69,21 @@ func get_combat_manager():
 	return combat_manager
 
 func load_units():
+	enemy1 = null
+	enemy2 = null
+	enemy3 = null
+	enemy4 = null
+	# temp fix
+	if GC.disable_level_up == true:
+		if GC.ally1 != null:
+			GC.ally1.level_up = false
+		if GC.ally2 != null:
+			GC.ally2.level_up = false
+		if GC.ally3 != null:
+			GC.ally3.level_up = false
+		if GC.ally4 != null:
+			GC.ally4.level_up = false
+		GC.disable_level_up = false
 	GC.skills = []
 	print("loading units")
 	if GC.ally1 != null:

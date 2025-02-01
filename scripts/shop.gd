@@ -134,8 +134,15 @@ func load_units():
 		ally.shop = true
 		ally.spell_select_ui.enable_all()
 		ally.spell_select_ui.hide_position()
+	await get_tree().create_timer(0.3).timeout
+	if GC.current_fight == GC.fight_1:
+		GC.level_up_allies()
+	for ally in allies:
 		ally.update_vars()
-		ally.show_level_up(1)
+		if ally.level_up == true:
+			ally.show_level_up(ally.level)
+			print("level" + str(ally.level))
+
 	if (GC.relics != null):
 		# loads relics
 		var new_relic_handler = RELIC_HANDLER.instantiate()
@@ -172,8 +179,10 @@ func buying_new_skill(shop_item):
 	next_combat.visible = false
 	await swap_done
 	for ally in allies:
-		if not ally.level_up_complete:
+		if ally.level_up and not ally.level_up_complete:
 			ally.level_up_reward.visible = true
+		else:
+			ally.level_up_reward.visible = false
 	for spot in relic_list:
 		spot.visible = true
 	for spot in spell_list:
@@ -186,6 +195,9 @@ func update_gold():
 
 
 func _on_next_combat_pressed() -> void:
+	for ally in allies:
+		ally.level_up = false
+	GC.disable_level_ups()
 	AudioPlayer.play_FX("click",-10)
 	GC.next_fight()
 	GC.load_combat(GC.ally1,GC.ally2,GC.ally3,GC.ally4,GC.current_fight[0],GC.current_fight[1],GC.current_fight[2],GC.current_fight[3])

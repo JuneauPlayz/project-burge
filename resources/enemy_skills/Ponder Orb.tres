@@ -4,16 +4,16 @@
 
 [resource]
 script = ExtResource("1_dvhbh")
-name = "Ponder Orb"
-damage = 0
-element = "none"
+name = "Healing Orb"
+damage = 15
+element = "grass"
 damaging = false
-healing = false
+healing = true
 shielding = false
-target_type = ""
+target_type = "all_enemies"
 purchaseable = true
 tier = "1"
-friendly = false
+friendly = true
 lifesteal = false
 lifesteal_rate = 1.0
 cost = 0

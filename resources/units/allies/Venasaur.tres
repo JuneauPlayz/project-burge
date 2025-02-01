@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="UnitRes" load_steps=7 format=3 uid="uid://rch61bky2ck8"]
+[gd_resource type="Resource" script_class="UnitRes" load_steps=9 format=3 uid="uid://rch61bky2ck8"]
 
 [ext_resource type="Script" path="res://scripts/UnitRes.gd" id="1_5s5xv"]
+[ext_resource type="Resource" uid="uid://crkjhbiu783ib" path="res://resources/relics/sow_specialist.tres" id="1_qg5cs"]
 [ext_resource type="Resource" uid="uid://tjrsdrdx2xsa" path="res://resources/Skills/grass/Grass Needle.tres" id="2_3o77x"]
+[ext_resource type="Resource" uid="uid://jsbevql6t5av" path="res://resources/relics/shield_potion.tres" id="2_8lswr"]
 [ext_resource type="Resource" uid="uid://cjot7mdltdj0m" path="res://resources/Skills/grass/Healing Wish.tres" id="4_7jyuf"]
 [ext_resource type="Resource" uid="uid://bcnlggyd75qmg" path="res://resources/Skills/grass/Mega Drain.tres" id="4_stegg"]
 [ext_resource type="Resource" uid="uid://y0pcbe6fmy6m" path="res://resources/Skills/grass/Sow Storm.tres" id="5_besxd"]
@@ -14,6 +16,8 @@ skill1 = ExtResource("2_3o77x")
 skill2 = ExtResource("4_7jyuf")
 ult_1 = ExtResource("5_besxd")
 ult_2 = ExtResource("4_stegg")
+relic_1 = ExtResource("1_qg5cs")
+relic_2 = ExtResource("2_8lswr")
 sprite = ExtResource("6_rlwy5")
 sprite_scale = 0.39
 name = "Venasaur"

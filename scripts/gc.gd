@@ -18,6 +18,8 @@ const TEAM_MAGMA_GRUNT = preload("res://resources/units/enemies/TeamMagmaGrunt.t
 const HYDROMANCER = preload("res://resources/units/enemies/hydromancer.tres")
 const BAGUETTE = preload("res://resources/units/enemies/Baguette.tres")
 const ORB_WIZARD = preload("res://resources/units/enemies/OrbWizard.tres")
+const LIGHTNING_MASTER = preload("res://resources/units/enemies/LightningMaster.tres")
+const THEFINALBOSS = preload("res://resources/units/enemies/THEFINALBOSS.tres")
 
 # predetermined fights
 
@@ -30,8 +32,14 @@ var fight_2_reward = 6
 var fight_3 = [PYROMANCER, HYDROMANCER, null, null]
 var fight_3_reward = 9
 
-var fight_4 = [CHILL_GUY, TEAM_MAGMA_GRUNT, BAGUETTE, ORB_WIZARD]
+var fight_4 = [CHILL_GUY, LIGHTNING_MASTER, BAGUETTE, ORB_WIZARD]
 var fight_4_reward = 12
+
+var fight_5 = [PYROMANCER, HYDROMANCER, LIGHTNING_MASTER, ORB_WIZARD]
+var fight_5_reward = 15
+
+var fight_6 = [null, null, THEFINALBOSS, null]
+var fight_6_reward = 18
 
 var current_fight = fight_1
 #loading unit reses
@@ -44,6 +52,33 @@ var enemy1 : UnitRes
 var enemy2 : UnitRes
 var enemy3 : UnitRes
 var enemy4 : UnitRes
+
+var og_ally_1_skill1 : Skill
+var og_ally_1_skill2 : Skill
+var og_ally_2_skill1 : Skill
+var og_ally_2_skill2 : Skill
+var og_ally_3_skill1 : Skill
+var og_ally_3_skill2 : Skill
+var og_ally_4_skill1 : Skill
+var og_ally_4_skill2 : Skill
+
+var og_enemy_1_skill1 : Skill
+var og_enemy_1_skill2 : Skill
+var og_enemy_2_skill1 : Skill
+var og_enemy_2_skill2 : Skill
+var og_enemy_3_skill1 : Skill
+var og_enemy_3_skill2 : Skill
+var og_enemy_4_skill1 : Skill
+var og_enemy_4_skill2 : Skill
+
+var ally1level = 0
+var ally1levelup = false
+var ally2level = 0
+var ally2levelup = false
+var ally3level = 0
+var ally3levelup = false
+var ally4level = 0
+var ally4levelup = false
 
 var relics = []
 var obtainable_relics = []
@@ -186,6 +221,8 @@ var sow_grass_token_mult = 1
 var sow_earth_token_bonus = 0
 var sow_grass_token_bonus = 0
 
+var disable_level_up = false
+var end = false
 # event based relics
 var ghostfire = false
 var flow = false
@@ -234,11 +271,59 @@ func next_fight():
 		fight_2:
 			current_fight = fight_3
 			current_reward = fight_3_reward
+			level_up_allies()
 		fight_3:
 			current_fight = fight_4
 			current_reward = fight_4_reward
+			disable_level_ups()
 		fight_4:
-			get_tree().quit()
+			current_fight = fight_5
+			current_reward = fight_5_reward
+			level_up_allies()
+		fight_5:
+			current_fight = fight_6
+			current_reward = fight_6_reward
+			end = true
+		fight_6:
+			end_game()
+
+func end_game():
+	get_tree().change_scene_to_file("res://scenes/main scenes/ending_screen.tscn")
+
+func level_up_allies():
+	disable_level_up = false
+	print("hiaaaaaaaaaaaaaaaaaaaaaaa")
+	if ally1 != null:
+		ally1level += 1
+		ally1levelup = true
+		ally1.level = ally1level
+		ally1.level_up = ally1levelup
+	if ally2 != null:
+		ally2level += 1
+		ally2levelup = true
+		ally2.level = ally2level
+		ally2.level_up = ally2levelup
+	if ally3 != null:
+		ally3level += 1
+		ally3levelup = true
+		ally3.level = ally3level
+		ally3.level_up = ally3levelup
+	if ally4 != null:
+		ally4level += 1
+		ally4levelup = true
+		ally4.level = ally4level
+		ally4.level_up = ally4levelup
+		
+func disable_level_ups():
+	if GC.ally1 != null:
+		ally1levelup = false
+	if GC.ally2 != null:
+		ally2levelup = false
+	if GC.ally3 != null:
+		ally3levelup = false
+	if GC.ally4 != null:
+		ally4levelup = false
+
 	
 func get_random_relic():
 	if GC.obtainable_relics == []:
@@ -309,14 +394,35 @@ func reset_tokens():
 	
 	
 func load_combat(ally1, ally2, ally3, ally4, enemy1, enemy2, enemy3, enemy4):
-	self.ally1 = ally1
-	self.ally2 = ally2
-	self.ally3 = ally3
-	self.ally4 = ally4
-	self.enemy1 = enemy1
-	self.enemy2 = enemy2
-	self.enemy3 = enemy3
-	self.enemy4 = enemy4
+	self.enemy1 = null
+	self.enemy2 = null
+	self.enemy3 = null
+	self.enemy4 = null
+	if ally1:
+		self.ally1 = ally1.duplicate()
+		self.ally1.level = ally1level
+		self.ally1.level_up = ally1levelup
+	if ally2:
+		self.ally2 = ally2.duplicate()
+		self.ally2.level = ally2level
+		self.ally2.level_up = ally2levelup
+	if ally3:
+		self.ally3 = ally3.duplicate()
+		self.ally3.level = ally3level
+		self.ally3.level_up = ally3levelup
+	if ally4:
+		self.ally4 = ally4.duplicate()
+		self.ally4.level = ally4level
+		self.ally4.level_up = ally4levelup
+	if enemy1:
+		self.enemy1 = enemy1.duplicate()
+	if enemy2:
+		self.enemy2 = enemy2.duplicate()
+	if enemy3:
+		self.enemy3 = enemy3.duplicate()
+	if enemy4:
+		self.enemy4 = enemy4.duplicate()
+
 	
 func add_token(element, count):
 	match element:
@@ -339,9 +445,12 @@ func reset():
 	gold = 0
 	bonus_gold = 0
 	gold_multiplier = 1
-	
+
+	# Reset event-based relics
 	ghostfire = false
 	flow = false
+	lightning_strikes_twice = false
+
 	# Reset combat-related variables
 	current_reward = 3
 	combat_ally1 = null
@@ -354,16 +463,6 @@ func reset():
 	combat_enemy4 = null
 	combat_allies = []
 	combat_enemies = []
-
-	# Reset unit resources
-	ally1 = null
-	ally2 = null
-	ally3 = null
-	ally4 = null
-	enemy1 = null
-	enemy2 = null
-	enemy3 = null
-	enemy4 = null
 
 	# Reset relics and skills
 	relics = []
@@ -484,6 +583,22 @@ func reset():
 	sow_grass_token_mult = 1
 	sow_earth_token_bonus = 0
 	sow_grass_token_bonus = 0
+
+	# Restore original skills for allies and enemies
+	
+		
+	# Reset unit resources
+	ally1 = null
+	ally2 = null
+	ally3 = null
+	ally4 = null
+	enemy1 = null
+	enemy2 = null
+	enemy3 = null
+	enemy4 = null
+	
+	end = false
+	_ready()
 	
 func update_combat_lists():
 	combat_allies = []

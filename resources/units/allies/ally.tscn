@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bkkh4bxq8cu7n"]
+[gd_scene load_steps=28 format=3 uid="uid://bkkh4bxq8cu7n"]
 
 [ext_resource type="Script" path="res://scripts/ally.gd" id="1_fu3qc"]
 [ext_resource type="Script" path="res://scripts/skill.gd" id="2_a5x6o"]
@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://ddoguurpcf2jb" path="res://resources/Skills/fire/Vaporstrike.tres" id="5_kdrfg"]
 [ext_resource type="Script" path="res://scripts/level_up_reward.gd" id="8_4ut3l"]
 [ext_resource type="PackedScene" uid="uid://sdwnoh61gawa" path="res://scenes/reusables/skill_info.tscn" id="9_6y37o"]
+[ext_resource type="PackedScene" uid="uid://ppg1wk60cwxc" path="res://scenes/reusables/relic_info.tscn" id="10_ttrjn"]
 
 [sub_resource type="Resource" id="Resource_njo12"]
 script = ExtResource("2_a5x6o")
@@ -204,10 +205,10 @@ layout_mode = 2
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 272.0
-offset_top = 25.0
-offset_right = 533.0
-offset_bottom = 48.0
+offset_left = -78.7881
+offset_top = 185.455
+offset_right = 182.212
+offset_bottom = 208.455
 
 [node name="SkillInfo2" parent="LevelUpReward" instance=ExtResource("9_6y37o")]
 visible = false
@@ -215,10 +216,10 @@ layout_mode = 2
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 274.0
-offset_top = 56.0
-offset_right = 535.0
-offset_bottom = 79.0
+offset_left = -80.0002
+offset_top = 267.879
+offset_right = 181.0
+offset_bottom = 290.879
 
 [node name="Avaliable" type="Label" parent="LevelUpReward"]
 layout_mode = 0
@@ -251,6 +252,22 @@ offset_bottom = 413.333
 theme_override_font_sizes/font_size = 36
 text = "Confirm Swap"
 
+[node name="RelicInfo" parent="LevelUpReward" instance=ExtResource("10_ttrjn")]
+visible = false
+layout_mode = 1
+offset_left = -84.8487
+offset_top = 191.516
+offset_right = -84.8487
+offset_bottom = 191.516
+
+[node name="RelicInfo2" parent="LevelUpReward" instance=ExtResource("10_ttrjn")]
+visible = false
+layout_mode = 1
+offset_left = -84.8487
+offset_top = 269.091
+offset_right = -84.8487
+offset_bottom = 269.091
+
 [node name="TargetingArea" type="Button" parent="."]
 visible = false
 offset_left = -114.545
@@ -268,8 +285,8 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ipxiy")
 [connection signal="new_select" from="LevelUpReward" to="." method="_on_level_up_reward_new_select"]
 [connection signal="mouse_entered" from="LevelUpReward/PanelContainer/MarginContainer/VBoxContainer/BA1Panel/option1" to="LevelUpReward" method="_on_ba_1_mouse_entered"]
 [connection signal="mouse_exited" from="LevelUpReward/PanelContainer/MarginContainer/VBoxContainer/BA1Panel/option1" to="LevelUpReward" method="_on_ba_1_mouse_exited"]
-[connection signal="pressed" from="LevelUpReward/PanelContainer/MarginContainer/VBoxContainer/BA1Panel/option1" to="LevelUpReward" method="_on_button_pressed"]
 [connection signal="pressed" from="LevelUpReward/PanelContainer/MarginContainer/VBoxContainer/BA1Panel/option1" to="LevelUpReward" method="_on_ba_1_pressed"]
+[connection signal="pressed" from="LevelUpReward/PanelContainer/MarginContainer/VBoxContainer/BA1Panel/option1" to="LevelUpReward" method="_on_button_pressed"]
 [connection signal="mouse_entered" from="LevelUpReward/PanelContainer/MarginContainer/VBoxContainer/SP1Panel/option2" to="LevelUpReward" method="_on_s_1_mouse_entered"]
 [connection signal="mouse_exited" from="LevelUpReward/PanelContainer/MarginContainer/VBoxContainer/SP1Panel/option2" to="LevelUpReward" method="_on_s_1_mouse_exited"]
 [connection signal="pressed" from="LevelUpReward/PanelContainer/MarginContainer/VBoxContainer/SP1Panel/option2" to="LevelUpReward" method="_on_s_1_pressed"]

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3 uid="uid://dfgin1pydgukr"]
+
+[ext_resource type="Script" path="res://scripts/skill.gd" id="1_isaww"]
+
+[resource]
+script = ExtResource("1_isaww")
+name = "MIKU BEAM"
+damage = 100
+element = "lightning"
+damaging = true
+healing = false
+shielding = false
+target_type = "front_ally"
+purchaseable = true
+tier = "1"
+friendly = false
+lifesteal = false
+lifesteal_rate = 1.0
+cost = 0
+token_type = ""
+cost2 = 0
+token_type2 = ""
+status_effects = []
+double_hit = false
+damage2 = 0
+element2 = ""

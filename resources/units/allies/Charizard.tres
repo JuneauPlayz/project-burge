@@ -1,6 +1,8 @@
-[gd_resource type="Resource" script_class="UnitRes" load_steps=7 format=3 uid="uid://bchghb71yo8ln"]
+[gd_resource type="Resource" script_class="UnitRes" load_steps=9 format=3 uid="uid://bchghb71yo8ln"]
 
 [ext_resource type="Script" path="res://scripts/UnitRes.gd" id="1_5rsqq"]
+[ext_resource type="Resource" uid="uid://bj2x6wkwkhvfo" path="res://resources/relics/erupt_orb.tres" id="1_h68qo"]
+[ext_resource type="Resource" uid="uid://ri585emt4d3a" path="res://resources/relics/vapor_orb.tres" id="2_j7lrf"]
 [ext_resource type="Resource" uid="uid://c3yogn8m318q2" path="res://resources/Skills/fire/Fire_Bolt.tres" id="2_odqjc"]
 [ext_resource type="Texture2D" uid="uid://4geq5yb7tf1u" path="res://assets/charizard.png" id="2_ury01"]
 [ext_resource type="Resource" uid="uid://drjm7bxw8bu8w" path="res://resources/Skills/fire/Fire Snipe.tres" id="4_8uraa"]
@@ -14,6 +16,8 @@ skill1 = ExtResource("2_odqjc")
 skill2 = ExtResource("4_8uraa")
 ult_1 = ExtResource("5_u235h")
 ult_2 = ExtResource("7_8hf2u")
+relic_1 = ExtResource("1_h68qo")
+relic_2 = ExtResource("2_j7lrf")
 sprite = ExtResource("2_ury01")
 sprite_scale = 0.63
 name = "Charizard"

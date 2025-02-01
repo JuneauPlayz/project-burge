@@ -137,7 +137,7 @@ func execute_ally_turn():
 		var skill = action_queue[n]
 		var target = target_queue[n]
 		var ally = ally_queue[n]
-		use_skill(skill,target,ally)
+		use_skill(skill,target,ally,true)
 		# checks if target is dead, currently skips the rest of the loop (wont print landed)
 		if (target == null or target.visible == false):
 			await get_tree().create_timer(0.1).timeout
@@ -160,7 +160,7 @@ func enemy_turn():
 	await get_tree().create_timer(0.3).timeout
 	for enemy in enemies:
 		print("using enemy skill")
-		use_skill(enemy.current_skill,null,enemy)
+		use_skill(enemy.current_skill,null,enemy,true)
 		hit.emit()
 		enemy.change_skills()
 		await get_tree().create_timer(GC.GLOBAL_INTERVAL+0.05).timeout
@@ -202,6 +202,10 @@ func check_event_relics(skill,unit,value_multiplier,target):
 					new_target.left.receive_skill(skill,unit,value_multiplier*0.5)
 				if new_target.right != null:
 					new_target.right.receive_skill(skill,unit,value_multiplier*0.5)
+	if (GC.lightning_strikes_twice and unit is Ally and skill.element == "lightning"):
+		await get_tree().create_timer(0.25).timeout
+		use_skill(skill, target, unit, false)
+		
 func victory():
 	victorious = true
 	victory_screen.visible = true
@@ -212,6 +216,7 @@ func victory():
 	victory_screen.continue_pressed.connect(self.finish_battle)
 
 func defeat():
+	GC.reset()
 	victorious = false
 	victory_screen.visible = true
 	victory_screen.update_text("Defeat!", 0)
@@ -220,13 +225,16 @@ func defeat():
 	hide_ui()
 	for enemy in enemies:
 		enemy.visible = false
-	GC.reset()
 	victory_screen.continue_pressed.connect(self.finish_battle)
 	
 func finish_battle():
 	if victorious:
-		get_tree().change_scene_to_file("res://scenes/main scenes/shop.tscn")
+		if GC.end:
+			get_tree().change_scene_to_file("res://scenes/main scenes/ending_screen.tscn")
+		else:
+			get_tree().change_scene_to_file("res://scenes/main scenes/shop.tscn")
 	if not victorious:
+		GC.reset()
 		get_tree().change_scene_to_file("res://scenes/main scenes/main_scene.tscn")
 
 func reset_combat():
@@ -235,7 +243,11 @@ func reset_combat():
 	GC.reset_tokens()
 	victory_screen.visible = false
 	
-func use_skill(skill,target,unit):
+func use_skill(skill,target,unit,event):
+	if allies == []:
+		defeat()
+	if enemies == []:
+		victory()
 	skill.update()
 	var value_multiplier = 1
 	# token spending
@@ -247,23 +259,24 @@ func use_skill(skill,target,unit):
 				unit.status.erase(stati)
 				unit.hp_bar.update_statuses(unit.status)
 				DamageNumbers.display_text(unit.damage_number_origin.global_position, "none", "wash", 32)
-	check_event_relics(skill,unit,value_multiplier,target)
+	if event:
+		check_event_relics(skill,unit,value_multiplier,target)
 	if skill.cost > 0 or skill.cost2 > 0:
 			spend_skill_cost(skill)
 	if target != null and not skill.friendly:
 		target.receive_skill(skill,unit,value_multiplier)
 	else:
-		if (skill.target_type == "front_ally"):
+		if (skill.target_type == "front_ally" and front_ally != null):
 			front_ally.receive_skill(skill,unit,value_multiplier)
-		elif (skill.target_type == "front_enemy"):
+		elif (skill.target_type == "front_enemy" and front_enemy != null):
 			front_enemy.receive_skill(skill,unit,value_multiplier)
-		elif (skill.target_type == "back_ally"):
+		elif (skill.target_type == "back_ally" and back_ally != null):
 			back_ally.receive_skill(skill,unit,value_multiplier)
-		elif (skill.target_type == "back_enemy"):
+		elif (skill.target_type == "back_enemy" and back_enemy != null):
 			back_enemy.receive_skill(skill,unit,value_multiplier)
-		elif (skill.target_type == "single_ally" and skill.friendly):
+		elif (skill.target_type == "single_ally" and skill.friendly and target != null):
 			target.receive_skill_friendly(skill,unit,value_multiplier)
-		elif (skill.target_type == "random_enemy"):
+		elif (skill.target_type == "random_enemy" and enemies.size() > 0):
 			var rng = RandomNumberGenerator.new()
 			var random_num = rng.randi_range(1,enemies.size())
 			match random_num:
@@ -288,7 +301,7 @@ func use_skill(skill,target,unit):
 				4:
 					allies[3].receive_skill(skill,unit,value_multiplier)
 		elif (target == null):
-			if (skill.target_type == "all_allies"):
+			if (skill.target_type == "all_allies" and allies.size() > 0):
 				if (skill.friendly == true):
 					for ally in allies:
 						ally.receive_skill_friendly(skill,unit,value_multiplier)
@@ -296,14 +309,14 @@ func use_skill(skill,target,unit):
 					for ally in allies:
 						ally.receive_skill(skill,unit,value_multiplier)
 						#print(ally.title + " taking " + str(skill.damage) + " damage from " + unit.title)
-			elif (skill.target_type == "all_enemies"):
+			elif (skill.target_type == "all_enemies" and allies.size() > 0):
 				if (skill.friendly == true):
 					for enemy in enemies:
 						enemy.receive_skill_friendly(skill,unit,value_multiplier)
 				else:
 					for enemy in enemies:
 						enemy.receive_skill(skill,unit,value_multiplier)
-			elif (skill.target_type == "all_units"):
+			elif (skill.target_type == "all_units" and allies.size() > 0 and enemies.size() > 0):
 				if (skill.friendly == true):
 					for enemy in enemies:
 						enemy.receive_skill_friendly(skill,unit,value_multiplier)

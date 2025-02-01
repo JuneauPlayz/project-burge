@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcwnpc1ds6h00"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qf6dm"]
+font_size = 221
+
+[node name="EndingScreen" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 1.0
+offset_top = 121.0
+offset_right = 1921.0
+offset_bottom = 315.0
+text = "you beat the game"
+label_settings = SubResource("LabelSettings_qf6dm")
+horizontal_alignment = 1
