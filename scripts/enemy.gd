@@ -83,14 +83,14 @@ func receive_skill(skill, unit, value_multiplier):
 	if (!connected):
 		ReactionManager.reaction_finished.connect(self.reaction_signal)
 		connected = true
-	var r = await ReactionManager.reaction(current_element, skill.element, self, value, skill.friendly)
+	var r = await ReactionManager.reaction(current_element, skill.element, self, value, skill.friendly, unit)
 	if (r): 
 		print("waiting for reaction")
 		await reaction_ended 
 		print("reaction received")
 		if skill.double_hit == true:
 			await get_tree().create_timer(0.3).timeout
-			var r2 = await ReactionManager.reaction(current_element, skill.element2, self, value2, skill.friendly)
+			var r2 = await ReactionManager.reaction(current_element, skill.element2, self, value2, skill.friendly, unit)
 			if (r2):
 				await reaction_ended 
 				DamageNumbers.display_number(self.take_damage(value2), damage_number_origin.global_position, skill.element2, reaction)
@@ -106,7 +106,7 @@ func receive_skill(skill, unit, value_multiplier):
 			current_element = skill.element
 		if skill.double_hit == true:
 			await get_tree().create_timer(0.3).timeout
-			var r2 = await ReactionManager.reaction(current_element, skill.element2, self, value2, skill.friendly)
+			var r2 = await ReactionManager.reaction(current_element, skill.element2, self, value2, skill.friendly, unit)
 			if (r2):
 				await reaction_ended 
 			if (!r2):
@@ -153,7 +153,7 @@ func receive_skill_friendly(skill, unit, value_multiplier):
 	var reaction = ""
 	var number = skill.damage * value_multiplier
 	var value = skill.damage * value_multiplier
-	var r = await ReactionManager.reaction(current_element, skill.element, self, value, skill.friendly)
+	var r = await ReactionManager.reaction(current_element, skill.element, self, value, skill.friendly, unit)
 	if (!r):
 		if skill.shielding == true:
 			self.receive_shielding(value)

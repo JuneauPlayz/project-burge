@@ -30,8 +30,14 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [node name="Enemy" type="Node2D"]
 scale = Vector2(0.75, 0.75)
 script = ExtResource("1_ml356")
+current_element = null
+reaction_primed = null
+status = null
 health = 100
 max_health = 100
+shield = null
+defense = null
+status_resistance = null
 title = "Baguette"
 
 [node name="SpriteSpot" type="Sprite2D" parent="."]

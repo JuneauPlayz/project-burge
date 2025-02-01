@@ -457,7 +457,7 @@ func reset():
 	lightning_strikes_twice = false
 
 	# Reset combat-related variables
-	current_reward = 3
+	current_reward = fight_1_reward
 	combat_ally1 = null
 	combat_ally2 = null
 	combat_ally3 = null
@@ -588,6 +588,15 @@ func reset():
 	sow_grass_token_mult = 1
 	sow_earth_token_bonus = 0
 	sow_grass_token_bonus = 0
+	
+	ally1level = 0
+	ally1levelup = false
+	ally2level = 0
+	ally2levelup = false
+	ally3level = 0
+	ally3levelup = false
+	ally4level = 0
+	ally4levelup = false
 
 	# Restore original skills for allies and enemies
 	
