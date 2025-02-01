@@ -138,14 +138,12 @@ func receive_skill(skill, unit, value_multiplier):
 			var r2 = await ReactionManager.reaction(current_element, skill.element2, self, value2, skill.friendly, unit)
 			if (r2):
 				await reaction_ended 
-				DamageNumbers.display_number(self.take_damage(value2), damage_number_origin.global_position, skill.element2, reaction)
+				#DamageNumbers.display_number(self.take_damage(value2), damage_number_origin.global_position, skill.element2, reaction)
 			if (!r2):
-				DamageNumbers.display_number(self.take_damage(value2), damage_number_origin.global_position, skill.element2, reaction)
-			if (skill.element != "none"):
-				current_element = skill.element
+				self.take_damage(value2,skill.element2, true)
 	# no reaction
 	if (!r):
-		DamageNumbers.display_number(self.take_damage(value), damage_number_origin.global_position, skill.element, reaction)
+		self.take_damage(value,skill.element, true)
 		# don't change current element if skill has no element
 		if (skill.element != "none"):
 			current_element = skill.element
@@ -155,7 +153,7 @@ func receive_skill(skill, unit, value_multiplier):
 			if (r2):
 				await reaction_ended 
 			if (!r2):
-				DamageNumbers.display_number(self.take_damage(value2), damage_number_origin.global_position, skill.element2, reaction)
+				self.take_damage(value2, skill.element2, true)
 			if (skill.element != "none"):
 				current_element = skill.element
 	#handle status effects
@@ -178,10 +176,10 @@ func receive_skill(skill, unit, value_multiplier):
 				status.append(new_nitro)
 		hp_bar.update_statuses(status)
 	if sow:
-		unit.receive_healing(roundi(GC.sow_healing * GC.sow_healing_mult))
-		unit.receive_shielding(roundi(GC.sow_shielding * GC.sow_shielding_mult))
-		DamageNumbers.display_number_plus(roundi(GC.sow_healing * GC.sow_healing_mult), unit.damage_number_origin.global_position, "grass", "")
-		DamageNumbers.display_number_plus(roundi(GC.sow_shielding * GC.sow_shielding_mult), unit.damage_number_origin.global_position, "earth", "")
+		unit.receive_healing(roundi(GC.sow_healing * GC.sow_healing_mult), "grass", false)
+		unit.receive_shielding(roundi(GC.sow_shielding * GC.sow_shielding_mult), "earth", false)
+		#DamageNumbers.display_number_plus(roundi(GC.sow_healing * GC.sow_healing_mult), unit.damage_number_origin.global_position, "grass", "")
+		#DamageNumbers.display_number_plus(roundi(GC.sow_shielding * GC.sow_shielding_mult), unit.damage_number_origin.global_position, "earth", "")
 		sow = false
 		for stati in status:
 			if stati.name == "Sow":
@@ -201,12 +199,11 @@ func receive_skill_friendly(skill, unit, value_multiplier):
 	var r = await ReactionManager.reaction(current_element, skill.element, self, value, skill.friendly, unit)
 	if (!r):
 		if skill.shielding == true:
-			self.receive_shielding(value)
+			self.receive_shielding(value, skill.element, true)
 		if skill.healing == true:
 			if (health + number >= max_health):
 				number = max_health - health
-			self.receive_healing(value)
-	DamageNumbers.display_number_plus(number, damage_number_origin.global_position, skill.element, reaction)
+			self.receive_healing(value, skill.element, true)
 	if (skill.element == "none"):
 		current_element = skill.element
 	#handle status effects
@@ -218,10 +215,13 @@ func receive_skill_friendly(skill, unit, value_multiplier):
 	
 	
 	
-func take_damage(damage : int):
+func take_damage(damage : int, element : String, change_element : bool):
 	AudioPlayer.play_FX("fire_hit", -30)
+	if change_element:
+		current_element = element
+	hp_bar.update_element(current_element)
 	var damage_left = roundi(damage)
-	var total_dmg = roundi(damage)
+	var total_dmg = damage_left
 	if bubble:
 		damage_left = roundi(damage * GC.bubble_mult)
 		total_dmg = damage_left
@@ -231,8 +231,7 @@ func take_damage(damage : int):
 			if stati.name == "Bubble":
 				status.erase(stati)
 				hp_bar.update_statuses(status)
-				self.receive_healing(GC.ally_bloom_healing * GC.bloom_mult)
-				DamageNumbers.display_number_plus(GC.ally_bloom_healing * GC.bloom_mult, damage_number_origin.global_position, "grass", "")
+				self.receive_healing(GC.ally_bloom_healing * GC.bloom_mult, "grass", false)
 	if nitro:
 		nitro = false
 		for stati in status:
@@ -241,7 +240,8 @@ func take_damage(damage : int):
 				hp_bar.update_statuses(status)
 				damage_left = damage_left * GC.nitro_mult
 				DamageNumbers.display_text(self.damage_number_origin.global_position, "none", "Nitrate!", 32)
-		total_dmg = damage_left
+	total_dmg = damage_left
+	DamageNumbers.display_number(damage_left, damage_number_origin.global_position, element, "")
 	if (shield > 0):
 		if (shield <= damage_left):
 			damage_left -= shield
@@ -255,17 +255,25 @@ func take_damage(damage : int):
 	hp_bar.set_hp(health)
 	return total_dmg
 
-func receive_healing(healing: int):
-	health += healing
+func receive_healing(healing: int, element : String, change_element):
+	var new_healing = ((healing + GC.healing_bonus) * GC.healing_mult)
+	DamageNumbers.display_number_plus(new_healing, damage_number_origin.global_position, element, "")
+	if change_element:
+		current_element = element
+	health += new_healing
 	if health >= max_health:
 		health = max_health
 	hp_bar.set_hp(health)
-	return healing
+	return new_healing
 	
-func receive_shielding(shielding: int):
-	shield += shielding
+func receive_shielding(shielding: int, element : String, change_element : bool):
+	var new_shielding = ((shielding + GC.shielding_bonus) * GC.shielding_mult)
+	DamageNumbers.display_number_plus(new_shielding, damage_number_origin.global_position, element, "")
+	if change_element:
+		current_element = element
+	shield += new_shielding
 	hp_bar.set_shield(shield)
-	return shielding
+	return new_shielding
 
 func check_if_dead():
 	if health <= 0:
@@ -292,8 +300,7 @@ func set_shield(shield):
 	
 func execute_status(status_effect):
 	if status_effect.event_based == false:
-		take_damage(status_effect.damage)
-		DamageNumbers.display_number(status_effect.damage, damage_number_origin.global_position, status_effect.element, "")
+		take_damage(status_effect.damage, status_effect.element, true)
 		status_effect.turns_remaining -= 1
 	else:
 		if status_effect.name == "Bubble":

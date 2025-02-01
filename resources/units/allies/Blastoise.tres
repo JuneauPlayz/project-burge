@@ -6,8 +6,8 @@
 [ext_resource type="Resource" uid="uid://dooqfwlwxly5w" path="res://resources/Skills/water/Water_Bolt.tres" id="2_la8mt"]
 [ext_resource type="Resource" uid="uid://d3hsiqbosdsp6" path="res://resources/Skills/water/Waterfall.tres" id="4_i7vsk"]
 [ext_resource type="Resource" uid="uid://dv6vx008xpgt7" path="res://resources/Skills/water/Muddy Water.tres" id="4_nlfxa"]
-[ext_resource type="Resource" uid="uid://ddoguurpcf2jb" path="res://resources/Skills/fire/Vaporstrike.tres" id="5_0h1p8"]
 [ext_resource type="Texture2D" uid="uid://lusgwdgw1no1" path="res://assets/Blastoise.png" id="6_iyk0c"]
+[ext_resource type="Resource" uid="uid://c8q6s8f72p54h" path="res://resources/Skills/water/Water Cannon.tres" id="8_wd0gm"]
 
 [resource]
 script = ExtResource("1_yixfq")
@@ -17,7 +17,7 @@ skill2 = ExtResource("4_i7vsk")
 relic_1 = ExtResource("1_t2i7j")
 relic_2 = ExtResource("2_7d0a5")
 ult_1 = ExtResource("4_nlfxa")
-ult_2 = ExtResource("5_0h1p8")
+ult_2 = ExtResource("8_wd0gm")
 relic_3 = ExtResource("1_t2i7j")
 relic_4 = ExtResource("2_7d0a5")
 sprite = ExtResource("6_iyk0c")

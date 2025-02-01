@@ -99,6 +99,23 @@ var combat_enemy4 : Enemy
 var combat_allies = []
 var combat_enemies = []
 
+var fire_damage_bonus = 0
+var fire_damage_mult = 1
+var water_damage_bonus = 0
+var water_damage_mult = 1
+var lightning_damage_bonus = 0
+var lightning_damage_mult = 1
+var earth_damage_bonus = 0
+var earth_damage_mult = 1
+var grass_damage_bonus = 0
+var grass_damage_mult = 1
+
+var healing_bonus = 0
+var healing_mult = 1
+
+var shielding_bonus = 0
+var shielding_mult = 1
+
 #tokens
 var fire_tokens = 0
 var water_tokens = 0
@@ -130,7 +147,7 @@ var bubble_mult = 0.5
 var burn_damage = 10
 var burn_length = 2
 var muck_mult = 0.75
-var discharge_mult = 1
+var discharge_mult = 1.5
 var sow_shielding = 5
 var sow_healing = 5
 var sow_healing_mult = 1
@@ -507,7 +524,7 @@ func reset():
 	sow_shielding_mult = 1
 	ally_bloom_healing = 5
 	enemy_bloom_healing = 5
-
+	
 	# Reset token base, mult, and bonus for each reaction
 	# Vaporize (Fire + Water)
 	vaporize_fire_token_base = 1

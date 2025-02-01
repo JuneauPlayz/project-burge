@@ -126,7 +126,8 @@ func vaporize(elem1: String, elem2: String, unit: Unit, value, friendly: bool) -
 	var res_value = roundi(value * GC.vaporize_mult)
 	unit.current_element = "none"
 	if not friendly:
-		DamageNumbers.display_number(unit.take_damage(res_value), unit.get_child(2).global_position, elem2, reaction_name)
+		unit.take_damage(res_value, elem2, false)
+	DamageNumbers.display_text(unit.damage_number_origin.global_position, elem2, reaction_name, 38)
 	await get_tree().create_timer(0.01).timeout
 	reaction_finished.emit()
 
@@ -139,11 +140,12 @@ func detonate(elem1: String, elem2: String, unit: Unit, value, friendly: bool) -
 	if unit.hasLeft() or unit.hasRight():
 		await get_tree().create_timer(0.2).timeout
 	if unit.hasLeft():
-		DamageNumbers.display_number(unit.left.take_damage(res_value * GC.detonate_side_mult), unit.left.get_child(2).global_position, elem2, "")
+		unit.left.take_damage(res_value * GC.detonate_side_mult, elem2, true)
 	if unit.hasRight():
-		DamageNumbers.display_number(unit.right.take_damage(res_value * GC.detonate_side_mult), unit.right.get_child(2).global_position, elem2, "")
+		unit.right.take_damage(res_value * GC.detonate_side_mult, elem2, true)
 	if not friendly:
-		DamageNumbers.display_number(unit.take_damage(res_value * GC.detonate_main_mult), unit.get_child(2).global_position, elem2, reaction_name)
+		unit.take_damage(res_value * GC.detonate_main_mult, elem2, false)
+	DamageNumbers.display_text(unit.damage_number_origin.global_position, elem2, reaction_name, 38)
 	await get_tree().create_timer(0.01).timeout
 	reaction_finished.emit()
 
@@ -155,16 +157,17 @@ func erupt(elem1: String, elem2: String, unit: Unit, value, friendly: bool) -> v
 		if unit.shield > 0:
 			var shield = unit.shield
 			if (value * GC.erupt_mult) < shield:
-				DamageNumbers.display_number(unit.take_damage(value * GC.erupt_mult), unit.get_child(2).global_position, elem2, reaction_name)
+				unit.take_damage(value * GC.erupt_mult, elem2, false)
 				res_value = value * GC.erupt_mult
 			else:
 				var shield_dmg = (shield + GC.erupt_mult - 1) / GC.erupt_mult
 				value -= shield_dmg
 				res_value = value + shield
-				DamageNumbers.display_number(unit.take_damage(res_value), unit.get_child(2).global_position, elem2, reaction_name)
+				unit.take_damage(res_value, elem2, false)
 				reaction_name = " Erupted!!"
 		else:
-			DamageNumbers.display_number(unit.take_damage(res_value), unit.get_child(2).global_position, elem2, reaction_name)
+			unit.take_damage(res_value, elem2, false)
+	DamageNumbers.display_text(unit.damage_number_origin.global_position, elem2, reaction_name, 38)
 	await get_tree().create_timer(0.01).timeout
 	reaction_finished.emit()
 
@@ -173,31 +176,33 @@ func burn(elem1: String, elem2: String, unit: Unit, value, friendly: bool) -> vo
 	var new_burn = BURN.duplicate()
 	new_burn.turns_remaining = GC.burn_length
 	new_burn.damage = GC.burn_damage
+	unit.current_element = "none"
 	unit.status.append(new_burn)
 	unit.hp_bar.update_statuses(unit.status)
-	unit.current_element = "none"
 	if not friendly:
-		DamageNumbers.display_number(unit.take_damage(roundi(value)), unit.get_child(2).global_position, elem2, reaction_name)
+		unit.take_damage(roundi(value), elem2, false)
 	elif friendly:
-		DamageNumbers.display_number_plus(unit.receive_healing(roundi(value)), unit.get_child(2).global_position, elem2, reaction_name)
+		unit.receive_healing(roundi(value), elem2, false)
+	DamageNumbers.display_text(unit.damage_number_origin.global_position, elem2, reaction_name, 38)
 	await get_tree().create_timer(0.01).timeout
 	reaction_finished.emit()
 
 func shock(elem1: String, elem2: String, unit: Unit, value, friendly: bool) -> void:
 	var reaction_name = " Shock!"
 	var res_value = roundi(value * GC.shock_mult)
-	unit.current_element = "lightning"
+	unit.current_element = "none"
 	if not friendly:
-		DamageNumbers.display_number(unit.take_damage(roundi(value)), unit.get_child(2).global_position, elem2, reaction_name)
+		unit.take_damage(roundi(value), elem2, false)
 		await get_tree().create_timer(0.2).timeout
 		if unit != null:
-			DamageNumbers.display_number(unit.take_damage(res_value), unit.get_child(2).global_position, elem2, reaction_name)
+			unit.take_damage(res_value, "lightning", true)
 		await get_tree().create_timer(0.2).timeout
 		if unit != null:
-			DamageNumbers.display_number(unit.take_damage(res_value), unit.get_child(2).global_position, elem2, reaction_name)
+			unit.take_damage(res_value, "lightning", true)
 			await get_tree().create_timer(0.2).timeout
 		if unit != null:
-			DamageNumbers.display_number(unit.take_damage(res_value), unit.get_child(2).global_position, elem2, reaction_name)
+			unit.take_damage(res_value, "lightning", true)
+	DamageNumbers.display_text(unit.damage_number_origin.global_position, elem2, reaction_name, 38)
 	await get_tree().create_timer(0.01).timeout
 	reaction_finished.emit()
 
@@ -208,9 +213,10 @@ func bloom(elem1: String, elem2: String, unit: Unit, value, friendly: bool) -> v
 	unit.hp_bar.update_statuses(unit.status)
 	unit.current_element = "none"
 	if not friendly:
-		DamageNumbers.display_number(unit.take_damage(roundi(value)), unit.get_child(2).global_position, elem2, reaction_name)
+		unit.take_damage(roundi(value), elem2, false)
 	elif friendly:
-		DamageNumbers.display_number_plus(unit.receive_healing(roundi(value)), unit.get_child(2).global_position, elem2, reaction_name)
+		unit.receive_healing(roundi(value), elem2, false)
+	DamageNumbers.display_text(unit.damage_number_origin.global_position, elem2, reaction_name, 38)
 	DamageNumbers.display_text(unit.get_child(2).global_position, "grass", "Bubbled!", 32)
 	await get_tree().create_timer(0.01).timeout
 	reaction_finished.emit()
@@ -222,10 +228,10 @@ func nitro(elem1: String, elem2: String, unit: Unit, value, friendly: bool) -> v
 	unit.hp_bar.update_statuses(unit.status)
 	unit.current_element = "none"
 	if not friendly:
-		DamageNumbers.display_number(unit.take_damage(roundi(value)), unit.get_child(2).global_position, elem2, reaction_name)
+		unit.take_damage(roundi(value), elem2, false)
 	elif friendly:
-		DamageNumbers.display_number_plus(unit.receive_healing(roundi(value)), unit.get_child(2).global_position, elem2, reaction_name)
-	DamageNumbers.display_text(unit.get_child(2).global_position, "lightning", reaction_name, 32)
+		unit.receive_healing(roundi(value), elem2, false)
+	DamageNumbers.display_text(unit.damage_number_origin.global_position, elem2, reaction_name, 38)
 	await get_tree().create_timer(0.01).timeout
 	reaction_finished.emit()
 
@@ -236,12 +242,13 @@ func discharge(elem1: String, elem2: String, unit: Unit, value, friendly: bool) 
 		split_damage = roundi((value * GC.discharge_mult) / GC.combat_enemies.size())
 		unit.current_element = "none"
 	if not friendly:
-		DamageNumbers.display_number(unit.take_damage(roundi(value)), unit.get_child(2).global_position, elem2, reaction_name)
+		unit.take_damage(roundi(split_damage), elem2, false)
 	elif friendly:
-		DamageNumbers.display_number_plus(unit.receive_shielding(roundi(value)), unit.get_child(2).global_position, elem2, reaction_name)
+		unit.receive_shielding(roundi(value), elem2, false)
 	for enemy in GC.combat_enemies:
 		if enemy != null and enemy != unit:
-			DamageNumbers.display_number_size(enemy.take_damage(roundi(split_damage)), enemy.get_child(2).global_position, "none", reaction_name, 36)
+			enemy.take_damage(roundi(split_damage), "none", true)
+	DamageNumbers.display_text(unit.damage_number_origin.global_position, elem2, reaction_name, 38)
 	reaction_finished.emit()
 
 func sow(elem1: String, elem2: String, unit: Unit, value, friendly: bool) -> void:
@@ -251,12 +258,12 @@ func sow(elem1: String, elem2: String, unit: Unit, value, friendly: bool) -> voi
 	unit.hp_bar.update_statuses(unit.status)
 	unit.current_element = "none"
 	if not friendly:
-		DamageNumbers.display_number(unit.take_damage(roundi(value)), unit.get_child(2).global_position, elem2, reaction_name)
+		unit.take_damage(roundi(value), elem2, false)
 	elif friendly and elem2 == "grass":
-		DamageNumbers.display_number_plus(unit.receive_healing(roundi(value)), unit.get_child(2).global_position, elem2, reaction_name)
+		unit.receive_healing(roundi(value), elem2, false)
 	elif friendly and elem2 == "earth":
-		DamageNumbers.display_number_plus(unit.receive_shielding(roundi(value)), unit.get_child(2).global_position, elem2, reaction_name)
-	DamageNumbers.display_text(unit.get_child(2).global_position, "earth", reaction_name, 32)
+		unit.receive_shielding(roundi(value), elem2, false)
+	DamageNumbers.display_text(unit.damage_number_origin.global_position, elem2, reaction_name, 38)
 	await get_tree().create_timer(0.01).timeout
 	reaction_finished.emit()
 
@@ -267,10 +274,10 @@ func muck(elem1: String, elem2: String, unit: Unit, value, friendly: bool) -> vo
 	unit.hp_bar.update_statuses(unit.status)
 	unit.current_element = "none"
 	if not friendly:
-		DamageNumbers.display_number(unit.take_damage(roundi(value)), unit.get_child(2).global_position, elem2, reaction_name)
+		unit.take_damage(roundi(value), elem2, false)
 	elif friendly and elem2 == "earth":
-		DamageNumbers.display_number_plus(unit.receive_shielding(roundi(value)), unit.get_child(2).global_position, elem2, reaction_name)
-	DamageNumbers.display_text(unit.get_child(2).global_position, "earth", reaction_name, 32)
+		unit.receive_shielding(roundi(value), elem2, false)
+	DamageNumbers.display_text(unit.damage_number_origin.global_position, elem2, reaction_name, 38)
 	await get_tree().create_timer(0.01).timeout
 	reaction_finished.emit()
 
