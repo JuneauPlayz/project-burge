@@ -18,7 +18,7 @@ const TEAM_MAGMA_GRUNT = preload("res://resources/units/enemies/TeamMagmaGrunt.t
 
 # predetermined fights
 
-var fight_1 = [TEAM_MAGMA_GRUNT, TEAM_MAGMA_GRUNT, CHILL_GUY, null]
+var fight_1 = [TEAM_MAGMA_GRUNT, TEAM_MAGMA_GRUNT, null, null]
 var fight_1_reward = 10
 
 var fight_2 = [CHILL_GUY, TEAM_MAGMA_GRUNT, null, null]
