@@ -8,24 +8,25 @@ var gold = 0
 var bonus_gold = 0
 var gold_multiplier = 1
 #combat
-var current_reward = 10
+var current_reward = 3
 const FIRE_POTION = preload("res://resources/relics/fire_potion.tres")
 const SHIELD_POTION = preload("res://resources/relics/shield_potion.tres")
 const VAPOR_ORB = preload("res://resources/relics/vapor_orb.tres")
 const CHILL_GUY = preload("res://resources/units/enemies/ChillGuy.tres")
-
+const PYROMANCER = preload("res://resources/units/enemies/pyromancer.tres")
 const TEAM_MAGMA_GRUNT = preload("res://resources/units/enemies/TeamMagmaGrunt.tres")
+const HYDROMANCER = preload("res://resources/units/enemies/hydromancer.tres")
 
 # predetermined fights
 
 var fight_1 = [TEAM_MAGMA_GRUNT, TEAM_MAGMA_GRUNT, null, null]
-var fight_1_reward = 10
+var fight_1_reward = 3
 
 var fight_2 = [CHILL_GUY, TEAM_MAGMA_GRUNT, null, null]
-var fight_2_reward = 15
+var fight_2_reward = 6
 
-var fight_3 = [CHILL_GUY, CHILL_GUY, CHILL_GUY, CHILL_GUY]
-var fight_3_reward = 20
+var fight_3 = [PYROMANCER, HYDROMANCER, null, null]
+var fight_3_reward = 9
 
 var current_fight = fight_1
 #loading unit reses
@@ -334,7 +335,7 @@ func reset():
 	ghostfire = false
 	flow = false
 	# Reset combat-related variables
-	current_reward = 10
+	current_reward = 3
 	combat_ally1 = null
 	combat_ally2 = null
 	combat_ally3 = null

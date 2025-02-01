@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="UnitRes" load_steps=7 format=3 uid="uid://crrx2hnydjn3j"]
+
+[ext_resource type="Script" path="res://scripts/UnitRes.gd" id="1_2elhq"]
+[ext_resource type="Resource" uid="uid://cr3bbtfskjida" path="res://resources/enemy_skills/EnemyAOEFire.tres" id="2_m1i4n"]
+[ext_resource type="Texture2D" uid="uid://dspavikuf1db6" path="res://assets/leo-val-pyromancer-01-v001.jpg" id="3_f15hj"]
+[ext_resource type="Resource" uid="uid://bajou4oeggcpy" path="res://resources/enemy_skills/Punch.tres" id="3_kyjj2"]
+[ext_resource type="Resource" uid="uid://cp50svdfs8qpy" path="res://resources/enemy_skills/yeet.tres" id="4_l2myw"]
+[ext_resource type="Resource" uid="uid://cap1r3pplmwmf" path="res://resources/enemy_skills/Magma Strike.tres" id="5_pjva1"]
+
+[resource]
+script = ExtResource("1_2elhq")
+starting_health = 200
+skill1 = ExtResource("2_m1i4n")
+skill2 = ExtResource("3_kyjj2")
+skill3 = ExtResource("4_l2myw")
+skill4 = ExtResource("5_pjva1")
+sprite = ExtResource("3_f15hj")
+sprite_scale = 0.3
+name = ""

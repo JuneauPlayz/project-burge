@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="UnitRes" load_steps=7 format=3 uid="uid://btbdlqb8cmmnp"]
+
+[ext_resource type="Script" path="res://scripts/UnitRes.gd" id="1_vfdnl"]
+[ext_resource type="Resource" uid="uid://bdhvjuo1cekdg" path="res://resources/enemy_skills/EnemyAOEWater.tres" id="2_af38f"]
+[ext_resource type="Texture2D" uid="uid://c3wn67rl0ods7" path="res://assets/hydromancer.jpg" id="3_3viei"]
+[ext_resource type="Resource" uid="uid://bajou4oeggcpy" path="res://resources/enemy_skills/Punch.tres" id="3_34ish"]
+[ext_resource type="Resource" uid="uid://cp50svdfs8qpy" path="res://resources/enemy_skills/yeet.tres" id="4_81ynd"]
+[ext_resource type="Resource" uid="uid://drrrj6plbrlss" path="res://resources/enemy_skills/Water Strike.tres" id="5_owkgm"]
+
+[resource]
+script = ExtResource("1_vfdnl")
+starting_health = 200
+skill1 = ExtResource("2_af38f")
+skill2 = ExtResource("3_34ish")
+skill3 = ExtResource("4_81ynd")
+skill4 = ExtResource("5_owkgm")
+sprite = ExtResource("3_3viei")
+sprite_scale = 0.3
+name = ""
