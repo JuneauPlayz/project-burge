@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_lnwek")
 name = "Thunderstorm"
-damage = 18
+damage = 12
 element = "lightning"
 damaging = true
 healing = false

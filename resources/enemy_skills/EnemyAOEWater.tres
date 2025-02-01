@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_q8fwn")
 name = "Flood"
-damage = 16
+damage = 12
 element = "water"
 damaging = true
 healing = false
