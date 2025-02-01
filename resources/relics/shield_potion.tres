@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://jsbevql6t5av"]
 
 [ext_resource type="Texture2D" uid="uid://di27sstbehnju" path="res://assets/shield potion.png" id="1_j6g0b"]
-[ext_resource type="Script" path="res://resources/relic scripts/shield_potion.gd" id="2_l1c8m"]
+[ext_resource type="Script" uid="uid://i1jdq5de8qhf" path="res://resources/relic scripts/shield_potion.gd" id="2_l1c8m"]
 
 [resource]
 script = ExtResource("2_l1c8m")

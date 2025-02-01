@@ -62,8 +62,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0donl"]
 _data = {
-"RESET": SubResource("Animation_55se6"),
-"flash": SubResource("Animation_8yjh5")
+&"RESET": SubResource("Animation_55se6"),
+&"flash": SubResource("Animation_8yjh5")
 }
 
 [node name="Status_UI" type="Control"]
@@ -88,7 +88,7 @@ expand_mode = 1
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("")
 libraries = {
-"": SubResource("AnimationLibrary_0donl")
+&"": SubResource("AnimationLibrary_0donl")
 }
 
 [node name="Statuses" type="Label" parent="."]

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="UnitRes" load_steps=7 format=3 uid="uid://dewwyiharccfo"]
 
-[ext_resource type="Script" path="res://scripts/UnitRes.gd" id="1_606r8"]
+[ext_resource type="Script" uid="uid://bpkpxp60hx4da" path="res://scripts/UnitRes.gd" id="1_606r8"]
 [ext_resource type="Resource" uid="uid://dfgin1pydgukr" path="res://resources/enemy_skills/MIKU BEAM.tres" id="2_pgvml"]
 [ext_resource type="Texture2D" uid="uid://dbe58uqp7vm5v" path="res://assets/hatsune_miku_boss.jpg" id="2_vjx7t"]
 [ext_resource type="Resource" uid="uid://bhk7c70m0pn1l" path="res://resources/enemy_skills/MIKU CELERY SNACK.tres" id="3_6w7n1"]

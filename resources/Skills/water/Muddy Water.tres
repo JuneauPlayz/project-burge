@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://dv6vx008xpgt7"]
 
-[ext_resource type="Script" path="res://scripts/skill.gd" id="1_2jwhe"]
+[ext_resource type="Script" uid="uid://b6jr4peo4gndo" path="res://scripts/skill.gd" id="1_2jwhe"]
 [ext_resource type="Resource" uid="uid://bdml5ghtlnrag" path="res://resources/Status Effects/Muck.tres" id="2_20t78"]
 
 [resource]

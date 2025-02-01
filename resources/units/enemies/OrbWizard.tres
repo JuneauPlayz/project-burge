@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="UnitRes" load_steps=6 format=3 uid="uid://7ajqtlfjtjvj"]
 
-[ext_resource type="Script" path="res://scripts/UnitRes.gd" id="1_fl0vp"]
+[ext_resource type="Script" uid="uid://bpkpxp60hx4da" path="res://scripts/UnitRes.gd" id="1_fl0vp"]
 [ext_resource type="Resource" uid="uid://b6jk778dotn6a" path="res://resources/enemy_skills/Staff Smack.tres" id="2_4wqdp"]
 [ext_resource type="Resource" uid="uid://cq1mx7nghahlw" path="res://resources/enemy_skills/Throw Orb.tres" id="3_u5f7m"]
 [ext_resource type="Resource" uid="uid://bjpr3e2xux4fg" path="res://resources/enemy_skills/Ponder Orb.tres" id="4_8a0hw"]

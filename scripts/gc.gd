@@ -231,15 +231,11 @@ var lightning_strikes_twice = false
 func _ready():
 	current_fight = fight_1
 	var dir = DirAccess.open("res://resources/relics")
-	dir.list_dir_begin()
-	var file_name = dir.get_next()
-
-	while file_name != "":
-		if (file_name.get_extension() == "import"):
-			file_name = file_name.replace('.import', '')
-		var RELIC = load("res://resources/relics/" + file_name)
-		GC.obtainable_relics.append(RELIC)
-		file_name = dir.get_next()
+	var relics = []
+	get_all_files_from_directory("res://resources/relics", "", relics)
+	for filename in relics:
+		var relic = load(filename)
+		GC.obtainable_relics.append(relic)
 	var element = ""
 	for i in range(1,6):
 		match i:
@@ -256,18 +252,22 @@ func _ready():
 			6:
 				element = "physical"
 		dir = DirAccess.open("res://resources/Skills/" + element)
-		dir.list_dir_begin()
-		file_name = dir.get_next()
-		while file_name != "":
-			if (file_name.get_extension() == "import"):
-				file_name = file_name.replace('.import', '')
-			var SKILL = load("res://resources/Skills/" + element + "/" + file_name)
-			if SKILL.purchaseable == true:
-				GC.obtainable_skills.append(SKILL)
-			file_name = dir.get_next()
-	for relic in GC.obtainable_relics:
-		print(relic.relic_name)
+		var skills = []
+		get_all_files_from_directory("res://resources/Skills/" + element, "", skills)
+		for filename in skills:
+			var skill = load(filename)
+			if skill.purchaseable == true:
+				GC.obtainable_skills.append(skill)
 		
+func get_all_files_from_directory(path : String, file_ext:= "", files := []):
+	var resources = ResourceLoader.list_directory(path)
+	for res in resources:
+		print(str(path+res))
+		if res.ends_with("/"): 
+			get_all_files_from_directory(path+res, file_ext, files)
+		files.append(path+"/"+res)
+	return files
+	
 func next_fight():
 	match current_fight:
 		fight_1:

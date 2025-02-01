@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://cdu4rddg2v2o7"]
 
-[ext_resource type="Script" path="res://scripts/character_select.gd" id="1_hd0vt"]
+[ext_resource type="Script" uid="uid://bsab0phr7mqr2" path="res://scripts/character_select.gd" id="1_hd0vt"]
 [ext_resource type="Texture2D" uid="uid://c7bn1gnx4b71v" path="res://assets/grassy pixelated.jpg" id="2_7ac7o"]
 [ext_resource type="AudioStream" uid="uid://4rhr7pwkbdml" path="res://assets/cliack.mp3" id="2_48ova"]
 

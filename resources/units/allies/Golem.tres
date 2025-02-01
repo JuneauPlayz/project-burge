@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="UnitRes" load_steps=9 format=3 uid="uid://brb2gubx0hm1h"]
 
 [ext_resource type="Resource" uid="uid://bj2x6wkwkhvfo" path="res://resources/relics/erupt_orb.tres" id="1_p1jg5"]
-[ext_resource type="Script" path="res://scripts/UnitRes.gd" id="1_rsp8b"]
+[ext_resource type="Script" uid="uid://bpkpxp60hx4da" path="res://scripts/UnitRes.gd" id="1_rsp8b"]
 [ext_resource type="Resource" uid="uid://dykdesfmc1oo8" path="res://resources/Skills/earth/Rock Throw.tres" id="2_famig"]
 [ext_resource type="Resource" uid="uid://jsbevql6t5av" path="res://resources/relics/shield_potion.tres" id="2_krp2t"]
 [ext_resource type="Resource" uid="uid://bya4jpai0ygj5" path="res://resources/Skills/earth/Rock Shield.tres" id="3_3j15h"]

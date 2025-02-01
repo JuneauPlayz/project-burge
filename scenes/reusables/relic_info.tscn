@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://ppg1wk60cwxc"]
 
-[ext_resource type="Script" path="res://scripts/relic_info.gd" id="1_jwa7j"]
+[ext_resource type="Script" uid="uid://bkfj80qh430td" path="res://scripts/relic_info.gd" id="1_jwa7j"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dymp5"]
 content_margin_left = 7.0

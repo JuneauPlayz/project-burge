@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="UnitRes" load_steps=9 format=3 uid="uid://bchghb71yo8ln"]
 
-[ext_resource type="Script" path="res://scripts/UnitRes.gd" id="1_5rsqq"]
+[ext_resource type="Script" uid="uid://bpkpxp60hx4da" path="res://scripts/UnitRes.gd" id="1_5rsqq"]
 [ext_resource type="Resource" uid="uid://bj2x6wkwkhvfo" path="res://resources/relics/erupt_orb.tres" id="1_h68qo"]
 [ext_resource type="Resource" uid="uid://ri585emt4d3a" path="res://resources/relics/vapor_orb.tres" id="2_j7lrf"]
 [ext_resource type="Resource" uid="uid://c3yogn8m318q2" path="res://resources/Skills/fire/Fire_Bolt.tres" id="2_odqjc"]

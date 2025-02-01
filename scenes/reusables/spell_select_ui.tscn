@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://tlvpop5rp1x6"]
 
-[ext_resource type="Script" path="res://scripts/spell_select_ui.gd" id="1_6jhhb"]
+[ext_resource type="Script" uid="uid://4ll72j38iaw" path="res://scripts/spell_select_ui.gd" id="1_6jhhb"]
 [ext_resource type="PackedScene" uid="uid://sdwnoh61gawa" path="res://scenes/reusables/skill_info.tscn" id="2_ae65f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tvmj8"]

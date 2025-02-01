@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="UnitRes" load_steps=9 format=3 uid="uid://coik84dyxxr16"]
 
 [ext_resource type="Resource" uid="uid://bo3se2l60exf2" path="res://resources/relics/shock_orb.tres" id="1_nr8ao"]
-[ext_resource type="Script" path="res://scripts/UnitRes.gd" id="1_psg7m"]
+[ext_resource type="Script" uid="uid://bpkpxp60hx4da" path="res://scripts/UnitRes.gd" id="1_psg7m"]
 [ext_resource type="Resource" uid="uid://60omj8j38mfk" path="res://resources/Skills/lightning/Thunder Bolt.tres" id="2_sd5ql"]
 [ext_resource type="Resource" uid="uid://cmmon0itrxfne" path="res://resources/relics/detonate_orb.tres" id="2_vjtov"]
 [ext_resource type="Resource" uid="uid://cnw2l4om8k28e" path="res://resources/Skills/lightning/Thunder Punch.tres" id="3_2ycgk"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://didsupfyw66ha"]
 
-[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_ml356"]
+[ext_resource type="Script" uid="uid://cbx1ktct7lanb" path="res://scripts/enemy.gd" id="1_ml356"]
 [ext_resource type="Texture2D" uid="uid://bljf8dm0b4fdy" path="res://assets/baguette.png" id="3_n62cc"]
 [ext_resource type="PackedScene" uid="uid://5spa5amgsxfm" path="res://scenes/reusables/hp_bar.tscn" id="4_8i2d0"]
 [ext_resource type="PackedScene" uid="uid://sdwnoh61gawa" path="res://scenes/reusables/skill_info.tscn" id="5_gim1t"]
