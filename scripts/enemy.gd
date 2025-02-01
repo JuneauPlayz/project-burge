@@ -225,6 +225,8 @@ func take_damage(damage : int):
 	hp_bar.set_hp(health)
 	return total_dmg
 
+func lose_shield():
+	shield = 0
 func check_if_dead():
 	if health <= 0:
 		die()

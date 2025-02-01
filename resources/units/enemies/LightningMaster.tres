@@ -8,7 +8,7 @@
 
 [resource]
 script = ExtResource("1_8mrmj")
-starting_health = 200
+starting_health = 250
 skill1 = ExtResource("2_bydnc")
 skill2 = ExtResource("3_cvk14")
 skill3 = ExtResource("4_wkxwl")

@@ -154,7 +154,7 @@ func load_units():
 
 func item_bought(item, shop_item) -> void:
 	if item is Relic:
-		relics.purchase_relic(item)
+		relics.purchase_relic(shop_item)
 		GC.relics.append(item)
 		shop_item.queue_free()
 	elif item is Skill:
@@ -170,10 +170,13 @@ func buying_new_skill(shop_item):
 		ally.level_up_reward.visible = false
 		ally.spell_select_ui.reset()
 	for spot in relic_list:
-		spot.visible = false
+		if (not spot.get_child(0) == shop_item):
+			spot.visible = false
 	for spot in spell_list:
-		spot.visible = false
+		if (not spot.get_child(0) == shop_item):
+			spot.visible = false
 	shop_item.get_parent().visible = true
+	shop_item.visible = true
 	confirm_swap.visible = true
 	shop_item.hide_buy()
 	next_combat.visible = false

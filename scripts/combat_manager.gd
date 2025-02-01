@@ -158,6 +158,7 @@ func enemy_turn():
 	await get_tree().create_timer(0.25).timeout
 	enemy_pre_status()
 	await get_tree().create_timer(0.3).timeout
+	enemy_lose_shields()
 	for enemy in enemies:
 		print("using enemy skill")
 		set_unit_pos()
@@ -211,7 +212,6 @@ func victory():
 	victorious = true
 	victory_screen.visible = true
 	victory_screen.update_text("Victory!", GC.current_reward)
-	GC.add_gold(GC.current_reward)
 	hide_skills()
 	hide_ui()
 	victory_screen.continue_pressed.connect(self.finish_battle)
@@ -230,6 +230,7 @@ func defeat():
 	
 func finish_battle():
 	if victorious:
+		GC.add_gold(GC.current_reward)
 		if GC.end:
 			get_tree().change_scene_to_file("res://scenes/main scenes/ending_screen.tscn")
 		else:
@@ -380,6 +381,10 @@ func reaction_signal():
 func lose_shields():
 	for ally in allies:
 		ally.set_shield(0)
+		
+func enemy_lose_shields():
+	for enemy in enemies:
+		enemy.lose_shield()
 	
 # char 1
 func _on_spell_select_ui_new_select(ally) -> void:

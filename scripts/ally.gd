@@ -340,30 +340,20 @@ func _on_level_up_reward_new_select(skill) -> void:
 		confirm_swap.visible = true
 
 
+
 func _on_confirm_swap_pressed() -> void:
 	AudioPlayer.play_FX("click",-10)
-	if level_up_reward.choosing_skills:
-		match skill_swap_1_spot:
-			1:
-				basic_atk = skill_swap_2
-			2:
-				skill_1 = skill_swap_2
-			3:
-				skill_2 = skill_swap_2
-			4:
-				ult = skill_swap_2
-	if level_up_reward.choosing_options:
-		var relic_handler = get_tree().get_first_node_in_group("relic_handler")
-		GC.relics.append(chosen_relic)
-		relic_handler.purchase_relic(chosen_relic)
-	level_up_reward.visible = false
-	level_up_reward.choosing_skills = false
-	level_up_reward.choosing_options = false
-	level_up = false
-	res.level_up = false
+	match skill_swap_1_spot:
+		1:
+			basic_atk = skill_swap_2
+		2:
+			skill_1 = skill_swap_2
+		3:
+			skill_2 = skill_swap_2
+		4:
+			ult = skill_swap_2
 	update_ally_skills()
 	swap_tutorial.visible = false
-	level_up_complete = true
 	spell_select_ui.reset()
 	
 func update_ally_skills():
@@ -403,3 +393,39 @@ func disable_targeting_area():
 
 func _on_targeting_area_pressed() -> void:
 	target_chosen.emit(self)
+
+
+func _on_confirm_swap_level_pressed() -> void:
+	AudioPlayer.play_FX("click",-10)
+	if level_up_reward.choosing_skills:
+		match skill_swap_1_spot:
+			1:
+				basic_atk = skill_swap_2
+			2:
+				skill_1 = skill_swap_2
+			3:
+				skill_2 = skill_swap_2
+			4:
+				ult = skill_swap_2
+	if level_up_reward.choosing_options:
+		var relic_handler = get_tree().get_first_node_in_group("relic_handler")
+		GC.relics.append(chosen_relic)
+		relic_handler.purchase_relic(chosen_relic)
+	level_up_reward.visible = false
+	level_up_reward.choosing_skills = false
+	level_up_reward.choosing_options = false
+	level_up = false
+	res.level_up = false
+	match skill_swap_1_spot:
+		1:
+			basic_atk = skill_swap_2
+		2:
+			skill_1 = skill_swap_2
+		3:
+			skill_2 = skill_swap_2
+		4:
+			ult = skill_swap_2
+	update_ally_skills()
+	swap_tutorial.visible = false
+	level_up_complete = true
+	spell_select_ui.reset()
