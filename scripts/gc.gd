@@ -12,14 +12,22 @@ var current_reward = 10
 const FIRE_POTION = preload("res://resources/relics/fire_potion.tres")
 const SHIELD_POTION = preload("res://resources/relics/shield_potion.tres")
 const VAPOR_ORB = preload("res://resources/relics/vapor_orb.tres")
+const CHILL_GUY = preload("res://resources/units/enemies/ChillGuy.tres")
 
 const TEAM_MAGMA_GRUNT = preload("res://resources/units/enemies/TeamMagmaGrunt.tres")
 
 # predetermined fights
-var current_fight = fight_1
-var fight_1 = [TEAM_MAGMA_GRUNT, TEAM_MAGMA_GRUNT, null, null]
+
+var fight_1 = [TEAM_MAGMA_GRUNT, TEAM_MAGMA_GRUNT, CHILL_GUY, null]
 var fight_1_reward = 10
 
+var fight_2 = [CHILL_GUY, TEAM_MAGMA_GRUNT, null, null]
+var fight_2_reward = 15
+
+var fight_3 = [CHILL_GUY, CHILL_GUY, CHILL_GUY, CHILL_GUY]
+var fight_3_reward = 20
+
+var current_fight = fight_1
 #loading unit reses
 var ally1 : UnitRes
 var ally2 : UnitRes
@@ -177,6 +185,7 @@ var ghostfire = false
 var flow = false
 
 func _ready():
+	current_fight = fight_1
 	var dir = DirAccess.open("res://resources/relics")
 	dir.list_dir_begin()
 	var file_name = dir.get_next()
@@ -209,6 +218,18 @@ func _ready():
 			file_name = dir.get_next()
 	for relic in GC.obtainable_relics:
 		print(relic.relic_name)
+		
+func next_fight():
+	match current_fight:
+		fight_1:
+			current_fight = fight_2
+			current_reward = fight_2_reward
+		fight_2:
+			current_fight = fight_3
+			current_reward = fight_3_reward
+		fight_3:
+			get_tree().quit()
+	
 func get_random_relic():
 	if GC.obtainable_relics == []:
 		return null

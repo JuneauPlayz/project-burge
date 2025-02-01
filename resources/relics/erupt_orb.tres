@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bj2x6wkwkhvfo"]
+
+[ext_resource type="Texture2D" uid="uid://c3vp6cnsau7i1" path="res://assets/stelletrash.png" id="1_1uxqp"]
+[ext_resource type="Script" path="res://resources/relic scripts/erupt_orb.gd" id="1_3ch77"]
+
+[resource]
+script = ExtResource("1_3ch77")
+relic_name = "Erupt Orb"
+tier = "1"
+id = ""
+type = 4
+icon = ExtResource("1_1uxqp")
+tooltip = "Adds 2x to Erupt
+Multiplier"
