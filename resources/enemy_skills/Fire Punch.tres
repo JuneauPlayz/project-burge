@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_vj7f4")
 name = "Fire Punch"
-damage = 20
+damage = 25
 element = "fire"
 damaging = true
 healing = false

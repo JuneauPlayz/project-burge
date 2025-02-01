@@ -22,5 +22,5 @@ cost2 = 0
 token_type2 = ""
 status_effects = []
 double_hit = true
-damage2 = 50
+damage2 = 25
 element2 = "fire"

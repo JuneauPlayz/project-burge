@@ -160,6 +160,7 @@ func enemy_turn():
 	await get_tree().create_timer(0.3).timeout
 	for enemy in enemies:
 		print("using enemy skill")
+		set_unit_pos()
 		use_skill(enemy.current_skill,null,enemy,true)
 		hit.emit()
 		enemy.change_skills()

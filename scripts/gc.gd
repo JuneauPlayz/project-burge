@@ -233,7 +233,10 @@ func _ready():
 	var dir = DirAccess.open("res://resources/relics")
 	dir.list_dir_begin()
 	var file_name = dir.get_next()
+
 	while file_name != "":
+		if (file_name.get_extension() == "import"):
+			file_name = file_name.replace('.import', '')
 		var RELIC = load("res://resources/relics/" + file_name)
 		GC.obtainable_relics.append(RELIC)
 		file_name = dir.get_next()
@@ -256,6 +259,8 @@ func _ready():
 		dir.list_dir_begin()
 		file_name = dir.get_next()
 		while file_name != "":
+			if (file_name.get_extension() == "import"):
+				file_name = file_name.replace('.import', '')
 			var SKILL = load("res://resources/Skills/" + element + "/" + file_name)
 			if SKILL.purchaseable == true:
 				GC.obtainable_skills.append(SKILL)

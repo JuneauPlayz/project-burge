@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_cwfdr")
 name = "Water Yeet"
-damage = 15
+damage = 20
 element = "water"
 damaging = true
 healing = false

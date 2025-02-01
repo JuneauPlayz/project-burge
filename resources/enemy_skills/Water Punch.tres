@@ -4,9 +4,9 @@
 
 [resource]
 script = ExtResource("1_xk8qn")
-name = "Punch"
-damage = 20
-element = "fire"
+name = "Water Punch"
+damage = 25
+element = "water"
 damaging = true
 healing = false
 shielding = false

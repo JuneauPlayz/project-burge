@@ -234,9 +234,9 @@ func die():
 	died.emit()
 	self.visible = false
 	# wont erase itself until after the skill is done
-	await get_tree().create_timer(GC.GLOBAL_INTERVAL).timeout
 	combat_manager.enemies.erase(self)
 	combat_manager.set_unit_pos()
+	await get_tree().create_timer(GC.GLOBAL_INTERVAL).timeout
 	queue_free()
 	
 	

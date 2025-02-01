@@ -198,9 +198,11 @@ func nitro(elem1: String, elem2: String, unit: Unit, value, friendly: bool) -> v
 
 func discharge(elem1: String, elem2: String, unit: Unit, value, friendly: bool) -> void:
 	var reaction_name = " Discharge!"
-	var split_damage = roundi((value * GC.discharge_mult) / 4)
-	unit.current_element = "none"
-	GC.discharge()
+	var split_damage = value
+	if GC.combat_enemies.size() > 0:
+		split_damage = roundi((value * GC.discharge_mult) / GC.combat_enemies.size())
+		unit.current_element = "none"
+		GC.discharge()
 	if not friendly:
 		DamageNumbers.display_number(unit.take_damage(roundi(value)), unit.get_child(2).global_position, elem2, reaction_name)
 	elif friendly:

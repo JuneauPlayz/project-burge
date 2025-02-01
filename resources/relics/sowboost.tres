@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://d365sjgcnwi3u"]
+
+[ext_resource type="Texture2D" uid="uid://c7bn1gnx4b71v" path="res://assets/grassy pixelated.jpg" id="1_suahw"]
+[ext_resource type="Script" path="res://resources/relic scripts/sowboost.gd" id="2_7yfkx"]
+
+[resource]
+script = ExtResource("2_7yfkx")
+relic_name = "Shockboost"
+tier = "1"
+id = ""
+type = 1
+icon = ExtResource("1_suahw")
+tooltip = "Start Combat with
++2 Grass Tokens
++2 Earth Tokens"

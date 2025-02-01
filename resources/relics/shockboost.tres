@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bxgsa3muuk2iy"]
+
+[ext_resource type="Texture2D" uid="uid://dmsixe7n4f266" path="res://assets/pikachu.png" id="1_fbncb"]
+[ext_resource type="Script" path="res://resources/relic scripts/shockboost.gd" id="2_if1dm"]
+
+[resource]
+script = ExtResource("2_if1dm")
+relic_name = "Shockboost"
+tier = "1"
+id = ""
+type = 1
+icon = ExtResource("1_fbncb")
+tooltip = "Start Combat with
++2 Lightning Tokens
++2 Water Tokens"

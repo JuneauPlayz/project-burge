@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_ljwc7")
 name = "Flamewave"
-damage = 10
+damage = 18
 element = "fire"
 damaging = true
 healing = false

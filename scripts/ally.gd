@@ -268,10 +268,10 @@ func check_if_dead():
 func die():
 	print(title + " ded")
 	self.visible = false
-	await get_tree().create_timer(GC.GLOBAL_INTERVAL).timeout
-	# wont erase itself until after the skill is done
 	combat_manager.allies.erase(self)
 	combat_manager.set_unit_pos()
+	await get_tree().create_timer(GC.GLOBAL_INTERVAL).timeout
+	# wont erase itself until after the skill is done
 	queue_free()
 
 func show_skills():

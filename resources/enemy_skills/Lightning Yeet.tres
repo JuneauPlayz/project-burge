@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_pji75")
 name = "Lightning Yeet"
-damage = 15
+damage = 20
 element = "lightning"
 damaging = true
 healing = false
