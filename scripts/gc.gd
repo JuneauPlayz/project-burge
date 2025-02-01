@@ -24,11 +24,14 @@ const ORB_WIZARD = preload("res://resources/units/enemies/OrbWizard.tres")
 var fight_1 = [TEAM_MAGMA_GRUNT, CHILL_GUY, null, null]
 var fight_1_reward = 6
 
-var fight_2 = [CHILL_GUY, TEAM_MAGMA_GRUNT, BAGUETTE, ORB_WIZARD]
+var fight_2 = [CHILL_GUY, TEAM_MAGMA_GRUNT, BAGUETTE, null]
 var fight_2_reward = 6
 
 var fight_3 = [PYROMANCER, HYDROMANCER, null, null]
 var fight_3_reward = 9
+
+var fight_4 = [CHILL_GUY, TEAM_MAGMA_GRUNT, BAGUETTE, ORB_WIZARD]
+var fight_4_reward = 12
 
 var current_fight = fight_1
 #loading unit reses
@@ -232,6 +235,9 @@ func next_fight():
 			current_fight = fight_3
 			current_reward = fight_3_reward
 		fight_3:
+			current_fight = fight_4
+			current_reward = fight_4_reward
+		fight_4:
 			get_tree().quit()
 	
 func get_random_relic():
