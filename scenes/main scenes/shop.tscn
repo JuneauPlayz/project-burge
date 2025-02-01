@@ -117,6 +117,15 @@ offset_bottom = 934.0
 theme_override_font_sizes/font_size = 72
 text = "Next Combat"
 
+[node name="Refresh" type="Button" parent="NextCombat"]
+layout_mode = 0
+offset_left = -347.0
+offset_top = -846.0
+offset_right = 38.0
+offset_bottom = -792.0
+theme_override_font_sizes/font_size = 51
+text = "Refresh Options (1 Gold)"
+
 [node name="ConfirmSwap" type="Button" parent="."]
 visible = false
 offset_left = 1284.0
@@ -156,5 +165,6 @@ scale = Vector2(0.9, 0.9)
 
 [connection signal="draw" from="." to="." method="_on_draw"]
 [connection signal="pressed" from="NextCombat" to="." method="_on_next_combat_pressed"]
+[connection signal="pressed" from="NextCombat/Refresh" to="." method="_on_refresh_pressed"]
 [connection signal="pressed" from="ConfirmSwap" to="." method="_on_confirm_swap_pressed"]
 [connection signal="pressed" from="ReactionGuide" to="." method="_on_reaction_guide_pressed"]

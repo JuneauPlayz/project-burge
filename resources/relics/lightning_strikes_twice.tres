@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_gg5rb")
 relic_name = "Lightning Strikes Twice"
-tier = "2"
+tier = "3"
 id = ""
 type = 4
 icon = ExtResource("1_qm23f")

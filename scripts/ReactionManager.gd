@@ -196,13 +196,15 @@ func shock(elem1: String, elem2: String, unit: Unit, value, friendly: bool) -> v
 		await get_tree().create_timer(0.2).timeout
 		if unit != null:
 			unit.take_damage(res_value, "lightning", true)
+			DamageNumbers.display_text(unit.damage_number_origin.global_position, elem2, reaction_name, 38)
 		await get_tree().create_timer(0.2).timeout
 		if unit != null:
 			unit.take_damage(res_value, "lightning", true)
+			DamageNumbers.display_text(unit.damage_number_origin.global_position, elem2, reaction_name, 38)
 			await get_tree().create_timer(0.2).timeout
 		if unit != null:
 			unit.take_damage(res_value, "lightning", true)
-	DamageNumbers.display_text(unit.damage_number_origin.global_position, elem2, reaction_name, 38)
+		DamageNumbers.display_text(unit.damage_number_origin.global_position, elem2, reaction_name, 38)
 	await get_tree().create_timer(0.01).timeout
 	reaction_finished.emit()
 

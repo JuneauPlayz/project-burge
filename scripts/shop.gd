@@ -31,6 +31,8 @@ const ENEMY = preload("res://resources/units/enemies/enemy.tscn")
 @onready var spell_2_spot: Node2D = $Spell2Spot
 @onready var spell_3_spot: Node2D = $Spell3Spot
 
+@onready var refresh_button: Button = $NextCombat/Refresh
+
 var relic_list = []
 var spell_list = []
 
@@ -38,6 +40,8 @@ var shop_relics = []
 var shop_skills = []
 
 var relics : RelicHandler
+
+var refresh_price = 1
 
 @onready var gold_label: Label = $Gold
 @onready var confirm_swap: Button = $ConfirmSwap
@@ -61,25 +65,36 @@ func _ready() -> void:
 	spell_list.append(spell_2_spot)
 	spell_list.append(spell_3_spot)
 	
+	refresh_price = 1
+	refresh_button.text = "Refresh Options (" + str(refresh_price) + " Gold)"
+	
 	for spot in relic_list:
+		if spot.get_child(0) != null:
+			spot.get_child(0).queue_free()
 		var item = SHOP_ITEM.instantiate()
 		spot.add_child(item)
 		item.item = GC.get_random_relic()
-		if GC.obtainable_relics.size() > 2:
-			while item.item in shop_relics:
-				item.item = GC.get_random_relic()
-			item.price = get_price(item.item)
+		item.price = get_price(item.item)
+		if GC.obtainable_relics.size() > 2 and GC.gold >= 3:
+			if item.price > GC.gold or item.item in shop_relics:
+				while item.item in shop_relics or item.price > GC.gold:
+					item.item = GC.get_random_relic()
+					item.price = get_price(item.item)
 			item.update_item()
 			shop_relics.append(item.item)
 		
 	for spot in spell_list:
+		if spot.get_child(0) != null:
+			spot.get_child(0).queue_free()
 		var item = SHOP_ITEM.instantiate()
 		spot.add_child(item)
 		item.item = GC.get_random_skill()
-		if GC.obtainable_skills.size() > 2:
-			while item.item in shop_skills:
-				item.item = GC.get_random_skill()
-			item.price = get_price(item.item)
+		item.price = get_price(item.item)
+		if GC.obtainable_relics.size() > 2 and GC.gold >= 3:
+			if item.price > GC.gold or item.item in shop_skills:
+				while item.item in shop_skills or item.price > GC.gold:
+					item.item = GC.get_random_skill()
+					item.price = get_price(item.item)
 			item.update_item()
 			shop_skills.append(item.item)
 		item.skill_info.z_index -= 1
@@ -92,7 +107,7 @@ func get_price(resource):
 		"2":
 			return 6
 		"3":
-			return 10
+			return 9
 
 func load_units():
 	print("loading units")
@@ -151,6 +166,37 @@ func load_units():
 		for relic in GC.relics:
 			new_relic_handler.add_relic(relic)
 
+func refresh():
+	for spot in relic_list:
+		if spot.get_child(0) != null:
+			spot.get_child(0).queue_free()
+		var item = SHOP_ITEM.instantiate()
+		spot.add_child(item)
+		item.item = GC.get_random_relic()
+		item.price = get_price(item.item)
+		if GC.obtainable_relics.size() > 2 and GC.gold >= 3:
+			if item.price > GC.gold or item.item in shop_relics:
+				while item.item in shop_relics or item.price > GC.gold:
+					item.item = GC.get_random_relic()
+					item.price = get_price(item.item)
+			item.update_item()
+			shop_relics.append(item.item)
+		
+	for spot in spell_list:
+		if spot.get_child(0) != null:
+			spot.get_child(0).queue_free()
+		var item = SHOP_ITEM.instantiate()
+		spot.add_child(item)
+		item.item = GC.get_random_skill()
+		item.price = get_price(item.item)
+		if GC.obtainable_relics.size() > 2 and GC.gold >= 3:
+			if item.price > GC.gold or item.item in shop_skills:
+				while item.item in shop_skills or item.price > GC.gold:
+					item.item = GC.get_random_skill()
+					item.price = get_price(item.item)
+			item.update_item()
+			shop_skills.append(item.item)
+		item.skill_info.z_index -= 1
 
 func item_bought(item, shop_item) -> void:
 	if item is Relic:
@@ -223,3 +269,12 @@ func _on_reaction_guide_pressed() -> void:
 
 func toggle_relic_tooltip():
 	relic_info.visible = !relic_info.visible
+
+
+func _on_refresh_pressed() -> void:
+	if (GC.gold >= refresh_price):
+		GC.gold -= refresh_price
+		update_gold()
+		refresh()
+		refresh_price += 1
+		refresh_button.text = "Refresh Options (" + str(refresh_price) + " Gold)"

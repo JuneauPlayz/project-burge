@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bcpa0mi87dxxw"]
+
+[ext_resource type="Script" uid="uid://bwy6w48crbb54" path="res://scenes/relic handler/relic.gd" id="1_tlnim"]
+[ext_resource type="Script" uid="uid://dyeesqtqjcjwn" path="res://resources/relic scripts/miku_amulet.gd" id="2_aeasu"]
+
+[resource]
+script = ExtResource("2_aeasu")
+relic_name = "Miku's Amulet"
+tier = "3"
+id = ""
+type = 0
+tooltip = "Against enemies:
+Fire Damage +5
+Water Damage +5
+Lightning Damage +2
+Grass Damage +10
+Earth Damage +10"
+metadata/_custom_type_script = ExtResource("1_tlnim")

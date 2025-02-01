@@ -3,7 +3,11 @@ extends Relic
 var member_var = 0
 
 func initialize_relic(owner : RelicUI) -> void:
-	print("this happens once we gain a new relic")
+	GC.fire_damage_bonus += 5
+	GC.water_damage_bonus += 5
+	GC.lightning_damage_bonus += 2
+	GC.earth_damage_bonus += 10
+	GC.grass_damage_bonus += 10
 	
 func activate_relic(owner: RelicUI) -> void:
 	print("this happens at specific times based on the Relic.Type property")
