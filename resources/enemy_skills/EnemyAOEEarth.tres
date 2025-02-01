@@ -4,13 +4,15 @@
 
 [resource]
 script = ExtResource("1_vyqcj")
-name = "EnemyEarthAOE"
+name = "Tremor"
 damage = 15
 element = "earth"
 damaging = true
 healing = false
 shielding = false
 target_type = "all_allies"
+purchaseable = true
+tier = "1"
 friendly = false
 lifesteal = false
 lifesteal_rate = 1.0

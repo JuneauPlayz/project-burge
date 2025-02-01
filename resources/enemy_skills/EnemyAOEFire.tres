@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_ljwc7")
-name = "EnemyFireAOE"
+name = "Flamewave"
 damage = 10
 element = "fire"
 damaging = true
