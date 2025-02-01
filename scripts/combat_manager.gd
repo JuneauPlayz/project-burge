@@ -146,6 +146,10 @@ func execute_ally_turn():
 		print(str(skill.name) + " landed!")
 		hit.emit()
 		await get_tree().create_timer(GC.GLOBAL_INTERVAL+0.05).timeout
+		# for sow only
+		for stati in target.status:
+			if stati.unique_type == "sow":
+				target.sow = true
 	await get_tree().create_timer(1).timeout
 	ally_post_status()
 	if enemies.is_empty():

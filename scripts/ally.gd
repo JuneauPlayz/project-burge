@@ -11,6 +11,8 @@ class_name Ally
 
 @export var relic_choice_1 : Relic
 @export var relic_choice_2 : Relic
+@export var relic_choice_3 : Relic
+@export var relic_choice_4 : Relic
 
 @export var status : Array = []
 
@@ -80,6 +82,8 @@ func _ready() -> void:
 	ult_choice_2 = res.ult_2
 	relic_choice_1 = res.relic_1
 	relic_choice_2 = res.relic_2
+	relic_choice_3 = res.relic_3
+	relic_choice_4 = res.relic_4
 	level_up = res.level_up
 	level = res.level
 	sprite_spot.texture = load(res.sprite.resource_path)
@@ -106,6 +110,8 @@ func update_vars():
 	ult_choice_2 = res.ult_2
 	relic_choice_1 = res.relic_1
 	relic_choice_2 = res.relic_2
+	relic_choice_3 = res.relic_3
+	relic_choice_4 = res.relic_4
 	level = res.level
 	level_up = res.level_up
 	title = res.name
@@ -314,7 +320,7 @@ func show_level_up(level):
 		2:
 			level_up_reward.load_skills(ult_choice_1, ult_choice_2)
 		3:
-			level_up_reward.load_options(relic_choice_1, relic_choice_2)
+			level_up_reward.load_options(relic_choice_3, relic_choice_4)
 
 
 func _on_spell_select_ui_new_select(ally) -> void:

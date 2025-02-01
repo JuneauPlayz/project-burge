@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Status" load_steps=2 format=3 uid="uid://cexr25c7jo7kd"]
 
-[ext_resource type="Script" path="res://scripts/DoT_Status.gd" id="1_ea6qj"]
+[ext_resource type="Script" uid="uid://5lu86r10cr8o" path="res://scripts/DoT_Status.gd" id="1_ea6qj"]
 
 [resource]
 script = ExtResource("1_ea6qj")
@@ -10,4 +10,4 @@ damage = 0
 element = ""
 turns_remaining = 99
 event_based = true
-unique_type = ""
+unique_type = "sow"

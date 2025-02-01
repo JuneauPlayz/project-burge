@@ -28,6 +28,7 @@ var bubble = false
 var muck = false
 var nitro = false
 var sow = false
+var sow_just_applied = false
 
 const BLEED = preload("res://resources/Status Effects/Bleed.tres")
 const BUBBLE = preload("res://resources/Status Effects/Bubble.tres")
@@ -49,6 +50,7 @@ func _ready() -> void:
 	self.died.connect(combat_manager.reaction_signal)
 	health = res.starting_health
 	max_health = res.starting_health
+	shield = 0
 	if res.skill1 != null:
 		skill1 = res.skill1
 		current_skill = skill1

@@ -154,7 +154,7 @@ func load_units():
 
 func item_bought(item, shop_item) -> void:
 	if item is Relic:
-		relics.purchase_relic(shop_item)
+		relics.purchase_relic(item)
 		GC.relics.append(item)
 		shop_item.queue_free()
 	elif item is Skill:

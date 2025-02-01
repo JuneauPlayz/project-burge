@@ -103,12 +103,8 @@ basic_atk = SubResource("Resource_njo12")
 skill_1 = ExtResource("3_oopdj")
 skill_2 = ExtResource("4_7yskb")
 ult = ExtResource("5_kdrfg")
-status = null
 health = 100
 max_health = 100
-shield = null
-defense = null
-status_resistance = null
 title = "QiqiFallen"
 
 [node name="SpellSelectUi" parent="." instance=ExtResource("2_pcgfv")]
