@@ -188,7 +188,7 @@ func update_gold():
 func _on_next_combat_pressed() -> void:
 	AudioPlayer.play_FX("click",-10)
 	GC.next_fight()
-	GC.load_combat(GC.ally1,GC.ally2,GC.ally3,GC.ally4,GC.current_fight[0],GC.current_fight[1],GC.current_fight[2],GC.current_fight[3],GC.current_reward)
+	GC.load_combat(GC.ally1,GC.ally2,GC.ally3,GC.ally4,GC.current_fight[0],GC.current_fight[1],GC.current_fight[2],GC.current_fight[3])
 	get_tree().change_scene_to_file("res://scenes/main scenes/combat.tscn")
 	
 func _on_confirm_swap_pressed() -> void:

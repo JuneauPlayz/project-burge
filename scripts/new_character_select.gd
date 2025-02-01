@@ -89,7 +89,7 @@ func _on_begin_run_pressed() -> void:
 			ally3 = character_res_list[i]
 		elif characters[i].global_position == ally_4_spot.global_position:
 			ally4 = character_res_list[i]
-	GC.load_combat(ally1,ally2,ally3,ally4,GC.fight_1[0],GC.fight_1[1],GC.fight_1[2],GC.fight_1[3],10)
+	GC.load_combat(ally1,ally2,ally3,ally4,GC.fight_1[0],GC.fight_1[1],GC.fight_1[2],GC.fight_1[3])
 	get_tree().change_scene_to_file("res://scenes/main scenes/combat.tscn")
 
 func check_spot(char, og_spot):

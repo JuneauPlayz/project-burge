@@ -203,7 +203,7 @@ func check_event_relics(skill,unit,value_multiplier,target):
 func victory():
 	victorious = true
 	victory_screen.visible = true
-	victory_screen.update_text("Victory!", 10)
+	victory_screen.update_text("Victory!", GC.current_reward)
 	GC.add_gold(GC.current_reward)
 	hide_skills()
 	hide_ui()

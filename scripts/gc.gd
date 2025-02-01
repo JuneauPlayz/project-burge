@@ -184,6 +184,7 @@ var sow_grass_token_bonus = 0
 # event based relics
 var ghostfire = false
 var flow = false
+var lightning_strikes_twice = false
 
 func _ready():
 	current_fight = fight_1
@@ -299,7 +300,7 @@ func reset_tokens():
 	earth_tokens = 0
 	
 	
-func load_combat(ally1, ally2, ally3, ally4, enemy1, enemy2, enemy3, enemy4, reward):
+func load_combat(ally1, ally2, ally3, ally4, enemy1, enemy2, enemy3, enemy4):
 	self.ally1 = ally1
 	self.ally2 = ally2
 	self.ally3 = ally3
@@ -308,7 +309,6 @@ func load_combat(ally1, ally2, ally3, ally4, enemy1, enemy2, enemy3, enemy4, rew
 	self.enemy2 = enemy2
 	self.enemy3 = enemy3
 	self.enemy4 = enemy4
-	current_reward = reward
 	
 func add_token(element, count):
 	match element:

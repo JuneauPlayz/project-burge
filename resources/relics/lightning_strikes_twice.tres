@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Relic" load_steps=3 format=3 uid="uid://c28vpr71l4jlr"]
+
+[ext_resource type="Script" path="res://scenes/relic handler/relic.gd" id="1_d4kf2"]
+[ext_resource type="Texture2D" uid="uid://dmsixe7n4f266" path="res://assets/pikachu.png" id="1_qm23f"]
+
+[resource]
+script = ExtResource("1_d4kf2")
+relic_name = "Lightning Strikes Twice"
+tier = "3"
+id = ""
+type = 0
+icon = ExtResource("1_qm23f")
+tooltip = "When you cast a lightning skill, cast it again on the same target(s)"
