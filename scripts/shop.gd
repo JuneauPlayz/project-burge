@@ -69,7 +69,7 @@ func _ready() -> void:
 	refresh_button.text = "Refresh Options (" + str(refresh_price) + " Gold)"
 	
 	for spot in relic_list:
-		if spot.get_child(0) != null:
+		if spot.get_child_count() == 1:
 			spot.get_child(0).queue_free()
 		var item = SHOP_ITEM.instantiate()
 		spot.add_child(item)
@@ -84,7 +84,7 @@ func _ready() -> void:
 			shop_relics.append(item.item)
 		
 	for spot in spell_list:
-		if spot.get_child(0) != null:
+		if spot.get_child_count() == 1:
 			spot.get_child(0).queue_free()
 		var item = SHOP_ITEM.instantiate()
 		spot.add_child(item)
@@ -168,7 +168,7 @@ func load_units():
 
 func refresh():
 	for spot in relic_list:
-		if spot.get_child(0) != null:
+		if spot.get_child_count() == 1:
 			spot.get_child(0).queue_free()
 		var item = SHOP_ITEM.instantiate()
 		spot.add_child(item)
@@ -183,7 +183,7 @@ func refresh():
 			shop_relics.append(item.item)
 		
 	for spot in spell_list:
-		if spot.get_child(0) != null:
+		if spot.get_child_count() == 1:
 			spot.get_child(0).queue_free()
 		var item = SHOP_ITEM.instantiate()
 		spot.add_child(item)

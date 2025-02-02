@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="UnitRes" load_steps=9 format=3 uid="uid://2stwmc2jhy14"]
+[gd_resource type="Resource" script_class="UnitRes" load_steps=10 format=3 uid="uid://2stwmc2jhy14"]
 
 [ext_resource type="Resource" uid="uid://ch20rcbe1x8es" path="res://resources/relics/vaporboost.tres" id="1_t2i7j"]
 [ext_resource type="Script" uid="uid://bpkpxp60hx4da" path="res://scripts/UnitRes.gd" id="1_yixfq"]
 [ext_resource type="Resource" uid="uid://bo3se2l60exf2" path="res://resources/relics/shock_orb.tres" id="2_7d0a5"]
 [ext_resource type="Resource" uid="uid://dooqfwlwxly5w" path="res://resources/Skills/water/Water_Bolt.tres" id="2_la8mt"]
+[ext_resource type="Resource" uid="uid://snnwhlgu3msh" path="res://resources/relics/mini water boost.tres" id="2_wsurt"]
 [ext_resource type="Resource" uid="uid://d3hsiqbosdsp6" path="res://resources/Skills/water/Waterfall.tres" id="4_i7vsk"]
 [ext_resource type="Resource" uid="uid://dv6vx008xpgt7" path="res://resources/Skills/water/Muddy Water.tres" id="4_nlfxa"]
 [ext_resource type="Texture2D" uid="uid://lusgwdgw1no1" path="res://assets/Blastoise.png" id="6_iyk0c"]
@@ -15,7 +16,7 @@ starting_health = 100
 skill1 = ExtResource("2_la8mt")
 skill2 = ExtResource("4_i7vsk")
 relic_1 = ExtResource("1_t2i7j")
-relic_2 = ExtResource("2_7d0a5")
+relic_2 = ExtResource("2_wsurt")
 ult_1 = ExtResource("4_nlfxa")
 ult_2 = ExtResource("8_wd0gm")
 relic_3 = ExtResource("1_t2i7j")

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://d3opjmwuwct8t"]
+
+[ext_resource type="Texture2D" uid="uid://pnpb0odeh88v" path="res://assets/golem.png" id="1_blyji"]
+[ext_resource type="Script" uid="uid://bdlomrk3rlcxi" path="res://resources/relic scripts/mini_rock_fortress.gd" id="2_8dyxi"]
+[ext_resource type="Script" uid="uid://bwy6w48crbb54" path="res://scenes/relic handler/relic.gd" id="2_r0hk5"]
+
+[resource]
+script = ExtResource("2_8dyxi")
+relic_name = "Mini Rock Fortress"
+tier = "1"
+id = ""
+type = 4
+icon = ExtResource("1_blyji")
+tooltip = "All sources of shielding
+increased by +5 shield"
+metadata/_custom_type_script = ExtResource("2_r0hk5")

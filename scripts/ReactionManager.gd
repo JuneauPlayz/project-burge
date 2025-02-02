@@ -167,6 +167,8 @@ func erupt(elem1: String, elem2: String, unit: Unit, value, friendly: bool) -> v
 				reaction_name = " Erupted!!"
 		else:
 			unit.take_damage(res_value, elem2, false)
+	elif friendly:
+		unit.receive_shielding(value, elem2, false)
 	DamageNumbers.display_text(unit.damage_number_origin.global_position, elem2, reaction_name, 38)
 	await get_tree().create_timer(0.01).timeout
 	reaction_finished.emit()

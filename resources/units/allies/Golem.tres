@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="UnitRes" load_steps=9 format=3 uid="uid://brb2gubx0hm1h"]
+[gd_resource type="Resource" script_class="UnitRes" load_steps=10 format=3 uid="uid://brb2gubx0hm1h"]
 
+[ext_resource type="Resource" uid="uid://d3opjmwuwct8t" path="res://resources/relics/Mini Rock Fortress.tres" id="1_i6vht"]
 [ext_resource type="Resource" uid="uid://bj2x6wkwkhvfo" path="res://resources/relics/erupt_orb.tres" id="1_p1jg5"]
 [ext_resource type="Script" uid="uid://bpkpxp60hx4da" path="res://scripts/UnitRes.gd" id="1_rsp8b"]
 [ext_resource type="Resource" uid="uid://dykdesfmc1oo8" path="res://resources/Skills/earth/Rock Throw.tres" id="2_famig"]
@@ -14,7 +15,7 @@ script = ExtResource("1_rsp8b")
 starting_health = 125
 skill1 = ExtResource("2_famig")
 skill2 = ExtResource("3_3j15h")
-relic_1 = ExtResource("1_p1jg5")
+relic_1 = ExtResource("1_i6vht")
 relic_2 = ExtResource("2_krp2t")
 ult_1 = ExtResource("5_06fex")
 ult_2 = ExtResource("6_d7no4")

@@ -1,7 +1,7 @@
 extends Relic
 
 var member_var = 0
-@export var shield_amount : int
+@export var healing_amount : int
 
 	
 func activate_relic(owner: RelicUI) -> void:
@@ -9,7 +9,7 @@ func activate_relic(owner: RelicUI) -> void:
 	if combat:
 		for ally in combat.allies:
 			if ally != null:
-				ally.receive_shielding(shield_amount)
+				ally.receive_healing(healing_amount)
 	
 func get_tooltip() -> String:
 	return tooltip
