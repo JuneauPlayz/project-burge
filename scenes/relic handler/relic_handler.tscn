@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dr6jeis04n42b"]
 
 [ext_resource type="Script" uid="uid://cjgfu2ffpwcds" path="res://scenes/relic handler/relic_handler.gd" id="1_wgfm0"]
-[ext_resource type="Script" uid="uid://beu4qcjiyynah" path="res://scenes/relic handler/relics_control.gd" id="2_cogcy"]
+[ext_resource type="Script" path="res://scenes/relic handler/relics_control.gd" id="2_cogcy"]
 
 [node name="RelicHandler" type="HBoxContainer" groups=["relic_handler"]]
 offset_right = 600.0

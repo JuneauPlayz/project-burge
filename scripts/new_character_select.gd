@@ -17,6 +17,8 @@ var venasaur_spot
 var pikachu_spot
 var golem_spot
 
+var empty_team = true
+
 const BAGUETTE = preload("res://resources/units/enemies/Baguette.tres")
 const BURGER_ENEMY = preload("res://resources/units/enemies/Burger.tres")
 
@@ -83,14 +85,19 @@ func _on_begin_run_pressed() -> void:
 	for i in range(characters.size()):
 		if characters[i].global_position == ally_1_spot.global_position:
 			ally1 = character_res_list[i]
+			empty_team = false
 		elif characters[i].global_position == ally_2_spot.global_position:
 			ally2 = character_res_list[i]
+			empty_team = false
 		elif characters[i].global_position == ally_3_spot.global_position:
 			ally3 = character_res_list[i]
+			empty_team = false
 		elif characters[i].global_position == ally_4_spot.global_position:
 			ally4 = character_res_list[i]
-	GC.load_combat(ally1,ally2,ally3,ally4,GC.fight_1[0],GC.fight_1[1],GC.fight_1[2],GC.fight_1[3])
-	get_tree().change_scene_to_file("res://scenes/main scenes/combat.tscn")
+			empty_team = false
+	if empty_team == false:
+		GC.load_combat(ally1,ally2,ally3,ally4,GC.fight_1[0],GC.fight_1[1],GC.fight_1[2],GC.fight_1[3])
+		get_tree().change_scene_to_file("res://scenes/main scenes/combat.tscn")
 
 func check_spot(char, og_spot):
 	update_positions()
