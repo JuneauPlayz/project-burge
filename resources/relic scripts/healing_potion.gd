@@ -9,7 +9,7 @@ func activate_relic(owner: RelicUI) -> void:
 	if combat:
 		for ally in combat.allies:
 			if ally != null:
-				ally.receive_healing(healing_amount)
+				ally.receive_healing(healing_amount, "none", false)
 	
 func get_tooltip() -> String:
 	return tooltip
