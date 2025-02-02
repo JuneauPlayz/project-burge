@@ -135,8 +135,8 @@ func receive_skill(skill, unit, value_multiplier):
 	print("attempting to sow")
 	if sow:
 		print("sowing" + skill.name)
-		unit.receive_healing(roundi(GC.sow_healing * GC.sow_healing_mult), "grass", "none")
-		unit.receive_shielding(roundi(GC.sow_shielding * GC.sow_shielding_mult), "earth", "none")
+		unit.receive_healing(roundi(GC.sow_healing * GC.sow_healing_mult), "grass", false)
+		unit.receive_shielding(roundi(GC.sow_shielding * GC.sow_shielding_mult), "earth", false)
 		sow = false
 		for stati in status:
 			if stati.name == "Sow":
