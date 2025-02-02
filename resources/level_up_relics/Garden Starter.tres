@@ -9,11 +9,11 @@ fire_token_count = 0
 water_token_count = 0
 lightning_token_count = 0
 earth_token_count = 0
-grass_token_count = 2
+grass_token_count = 1
 relic_name = "Garden Starter"
 tier = "1"
 id = ""
 type = 1
-tooltip = "Start Combat with +2
+tooltip = "Start Combat with +1
 Grass Tokens"
 metadata/_custom_type_script = ExtResource("1_oajqc")

@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("2_f5uvi")
 fire_token_count = 0
-water_token_count = 2
+water_token_count = 1
 lightning_token_count = 0
 earth_token_count = 0
 grass_token_count = 0
@@ -14,6 +14,6 @@ relic_name = "Flood Starter"
 tier = "1"
 id = ""
 type = 1
-tooltip = "Start Combat with +2
+tooltip = "Start Combat with +1
 Water Tokens"
 metadata/_custom_type_script = ExtResource("1_f8lw4")

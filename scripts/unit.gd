@@ -133,22 +133,23 @@ func take_damage(damage : int, element : String, change_element : bool):
 		current_element = element
 	hp_bar.update_element(current_element)
 	var damage_left = roundi(damage)
-	match element:
-		"fire":
-			damage_left += GC.fire_damage_bonus
-			damage_left *= GC.fire_damage_mult
-		"water":
-			damage_left += GC.water_damage_bonus
-			damage_left *= GC.water_damage_mult
-		"lightning":
-			damage_left += GC.lightning_damage_bonus
-			damage_left *= GC.lightning_damage_mult
-		"grass":
-			damage_left += GC.grass_damage_bonus
-			damage_left *= GC.grass_damage_mult
-		"earth":
-			damage_left += GC.earth_damage_bonus
-			damage_left *= GC.earth_damage_mult
+	if self is Enemy:
+		match element:
+			"fire":
+				damage_left += GC.fire_damage_bonus
+				damage_left *= GC.fire_damage_mult
+			"water":
+				damage_left += GC.water_damage_bonus
+				damage_left *= GC.water_damage_mult
+			"lightning":
+				damage_left += GC.lightning_damage_bonus
+				damage_left *= GC.lightning_damage_mult
+			"grass":
+				damage_left += GC.grass_damage_bonus
+				damage_left *= GC.grass_damage_mult
+			"earth":
+				damage_left += GC.earth_damage_bonus
+				damage_left *= GC.earth_damage_mult
 	var total_dmg = damage_left
 	if bubble:
 		damage_left = roundi(damage * GC.bubble_mult)
@@ -179,8 +180,9 @@ func take_damage(damage : int, element : String, change_element : bool):
 			damage_left = 0
 		hp_bar.set_shield(shield)
 	health -= damage_left
+	health = roundi(health)
 	check_if_dead()
-	hp_bar.set_hp(health)
+	hp_bar.set_hp(roundi(health))
 	return total_dmg
 
 func receive_healing(healing: int, element : String, change_element : bool):
@@ -206,7 +208,10 @@ func die():
 	print("ded")
 	died.emit()
 	self.visible = false
-	combat_manager.enemies.erase(self)
+	if self is Ally:
+		combat_manager.allies.erase(self)
+	elif self is Enemy:
+		combat_manager.enemies.erase(self)
 	combat_manager.set_unit_pos()
 	await get_tree().create_timer(GC.GLOBAL_INTERVAL).timeout
 

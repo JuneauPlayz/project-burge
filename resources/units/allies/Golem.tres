@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="UnitRes" load_steps=11 format=3 uid="uid://brb2gubx0hm1h"]
 
 [ext_resource type="Resource" uid="uid://bivvenkk5l4lx" path="res://resources/level_up_relics/Rock Starter.tres" id="1_akhwl"]
-[ext_resource type="Resource" uid="uid://bj2x6wkwkhvfo" path="res://resources/relics/erupt_orb.tres" id="1_p1jg5"]
 [ext_resource type="Script" uid="uid://bpkpxp60hx4da" path="res://scripts/UnitRes.gd" id="1_rsp8b"]
 [ext_resource type="Resource" uid="uid://dykdesfmc1oo8" path="res://resources/Skills/earth/Rock Throw.tres" id="2_famig"]
-[ext_resource type="Resource" uid="uid://d3opjmwuwct8t" path="res://resources/level_up_relics/Mini Rock Fortress.tres" id="2_hc7ce"]
+[ext_resource type="Resource" uid="uid://d3opjmwuwct8t" path="res://resources/level_up_relics/mini shield boost.tres" id="2_hc7ce"]
 [ext_resource type="Resource" uid="uid://jsbevql6t5av" path="res://resources/relics/shield_potion.tres" id="2_krp2t"]
 [ext_resource type="Resource" uid="uid://bya4jpai0ygj5" path="res://resources/Skills/earth/Rock Shield.tres" id="3_3j15h"]
+[ext_resource type="Resource" uid="uid://ds5k3rm8e48r6" path="res://resources/level_up_relics/Rock Starter+.tres" id="3_akhwl"]
 [ext_resource type="Texture2D" uid="uid://pnpb0odeh88v" path="res://assets/golem.png" id="4_a2f0g"]
 [ext_resource type="Resource" uid="uid://i3q5vd6ou4km" path="res://resources/Skills/earth/Rock Barrier.tres" id="5_06fex"]
 [ext_resource type="Resource" uid="uid://byspe4087cnm6" path="res://resources/Skills/earth/Volcanic Burst.tres" id="6_d7no4"]
@@ -20,7 +20,7 @@ relic_1 = ExtResource("1_akhwl")
 relic_2 = ExtResource("2_hc7ce")
 ult_1 = ExtResource("5_06fex")
 ult_2 = ExtResource("6_d7no4")
-relic_3 = ExtResource("1_p1jg5")
+relic_3 = ExtResource("3_akhwl")
 relic_4 = ExtResource("2_krp2t")
 sprite = ExtResource("4_a2f0g")
 sprite_scale = 0.45

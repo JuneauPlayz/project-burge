@@ -11,7 +11,6 @@ const BURGER = preload("res://resources/units/enemies/Burger.tres")
 const RELIC_HANDLER = preload("res://scenes/relic handler/relic_handler.tscn")
 
 const SHIELD_POTION = preload("res://resources/relics/shield_potion.tres")
-const FIRE_POTION = preload("res://resources/relics/fire_potion.tres")
 const VAPOR_ORB = preload("res://resources/relics/vapor_orb.tres")
 
 var ally_list = []

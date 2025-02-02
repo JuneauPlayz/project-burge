@@ -38,7 +38,7 @@ var blue = Color("3f61a1")
 var gray = Color("2e2e2e78")
 
 func load_skills():
-	if (skill1):
+	if (skill1 != null):
 		skill1.update()
 		update_font_color(ba_1,element_dict.get(skill1.element))
 		skill_info_1.skill = skill1
@@ -46,7 +46,7 @@ func load_skills():
 		ba_1.text = skill1.name
 	else:
 		empty(1)
-	if (skill2):
+	if (skill2 != null):
 		skill2.update()
 		update_font_color(s_1,element_dict.get(skill2.element))
 		skill_info_2.skill = skill2
@@ -54,7 +54,7 @@ func load_skills():
 		s_1.text = skill2.name
 	else:
 		empty(2)
-	if (skill3):
+	if (skill3 != null):
 		skill3.update()
 		update_font_color(s_2,element_dict.get(skill3.element))
 		skill_info_3.skill = skill3
@@ -62,7 +62,7 @@ func load_skills():
 		s_2.text = skill3.name
 	else:
 		empty(3)
-	if (skill4):
+	if (skill4 != null):
 		skill4.update()
 		update_font_color(ult,element_dict.get(skill4.element))
 		skill_info_4.skill = skill4

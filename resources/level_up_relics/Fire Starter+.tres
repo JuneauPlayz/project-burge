@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_1s8ja")
-fire_token_count = 4
+fire_token_count = 3
 water_token_count = 0
 lightning_token_count = 0
 earth_token_count = 0
@@ -14,6 +14,6 @@ relic_name = "Fire Starter+"
 tier = "1"
 id = ""
 type = 1
-tooltip = "Start Combat with +4
+tooltip = "Start Combat with +3
 Fire Tokens"
 metadata/_custom_type_script = ExtResource("2_r0oya")

@@ -6,7 +6,7 @@
 script = ExtResource("1_tbwvp")
 name = "MIKU VAPE"
 damage = 25
-element = "water"
+element = "earth"
 damaging = true
 healing = false
 shielding = false
@@ -22,5 +22,5 @@ cost2 = 0
 token_type2 = ""
 status_effects = []
 double_hit = true
-damage2 = 25
+damage2 = 35
 element2 = "fire"

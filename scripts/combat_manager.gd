@@ -751,7 +751,7 @@ func ally_post_status():
 func check_requirements():
 	for ally in allies:
 		var skill : Skill
-		for i in range(1,4):
+		for i in range(1, 5):
 			match i:
 				1:
 					skill = ally.basic_atk
@@ -802,9 +802,11 @@ func check_requirements():
 						check = false
 				if skill.cost > 0 or skill.cost2 > 0:
 					if check:
-						ally.get_child(0).enable(i)
+						ally.spell_select_ui.enable(i)
 					else:
-						ally.get_child(0).disable(i)
+						ally.spell_select_ui.disable(i)
+				else:
+					ally.spell_select_ui.enable(i)
 		
 func set_unit_pos():
 	for n in range(enemies.size()):

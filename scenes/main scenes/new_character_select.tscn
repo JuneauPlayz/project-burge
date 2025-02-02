@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://i7ngkgvekba1" path="res://scripts/new_character_select.gd" id="1_c5uuy"]
 [ext_resource type="Texture2D" uid="uid://c7bn1gnx4b71v" path="res://assets/grassy pixelated.jpg" id="2_kjqh1"]
-[ext_resource type="Script" path="res://addons/tnowe_extra_controls/elements/draggable.gd" id="3_l2ywx"]
+[ext_resource type="Script" uid="uid://4eb43uwdg710" path="res://addons/tnowe_extra_controls/elements/draggable.gd" id="3_l2ywx"]
 [ext_resource type="Texture2D" uid="uid://4geq5yb7tf1u" path="res://assets/charizard.png" id="4_go2d0"]
 [ext_resource type="Texture2D" uid="uid://lusgwdgw1no1" path="res://assets/Blastoise.png" id="5_i4hyv"]
 [ext_resource type="Texture2D" uid="uid://dr5buhafiup2r" path="res://assets/venasaur (2).png" id="6_2gi26"]

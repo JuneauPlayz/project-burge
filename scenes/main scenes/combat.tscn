@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=3 uid="uid://do6gwn47eylu7"]
 
 [ext_resource type="Script" uid="uid://sbmng0cirge2" path="res://scripts/combat_scene.gd" id="1_3ou8c"]
-[ext_resource type="Script" path="res://scripts/Targeting.gd" id="2_0pyv8"]
-[ext_resource type="Script" path="res://scripts/SpellSelect.gd" id="3_2dlvl"]
+[ext_resource type="Script" uid="uid://bgdii44dgiuee" path="res://scripts/Targeting.gd" id="2_0pyv8"]
+[ext_resource type="Script" uid="uid://b3eesmdjc4nfd" path="res://scripts/SpellSelect.gd" id="3_2dlvl"]
 [ext_resource type="Script" uid="uid://d0udq0kgc2102" path="res://scripts/combat_manager.gd" id="4_ucgqt"]
 [ext_resource type="PackedScene" uid="uid://sdwnoh61gawa" path="res://scenes/reusables/skill_info.tscn" id="5_2x1un"]
 [ext_resource type="FontFile" uid="uid://ca0ii6rndnaqf" path="res://assets/pokemon_pixel_font.ttf" id="5_wtw4i"]
