@@ -2,11 +2,11 @@
 
 [ext_resource type="Resource" uid="uid://c812gom3pv4ae" path="res://resources/level_up_relics/Fire Starter.tres" id="1_1tw62"]
 [ext_resource type="Script" uid="uid://bpkpxp60hx4da" path="res://scripts/UnitRes.gd" id="1_5rsqq"]
-[ext_resource type="Resource" uid="uid://ri585emt4d3a" path="res://resources/relics/vapor_orb.tres" id="2_j7lrf"]
 [ext_resource type="Resource" uid="uid://c3yogn8m318q2" path="res://resources/Skills/fire/Fire_Bolt.tres" id="2_odqjc"]
 [ext_resource type="Texture2D" uid="uid://4geq5yb7tf1u" path="res://assets/charizard.png" id="2_ury01"]
 [ext_resource type="Resource" uid="uid://sxi1onrmugek" path="res://resources/level_up_relics/mini fire boost.tres" id="2_xgj21"]
 [ext_resource type="Resource" uid="uid://lsx0fd6mol75" path="res://resources/level_up_relics/Fire Starter+.tres" id="3_1tw62"]
+[ext_resource type="Resource" uid="uid://gi8226pxp46w" path="res://resources/level_up_relics/Flame Boost.tres" id="4_1tw62"]
 [ext_resource type="Resource" uid="uid://drjm7bxw8bu8w" path="res://resources/Skills/fire/Fire Snipe.tres" id="4_8uraa"]
 [ext_resource type="Resource" uid="uid://bgmq3ov7xln34" path="res://resources/Skills/fire/Flare Blitz.tres" id="5_u235h"]
 [ext_resource type="Resource" uid="uid://ddoguurpcf2jb" path="res://resources/Skills/fire/Vaporstrike.tres" id="7_8hf2u"]
@@ -21,7 +21,7 @@ relic_2 = ExtResource("2_xgj21")
 ult_1 = ExtResource("5_u235h")
 ult_2 = ExtResource("7_8hf2u")
 relic_3 = ExtResource("3_1tw62")
-relic_4 = ExtResource("2_j7lrf")
+relic_4 = ExtResource("4_1tw62")
 sprite = ExtResource("2_ury01")
 sprite_scale = 0.63
 name = "Charizard"

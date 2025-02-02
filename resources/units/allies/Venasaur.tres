@@ -4,9 +4,9 @@
 [ext_resource type="Resource" uid="uid://dlpdqat8ipjw1" path="res://resources/level_up_relics/Garden Starter.tres" id="1_qshh3"]
 [ext_resource type="Resource" uid="uid://tjrsdrdx2xsa" path="res://resources/Skills/grass/Grass Needle.tres" id="2_3o77x"]
 [ext_resource type="Resource" uid="uid://butrwn0ku2t0p" path="res://resources/level_up_relics/mini healing boost.tres" id="2_cr2bb"]
-[ext_resource type="Resource" uid="uid://dg1frmvoqf78x" path="res://resources/relics/healing_potion.tres" id="2_rre8t"]
 [ext_resource type="Resource" uid="uid://dd2reomgg4m8h" path="res://resources/level_up_relics/Garden Starter+.tres" id="3_qshh3"]
 [ext_resource type="Resource" uid="uid://cjot7mdltdj0m" path="res://resources/Skills/grass/Healing Wish.tres" id="4_7jyuf"]
+[ext_resource type="Resource" uid="uid://bu5s8nmkdj2ey" path="res://resources/level_up_relics/Healing Boost.tres" id="4_qshh3"]
 [ext_resource type="Resource" uid="uid://bcnlggyd75qmg" path="res://resources/Skills/grass/Mega Drain.tres" id="4_stegg"]
 [ext_resource type="Resource" uid="uid://y0pcbe6fmy6m" path="res://resources/Skills/grass/Sow Storm.tres" id="5_besxd"]
 [ext_resource type="Texture2D" uid="uid://dr5buhafiup2r" path="res://assets/venasaur (2).png" id="6_rlwy5"]
@@ -21,7 +21,7 @@ relic_2 = ExtResource("2_cr2bb")
 ult_1 = ExtResource("5_besxd")
 ult_2 = ExtResource("4_stegg")
 relic_3 = ExtResource("3_qshh3")
-relic_4 = ExtResource("2_rre8t")
+relic_4 = ExtResource("4_qshh3")
 sprite = ExtResource("6_rlwy5")
 sprite_scale = 0.39
 name = "Venasaur"

@@ -1,6 +1,7 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bj2x6wkwkhvfo"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bj2x6wkwkhvfo"]
 
 [ext_resource type="Script" uid="uid://c88tg8gm1lg3r" path="res://resources/relic scripts/reaction_mults.gd" id="1_81kbs"]
+[ext_resource type="Texture2D" uid="uid://n3m0naqaoeo" path="res://assets/DaTing.png" id="1_rtnbp"]
 
 [resource]
 script = ExtResource("1_81kbs")
@@ -26,5 +27,6 @@ relic_name = "Erupt Orb"
 tier = "1"
 id = ""
 type = 4
+icon = ExtResource("1_rtnbp")
 tooltip = "Adds 2x to Erupt
 Multiplier"

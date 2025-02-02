@@ -1,5 +1,6 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://d365sjgcnwi3u"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://d365sjgcnwi3u"]
 
+[ext_resource type="Texture2D" uid="uid://c7bn1gnx4b71v" path="res://assets/grassy pixelated.jpg" id="1_e48f3"]
 [ext_resource type="Script" uid="uid://di7tjw3hxenl5" path="res://resources/relic scripts/token_bonus.gd" id="1_w51im"]
 
 [resource]
@@ -13,6 +14,7 @@ relic_name = "Sowboost"
 tier = "1"
 id = ""
 type = 1
+icon = ExtResource("1_e48f3")
 tooltip = "Start Combat with
 +2 Grass Tokens
 +2 Earth Tokens"

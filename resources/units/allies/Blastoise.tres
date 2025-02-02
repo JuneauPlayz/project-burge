@@ -2,11 +2,11 @@
 
 [ext_resource type="Resource" uid="uid://ih3lh3adqec6" path="res://resources/level_up_relics/Flood Starter.tres" id="1_lxhfm"]
 [ext_resource type="Script" uid="uid://bpkpxp60hx4da" path="res://scripts/UnitRes.gd" id="1_yixfq"]
-[ext_resource type="Resource" uid="uid://bo3se2l60exf2" path="res://resources/relics/shock_orb.tres" id="2_7d0a5"]
 [ext_resource type="Resource" uid="uid://doxqj6lskh6mh" path="res://resources/level_up_relics/mini water boost.tres" id="2_bv3yi"]
 [ext_resource type="Resource" uid="uid://dooqfwlwxly5w" path="res://resources/Skills/water/Water_Bolt.tres" id="2_la8mt"]
 [ext_resource type="Resource" uid="uid://bt7hq8p4cfjpl" path="res://resources/level_up_relics/Flood Starter+.tres" id="3_lxhfm"]
 [ext_resource type="Resource" uid="uid://d3hsiqbosdsp6" path="res://resources/Skills/water/Waterfall.tres" id="4_i7vsk"]
+[ext_resource type="Resource" uid="uid://b5mw6bnrwcso" path="res://resources/level_up_relics/Water Boost.tres" id="4_lxhfm"]
 [ext_resource type="Resource" uid="uid://dv6vx008xpgt7" path="res://resources/Skills/water/Muddy Water.tres" id="4_nlfxa"]
 [ext_resource type="Texture2D" uid="uid://lusgwdgw1no1" path="res://assets/Blastoise.png" id="6_iyk0c"]
 [ext_resource type="Resource" uid="uid://c8q6s8f72p54h" path="res://resources/Skills/water/Water Cannon.tres" id="8_wd0gm"]
@@ -21,7 +21,7 @@ relic_2 = ExtResource("2_bv3yi")
 ult_1 = ExtResource("4_nlfxa")
 ult_2 = ExtResource("8_wd0gm")
 relic_3 = ExtResource("3_lxhfm")
-relic_4 = ExtResource("2_7d0a5")
+relic_4 = ExtResource("4_lxhfm")
 sprite = ExtResource("6_iyk0c")
 sprite_scale = 1.25
 name = "Blastoise"

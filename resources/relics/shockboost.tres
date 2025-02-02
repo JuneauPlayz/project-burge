@@ -1,5 +1,6 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bxgsa3muuk2iy"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bxgsa3muuk2iy"]
 
+[ext_resource type="Texture2D" uid="uid://dqmohettbpuc1" path="res://assets/electro wizard.jpg" id="1_m1k4x"]
 [ext_resource type="Script" uid="uid://di7tjw3hxenl5" path="res://resources/relic scripts/token_bonus.gd" id="1_wrwqk"]
 
 [resource]
@@ -13,6 +14,7 @@ relic_name = "Shockboost"
 tier = "1"
 id = ""
 type = 1
+icon = ExtResource("1_m1k4x")
 tooltip = "Start Combat with
 +2 Lightning Tokens
 +2 Water Tokens"

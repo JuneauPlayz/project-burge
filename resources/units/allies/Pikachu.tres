@@ -4,10 +4,10 @@
 [ext_resource type="Script" uid="uid://bpkpxp60hx4da" path="res://scripts/UnitRes.gd" id="1_psg7m"]
 [ext_resource type="Resource" uid="uid://bfx3wmxqlew4d" path="res://resources/level_up_relics/mini lightning boost.tres" id="2_r077k"]
 [ext_resource type="Resource" uid="uid://60omj8j38mfk" path="res://resources/Skills/lightning/Thunder Bolt.tres" id="2_sd5ql"]
-[ext_resource type="Resource" uid="uid://cmmon0itrxfne" path="res://resources/relics/detonate_orb.tres" id="2_vjtov"]
 [ext_resource type="Resource" uid="uid://cnw2l4om8k28e" path="res://resources/Skills/lightning/Thunder Punch.tres" id="3_2ycgk"]
 [ext_resource type="Resource" uid="uid://ddrvp77dd5ima" path="res://resources/Skills/lightning/Electro Ball.tres" id="3_e3nc1"]
 [ext_resource type="Resource" uid="uid://btlvmcjcva5fu" path="res://resources/level_up_relics/Storm Starter+.tres" id="3_h6d0o"]
+[ext_resource type="Resource" uid="uid://b8ljfrydbv3bn" path="res://resources/level_up_relics/Lightning Boost.tres" id="4_h6d0o"]
 [ext_resource type="Resource" uid="uid://bfvyaecgwi1s6" path="res://resources/Skills/lightning/Thunder.tres" id="5_ioqke"]
 [ext_resource type="Texture2D" uid="uid://dmsixe7n4f266" path="res://assets/pikachu.png" id="6_vnyy7"]
 
@@ -21,7 +21,7 @@ relic_2 = ExtResource("2_r077k")
 ult_1 = ExtResource("3_e3nc1")
 ult_2 = ExtResource("5_ioqke")
 relic_3 = ExtResource("3_h6d0o")
-relic_4 = ExtResource("2_vjtov")
+relic_4 = ExtResource("4_h6d0o")
 sprite = ExtResource("6_vnyy7")
 sprite_scale = 0.39
 name = "Pikachu"

@@ -7,10 +7,37 @@
       "resource_name": {
         "visibility": 0.0
       }
+    },
+    "res://resources/level_up_relics/": {
+      "resource_local_to_scene": {
+        "visibility": 0
+      },
+      "resource_name": {
+        "visibility": 0
+      }
+    },
+    "res://resources/relics/": {
+      "resource_local_to_scene": {
+        "visibility": 0
+      },
+      "resource_name": {
+        "visibility": 0
+      }
+    },
+    "res://resources/units/allies/": {
+      "resource_local_to_scene": {
+        "visibility": 0
+      },
+      "resource_name": {
+        "visibility": 0
+      }
     }
   },
   "recent_paths": [
-    "res://resources/"
+    "res://resources/",
+    "res://resources/units/allies/",
+    "res://resources/level_up_relics/",
+    "res://resources/relics/"
   ],
   "table_functions": {
     "filter": [
