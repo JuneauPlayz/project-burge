@@ -19,13 +19,13 @@ grass_damage_mult = 0.0
 healing_bonus = 0
 healing_mult = 0.0
 shielding_bonus = 0
-shielding_mult = 1.0
+shielding_mult = 0.75
 relic_name = "Rock Fortress"
 tier = "2"
 id = ""
 type = 4
 icon = ExtResource("1_hdguv")
-tooltip = "Adds 1x to Ally Shield
+tooltip = "Adds 0.75x to Ally Shield
 Mult
-(doubles shielding)"
+(+75% shielding)"
 metadata/_custom_type_script = ExtResource("2_ksm0w")

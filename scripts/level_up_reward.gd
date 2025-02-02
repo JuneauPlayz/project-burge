@@ -35,6 +35,7 @@ func load_skills(s1,s2):
 	skill1.update()
 	update_font_color(ba_1,element_dict.get(skill1.element))
 	skill2.update()
+	update_font_color(s_1,element_dict.get(skill2.element))
 	skill_info_1.skill = s1
 	skill_info_1.update_skill_info()
 	skill_info_2.skill = s2

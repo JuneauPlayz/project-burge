@@ -76,6 +76,8 @@ func update_skill_info():
 				description.text += "\nApplies Muck on targets"
 			if x.name == "Nitro":
 				description.text += "\nApplies Nitro on targets"
+			if x.name == "Sow":
+				description.text += "\nApplise Sow on targets"
 	if skill.cost > 0:
 		description.text += "\nCosts " +  str(skill.cost) + " " + skill.token_type + " tokens"
 		if skill.cost2 > 0:

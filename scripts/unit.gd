@@ -72,6 +72,15 @@ func receive_skill(skill, unit, value_multiplier):
 				self.take_damage(value2, skill.element2, true)
 			if (skill.element != "none"):
 				current_element = skill.element
+	if sow:
+		unit.receive_healing(roundi(GC.sow_healing * GC.sow_healing_mult), "grass", false)
+		unit.receive_shielding(roundi(GC.sow_shielding * GC.sow_shielding_mult), "earth", false)
+		sow = false
+		for stati in status:
+			if stati.name == "Sow":
+				status.erase(stati)
+				hp_bar.update_statuses(status)
+				DamageNumbers.display_text(self.damage_number_origin.global_position, "none", "Harvest!", 32)
 	if skill.status_effects != []:
 		for x in skill.status_effects:
 			if x.name == "Bleed":
@@ -93,16 +102,11 @@ func receive_skill(skill, unit, value_multiplier):
 			if x.name == "Nitro":
 				var new_nitro = NITRO.duplicate()
 				status.append(new_nitro)
+			if x.name == "Sow":
+				var new_sow = SOW.duplicate()
+				status.append(new_sow)
+				sow = true
 		hp_bar.update_statuses(status)
-	if sow:
-		unit.receive_healing(roundi(GC.sow_healing * GC.sow_healing_mult), "grass", false)
-		unit.receive_shielding(roundi(GC.sow_shielding * GC.sow_shielding_mult), "earth", false)
-		sow = false
-		for stati in status:
-			if stati.name == "Sow":
-				status.erase(stati)
-				hp_bar.update_statuses(status)
-				DamageNumbers.display_text(self.damage_number_origin.global_position, "none", "Harvest!", 32)
 	hp_bar.update_element(current_element)
 
 func receive_skill_friendly(skill, unit, value_multiplier):
@@ -185,20 +189,31 @@ func take_damage(damage : int, element : String, change_element : bool):
 	hp_bar.set_hp(roundi(health))
 	return total_dmg
 
-func receive_healing(healing: int, element : String, change_element : bool):
-	DamageNumbers.display_number_plus(healing, damage_number_origin.global_position, element, "")
-	health += healing
+func receive_healing(healing: int, element : String, change_element):
+	var new_healing = healing
+	if self is Ally:
+		new_healing = ((healing + GC.healing_bonus) * GC.healing_mult)
+	DamageNumbers.display_number_plus(new_healing, damage_number_origin.global_position, element, "")
+	if change_element:
+		current_element = element
+	health += new_healing
 	if health >= max_health:
 		health = max_health
-	hp_bar.set_hp(health)
-	return healing
+	health = roundi(health)
+	hp_bar.set_hp(roundi(health))
+	return new_healing
 
 func receive_shielding(shielding: int, element : String, change_element : bool):
-	DamageNumbers.display_number_plus(shielding, damage_number_origin.global_position, element, "")
+	var new_shielding =shielding
+	if self is Ally:
+		new_shielding = ((shielding + GC.shielding_bonus) * GC.shielding_mult)
+	DamageNumbers.display_number_plus(new_shielding, damage_number_origin.global_position, element, "")
 	if change_element:
-		shield += shielding
-	hp_bar.set_shield(shield)
-	return shielding
+		current_element = element
+	shield += new_shielding
+	shield = roundi(shield)
+	hp_bar.set_shield(roundi(shield))
+	return new_shielding
 
 func check_if_dead():
 	if health <= 0:

@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://pnpb0odeh88v" path="res://assets/golem.png" id="4_a2f0g"]
 [ext_resource type="Resource" uid="uid://csv227wkcqdev" path="res://resources/level_up_relics/Shield Boost.tres" id="4_hc7ce"]
 [ext_resource type="Resource" uid="uid://i3q5vd6ou4km" path="res://resources/Skills/earth/Rock Barrier.tres" id="5_06fex"]
-[ext_resource type="Resource" uid="uid://byspe4087cnm6" path="res://resources/Skills/earth/Volcanic Burst.tres" id="6_d7no4"]
+[ext_resource type="Resource" uid="uid://b5cvbcitp58fx" path="res://resources/Skills/earth/Rock Guardian.tres" id="10_akhwl"]
 
 [resource]
 script = ExtResource("1_rsp8b")
@@ -19,7 +19,7 @@ skill2 = ExtResource("3_3j15h")
 relic_1 = ExtResource("1_akhwl")
 relic_2 = ExtResource("2_akhwl")
 ult_1 = ExtResource("5_06fex")
-ult_2 = ExtResource("6_d7no4")
+ult_2 = ExtResource("10_akhwl")
 relic_3 = ExtResource("3_akhwl")
 relic_4 = ExtResource("4_hc7ce")
 sprite = ExtResource("4_a2f0g")
