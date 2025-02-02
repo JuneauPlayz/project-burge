@@ -3,8 +3,10 @@ extends Relic
 var member_var = 0
 
 func initialize_relic(owner : RelicUI) -> void:
-	GC.fire_damage_bonus += 5
-	
+	GC.burn_stack = true
+	GC.burn_length += 1
+	pass
+
 func activate_relic(owner: RelicUI) -> void:
 	print("this happens at specific times based on the Relic.Type property")
 	

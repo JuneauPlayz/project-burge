@@ -138,8 +138,6 @@ func detonate(elem1: String, elem2: String, unit: Unit, value, friendly: bool) -
 	if unit == null:
 		return
 	DamageNumbers.display_text(unit.damage_number_origin.global_position, elem2, reaction_name, 38)
-	if unit.hasLeft() or unit.hasRight():
-		await get_tree().create_timer(0.2).timeout
 	if unit.hasLeft():
 		unit.left.take_damage(res_value * GC.detonate_side_mult, elem2, true)
 	if unit.hasRight():
@@ -175,6 +173,10 @@ func erupt(elem1: String, elem2: String, unit: Unit, value, friendly: bool) -> v
 
 func burn(elem1: String, elem2: String, unit: Unit, value, friendly: bool) -> void:
 	var reaction_name = " Burn!"
+	if not GC.burn_stack:
+		for stati in unit.status:
+				if stati.name == "Burn":
+					unit.status.erase(stati)
 	var new_burn = BURN.duplicate()
 	new_burn.turns_remaining = GC.burn_length
 	new_burn.damage = GC.burn_damage
@@ -196,15 +198,15 @@ func shock(elem1: String, elem2: String, unit: Unit, value, friendly: bool) -> v
 	DamageNumbers.display_text(unit.damage_number_origin.global_position, elem2, reaction_name, 38)
 	if not friendly:
 		unit.take_damage(roundi(value), elem2, false)
-		await get_tree().create_timer(0.2).timeout
+		await get_tree().create_timer(0.02).timeout
 		if unit != null:
 			unit.take_damage(res_value, "lightning", true)
 			DamageNumbers.display_text(unit.damage_number_origin.global_position, elem2, reaction_name, 38)
-		await get_tree().create_timer(0.2).timeout
+		await get_tree().create_timer(0.02).timeout
 		if unit != null:
 			unit.take_damage(res_value, "lightning", true)
 			DamageNumbers.display_text(unit.damage_number_origin.global_position, elem2, reaction_name, 38)
-			await get_tree().create_timer(0.2).timeout
+			await get_tree().create_timer(0.02).timeout
 		if unit != null:
 			unit.take_damage(res_value, "lightning", true)
 		DamageNumbers.display_text(unit.damage_number_origin.global_position, elem2, reaction_name, 38)

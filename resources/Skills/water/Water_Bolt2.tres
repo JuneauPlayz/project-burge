@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_f87f7")
-name = "Water Bolt"
+name = "Water Bolt+"
 damage = 20
 element = "water"
 damaging = true

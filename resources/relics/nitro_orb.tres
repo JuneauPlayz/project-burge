@@ -1,0 +1,32 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://yu5oy14slmi1"]
+
+[ext_resource type="Script" uid="uid://bwy6w48crbb54" path="res://scenes/relic handler/relic.gd" id="1_vslgy"]
+[ext_resource type="Script" uid="uid://c88tg8gm1lg3r" path="res://resources/relic scripts/reaction_mults.gd" id="2_rbc02"]
+
+[resource]
+script = ExtResource("2_rbc02")
+vaporize_mult = 0.0
+shock_mult = 0.0
+erupt_mult = 0.0
+detonate_main_mult = 0.0
+detonate_side_mult = 0.0
+nitro_mult = 0.5
+burn_damage = 0.0
+burn_length = 0.0
+muck_mult = 0.0
+discharge_mult = 0.0
+sow_shielding = 0.0
+sow_healing = 0.0
+sow_healing_mult = 0.0
+sow_shielding_mult = 0.0
+bloom_mult = 0.0
+bubble_mult = 0.0
+ally_bloom_healing = 0.0
+enemy_bloom_healing = 0.0
+relic_name = "Nitro Orb"
+tier = "1"
+id = ""
+type = 4
+tooltip = "Adds 0.5x to Nitro
+Mult"
+metadata/_custom_type_script = ExtResource("1_vslgy")

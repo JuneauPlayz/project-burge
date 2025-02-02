@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://lsx0fd6mol75"]
+
+[ext_resource type="Script" uid="uid://di7tjw3hxenl5" path="res://resources/relic scripts/token_bonus.gd" id="2_1s8ja"]
+[ext_resource type="Script" uid="uid://bwy6w48crbb54" path="res://scenes/relic handler/relic.gd" id="2_r0oya"]
+
+[resource]
+script = ExtResource("2_1s8ja")
+fire_token_count = 4
+water_token_count = 0
+lightning_token_count = 0
+earth_token_count = 0
+grass_token_count = 0
+relic_name = "Fire Starter+"
+tier = "1"
+id = ""
+type = 1
+tooltip = "Start Combat with +4
+Fire Tokens"
+metadata/_custom_type_script = ExtResource("2_r0oya")

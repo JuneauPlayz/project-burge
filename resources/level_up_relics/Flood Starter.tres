@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://ih3lh3adqec6"]
+
+[ext_resource type="Script" uid="uid://bwy6w48crbb54" path="res://scenes/relic handler/relic.gd" id="1_f8lw4"]
+[ext_resource type="Script" uid="uid://di7tjw3hxenl5" path="res://resources/relic scripts/token_bonus.gd" id="2_f5uvi"]
+
+[resource]
+script = ExtResource("2_f5uvi")
+fire_token_count = 0
+water_token_count = 2
+lightning_token_count = 0
+earth_token_count = 0
+grass_token_count = 0
+relic_name = "Flood Starter"
+tier = "1"
+id = ""
+type = 1
+tooltip = "Start Combat with +2
+Water Tokens"
+metadata/_custom_type_script = ExtResource("1_f8lw4")

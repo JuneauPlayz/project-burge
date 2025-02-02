@@ -1,11 +1,29 @@
 [gd_resource type="Resource" load_steps=2 format=3 uid="uid://brs2cd0ar72yr"]
 
-[ext_resource type="Script" path="res://resources/relic scripts/burn_orb.gd" id="1_p6tq4"]
+[ext_resource type="Script" uid="uid://c88tg8gm1lg3r" path="res://resources/relic scripts/reaction_mults.gd" id="1_otfx5"]
 
 [resource]
-script = ExtResource("1_p6tq4")
+script = ExtResource("1_otfx5")
+vaporize_mult = 0.0
+shock_mult = 0.0
+erupt_mult = 0.0
+detonate_main_mult = 0.0
+detonate_side_mult = 0.0
+nitro_mult = 0.0
+burn_damage = 10.0
+burn_length = 1.0
+muck_mult = 0.0
+discharge_mult = 0.0
+sow_shielding = 0.0
+sow_healing = 0.0
+sow_healing_mult = 0.0
+sow_shielding_mult = 0.0
+bloom_mult = 0.0
+bubble_mult = 0.0
+ally_bloom_healing = 0.0
+enemy_bloom_healing = 0.0
 relic_name = "Burn Orb"
-tier = "1"
+tier = "2"
 id = ""
 type = 4
 tooltip = "Adds 10 to Burn Damage

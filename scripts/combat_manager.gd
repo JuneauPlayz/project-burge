@@ -388,7 +388,7 @@ func lose_shields():
 		
 func enemy_lose_shields():
 	for enemy in enemies:
-		enemy.lose_shield()
+		enemy.set_shield(0)
 	
 # char 1
 func _on_spell_select_ui_new_select(ally) -> void:

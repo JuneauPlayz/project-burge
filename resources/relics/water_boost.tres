@@ -1,16 +1,28 @@
-[gd_resource type="Resource" load_steps=4 format=3 uid="uid://cv7shdpsfcu0l"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cv7shdpsfcu0l"]
 
-[ext_resource type="Texture2D" uid="uid://btf1pjieqwng5" path="res://assets/kataraa.png" id="1_snxrb"]
+[ext_resource type="Script" uid="uid://cunubpflnk7xm" path="res://resources/relic scripts/basic_mults.gd" id="2_5jcdr"]
 [ext_resource type="Script" uid="uid://bwy6w48crbb54" path="res://scenes/relic handler/relic.gd" id="2_saflw"]
-[ext_resource type="Script" uid="uid://e3mwi3v2v0o4" path="res://resources/relic scripts/water_boost.gd" id="3_saflw"]
 
 [resource]
-script = ExtResource("3_saflw")
+script = ExtResource("2_5jcdr")
+fire_damage_bonus = 0
+fire_damage_mult = 0.0
+water_damage_bonus = 10
+water_damage_mult = 0.0
+lightning_damage_bonus = 0
+lightning_damage_mult = 0.0
+earth_damage_bonus = 0
+earth_damage_mult = 0.0
+grass_damage_bonus = 0
+grass_damage_mult = 0.0
+healing_bonus = 0
+healing_mult = 0.0
+shielding_bonus = 0
+shielding_mult = 0.0
 relic_name = "Water Boost"
 tier = "2"
 id = ""
 type = 4
-icon = ExtResource("1_snxrb")
 tooltip = "All Water Damage on
 enemies increased by 10"
 metadata/_custom_type_script = ExtResource("2_saflw")

@@ -27,7 +27,7 @@ var relic_list = []
 func _on_start_combat_pressed() -> void:
 	ally_list.resize(4)
 	enemy_list.resize(4)
-	GC.load_combat(ally_list[0],ally_list[1],ally_list[2],ally_list[3],enemy_list[0],enemy_list[1],enemy_list[2],enemy_list[3],10)
+	#GC.load_combat(ally_list[0],ally_list[1],ally_list[2],ally_list[3],enemy_list[0],enemy_list[1],enemy_list[2],enemy_list[3],10)
 	get_tree().change_scene_to_file("res://scenes/main scenes/combat.tscn")
 
 # allies

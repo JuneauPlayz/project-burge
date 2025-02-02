@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://diay0vgqknlqc"]
+
+[ext_resource type="Texture2D" uid="uid://133h4yyl8s4l" path="res://assets/chillpyro.png" id="1_phqmp"]
+[ext_resource type="Script" uid="uid://cguqp50cxso0u" path="res://resources/relic scripts/Arsonist.gd" id="2_t340d"]
+
+[resource]
+script = ExtResource("2_t340d")
+relic_name = "Arsonist"
+tier = "3"
+id = ""
+type = 4
+icon = ExtResource("1_phqmp")
+tooltip = "Burns can stack.
++ 1 Burn Length"

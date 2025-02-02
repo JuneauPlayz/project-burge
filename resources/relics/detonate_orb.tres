@@ -1,15 +1,31 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cmmon0itrxfne"]
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cmmon0itrxfne"]
 
-[ext_resource type="Texture2D" uid="uid://bn7nb2ypup127" path="res://assets/steamicon.png" id="1_0iruf"]
-[ext_resource type="Script" path="res://resources/relic scripts/detonate_orb.gd" id="1_ui6iu"]
+[ext_resource type="Script" uid="uid://c88tg8gm1lg3r" path="res://resources/relic scripts/reaction_mults.gd" id="1_nhrdm"]
 
 [resource]
-script = ExtResource("1_ui6iu")
+script = ExtResource("1_nhrdm")
+vaporize_mult = 0.0
+shock_mult = 0.0
+erupt_mult = 0.0
+detonate_main_mult = 0.5
+detonate_side_mult = 0.25
+nitro_mult = 0.0
+burn_damage = 0.0
+burn_length = 0.0
+muck_mult = 0.0
+discharge_mult = 0.0
+sow_shielding = 0.0
+sow_healing = 0.0
+sow_healing_mult = 0.0
+sow_shielding_mult = 0.0
+bloom_mult = 0.0
+bubble_mult = 0.0
+ally_bloom_healing = 0.0
+enemy_bloom_healing = 0.0
 relic_name = "Detonate Orb"
 tier = "1"
 id = ""
 type = 4
-icon = ExtResource("1_0iruf")
 tooltip = "Adds 0.5x to Detonate
 Main Mult and 0.25x to
 Detonate Side Mult"

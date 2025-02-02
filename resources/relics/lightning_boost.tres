@@ -1,16 +1,28 @@
-[gd_resource type="Resource" load_steps=4 format=3 uid="uid://bt5hrn6ddq6hu"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bt5hrn6ddq6hu"]
 
 [ext_resource type="Script" uid="uid://bwy6w48crbb54" path="res://scenes/relic handler/relic.gd" id="1_7e851"]
-[ext_resource type="Texture2D" uid="uid://dqmohettbpuc1" path="res://assets/electro wizard.jpg" id="1_rdvup"]
-[ext_resource type="Script" uid="uid://bxykfpaaitdu6" path="res://resources/relic scripts/lightning_boost.gd" id="3_87n2g"]
+[ext_resource type="Script" uid="uid://cunubpflnk7xm" path="res://resources/relic scripts/basic_mults.gd" id="2_usn05"]
 
 [resource]
-script = ExtResource("3_87n2g")
+script = ExtResource("2_usn05")
+fire_damage_bonus = 0
+fire_damage_mult = 0.0
+water_damage_bonus = 0
+water_damage_mult = 0.0
+lightning_damage_bonus = 2
+lightning_damage_mult = 0.0
+earth_damage_bonus = 0
+earth_damage_mult = 0.0
+grass_damage_bonus = 0
+grass_damage_mult = 0.0
+healing_bonus = 0
+healing_mult = 0.0
+shielding_bonus = 0
+shielding_mult = 0.0
 relic_name = "Lightning Boost"
 tier = "2"
 id = ""
 type = 4
-icon = ExtResource("1_rdvup")
 tooltip = "All Lightning Damage
 on enemies increased by
 2"

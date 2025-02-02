@@ -1,10 +1,24 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://bcpa0mi87dxxw"]
 
 [ext_resource type="Script" uid="uid://bwy6w48crbb54" path="res://scenes/relic handler/relic.gd" id="1_tlnim"]
-[ext_resource type="Script" uid="uid://dyeesqtqjcjwn" path="res://resources/relic scripts/miku_amulet.gd" id="2_aeasu"]
+[ext_resource type="Script" uid="uid://cunubpflnk7xm" path="res://resources/relic scripts/basic_mults.gd" id="2_aeasu"]
 
 [resource]
 script = ExtResource("2_aeasu")
+fire_damage_bonus = 5
+fire_damage_mult = 0.0
+water_damage_bonus = 5
+water_damage_mult = 0.0
+lightning_damage_bonus = 2
+lightning_damage_mult = 0.0
+earth_damage_bonus = 0
+earth_damage_mult = 10.0
+grass_damage_bonus = 10
+grass_damage_mult = 0.0
+healing_bonus = 0
+healing_mult = 0.0
+shielding_bonus = 0
+shielding_mult = 0.0
 relic_name = "Miku's Amulet"
 tier = "3"
 id = ""

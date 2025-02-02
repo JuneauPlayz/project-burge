@@ -1,8 +1,10 @@
-[gd_resource type="Resource" script_class="UnitRes" load_steps=9 format=3 uid="uid://rch61bky2ck8"]
+[gd_resource type="Resource" script_class="UnitRes" load_steps=11 format=3 uid="uid://rch61bky2ck8"]
 
 [ext_resource type="Script" uid="uid://bpkpxp60hx4da" path="res://scripts/UnitRes.gd" id="1_5s5xv"]
 [ext_resource type="Resource" uid="uid://crkjhbiu783ib" path="res://resources/relics/sow_specialist.tres" id="1_qg5cs"]
+[ext_resource type="Resource" uid="uid://dlpdqat8ipjw1" path="res://resources/level_up_relics/Garden Starter.tres" id="1_qshh3"]
 [ext_resource type="Resource" uid="uid://tjrsdrdx2xsa" path="res://resources/Skills/grass/Grass Needle.tres" id="2_3o77x"]
+[ext_resource type="Resource" uid="uid://butrwn0ku2t0p" path="res://resources/level_up_relics/mini healing boost.tres" id="2_cr2bb"]
 [ext_resource type="Resource" uid="uid://dg1frmvoqf78x" path="res://resources/relics/healing_potion.tres" id="2_rre8t"]
 [ext_resource type="Resource" uid="uid://cjot7mdltdj0m" path="res://resources/Skills/grass/Healing Wish.tres" id="4_7jyuf"]
 [ext_resource type="Resource" uid="uid://bcnlggyd75qmg" path="res://resources/Skills/grass/Mega Drain.tres" id="4_stegg"]
@@ -14,8 +16,8 @@ script = ExtResource("1_5s5xv")
 starting_health = 100
 skill1 = ExtResource("2_3o77x")
 skill2 = ExtResource("4_7jyuf")
-relic_1 = ExtResource("1_qg5cs")
-relic_2 = ExtResource("2_rre8t")
+relic_1 = ExtResource("1_qshh3")
+relic_2 = ExtResource("2_cr2bb")
 ult_1 = ExtResource("5_besxd")
 ult_2 = ExtResource("4_stegg")
 relic_3 = ExtResource("1_qg5cs")
