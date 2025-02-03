@@ -1,6 +1,5 @@
-[gd_scene load_steps=10 format=3 uid="uid://ck5h6rp213hpn"]
+[gd_scene load_steps=9 format=3 uid="uid://ck5h6rp213hpn"]
 
-[ext_resource type="Script" path="res://scripts/character_select.gd" id="1_hd0vt"]
 [ext_resource type="Texture2D" uid="uid://c7bn1gnx4b71v" path="res://assets/grassy pixelated.jpg" id="2_7ac7o"]
 [ext_resource type="AudioStream" uid="uid://4rhr7pwkbdml" path="res://assets/cliack.mp3" id="2_48ova"]
 
@@ -31,7 +30,6 @@ outline_size = 9
 outline_color = Color(0, 0, 0, 1)
 
 [node name="Character Select" type="Node2D"]
-script = ExtResource("1_hd0vt")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(1168, 552)

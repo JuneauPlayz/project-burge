@@ -81,6 +81,7 @@ extends Control
 @onready var page_1: VBoxContainer = $PanelContainer/MarginContainer/Page1
 @onready var page_2: VBoxContainer = $PanelContainer/MarginContainer/Page2
 @onready var current_page_label: Label = $CurrentPage
+@onready var stats_disclaimer: Label = $StatsDisclaimer
 
 var current_page = "fire"
 
@@ -110,49 +111,27 @@ func _on_hide_pressed() -> void:
 
 func change_page(page):
 	update_mult_labels()
+	fire_page.visible = false
+	water_page.visible = false
+	lightning_page.visible = false
+	grass_page.visible = false
+	earth_page.visible = false
+	stats_page.visible = false
+	stats_disclaimer.visible = false
 	match page:
 		"fire":
 			fire_page.visible = true
-			water_page.visible = false
-			lightning_page.visible = false
-			grass_page.visible = false
-			earth_page.visible = false
-			stats_page.visible = false
 		"water":
-			fire_page.visible = false
 			water_page.visible = true
-			lightning_page.visible = false
-			grass_page.visible = false
-			earth_page.visible = false
-			stats_page.visible = false
 		"lightning":
-			fire_page.visible = false
-			water_page.visible = false
 			lightning_page.visible = true
-			grass_page.visible = false
-			earth_page.visible = false
-			stats_page.visible = false
 		"grass":
-			fire_page.visible = false
-			water_page.visible = false
-			lightning_page.visible = false
 			grass_page.visible = true
-			earth_page.visible = false
-			stats_page.visible = false
 		"earth":
-			fire_page.visible = false
-			water_page.visible = false
-			lightning_page.visible = false
-			grass_page.visible = false
 			earth_page.visible = true
-			stats_page.visible = false
 		"stats":
-			fire_page.visible = false
-			water_page.visible = false
-			lightning_page.visible = false
-			grass_page.visible = false
-			earth_page.visible = false
 			stats_page.visible = true
+			stats_disclaimer.visible = true
 
 func update_mult_labels() -> void:
 	# Update vaporize labels

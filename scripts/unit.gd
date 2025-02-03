@@ -132,7 +132,7 @@ func receive_skill_friendly(skill, unit, value_multiplier):
 	hp_bar.update_statuses(status)
 
 func take_damage(damage : int, element : String, change_element : bool):
-	AudioPlayer.play_FX("fire_hit", -30)
+	AudioPlayer.play_FX("fire_hit", -18)
 	if change_element:
 		current_element = element
 	hp_bar.update_element(current_element)

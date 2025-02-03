@@ -24,7 +24,7 @@ content_margin_right = 0.0
 bg_color = Color(0.246653, 0.378583, 0.631853, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ur654"]
-bg_color = Color(0.180392, 0.180392, 0.180392, 0.470588)
+bg_color = Color(0.2484, 0.2484, 0.2484, 0.470588)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c8eds"]
 
@@ -61,14 +61,14 @@ bg_color = Color(0.223103, 0.223103, 0.223103, 1)
 shadow_size = 8
 
 [sub_resource type="LabelSettings" id="LabelSettings_1aora"]
-font_size = 41
+font_size = 42
 font_color = Color(0.878646, 0.868238, 0.89352, 1)
-outline_size = 7
+outline_size = 16
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_1vgtr"]
 font_size = 90
-outline_size = 10
+outline_size = 20
 outline_color = Color(0, 0, 0, 1)
 
 [node name="SpellSelectUi" type="Control"]
@@ -102,12 +102,12 @@ layout_mode = 2
 mouse_filter = 1
 
 [node name="ba_1" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/BA1Panel"]
-custom_minimum_size = Vector2(261, 39)
+custom_minimum_size = Vector2(261, 48)
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 0.705882)
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 36
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 24
+theme_override_font_sizes/font_size = 42
 theme_override_styles/disabled = SubResource("StyleBoxFlat_rghh4")
 theme_override_styles/hover = SubResource("StyleBoxFlat_1dgm8")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ur654")
@@ -123,11 +123,11 @@ layout_mode = 2
 mouse_filter = 2
 
 [node name="S1" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/SP1Panel"]
-custom_minimum_size = Vector2(0, 39)
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 0.705882)
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 36
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 24
+theme_override_font_sizes/font_size = 42
 theme_override_styles/disabled = SubResource("StyleBoxFlat_667es")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ni84r")
 theme_override_styles/normal = SubResource("StyleBoxFlat_sleic")
@@ -144,11 +144,11 @@ layout_mode = 2
 mouse_filter = 2
 
 [node name="S2" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/SP2Panel"]
-custom_minimum_size = Vector2(0, 39)
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 0.705882)
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 36
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 24
+theme_override_font_sizes/font_size = 42
 theme_override_styles/disabled = SubResource("StyleBoxFlat_pfass")
 theme_override_styles/hover = SubResource("StyleBoxFlat_q85v1")
 theme_override_styles/normal = SubResource("StyleBoxFlat_lt1l8")
@@ -165,11 +165,11 @@ layout_mode = 2
 mouse_filter = 2
 
 [node name="ULT" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/ULTPanel"]
-custom_minimum_size = Vector2(0, 39)
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 0.705882)
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 36
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 24
+theme_override_font_sizes/font_size = 42
 theme_override_styles/disabled = SubResource("StyleBoxFlat_v4ccb")
 theme_override_styles/hover = SubResource("StyleBoxFlat_i2ev1")
 theme_override_styles/normal = SubResource("StyleBoxFlat_s2255")
@@ -222,8 +222,9 @@ offset_bottom = 142.0
 
 [node name="PositionUI" type="Control" parent="."]
 anchors_preset = 0
+offset_top = 30.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 70.0
 mouse_filter = 2
 
 [node name="PositionContainer" type="PanelContainer" parent="PositionUI"]
@@ -238,9 +239,9 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_6v8fa")
 [node name="Position" type="Label" parent="PositionUI"]
 layout_mode = 0
 offset_left = 75.0
-offset_top = 248.0
+offset_top = 253.0
 offset_right = 220.0
-offset_bottom = 285.0
+offset_bottom = 290.0
 theme_override_font_sizes/font_size = 0
 text = "POSITION"
 label_settings = SubResource("LabelSettings_1aora")
@@ -249,9 +250,9 @@ horizontal_alignment = 1
 [node name="PosNumber" type="Label" parent="PositionUI"]
 layout_mode = 0
 offset_left = 127.0
-offset_top = 285.0
+offset_top = 290.0
 offset_right = 167.0
-offset_bottom = 368.0
+offset_bottom = 373.0
 label_settings = SubResource("LabelSettings_1vgtr")
 
 [connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/BA1Panel/ba_1" to="." method="_on_ba_1_mouse_entered"]

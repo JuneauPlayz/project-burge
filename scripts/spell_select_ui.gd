@@ -35,7 +35,7 @@ var empty4 = false
 var initial_load = false
 
 var blue = Color("3f61a1")
-var gray = Color("2e2e2e78")
+var gray = Color("3f3f3f78")
 
 func load_skills():
 	if (skill1 != null):

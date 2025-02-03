@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://rtk527cyr7kb"]
 
-[ext_resource type="Script" path="res://scenes/reusables/combat_currency.gd" id="1_44acn"]
+[ext_resource type="Script" uid="uid://dwdvmjrqgrbdf" path="res://scenes/reusables/combat_currency.gd" id="1_44acn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_evy26"]
 bg_color = Color(0.449653, 0.548845, 0.58154, 1)
@@ -13,7 +13,7 @@ shadow_size = 7
 
 [sub_resource type="LabelSettings" id="LabelSettings_a672k"]
 font_size = 48
-outline_size = 9
+outline_size = 16
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t0ro6"]
@@ -24,7 +24,7 @@ expand_margin_right = 5.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_pyo7b"]
 font_size = 36
-outline_size = 5
+outline_size = 16
 outline_color = Color(0, 0, 0, 1)
 
 [node name="CombatCurrency" type="Control"]
@@ -69,7 +69,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(225, 36)
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 7
+theme_override_constants/outline_size = 16
 theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
 text = " [color=coral]Fire[/color] Tokens:"
@@ -88,7 +88,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(225, 36)
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 7
+theme_override_constants/outline_size = 16
 theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
 text = " [color=dark_cyan]Water[/color] Tokens:"
@@ -107,7 +107,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(225, 36)
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 7
+theme_override_constants/outline_size = 16
 theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
 text = " [color=purple]Lightning[/color] Tokens:"
@@ -126,7 +126,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(225, 36)
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 7
+theme_override_constants/outline_size = 16
 theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
 text = " [color=saddle_brown]Earth[/color] Tokens:"
@@ -145,7 +145,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(225, 36)
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 7
+theme_override_constants/outline_size = 16
 theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
 text = " [color=web_green]Grass[/color] Tokens:

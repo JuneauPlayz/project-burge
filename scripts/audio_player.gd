@@ -9,7 +9,8 @@ const wii_shop_music = preload("res://assets/Wii Shop Channel Main Theme (HQ).mp
 #sound fx
 const CLIACK = preload("res://assets/cliack.mp3")
 const FIRE_HIT = preload("res://assets/fire hit.mp3")
-
+@onready var timer: Timer = $Timer
+var timer_going = false
 func play_music(song, volume):
 	match song:
 		"og":
@@ -29,20 +30,27 @@ func play_music(song, volume):
 	play()
 	
 func play_FX(sound, volume = 0.0):
-	var soundfx : AudioStream
-	match sound:
-		"click":
-			soundfx = CLIACK
-		"fire_hit":
-			soundfx = FIRE_HIT
-	var fx_player = AudioStreamPlayer.new()
-	fx_player.stream = soundfx
-	fx_player.name = "FX_PLAYER"
-	fx_player.volume_db = volume-5
-	add_child(fx_player)
-	fx_player.play()
+	# timer so the same sound doesnt happen at once
+	if not timer_going:
+		var soundfx : AudioStream
+		match sound:
+			"click":
+				soundfx = CLIACK
+			"fire_hit":
+				soundfx = FIRE_HIT
+		var fx_player = AudioStreamPlayer.new()
+		fx_player.stream = soundfx
+		fx_player.name = "FX_PLAYER"
+		fx_player.volume_db = volume-5
+		add_child(fx_player)
+		fx_player.play()
+		timer.start()
+		timer_going = true
+		await fx_player.finished
+		
+		fx_player.queue_free()
 	
-	await fx_player.finished
-	
-	fx_player.queue_free()
-	
+
+
+func _on_timer_timeout() -> void:
+	timer_going = false

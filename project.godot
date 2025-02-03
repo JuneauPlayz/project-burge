@@ -56,7 +56,9 @@ shopitem=""
 
 [gui]
 
-theme/custom_font="res://assets/pokemon_pixel_font.ttf"
+theme/custom_font="uid://ca0ii6rndnaqf"
+theme/default_font_antialiasing=0
+theme/default_font_subpixel_positioning=0
 
 [input]
 

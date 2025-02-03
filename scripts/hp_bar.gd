@@ -45,19 +45,19 @@ func update_text():
 func update_element(element):
 	match element:
 		"":
-			current_element.text = " Element: None"
+			current_element.text = " Element : None"
 		"none":
-			current_element.text = " Element: None"
+			current_element.text = " Element : None"
 		"fire":
-			current_element.text = " Element: [color=coral]Fire[/color]"
+			current_element.text = " Element : [color=coral]Fire[/color]"
 		"water":
-			current_element.text = " Element: [color=dark_cyan]Water[/color]"
+			current_element.text = " Element : [color=dark_cyan]Water[/color]"
 		"lightning":
-			current_element.text = " Element: [color=purple]Lightning[/color]"
+			current_element.text = " Element : [color=purple]Lightning[/color]"
 		"earth":
-			current_element.text = " Element: [color=saddle_brown]Earth[/color]"
+			current_element.text = " Element : [color=saddle_brown]Earth[/color]"
 		"grass":
-			current_element.text = " Element: [color=web_green]Grass[/color]"
+			current_element.text = " Element : [color=web_green]Grass[/color]"
 			
 func update_statuses(statuses):
 	statuses_label.text = ""

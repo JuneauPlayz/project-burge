@@ -19,7 +19,7 @@ load_path = "res://.godot/imported/golem.png-4ecf06b627a0b206e6315fdbd8983774.ct
 
 [sub_resource type="LabelSettings" id="LabelSettings_ghnwa"]
 font_size = 86
-outline_size = 9
+outline_size = 20
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_vlp3o"]
@@ -29,7 +29,7 @@ outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_0i11v"]
 font_size = 136
-outline_size = 9
+outline_size = 36
 outline_color = Color(0, 0, 0, 1)
 
 [node name="new_character_select" type="Node2D"]

@@ -145,18 +145,19 @@ theme_override_font_sizes/font_size = 56
 text = "End Turn   (A)"
 
 [node name="Win" type="Button" parent="."]
-offset_left = 1161.0
-offset_top = 988.0
-offset_right = 1393.0
-offset_bottom = 1046.0
-theme_override_font_sizes/font_size = 56
+custom_minimum_size = Vector2(50, 50)
+offset_left = 1131.0
+offset_top = 1024.0
+offset_right = 1219.0
+offset_bottom = 1074.0
+theme_override_font_sizes/font_size = 36
 text = "win"
 
 [node name="ResetChoices" type="Button" parent="."]
 offset_left = 450.0
-offset_top = 975.0
+offset_top = 999.0
 offset_right = 703.0
-offset_bottom = 1033.0
+offset_bottom = 1057.0
 scale = Vector2(0.705, 0.705)
 theme_override_font_sizes/font_size = 56
 text = "Reset Choices"

@@ -20,7 +20,7 @@ corner_radius_bottom_left = 6
 
 [sub_resource type="LabelSettings" id="LabelSettings_tqes5"]
 font_size = 48
-outline_size = 9
+outline_size = 16
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 24
 
@@ -35,11 +35,11 @@ corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 
 [sub_resource type="LabelSettings" id="LabelSettings_36guj"]
-font_size = 44
+font_size = 42
 
 [sub_resource type="LabelSettings" id="LabelSettings_tatyv"]
 font_size = 36
-outline_size = 7
+outline_size = 16
 outline_color = Color(0, 0, 0, 1)
 
 [node name="HP Bar" type="Control"]
@@ -81,10 +81,10 @@ offset_top = -37.0
 offset_right = 356.0
 offset_bottom = 16.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 9
+theme_override_constants/outline_size = 16
 theme_override_font_sizes/normal_font_size = 48
 bbcode_enabled = true
-text = " Element: None"
+text = " Element : None"
 
 [node name="ShieldBar" type="ProgressBar" parent="."]
 layout_mode = 0

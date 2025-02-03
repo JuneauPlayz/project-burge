@@ -232,3 +232,28 @@ func _on_confirm_swap_level_pressed() -> void:
 	swap_tutorial.visible = false
 	level_up_complete = true
 	spell_select_ui.reset()
+
+func attack_animation():
+	var tween = get_tree().create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(
+		sprite_spot, "position:y", sprite_spot.position.y - 50, GC.GLOBAL_INTERVAL
+	).set_ease(Tween.EASE_OUT)
+	tween.tween_property(
+		sprite_spot, "rotation", sprite_spot.rotation - deg_to_rad(45), GC.GLOBAL_INTERVAL
+	).set_ease(Tween.EASE_OUT)
+	tween.tween_property(
+		sprite_spot, "rotation", sprite_spot.rotation + deg_to_rad(30), 0.05
+	).set_ease(Tween.EASE_OUT).set_delay(GC.GLOBAL_INTERVAL)
+	tween.tween_property(
+		sprite_spot, "position:x", sprite_spot.position.x + 25, 0.05
+	).set_ease(Tween.EASE_OUT).set_delay(GC.GLOBAL_INTERVAL)
+	tween.tween_property(
+		sprite_spot, "position:y", sprite_spot.position.y, 0.05
+	).set_ease(Tween.EASE_IN).set_delay(0.25)
+	tween.tween_property(
+		sprite_spot, "rotation", sprite_spot.rotation, 0.20
+	).set_ease(Tween.EASE_IN).set_delay(0.25)
+	tween.tween_property(
+		sprite_spot, "position:x", sprite_spot.position.x, 0.05
+	).set_ease(Tween.EASE_OUT).set_delay(0.25)

@@ -76,8 +76,32 @@ func hide_next_skill_info():
 	
 func show_next_skill_info():
 	show_next_skill.visible = true
+	
+func attack_animation():
+	var tween = get_tree().create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(
+		sprite_spot, "position:y", sprite_spot.position.y - 50, GC.GLOBAL_INTERVAL
+	).set_ease(Tween.EASE_OUT)
+	tween.tween_property(
+		sprite_spot, "rotation", sprite_spot.rotation + deg_to_rad(45), GC.GLOBAL_INTERVAL
+	).set_ease(Tween.EASE_OUT)
+	tween.tween_property(
+		sprite_spot, "rotation", sprite_spot.rotation - deg_to_rad(30), 0.05
+	).set_ease(Tween.EASE_OUT).set_delay(GC.GLOBAL_INTERVAL)
+	tween.tween_property(
+		sprite_spot, "position:x", sprite_spot.position.x - 25, 0.05
+	).set_ease(Tween.EASE_OUT).set_delay(GC.GLOBAL_INTERVAL)
+	tween.tween_property(
+		sprite_spot, "position:y", sprite_spot.position.y, 0.05
+	).set_ease(Tween.EASE_IN).set_delay(0.30)
+	tween.tween_property(
+		sprite_spot, "rotation", sprite_spot.rotation, 0.20
+	).set_ease(Tween.EASE_IN).set_delay(0.30)
+	tween.tween_property(
+		sprite_spot, "position:x", sprite_spot.position.x, 0.05
+	).set_ease(Tween.EASE_OUT).set_delay(0.30)
 
-
-
+	
 func _on_targeting_area_pressed() -> void:
 	target_chosen.emit(self)

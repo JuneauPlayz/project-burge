@@ -17,15 +17,15 @@ func update_skill_info():
 	var element_text = ""
 	match skill.element:
 		"fire":
-			element_text = "[color=coral]Fire[/color]"
+			element_text = " [color=coral]Fire[/color]"
 		"water":
-			element_text = "[color=dark_cyan]Water[/color]"
+			element_text = " [color=dark_cyan]Water[/color]"
 		"lightning":
-			element_text = "[color=purple]Lightning[/color]"
+			element_text = " [color=purple]Lightning[/color]"
 		"grass":
-			element_text = "[color=web_green]Grass[/color]"
+			element_text = " [color=web_green]Grass[/color]"
 		"earth":
-			element_text = "[color=saddle_brown]Earth[/color]"
+			element_text = " [color=saddle_brown]Earth[/color]"
 		
 	element.text = "[center]" + element_text + "[/center]"
 	match skill.target_type:

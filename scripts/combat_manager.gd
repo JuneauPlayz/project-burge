@@ -132,6 +132,9 @@ func start_ally_turn():
 	
 func execute_ally_turn():
 	# skill execution
+	if ally_queue != []:
+		ally_queue[0].attack_animation()
+	await get_tree().create_timer(0.15).timeout
 	for n in range(action_queue.size()):
 		if (action_queue.size() == 0):
 			continue
@@ -146,6 +149,8 @@ func execute_ally_turn():
 		await reaction_finished
 		print(str(skill.name) + " landed!")
 		hit.emit()
+		if ally_queue.size() > n+1:
+			ally_queue[n+1].attack_animation()
 		await get_tree().create_timer(GC.GLOBAL_INTERVAL+0.05).timeout
 		# for sow only
 		for stati in target.status:
@@ -162,14 +167,20 @@ func execute_ally_turn():
 func enemy_turn():
 	await get_tree().create_timer(0.25).timeout
 	enemy_pre_status()
-	await get_tree().create_timer(0.3).timeout
+	await get_tree().create_timer(0.15).timeout
 	enemy_lose_shields()
-	for enemy in enemies:
+	if enemies != []:
+		enemies[0].attack_animation()
+	await get_tree().create_timer(0.15).timeout
+	for i in range(enemies.size()):
+		var enemy = enemies[i]
 		print("using enemy skill")
 		set_unit_pos()
 		use_skill(enemy.current_skill,null,enemy,true)
 		hit.emit()
 		enemy.change_skills()
+		if enemies.size() > i+1:
+			enemies[i+1].attack_animation()
 		await get_tree().create_timer(GC.GLOBAL_INTERVAL+0.05).timeout
 	await get_tree().create_timer(0.1).timeout
 	enemy_post_status()

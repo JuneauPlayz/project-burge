@@ -1,11 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://cpqr8d1v3tlcf"]
 
-[ext_resource type="Script" path="res://scripts/main_scene.gd" id="1_3n5v6"]
+[ext_resource type="Script" uid="uid://b53ec2n06gu4g" path="res://scripts/main_scene.gd" id="1_3n5v6"]
 [ext_resource type="Texture2D" uid="uid://dvsv0kwugnhrm" path="res://assets/blue sky clouds bg.jpg" id="2_6dk50"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_k0nup"]
 font_size = 178
-outline_size = 15
+outline_size = 36
 outline_color = Color(0, 0, 0, 1)
 
 [node name="MainScene" type="Node2D"]

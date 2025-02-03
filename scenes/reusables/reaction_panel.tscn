@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cokl4xcoeufdp"]
+[gd_scene load_steps=19 format=3 uid="uid://cokl4xcoeufdp"]
 
 [ext_resource type="Script" uid="uid://dcvxhs1moex51" path="res://scenes/reusables/reaction_panel.gd" id="1_vmy8d"]
 
@@ -78,6 +78,11 @@ border_color = Color(0.207843, 0.0745098, 0.0901961, 0.717647)
 expand_margin_left = 5.0
 expand_margin_top = 5.0
 expand_margin_bottom = 5.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_ku7jd"]
+font_size = 42
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_5oal1"]
 font_size = 36
@@ -1422,7 +1427,6 @@ text = " [color=saddle_brown]Shielding Mult[/color] : 1x"
 horizontal_alignment = 1
 
 [node name="StatsPage" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 5
 
@@ -1627,6 +1631,21 @@ theme_override_constants/outline_size = 9
 theme_override_font_sizes/normal_font_size = 53
 bbcode_enabled = true
 text = " [color=yellow]Gold Mult[/color] : 0"
+
+[node name="StatsDisclaimer" type="Label" parent="."]
+visible = false
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+offset_left = 137.0
+offset_top = 456.0
+offset_right = 329.0
+offset_bottom = 698.0
+text = "Bonuses are
+applied before
+Mults when
+ calculating 
+damage"
+label_settings = SubResource("LabelSettings_ku7jd")
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 2

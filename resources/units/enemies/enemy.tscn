@@ -7,7 +7,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_hiluv"]
 font_size = 42
-outline_size = 9
+outline_size = 16
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ebmkq"]
@@ -52,9 +52,10 @@ position = Vector2(115, 596)
 [node name="ShowNextSkill" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -325.0
-offset_right = -285.0
-offset_bottom = 40.0
+offset_left = -314.667
+offset_top = -33.3333
+offset_right = -274.667
+offset_bottom = 6.66666
 metadata/_edit_use_anchors_ = true
 
 [node name="NextSkillLabel" type="Label" parent="ShowNextSkill"]
