@@ -138,6 +138,7 @@ func take_damage(damage : int, element : String, change_element : bool):
 	hp_bar.update_element(current_element)
 	var damage_left = roundi(damage)
 	if self is Enemy:
+		damage_left += GC.all_damage_bonus
 		match element:
 			"fire":
 				damage_left += GC.fire_damage_bonus
@@ -154,6 +155,10 @@ func take_damage(damage : int, element : String, change_element : bool):
 			"earth":
 				damage_left += GC.earth_damage_bonus
 				damage_left *= GC.earth_damage_mult
+			"none":
+				damage_left += GC.physical_damage_bonus
+				damage_left += GC.physical_damage_mult
+		damage_left += GC.all_damage_mult
 	var total_dmg = damage_left
 	if bubble:
 		damage_left = roundi(damage * GC.bubble_mult)

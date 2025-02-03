@@ -6,12 +6,12 @@ const GLOBAL_INTERVAL = 0.15
 # global currencies
 var gold = 0
 var bonus_gold = 0
-var gold_multiplier = 1
+var gold_mult = 1
 #combat
 var current_reward = 6
+#checks
+var reaction_guide_open = false
 
-const SHIELD_POTION = preload("res://resources/relics/shield_potion.tres")
-const VAPOR_ORB = preload("res://resources/relics/vapor_orb.tres")
 const CHILL_GUY = preload("res://resources/units/enemies/ChillGuy.tres")
 const PYROMANCER = preload("res://resources/units/enemies/pyromancer.tres")
 const TEAM_MAGMA_GRUNT = preload("res://resources/units/enemies/TeamMagmaGrunt.tres")
@@ -109,6 +109,10 @@ var earth_damage_bonus = 0
 var earth_damage_mult = 1
 var grass_damage_bonus = 0
 var grass_damage_mult = 1
+var physical_damage_bonus = 0
+var physical_damage_mult = 1
+var all_damage_bonus = 0
+var all_damage_mult = 1
 
 var healing_bonus = 0
 var healing_mult = 1
@@ -461,13 +465,13 @@ func add_token(element, count):
 			earth_tokens += ((count + earth_token_bonus) * earth_token_multiplier)
 			
 func add_gold(count):
-	gold += ((count + bonus_gold) * gold_multiplier)
+	gold += ((count + bonus_gold) * gold_mult)
 	
 func reset():
 	# Reset global currencies
 	gold = 0
 	bonus_gold = 0
-	gold_multiplier = 1
+	gold_mult = 1
 
 	# Reset event-based relics
 	ghostfire = false

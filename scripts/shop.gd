@@ -237,7 +237,8 @@ func buying_new_skill(shop_item):
 	for spot in spell_list:
 		spot.visible = true
 	confirm_swap.visible = false
-	next_combat.visible = true
+	if (not GC.reaction_guide_open):
+		next_combat.visible = true
 
 func update_gold():
 	gold_label.text = "Gold: " + str(GC.gold)
@@ -263,8 +264,13 @@ func _on_confirm_swap_pressed() -> void:
 func _on_reaction_guide_pressed() -> void:
 	if reaction_panel.visible:
 		reaction_panel.visible = false
+		GC.reaction_guide_open = false
+		next_combat.visible = true
+		
 	elif not reaction_panel.visible:
 		reaction_panel.visible = true
+		GC.reaction_guide_open = true
+		next_combat.visible = false
 
 
 func toggle_relic_tooltip():

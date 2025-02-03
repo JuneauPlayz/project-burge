@@ -38,6 +38,7 @@ var targeting_skill : Skill
 @onready var targeting_skill_info: Control = $TargetingSkillInfo
 @onready var relics : RelicHandler
 @onready var victory_screen: Control = $"../VictoryScreen"
+@onready var win: Button = $"../Win"
 
 var ally1skill : int
 var ally2skill : int
@@ -221,6 +222,7 @@ func victory():
 	victory_screen.continue_pressed.connect(self.finish_battle)
 
 func defeat():
+	win.visible = false
 	GC.reset()
 	victorious = false
 	victory_screen.visible = true
@@ -598,7 +600,8 @@ func hide_ui():
 	reset_choices.visible = false
 	
 func show_ui():
-	end_turn.visible = true
+	if (not GC.reaction_guide_open):
+		end_turn.visible = true
 	reset_choices.visible = true
 	
 	

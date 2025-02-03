@@ -8,8 +8,8 @@
 script = ExtResource("2_fn3p8")
 fire_damage_bonus = 0
 fire_damage_mult = 0.0
-water_damage_bonus = 0
-water_damage_mult = 5.0
+water_damage_bonus = 5
+water_damage_mult = 0.0
 lightning_damage_bonus = 0
 lightning_damage_mult = 0.0
 earth_damage_bonus = 0

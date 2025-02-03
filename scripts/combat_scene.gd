@@ -13,6 +13,7 @@ extends Node2D
 @onready var relic_handler_spot: Node2D = $RelicHandlerSpot
 @onready var reaction_panel: Control = $CombatManager/ReactionGuide/ReactionPanel
 @onready var combat_currency: Control = $CombatManager/CombatCurrency
+@onready var end_turn: Button = $EndTurn
 
 
 const RELIC_HANDLER = preload("res://scenes/relic handler/relic_handler.tscn")
@@ -201,12 +202,16 @@ func toggle_relic_tooltip():
 func _on_reaction_guide_pressed() -> void:
 	if reaction_panel.visible:
 		reaction_panel.visible = false
+		GC.reaction_guide_open = false
+		end_turn.visible = true
 		#for enemy in enemies:
 			#enemy.show_next_skill_info()
 		#for ally in allies:
 			#ally.spell_select_ui.visible = true
 	elif not reaction_panel.visible:
 		reaction_panel.visible = true
+		GC.reaction_guide_open = true
+		end_turn.visible = false
 		#for enemy in enemies:
 			#enemy.hide_next_skill_info()
 		#for ally in allies:
