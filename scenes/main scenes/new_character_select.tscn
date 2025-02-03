@@ -29,7 +29,7 @@ outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_0i11v"]
 font_size = 136
-outline_size = 36
+outline_size = 24
 outline_color = Color(0, 0, 0, 1)
 
 [node name="new_character_select" type="Node2D"]

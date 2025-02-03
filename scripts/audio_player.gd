@@ -9,6 +9,12 @@ const wii_shop_music = preload("res://assets/Wii Shop Channel Main Theme (HQ).mp
 #sound fx
 const CLIACK = preload("res://assets/cliack.mp3")
 const FIRE_HIT = preload("res://assets/fire hit.mp3")
+const LIGHTNING_HIT = preload("res://assets/lightning_hit.mp3")
+const WATER_HIT = preload("res://assets/water_hit.mp3")
+const EARTH_HIT = preload("res://assets/earth_hit.mp3")
+const GRASS_HIT = preload("res://assets/grass_hit.mp3")
+const HEALING_EFFECT = preload("res://assets/healing_effect.mp3")
+
 @onready var timer: Timer = $Timer
 var timer_going = false
 func play_music(song, volume):
@@ -38,6 +44,16 @@ func play_FX(sound, volume = 0.0):
 				soundfx = CLIACK
 			"fire_hit":
 				soundfx = FIRE_HIT
+			"lightning_hit":
+				soundfx = LIGHTNING_HIT
+			"water_hit":
+				soundfx = WATER_HIT
+			"earth_hit":
+				soundfx = EARTH_HIT
+			"grass_hit":
+				soundfx = GRASS_HIT
+			"healing":
+				soundfx = HEALING_EFFECT
 		var fx_player = AudioStreamPlayer.new()
 		fx_player.stream = soundfx
 		fx_player.name = "FX_PLAYER"

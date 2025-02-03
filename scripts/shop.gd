@@ -262,6 +262,7 @@ func _on_confirm_swap_pressed() -> void:
 
 
 func _on_reaction_guide_pressed() -> void:
+	reaction_panel.update_mult_labels()
 	if reaction_panel.visible:
 		reaction_panel.visible = false
 		GC.reaction_guide_open = false

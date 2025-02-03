@@ -122,7 +122,6 @@ func receive_skill_friendly(skill, unit, value_multiplier):
 			if (health + number >= max_health):
 				number = max_health - health
 			self.receive_healing(value, skill.element, false)
-	DamageNumbers.display_number_plus(number, damage_number_origin.global_position, skill.element, reaction)
 	if (skill.element == "none"):
 		current_element = skill.element
 	if skill.status_effects != []:
@@ -132,7 +131,20 @@ func receive_skill_friendly(skill, unit, value_multiplier):
 	hp_bar.update_statuses(status)
 
 func take_damage(damage : int, element : String, change_element : bool):
-	AudioPlayer.play_FX("fire_hit", -18)
+	match element:
+		"fire":
+			AudioPlayer.play_FX("fire_hit", -18)
+		"water":
+			AudioPlayer.play_FX("water_hit", -18)
+		"lightning":
+			AudioPlayer.play_FX("lightning_hit", -27)
+		"earth":
+			AudioPlayer.play_FX("earth_hit", -25)
+		"grass":
+			AudioPlayer.play_FX("grass_hit", -18)
+		_:
+			AudioPlayer.play_FX("fire_hit", -18)
+
 	if change_element:
 		current_element = element
 	hp_bar.update_element(current_element)
@@ -195,6 +207,7 @@ func take_damage(damage : int, element : String, change_element : bool):
 	return total_dmg
 
 func receive_healing(healing: int, element : String, change_element):
+	AudioPlayer.play_FX("healing",-21)
 	var new_healing = healing
 	if self is Ally:
 		new_healing = ((healing + GC.healing_bonus) * GC.healing_mult)
@@ -209,6 +222,7 @@ func receive_healing(healing: int, element : String, change_element):
 	return new_healing
 
 func receive_shielding(shielding: int, element : String, change_element : bool):
+	AudioPlayer.play_FX("earth_hit",-25)
 	var new_shielding =shielding
 	if self is Ally:
 		new_shielding = ((shielding + GC.shielding_bonus) * GC.shielding_mult)

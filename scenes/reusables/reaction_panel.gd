@@ -95,6 +95,7 @@ var current_page = "fire"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	change_page(current_page)
+	update_mult_labels()
 	# loading time
 	await get_tree().create_timer(0.6).timeout
 	update_mult_labels()
